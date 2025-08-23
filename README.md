@@ -1,4 +1,4 @@
-<!-- bundlephobia sometimes breaks! -->
+<!-- bundlephobia is broken again -->
 <div align="center">
   <a target="_blank" href="https://www.npmjs.com/package/stackblitzhelpers"
     ><img src="https://img.shields.io/npm/v/stackblitzhelpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9"></a>
@@ -62,6 +62,8 @@ import {logFactory /*, ...[see 'exposed as'] */} from "stackblitzhelpers"
   - Exposed as `regexhelper`
 - [ticktock-es](https://www.npmjs.com/package/ticktock-es): a library to fiddle extensively with ECMAScript Dates
   - Exposed as `$D`
+- [splat-es](https://www.npmjs.com/package/splat-es): a string templating library
+  - Exposed as `splat`/`splatClear`
 
 ### For printing/logging to screen
 - `logFactory`: logfactory logs string(s) to screen within a formatted unordered listing (`<ul>`). It exposes 2 methods

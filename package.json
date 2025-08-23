@@ -1,7 +1,7 @@
 {
-  "name": "stackblitzhelpers",
-  "version": "1.2.0",
-  "description": "Helper methods for ES/JS or other HTML projects",
+  "name": "htmlhelpers",
+  "version": "1.0.0",
+  "description": "Helper methods for ES/JS/HTML projects",
   "keywords": [
     "es20xx",
     "utility",
@@ -15,7 +15,8 @@
   "dependencies": {
     "jqx-es": "latest",
     "jsregexphelper": "latest",
-    "ticktock-es": "latest"
+    "ticktock-es": "latest",
+    "splat-es": "latest"
   },
   "main": "./Bundle/htmlhelpers.min.js",
   "bugs": {

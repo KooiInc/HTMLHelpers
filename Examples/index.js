@@ -4,6 +4,7 @@ import {
   regexhelper as createRE,
   logFactory,
   $D,
+  splat,
  } from "../Bundle/htmlhelpers.min.js";
 
 const { log, logTop } = logFactory(); // initialize logging (to screen)
@@ -80,12 +81,12 @@ const untilNwYearTimer = countDownUntil($(`#showNwYear`), new Date($D().year + 1
 // start/stop button for timer
 // note: we add two handlers to the button: one to stop the counter, one to display a message
 const bttnClickHandling = [
-  (_, self) => {
+  ({self}) => {
     const shouldStop = self.getData(`should`).startsWith(`Stop`);
     self.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
     return shouldStop && untilNwYearTimer.stop || untilNwYearTimer.start;
   },
-  (_, self) => $.Popup.show({
+  ({self}) => $.Popup.show({
     content: `Next new year countdown ${
       self.data.get(`should`).startsWith(`Stop`) ? `started!` : `stopped`}`,
     closeAfter: 2 })
@@ -97,6 +98,8 @@ const bttnDiv = DIV(
   $BUTTON({data: {should: `Start`}}).on(`click`, ...bttnClickHandling)
 );
 
+// adding the rest
+const splatMe = Symbol.for("interpolate");
 log(
   $.div(
   {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
@@ -105,36 +108,66 @@ log(
       $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
       bttnDiv
     )
-  )
+  ),
+  toHeader($.div, `Can we use <code>splat</code> (splat-es)?`,
+    $.div({class: `normal`},
+      `<code>splat-es</code> delivers a
+      symbolic String extension called <code>Symbol.for("interpolate")</code>.
+      We assigned this as:`
+    ),
+    $.div({class: "normal moreSpace"}, `<code>const splatMe = Symbol.for("interpolate");</code>`)
+  ),
+  $.code({class:"codeblock"},
+    `<span class="cmmt">// the [splat] function</span>` +
+    `\nconst helloWrld1 = splat("Hello {wrld}", {wrld: "world"});`+
+    `\nconst helloWrld2 = splat("Hello {wrld}", {wrld: "world"}, {wrld: "&lt;i>universe&lt;/i>"});`+
+    `\n\n<span class="cmmt">// the [splatMe] symbolic extension</span>` +
+    `\nconst helloWrld3 = "Hello {wrld}"[splatMe]({wrld: "world"});`+
+    `\nconst helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i>universe&lt;/i>"});`
+  ),
+  $.div(
+    `<code>helloWorld1</code> => ${
+      splat("Hello {wrld}", {wrld: "world"}) }`,
+    $.div(`<code>helloWorld2</code> => ${
+      splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"}) }`),
+    $.div(`<code>helloWorld3</code> => ${
+      "Hello {wrld}"[splatMe]({wrld: "world"})}`),
+    $.div(`<code>helloWorld4</code> => ${
+      "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`))
 );
 
 // start countdown
-$(`[data-should]`).trigger("click");
+bttnDiv.first$(`button`).trigger("click");
 
 // add links and used code
 log(
   // combine $[tagName] and element creation from string
   toHeader($.h3, `Modules included in the stackblitzhelpers module`), `
   <div class="normal">
-    This module encapsulates a few other modules/libraries. Each can be found on 
-    <a target="_blank" href="https://www.npmjs.com/~kooiinc?activeTab=packages">NPM</a> or 
+    This module encapsulates a few other modules/libraries. Each can be found on
+    <a target="_blank" href="https://www.npmjs.com/~kooiinc?activeTab=packages">NPM</a> or
     <a target="_blank" href="https://codeberg.org/KooiInc">Codeberg</a>.
     <ul>
       <li>
         <a target="_blank" href="https://www.npmjs.com/package/jqx-es">JQx</a> (JQx/$):<br>
-        a <b class="green">JQ</b>uery-alike module to <i>retrieve</i>, <i>create</i>, 
-        <i>modify</i>, <i>style</i> or <i>manipulate</i> (collections of) HTML 
+        a <b class="green">JQ</b>uery-alike module to <i>retrieve</i>, <i>create</i>,
+        <i>modify</i>, <i>style</i> or <i>manipulate</i> (collections of) HTML
         elements in your HTML document.
       </li>
       <li>
+        <a target="_blank" href="https://www.npmjs.com/package/splat-es"
+        >splat-es</a>:<br>
+        a small string templating library.
+      </li>
+      <li>
         <a target="_blank" href="https://www.npmjs.com/package/ticktock-es"
-        >ticktock-es</a>:<br> 
+        >ticktock-es</a>:<br>
         a module to extensively manipulate (and/or format) ECMAScript Dates.
       </li>
       <li>
         <a target="_blank" href="https://www.npmjs.com/package/jsregexphelper"
         >jsregexhelper</a>:<br>
-        a small library to create readable ECMAScript regular expressions (multiline, 
+        a small library to create readable ECMAScript regular expressions (multiline,
         commenting possible).
       </li>
     </ul>
@@ -243,7 +276,7 @@ function initStyling() {
       font-style: normal;
       font-weight: normal;
      }`,
-    `code.codeblock { 
+    `code.codeblock {
       margin: 0.5rem 0px 0.5rem;
       color: var(--code-color);
       border-radius: 4px;
@@ -259,7 +292,14 @@ function initStyling() {
     `h2 {font-size: 1.1rem; line-height: 1.4rem}`,
     `li.head {
       color: #777 !important;
-      div:first-child { margin: 0; }
+      div.normal {
+        font-weight: normal;
+        margin: 0.2em 0;
+      }
+      div.moreSpace {
+        margin-bottom: 1em;
+      }
+      div[data-head] { margin: 0; }
     }`,
     `li.head h2 {
       lineHeight: 1.7rem;
@@ -271,15 +311,11 @@ function initStyling() {
     `li.head p {
       margin: 0;
     }`,
-    `li.head div.normal {
-      font-weight: normal;
-      margin-top: 5px;
-    }`,
     `#log2screen li div.normal li {
       list-style: none;
       margin-left: -3em;
     }`,
-    `a.ExternalLink.arrow:hover::after { 
+    `a.ExternalLink.arrow:hover::after {
       content: ' Opens in new tab/window';
       fontSize: 0.7rem;
       position: absolute;
@@ -292,7 +328,7 @@ function initStyling() {
       margin: 1rem 0 0 -1rem;
       color: #444;
     }`,
-    `#showNwYear i { 
+    `#showNwYear i {
       color: #b34b44;
       font-weight: bold;
       margin-top: 1rem;
@@ -300,7 +336,7 @@ function initStyling() {
       padding: 5px;
       background-color: #FFFFAA;
     }`,
-    `#showNwYear:before { 
+    `#showNwYear:before {
       content: 'Sure! Until next new year\\1F389 lasts:';
       color: #777;
       display: block;
@@ -308,7 +344,7 @@ function initStyling() {
     `[data-should] {
       margin-top: 0.3rem;
     }`,
-    `[data-should]:before { 
+    `[data-should]:before {
       content: attr(data-should);
     }`,
   );
