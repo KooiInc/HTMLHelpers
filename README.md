@@ -16,7 +16,7 @@ import {logFactory /*, ...[see 'exposed as']*/}
   from "https://unpkg.com/htmlhelpers@latest/Bundle/htmlhelpers.min.js";
 ```
 ### Install the package
-`npm install htmlhelpers`
+`npm install dynamic-html-helpers`
 
 ### Use as standalone script
 ```html

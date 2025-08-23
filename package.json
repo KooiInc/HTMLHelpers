@@ -1,7 +1,7 @@
 {
-  "name": "htmlhelpers",
-  "version": "1.0.0",
-  "description": "Helper methods for ES/JS/HTML projects",
+  "name": "dynamic-html-helpers",
+  "version": "1.0.1",
+  "description": "Helpers for ES/JS/HTML projects",
   "keywords": [
     "es20xx",
     "utility",
