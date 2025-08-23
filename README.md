@@ -1,9 +1,3 @@
-<!-- bundlephobia is broken again -->
-<div align="center">
-  <a target="_blank" href="https://www.npmjs.com/package/stackblitzhelpers"
-    ><img src="https://img.shields.io/npm/v/stackblitzhelpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9"></a>
-</div>
-
 # HtmlHelpers
 Some handy helpers for ES/JS/HTML projects.
 
