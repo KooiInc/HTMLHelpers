@@ -7,46 +7,23 @@ Some handy helpers for ES/JS/HTML projects.
 - [x] A small library to create multiline regular expressions with comments
 - [x] A library to manage ES `Date` (format, locale sensitive, calculation etc.)
 
-> [!IMPORTANT]
-> This repository was originally developed for (my) [Stackblitz](https://stackblitz.com/@KooiInc) projects (npm package name stackblitzhelpers)
->
-> The repository is moved to [Codeberg.org](https://codeberg.org/KooiInc/HtmlHelpers) and renamed to ***HtmlHelpers***.
-> For the time being, the npm package will keep the name 'stackblitzhelpers'.
->
-> For now it is kept in sync with the original repository @[Github](https://github.com/KooiInc/SBHelpers).
->
-> Depending on future USA/Microsoft/Github policies the Github version may be discontinued later.
-
-### [Examples](https://kooiinc.codeberg.page/HtmlHelpers/Examples/)
+### [Examples](https://kooiinc.github.io/HTMLHelpers/Examples/)
 
 ### Use in Stackblitz front end project
 ```javascript
 import {logFactory /*, ...[see 'exposed as']*/}
-  from "https://unpkg.com/stackblitzhelpers@latest/Bundle/htmlhelpers.min.js";
+  from "https://unpkg.com/htmlhelpers@latest/Bundle/htmlhelpers.min.js";
 ```
-> [!NOTE]
-> `index.browser.bundled.js` and `index.browser.js` in the repository root are there for legacy.
-
 ### Install the package
-`npm install stackblitzhelpers`
+`npm install htmlhelpers`
 
 ### Use as standalone script
 ```html
-<script src="https://unpkg.com/stackblitzhelpers@latest/Bundle/sbhelpers.script.min.js"></script>
+<script src="https://unpkg.com/htmlhelpers@latest/Bundle/sbhelpers.script.min.js"></script>
 <script>
-  const {logFactory, $ /*, ...[see 'exposed as']*/} = SBHelpers;
+  const {logFactory, $ /*, ...[see 'exposed as']*/} = /*[window.]*/HTMLHelpers;
   // ...
 </script>
-```
-
-### Use in Stackblitz plain ecmascript project ('javascript blank project')
-![image](https://github.com/KooiInc/SBHelpers/assets/836043/f1e33a6a-48d4-4d58-acb3-7150cd77806e)
-
-Type 'stackblitzhelpers' in the DEPENDENCIES input field and press `<ENTER>`.
-
-Next use
-```javascript
-import {logFactory /*, ...[see 'exposed as'] */} from "stackblitzhelpers"
 ```
 ### The library includes the following packets:
 
@@ -70,9 +47,4 @@ import {logFactory /*, ...[see 'exposed as'] */} from "stackblitzhelpers"
 
 ### Automatic style creation
 The `SBHelpers` library supplies a default (css-)style for Stackblitz Ecmascript projects.
-Style may be edited using `$.editCssRules`.
-
-## Notes
-- Stackblitz seems to rewrite links with `target="_top"` (to `target="_blank"`).
-  Version >= 0.3.6 of this library catches and fixes this. For links to `_top`,
-  use `target="_top"` OR `class="internalLink"` OR the data-attribute `data-top`.
+Style may be edited dynamically using `$.editCssRules` (see examples).
