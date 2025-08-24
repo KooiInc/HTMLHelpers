@@ -1,5 +1,13 @@
 # HtmlHelpers
-Some handy helpers for ES/JS/HTML projects.
+Some handy helpers to create/maintain HTML pages.
+
+> [!NOTE]
+> The repository is maintained @[codeberg.org](https://codeberg.org/KooiInc/HTMLHelpers).
+> 
+> It is synchronized with the [Github HTMLHelpers](https://github.com/KooiInc/HTMLHelpers).
+> 
+> The codebase @codeberg.org is therefore *authorative*.
+
 
 **The helper contains**
 - [x] A JQuery alike library to manage HTML elements (create, handle, modify, style, remove)
