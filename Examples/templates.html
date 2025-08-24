@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<template id="createReEx">
+const myRE = createRE`
+  ^[\p{L}]              //=> always start with a letter
+  [\p{L}_\.#\-\d+~=!]+  //=> followed by letters including _ . # - 0-9 ~ = or !
+  ${[...'gui']}         //=> flags ([g]lobal, case [i]nsensitive, [u]nicode)`;
+</template>
+
+<template id="dateFormatEx">
+const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
+  .addYears(5).add("23 days, 20 hours")
+  .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
+</template>
+
+<template id="dateDiffEx">
+const now = $D.now;
+const untilNextNewYear = now.differenceFrom($D([now.year + 1, 0 ,1, 0, 0, 0]));
+</template>
+
+<template id="splatEx">
+const splatMe = Symbol.for("interpolate");
+// the [splat] function
+const helloWrld1 = splat("Hello {wrld}", {wrld: "world"});
+const helloWrld2 = splat("Hello {wrld}", {wrld: "world"}, {wrld: "&lt;i>universe&lt;/i>"});
+
+// the [splatMe] symbolic extension
+const helloWrld3 = "Hello {wrld}"[splatMe]({wrld: "world"});
+const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i>universe&lt;/i>"});
+</template>
+
+<template data-is-html="1" id="links">
+  <div class="normal">
+    This module encapsulates a few other modules/libraries. Each can be found on
+    <a target="_blank" href="https://www.npmjs.com/~kooiinc?activeTab=packages">NPM</a> or
+    <a target="_blank" href="https://codeberg.org/KooiInc">Codeberg</a>
+    <ul>
+      <li>
+        <a target="_blank" href="https://www.npmjs.com/package/jqx-es">JQx</a> (JQx/$):<br>
+        a <b class="green">JQ</b>uery-alike module to <i>retrieve</i>, <i>create</i>,
+        <i>modify</i>, <i>style</i> or <i>manipulate</i> (collections of) HTML
+        elements in your HTML document
+        (<a target="_blank" href="https://kooiinc.codeberg.page/JQx/Resource/Docs/"
+          >full documentation</a>).
+      </li>
+      <li>
+        <a target="_blank" href="https://www.npmjs.com/package/splat-es"
+        >splat-es</a>:<br>
+        a small string templating library.
+      </li>
+      <li>
+        <a target="_blank" href="https://www.npmjs.com/package/ticktock-es"
+        >ticktock-es</a>:<br>
+        a module to extensively manipulate (and/or format) ECMAScript Dates.
+      </li>
+      <li>
+        <a target="_blank" href="https://www.npmjs.com/package/jsregexphelper"
+        >jsregexhelper</a>:<br>
+        a small library to create readable ECMAScript regular expressions (multiline,
+        commenting possible).
+      </li>
+    </ul>
+  </div>
+</template>
+
+</body>
+</html>
