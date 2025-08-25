@@ -302,18 +302,29 @@ function initStyling() {
       list-style: none;
       margin-left: -3em;
     }`,
-    `a.ExternalLink.arrow:hover::after {
-      content: ' Opens in new tab/window';
-      fontSize: 0.7rem;
-      position: absolute;
-      zIndex: 2;
-      display: inline-block;
-      padding: 3px 6px;
-      border: 1px solid #777;
-      background-color: #FFF;
-      box-shadow: 1px 1px 5px #777;
-      margin: 1rem 0 0 -1rem;
-      color: #444;
+    `a {
+      background-color: #FFF !important;
+      &:hover {
+        text-decoration: none;
+      }
+      &[target]:hover::after {
+        content: 'Opens in new tab/window';
+        fontSize: 0.7rem;
+        position: absolute;
+        zIndex: 2;
+        display: inline-block;
+        padding: 3px 6px;
+        border: 1px solid #777;
+        box-shadow: 1px 1px 5px #777;
+        margin: 1rem 0 0 -1rem;
+        background-color: #FFF;
+        font-weight: normal;
+        color: #444;
+      }
+      
+      &[target="_top"]:hover::after {
+        content: 'Opens in this tab';
+      }
     }`,
     `#showNwYear i {
       color: #b34b44;
