@@ -1,11 +1,12 @@
-// import relevant items
-import {
+// assign relevant items from
+// ./Bundle/htmlhelpers.script.min.js => [window.]HTMLHelpers
+const {
   $,
-  regexhelper as createRE,
+  regexhelper: createRE,
   logFactory,
   $D,
   splat,
- } from "../Bundle/htmlhelpers.min.js";
+} = HTMLHelpers;
 
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
@@ -30,22 +31,22 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
 log(
-   // styling
-   toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
-   $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
-   
-   // regex
-   toHeader(`div`, "Is ",
-     $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
-     " (exposed as <code>createRE</code>) available?"),
-   codeBlocks.createReEx,
-   $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`),
+  // styling
+  toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
+  $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
+  
+  // regex
+  toHeader(`div`, "Is ",
+    $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
+    " (exposed as <code>createRE</code>) available?"),
+  codeBlocks.createReEx,
+  $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`),
   
   // splat examples
   toHeader(
     $.div, `Can we use `,
-      $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
-      ` (splat-es)?`,
+    $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
+    ` (splat-es)?`,
     $.div({class: `normal`},
       `<b class="note">Note</b>: <code>splat-es</code> includes a
       symbolic String prototype extension called <code>Symbol.for("interpolate")</code>.`)
@@ -61,7 +62,7 @@ log(
       "Hello {wrld}"[splatMe]({wrld: "world"})}`),
     $.div({class: "normal"}, `<b>helloWorld4</b> => ${
       "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`)),
-
+  
   // ticktock availability
   toHeader($.div, `Is `,
     $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
@@ -100,14 +101,14 @@ const bttnDiv = DIV(
 
 log(
   $.div(
-  {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
-  `Can we handle (and trigger) a button using `,
-  $.span(
+    {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
+    `Can we handle (and trigger) a button using `,
+    $.span(
       $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
       bttnDiv
     )
   ),
-  
+
 );
 
 // start countdown
@@ -136,26 +137,14 @@ logTop(
     `)`
   ),
   $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
-  $.div(
-    {data: {header: 1}, class: "normal"},
-    $.a({
-      class: "ExternalLink arrow",
-      target: "_blank",
-      href: "./indexBrowser.html",
-      text: "Examples"
-    }),
-    `<span class="normal"> from script, non module </span> `),
-    $.div(
-      {data: {header: 1}, class: "normal"},
-      $.a({
-        class: "ExternalLink arrow",
-        target: "_blank",
-        href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-        text: "JQx ($) full documentation"
-      })
-  ),
-  $.div(
-    {data: {header: 1}, class: "normal"},
+  $.a({
+    data: {header: 1},
+    class: "ExternalLink arrow",
+    target: "_blank",
+    href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
+    text: "JQx ($) full documentation"
+  }),
+  $.div({data: {header: 1}},
     $.a({
       class: "ExternalLink arrow",
       target: "_top",
@@ -181,7 +170,7 @@ function countDownUntil(displayElement, until) {
       .clear()
       .html(`<i>${$D.now.differenceTo(until).full}</i>`);
   }
-
+  
   function run(stop = false) {
     switch (true) {
       case stop: clearAllTimers(); return stop;
@@ -209,7 +198,7 @@ async function codeElem(codeFile) {
     .then(response => response.text())
     .then(code => $.pre(
         {class: "codebox", data: {header: 1}},
-        $.code(code.replace(/</g, `&lt;`))
+        $.code(code.replace(/</g, `&lt;`).replace(/>/g, `&gt;`))
       )
     );
 }
@@ -223,16 +212,16 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   const blocks = $.div(templates);
   
   blocks.node.querySelectorAll(`template`)
-   .forEach(t => {
-     let content = t.content;
-     codeBlocks[t.id] =
-      t.dataset.isHtml
-      ? $.virtual(t.innerHTML)
-      : $.pre(
-         {data: {header: 1}, class: `codebox`},
-        $.code($.escHtml(content.textContent.trim())) );
-   });
-  codeBlocks.pageCode = await codeElem(`./index.js`);
+    .forEach(t => {
+      let content = t.content;
+      codeBlocks[t.id] =
+        t.dataset.isHtml
+          ? $.virtual(t.innerHTML)
+          : $.pre(
+            {data: {header: 1}, class: `codebox`},
+            $.code($.escHtml(content.textContent.trim())) );
+    });
+  codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
   return codeBlocks;
 }
 
@@ -314,10 +303,6 @@ function initStyling() {
       div.normal {
         font-weight: normal;
         margin: 0.3rem 0;
-      }
-      span.normal {
-        font-weight: normal;
-        color: #000;
       }
       div.moreSpace {
         margin-bottom: 1em;
