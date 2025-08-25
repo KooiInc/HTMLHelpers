@@ -68,7 +68,7 @@ log(
     ` (exposed as <code>$D</code>) available?`),
   codeBlocks.dateFormatEx,
   
-  $.div($.span(`Sure: `), $.b( `later =&gt;`), ` <code>${later}</code>`),
+  $.div($.span(`Sure: `), $.b( `later =&gt; `), $.i(later)),
   toHeader(DIV, "Can we calculate date differences using <code>$D</code>?"),
   codeBlocks.dateDiffEx,
   $.span({id: "showNwYear"}),
