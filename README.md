@@ -6,9 +6,6 @@
 # HtmlHelpers
 Some handy helpers to create/maintain HTML pages.
 
-
-
-
 **The helper contains**
 - [x] A JQuery alike library to manage HTML elements (create, handle, modify, style, remove)
 - [x] A small string templating library
@@ -16,7 +13,7 @@ Some handy helpers to create/maintain HTML pages.
 - [x] A library to manage ES `Date` (format, locale sensitive/aware, calculation etc.)
 - [x] A logger factory to print text/html in a structured way to the browser screen
 
-### [Examples](https://kooiinc.github.io/HTMLHelpers/Examples/)
+### [Examples](https://kooiinc.github.io/HTMLHelpers/Resource/Examples/)
 
 ### Use in Stackblitz front end project
 ```javascript
@@ -25,6 +22,16 @@ import {logFactory /*, ...[see 'exposed as']*/}
 ```
 ### Install the package
 `npm install dynamic-html-helpers`
+
+### Install the bundled code to a custom folder
+This will install the bundled code files to a folder of choice.
+
+**pre-requisites**
+
+- [x] [nodejs](https://nodejs.org/en) must be installed.
+- [x] [path to install to] must exist.
+
+`npm run installBundleTo "[path to install to]"`
 
 ### Use as standalone script
 ```html

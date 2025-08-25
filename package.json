@@ -1,6 +1,6 @@
 {
   "name": "dynamic-html-helpers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Helpers for ES/JS/HTML projects",
   "keywords": [
     "es20xx",
@@ -17,6 +17,9 @@
     "jsregexphelper": "latest",
     "ticktock-es": "latest",
     "splat-es": "latest"
+  },
+  "scripts": {
+    "installBundleTo": "node ./Resource/NpmScripts/installBundledToDirectory.js"
   },
   "main": "./Bundle/htmlhelpers.min.js",
   "bugs": {
