@@ -78,25 +78,24 @@ log(
 const now = $D.now;
 const untilNwYearTimer = countDownUntil($(`#showNwYear`), $D([now.year + 1, 0 ,1, 0, 0, 0]));
 
-// start/stop button for timer
-// note: we add two listeners to the button
-// one to stop the counter, one to display a message
-const bttnClickHandling = [
-  ({self}) => {
-    const shouldStop = self.getData(`should`).startsWith(`Stop`);
-    self.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
-    return shouldStop && untilNwYearTimer.stop || untilNwYearTimer.start;
-  },
-  ({self}) => $.Popup.show({
-    content: `Next new year countdown ${
-      self.data.get(`should`).startsWith(`Stop`) ? `started!` : `stopped`}`,
-    closeAfter: 2 })
-];
+// start/stop button listener/handler for timer
+function bttnClickHandling({me}) {
+  const shouldStop = me.getData(`should`).startsWith(`Stop`);
+  switch (true) {
+    case shouldStop: untilNwYearTimer.stop; break;
+    default: untilNwYearTimer.start;
+  }
+  me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
+  $.Popup.show({
+    content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
+    closeAfter: 2,
+  });
+}
 
 // create a div with button
 const bttnDiv = DIV(
   {data: {header: 1}, class: `normal`},  `Sure: &nbsp;&nbsp;`,
-  $BUTTON({data: {should: `Start`}}).on(`click`, ...bttnClickHandling)
+  $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
 );
 
 log(
@@ -116,7 +115,6 @@ bttnDiv.first$(`button`).trigger("click");
 
 // add links and used code
 log(
-  // combine $[tagName] and element creation from string
   toHeader($.h3, `Modules included in the stackblitzhelpers module`),
   codeBlocks.links,
   $.details({data: {header: 1}},
@@ -157,20 +155,33 @@ logTop(
 // count down factory
 function countDownUntil(displayElement, until) {
   let to;
-  const redo = () =>
+  run();
+  
+  function redo() {
     displayElement
       .clear()
       .html(`<i>${$D.now.differenceTo(until).full}</i>`);
-  const run = (stop = false) => {
-   clearTimeout(to);
-   return stop || ( redo(), to = setTimeout(run, 1000) );
-  };
+  }
 
+  function run(stop = false) {
+    switch (true) {
+      case stop: clearAllTimers(); return stop;
+      default: redo(); to = setTimeout(run, 1000);
+    }
+    
+    return to = setTimeout(run, 1000);
+  }
+  
   return { get stop() { return run(true); }, get start() { return run(); } };
 }
 
 function toHeader(tag, ...elems){
   return ($.IS(tag, Function) ? tag : $[tag])({data: {header: 1}}, ...elems);
+}
+
+function clearAllTimers() {
+  let id = setTimeout(() => {});
+  while (id >= 0) { clearTimeout(id--); }
 }
 
 // retrieve used code

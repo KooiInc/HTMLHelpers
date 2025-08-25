@@ -27,11 +27,11 @@ const untilNextNewYear = now.differenceFrom($D([now.year + 1, 0 ,1, 0, 0, 0]));
 const splatMe = Symbol.for("interpolate");
 // the [splat] function
 const helloWrld1 = splat("Hello {wrld}", {wrld: "world"});
-const helloWrld2 = splat("Hello {wrld}", {wrld: "world"}, {wrld: "&lt;i>universe&lt;/i>"});
+const helloWrld2 = splat("Hello {wrld}", {wrld: "world"}, {wrld: "&lt;iuniverse&lt;/i&gt;"});
 
 // the [splatMe] symbolic extension
 const helloWrld3 = "Hello {wrld}"[splatMe]({wrld: "world"});
-const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i>universe&lt;/i>"});
+const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i&gt;universe&lt;/i&gt;"});
 </template>
 
 <template data-is-html="1" id="links">
