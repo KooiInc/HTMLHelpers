@@ -1,12 +1,12 @@
+<div align="center">
+  <a target="_blank" href="https://www.npmjs.com/package/dynamic-html-helpers"
+    ><img src="https://img.shields.io/npm/v/dynamic-html-helpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9"></a>
+</div>
+
 # HtmlHelpers
 Some handy helpers to create/maintain HTML pages.
 
-> [!NOTE]
-> The repository is maintained @[codeberg.org](https://codeberg.org/KooiInc/HTMLHelpers).
-> 
-> It is synchronized with the [Github HTMLHelpers](https://github.com/KooiInc/HTMLHelpers) repository.
-> 
-> The code base @codeberg.org is therefore *authorative*.
+
 
 
 **The helper contains**
@@ -57,3 +57,8 @@ import {logFactory /*, ...[see 'exposed as']*/}
 ### Automatic style creation
 The `SBHelpers` library supplies a default (css-)style for Stackblitz Ecmascript projects.
 Style may be edited dynamically using `$.editCssRules` (see examples).
+
+> [!NOTE]
+> The repository is maintained @[codeberg.org](https://codeberg.org/KooiInc/HTMLHelpers).
+> The code base @codeberg.org is therefore *authorative*.
+> The codeberg code is kept in sync with the [Github HTMLHelpers](https://github.com/KooiInc/HTMLHelpers) repository.
