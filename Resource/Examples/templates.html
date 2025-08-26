@@ -34,6 +34,36 @@ const helloWrld3 = "Hello {wrld}"[splatMe]({wrld: "world"});
 const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i>universe&lt;/i>"});
 </template>
 
+<template id="onclickEx">
+// start/stop button listener/handler for timer
+// [untilNwYearTimer] is created with a factory function
+function bttnClickHandling({me}) {
+  const shouldStop = me.getData(`should`).startsWith(`Stop`);
+  switch (true) {
+    case shouldStop: untilNwYearTimer.stop; break;
+    default: untilNwYearTimer.start;
+  }
+  me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
+  $.Popup.show({
+    content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
+    closeAfter: 2,
+  });
+}
+
+// create a div with button
+const bttnDiv = DIV(
+  {data: {header: 1}, class: `normal`},  `Sure: &nbsp;`,
+  $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
+  //                                 ^ add click listener
+);
+
+// [...] adding the button to DOM
+
+// start countdown after bttnDiv is added to DOM
+bttnDiv.first$(`button`).trigger("click");
+
+</template>
+
 <template data-is-html="1" id="links">
   <div class="normal">
     This module encapsulates a few other modules/libraries. Each can be found on
