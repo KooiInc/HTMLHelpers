@@ -108,7 +108,7 @@ log(
       bttnDiv
     )
   ),
-
+  codeBlocks.onclickEx,
 );
 
 // start countdown
