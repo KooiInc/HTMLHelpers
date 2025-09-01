@@ -26,12 +26,11 @@ import {logFactory /*, ...[see 'exposed as']*/}
 ### Install the bundled code to a custom folder
 This will install the bundled code files to a folder of choice.
 
-**pre-requisites**
+`npm run installBundleTo "[path to install to]"`
 
+**Prerequisites**
 - [x] [nodejs](https://nodejs.org/en) must be installed.
 - [x] [path to install to] must exist.
-
-`npm run installBundleTo "[path to install to]"`
 
 ### Use as standalone script
 ```html
