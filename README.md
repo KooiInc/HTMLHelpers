@@ -42,7 +42,7 @@ This will install the bundled code files to a folder of choice.
 ```
 ### The library includes the following packets:
 
-- [jqlmodule](https://www.npmjs.com/package/jqlmodule): a JQuery alike DOM manipulation library.
+- [jqx-es](https://www.npmjs.com/package/jqx-es): a JQuery alike DOM manipulation library.
   - Exposed as `$`
 - [jsregexhelper](https://www.npmjs.com/package/jsregexphelper): a library to create readable ECMAScript regular expressions (multiline, commenting possible)
   - Exposed as `regexhelper`
