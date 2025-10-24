@@ -1,3 +1,4 @@
+"use strict";
 import $ from "jqx-es";
 import $D from "ticktock-es";
 import regexhelper from "jsregexphelper";
