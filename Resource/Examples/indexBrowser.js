@@ -11,6 +11,12 @@ const {
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 const splatMe = Symbol.for("interpolate"); // see splat examples
+const moduleOrBrowserLink = $.a({
+  class: "ExternalLink arrow",
+  target: "_top",
+  href: "./index.html",
+  html: " examples <i>module</i> version"
+});
 // set page styling
 initStyling();
 
@@ -140,28 +146,33 @@ function createPage(codeBlocks) {
       $.code(`logTop`),
       `)`
     ),
-    $.h1({data: {header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
-    $.a({
-      data: {header: 1},
-      class: "ExternalLink arrow",
-      target: "_blank",
-      href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-      text: "JQx ($) full documentation"
-    }),
-    $.div({data: {header: 1}},
+    $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
+    $.div(
+      {data: {header: 1}, class: "normal"},
+      $.a({
+        class: "ExternalLink arrow",
+        target: "_blank",
+        href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
+        text: " JQx ($) full documentation"
+      })
+    ),
+    $.div(
+      {data: {header: 1}, class: "normal"},
       $.a({
         class: "ExternalLink arrow",
         target: "_top",
         href: "https://codeberg.org/KooiInc/HtmlHelpers",
-        text: "Codeberg repository"
+        text: " Codeberg repository"
       }),
       ` | `,
       $.a({
         class: "ExternalLink arrow",
         target: "_top",
         href: "https://github.com/KooiInc/HTMLHelpers",
-        text: "(synced) Github repository"
-      })),
+        text: " (synced) Github repository"
+      }),
+      ` | `, moduleOrBrowserLink,
+    ),
   );
 }
 // count down factory

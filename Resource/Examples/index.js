@@ -29,6 +29,13 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .addYears(5).add("23 days, 20 hours")
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
+const moduleOrBrowserLink = $.a({
+  class: "ExternalLink arrow",
+  target: "_top",
+  href: "./indexBrowser.html",
+  html: " examples <i>browser</i> version"
+});
+
 log(
    // styling
    toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
@@ -136,22 +143,13 @@ logTop(
     `)`
   ),
   $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
-  $.div(
-    {data: {header: 1}, class: "normal"},
-    $.a({
-      class: "ExternalLink arrow",
-      target: "_blank",
-      href: "./indexBrowser.html",
-      text: "Examples"
-    }),
-    `<span class="normal"> from script, non module </span> `),
     $.div(
       {data: {header: 1}, class: "normal"},
       $.a({
         class: "ExternalLink arrow",
         target: "_blank",
         href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-        text: "JQx ($) full documentation"
+        text: " JQx ($) full documentation"
       })
   ),
   $.div(
@@ -160,15 +158,17 @@ logTop(
       class: "ExternalLink arrow",
       target: "_top",
       href: "https://codeberg.org/KooiInc/HtmlHelpers",
-      text: "Codeberg repository"
+      text: " Codeberg repository"
     }),
     ` | `,
     $.a({
       class: "ExternalLink arrow",
       target: "_top",
       href: "https://github.com/KooiInc/HTMLHelpers",
-      text: "(synced) Github repository"
-    })),
+      text: " (synced) Github repository"
+    }),
+    ` | `, moduleOrBrowserLink,
+  ),
 );
 
 // count down factory
