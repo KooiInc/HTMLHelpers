@@ -10,9 +10,7 @@ const {
 
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
-const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const splatMe = Symbol.for("interpolate"); // see splat examples
-
 // set page styling
 initStyling();
 
@@ -30,136 +28,142 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .addYears(5).add("23 days, 20 hours")
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
-log(
-  // styling
-  toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
-  $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
-  
-  // regex
-  toHeader(`div`, "Is ",
-    $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
-    " (exposed as <code>createRE</code>) available?"),
-  codeBlocks.createReEx,
-  $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`),
-  
-  // splat examples
-  toHeader(
-    $.div, `Can we use `,
-    $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
-    ` (splat-es)?`,
-    $.div({class: `normal`},
-      `<b class="note">Note</b>: <code>splat-es</code> includes a
+retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`).then(r => createPage(r))
+
+function createPage(codeBlocks) {
+  log(
+    // styling
+    toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
+    $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
+    
+    // regex
+    toHeader(`div`, "Is ",
+      $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
+      " (exposed as <code>createRE</code>) available?"),
+    codeBlocks.createReEx,
+    $.div($.span(`Sure: `), $.b(`myRE =&gt;`), ` <code>${myRE}</code>`),
+    
+    // splat examples
+    toHeader(
+      $.div, `Can we use `,
+      $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
+      ` (splat-es)?`,
+      $.div({class: `normal`},
+        `<b class="note">Note</b>: <code>splat-es</code> includes a
       symbolic String prototype extension called <code>Symbol.for("interpolate")</code>.`)
-  ),
-  codeBlocks.splatEx,
-  $.div(
-    $.div({class: "normal"}, `Sure:`),
-    $.div({class: "normal"}, `<b>helloWorld1</b> => ${
-      splat("Hello {wrld}", {wrld: "world"}) }`),
-    $.div({class: "normal"}, `<b>helloWorld2</b> => ${
-      splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"}) }`),
-    $.div({class: "normal"}, `<b>helloWorld3</b> => ${
-      "Hello {wrld}"[splatMe]({wrld: "world"})}`),
-    $.div({class: "normal"}, `<b>helloWorld4</b> => ${
-      "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`)),
-  
-  // ticktock availability
-  toHeader($.div, `Is `,
-    $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
-    ` (exposed as <code>$D</code>) available?`),
-  codeBlocks.dateFormatEx,
-  
-  $.div($.span(`Sure: `), $.b( `later =&gt; `), $.i(later)),
-  toHeader(DIV, "Can we calculate date differences using <code>$D</code>?"),
-  codeBlocks.dateDiffEx,
-  $.span({id: "showNwYear"}),
-);
+    ),
+    codeBlocks.splatEx,
+    $.div(
+      $.div({class: "normal"}, `Sure:`),
+      $.div({class: "normal"}, `<b>helloWorld1</b> => ${
+        splat("Hello {wrld}", {wrld: "world"})}`),
+      $.div({class: "normal"}, `<b>helloWorld2</b> => ${
+        splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"})}`),
+      $.div({class: "normal"}, `<b>helloWorld3</b> => ${
+        "Hello {wrld}"[splatMe]({wrld: "world"})}`),
+      $.div({class: "normal"}, `<b>helloWorld4</b> => ${
+        "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`)),
+    
+    // ticktock availability
+    toHeader($.div, `Is `,
+      $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
+      ` (exposed as <code>$D</code>) available?`),
+    codeBlocks.dateFormatEx,
+    
+    $.div($.span(`Sure: `), $.b(`later =&gt; `), $.i(later)),
+    toHeader(DIV, "Can we calculate date differences using <code>$D</code>?"),
+    codeBlocks.dateDiffEx,
+    $.span({id: "showNwYear"}),
+  );
 
 // create a timer from factory
-const now = $D.now;
-const untilNwYearTimer = countDownUntil($(`#showNwYear`), $D([now.year + 1, 0 ,1, 0, 0, 0]));
+  const now = $D.now;
+  const untilNwYearTimer = countDownUntil($(`#showNwYear`), $D([now.year + 1, 0, 1, 0, 0, 0]));
 
 // start/stop button listener/handler for timer
-function bttnClickHandling({me}) {
-  const shouldStop = me.getData(`should`).startsWith(`Stop`);
-  switch (true) {
-    case shouldStop: untilNwYearTimer.stop; break;
-    default: untilNwYearTimer.start;
+  function bttnClickHandling({me}) {
+    const shouldStop = me.getData(`should`).startsWith(`Stop`);
+    switch (true) {
+      case shouldStop:
+        untilNwYearTimer.stop;
+        break;
+      default:
+        untilNwYearTimer.start;
+    }
+    me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
+    $.Popup.show({
+      content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
+      closeAfter: 2,
+    });
   }
-  me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
-  $.Popup.show({
-    content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
-    closeAfter: 2,
-  });
-}
 
 // create a div with button
-const bttnDiv = DIV(
-  {data: {header: 1}, class: `normal`},  `Sure: &nbsp;&nbsp;`,
-  $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
-);
-
-log(
-  $.div(
-    {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
-    `Can we handle (and trigger) a button using `,
-    $.span(
-      $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
-      bttnDiv
-    )
-  ),
-  codeBlocks.onclickEx,
-);
+  const bttnDiv = DIV(
+    {data: {header: 1}, class: `normal`}, `Sure: &nbsp;&nbsp;`,
+    $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
+  );
+  
+  log(
+    $.div(
+      {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
+      `Can we handle (and trigger) a button using `,
+      $.span(
+        $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
+        bttnDiv
+      )
+    ),
+    codeBlocks.onclickEx,
+  );
 
 // start countdown
-bttnDiv.first$(`button`).trigger("click");
+  bttnDiv.first$(`button`).trigger("click");
 
 // add links and used code
-log(
-  toHeader($.h3, `Modules included in the stackblitzhelpers module`),
-  codeBlocks.links,
-  $.details({data: {header: 1}},
-    $.summary($.b(`Code used to create this page`)),
-    codeBlocks.pageCode),
-  $.div({class: "spacer", data: {header: 1}}),
-);
+  log(
+    toHeader($.h3, `Modules included in the stackblitzhelpers module`),
+    codeBlocks.links,
+    $.details({data: {header: 1}},
+      $.summary($.b(`Code used to create this page`)),
+      codeBlocks.pageCode),
+    $.div({class: "spacer", data: {header: 1}}),
+  );
 
 // highlight code
-hljs.highlightAll(`javascript`);
+  hljs.highlightAll(`javascript`);
 
 // add some lines to the page top
-logTop(
-  toHeader($.h2,
-    `Let's check if it all works (this log line and the lines above it are `,
-    $.i(`prepended`),
-    ` (using `,
-    $.code(`logTop`),
-    `)`
-  ),
-  $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
-  $.a({
-    data: {header: 1},
-    class: "ExternalLink arrow",
-    target: "_blank",
-    href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-    text: "JQx ($) full documentation"
-  }),
-  $.div({data: {header: 1}},
+  logTop(
+    toHeader($.h2,
+      `Let's check if it all works (this log line and the lines above it are `,
+      $.i(`prepended`),
+      ` (using `,
+      $.code(`logTop`),
+      `)`
+    ),
+    $.h1({data: {header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
     $.a({
+      data: {header: 1},
       class: "ExternalLink arrow",
-      target: "_top",
-      href: "https://codeberg.org/KooiInc/HtmlHelpers",
-      text: "Codeberg repository"
+      target: "_blank",
+      href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
+      text: "JQx ($) full documentation"
     }),
-    ` | `,
-    $.a({
-      class: "ExternalLink arrow",
-      target: "_top",
-      href: "https://github.com/KooiInc/HTMLHelpers",
-      text: "(synced) Github repository"
-    })),
-);
-
+    $.div({data: {header: 1}},
+      $.a({
+        class: "ExternalLink arrow",
+        target: "_top",
+        href: "https://codeberg.org/KooiInc/HtmlHelpers",
+        text: "Codeberg repository"
+      }),
+      ` | `,
+      $.a({
+        class: "ExternalLink arrow",
+        target: "_top",
+        href: "https://github.com/KooiInc/HTMLHelpers",
+        text: "(synced) Github repository"
+      })),
+  );
+}
 // count down factory
 function countDownUntil(displayElement, until) {
   let to;
@@ -206,7 +210,7 @@ async function codeElem(codeFile) {
 // retrieve code-/html blocks
 async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   $.allowTag(`template`);
-  const codeBlocks = {};
+  const _codeBlocks = {};
   const templates = await fetch(templatesFile)
     .then(r => r.text());
   const blocks = $.div(templates);
@@ -214,15 +218,15 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   blocks.node.querySelectorAll(`template`)
     .forEach(t => {
       let content = t.content;
-      codeBlocks[t.id] =
+      _codeBlocks[t.id] =
         t.dataset.isHtml
           ? $.virtual(t.innerHTML)
           : $.pre(
             {data: {header: 1}, class: `codebox`},
             $.code($.escHtml(content.textContent.trim())) );
     });
-  codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
-  return codeBlocks;
+  _codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
+  return Promise.resolve(_codeBlocks);
 }
 
 // page styling (using $.editCssRules)
