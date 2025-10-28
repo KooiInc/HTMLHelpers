@@ -34,7 +34,7 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .addYears(5).add("23 days, 20 hours")
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
-retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`).then(r => createPage(r))
+retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`).then(r => createPage(r));
 
 function createPage(codeBlocks) {
   log(
