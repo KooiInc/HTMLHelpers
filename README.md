@@ -28,7 +28,8 @@ This will install the bundled code files to a folder of choice.
 
 `npm run installBundleTo "[path to install to]"`
 
-**Prerequisites**  
+**Prerequisites**
+
 - [x] [nodejs](https://nodejs.org/en) must be installed.  
 - [x] [path to install to] must be a valid path string (e.g. `d:/webstuff/mysite/script`).
       If the folder doesn't exist it will be created.
