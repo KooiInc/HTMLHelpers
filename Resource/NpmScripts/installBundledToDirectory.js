@@ -9,7 +9,9 @@ const directory2InstallTo = maybeCreateDirectory(process.argv[2].trim());
 const files = {
   "htmlhelpers.min.js": fs.readFileSync(`./Bundle/htmlhelpers.min.js`),
   "htmlhelpers.script.min.js": fs.readFileSync(`./Bundle/htmlhelpers.script.min.js`),
+  "htmlhelpers.script.js": fs.readFileSync(`./Bundle/htmlhelpers.script.js`),
 };
+
 Object.entries(files).forEach( ([fileName, file]) => {
   fs.writeFileSync(`${directory2InstallTo}/${fileName}`, file);
   console.log(`File ${fileName} written to ${directory2InstallTo}`);
