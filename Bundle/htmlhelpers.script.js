@@ -165,7 +165,7 @@ var HTMLHelpers = (() => {
     }
   }
   function dt(t, e, r) {
-    return { xProxy: a(), addSymbolicExtensions: n };
+    return Symbol.isSymbol || (Symbol.isSymbol = Symbol.for("toa.isASymbol")), { xProxy: a(), addSymbolicExtensions: n };
     function n() {
       Symbol.is || (Symbol.is = Symbol.for("toa.is"), Symbol.type = Symbol.for("toa.type")), Object.getOwnPropertyDescriptors(Object.prototype)[Symbol.is] || (Object.defineProperties(Object.prototype, { [Symbol.type]: { get() {
         return e(this);

@@ -5,7 +5,7 @@ import {
   logFactory,
   $D,
   splat,
- } from "../../Bundle/htmlhelpers.min.js";
+} from "../../Bundle/htmlhelpers.min.js";
 
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
