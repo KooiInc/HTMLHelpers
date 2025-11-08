@@ -97,14 +97,14 @@ var HTMLHelpers = (() => {
           return true;
         case String(d) === "NaN":
           return String(l) === "NaN";
-        case (l?.[Symbol.toStringTag] && a(d, String)):
+        case (l?.[Symbol.toStringTag] && typeof d == "string"):
           return String(d) === l[Symbol.toStringTag];
         default:
           return d ? p(l, d, L2) : S(l, L2);
       }
     }
     function S(l, d) {
-      return l?.[Symbol.toStringTag] && `[object ${l?.[Symbol.toStringTag]}]` || d?.name || String(d);
+      return (l?.[Symbol.toStringTag] ?? l?.prototype?.[Symbol.toStringTag]) || d?.name || String(d);
     }
     function p(l, d, v2) {
       return o({ trial: (L2) => l instanceof d }) || d === v2 || d === Object.getPrototypeOf(v2) || `${d?.name}` === v2?.name;
@@ -412,9 +412,9 @@ var HTMLHelpers = (() => {
       } };
     }
   }
-  var _ = $t;
-  function $t({ styleSheet: t, createWithId: e } = {}) {
-    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: w2, currentSheetID: f2 } = Ft({ styleSheet: t, createWithId: e });
+  var _ = Ft;
+  function Ft({ styleSheet: t, createWithId: e } = {}) {
+    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: w2, currentSheetID: f2 } = $t({ styleSheet: t, createWithId: e });
     function E2(p, m2) {
       if (p && m2.removeProperties) {
         Object.keys(m2.removeProperties).forEach((b2) => p.style.removeProperty(ke(b2)));
@@ -450,7 +450,7 @@ var HTMLHelpers = (() => {
       return o(p, m2) && (Object.keys(m2).length ? S(p, m2) : g2(p));
     };
   }
-  function Ft({ styleSheet: t, createWithId: e }) {
+  function $t({ styleSheet: t, createWithId: e }) {
     let r = "Note: The rule or some of its properties may not be supported by your browser (yet)", n = `for style#${e}`;
     t = e ? o(e) : t;
     function o(g2) {
@@ -755,7 +755,7 @@ ${r}`), p;
   function Ee(t) {
     return A(t) && !/^handler|handlers$/gi.test(t.trim()) ? t.trim() : Ve();
   }
-  function $e(t) {
+  function Fe(t) {
     let e = !!t.node && !s(t, Text, Comment);
     switch (true) {
       case e:
@@ -843,7 +843,7 @@ ${r}`), p;
   function ue() {
     return ((t) => `[${ae(t.getHours())}:${ae(t.getMinutes())}:${ae(t.getSeconds())}.${ae(t.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
   }
-  function Fe(t, e) {
+  function $e(t, e) {
     if (t) for (let [r, n] of Object.entries(e)) {
       if (r = M(r), r.startsWith("data")) return de(t, n);
       s(n, String) && ce(r) && t.setAttribute(r, n.split(/[, ]/)?.join(" "));
@@ -1103,7 +1103,7 @@ ${r}`), p;
         default:
           r = { [r]: n };
       }
-      return s(r, Object) && !e.is.empty && Fe(e.node, r), e;
+      return s(r, Object) && !e.is.empty && $e(e.node, r), e;
     }, before: pe, beforeMe: pe, clear(e) {
       return T(e, fe);
     }, closest(e, r) {
@@ -1366,7 +1366,7 @@ ${r}`), p;
   function ir(t, e, r, n) {
     return t = M(n || t.toLowerCase()), { get() {
       return (...o) => {
-        let i = e && r.virtual(Q(ee[t](...o))) || void 0, w2 = !s(i?.node, Comment, Text, void 0) ? $e(i) : "";
+        let i = e && r.virtual(Q(ee[t](...o))) || void 0, w2 = !s(i?.node, Comment, Text, void 0) ? Fe(i) : "";
         return F.log(e ? `JQx: created (virtual) instance from [JQx].${t} ${w2}` : `JQx: ${t.toUpperCase()} is prohibited. Use [JQx].allowTag if necessary.`), i;
       };
     }, enumerable: false, configurable: true };
