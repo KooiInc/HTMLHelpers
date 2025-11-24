@@ -4,13 +4,14 @@ import {
   regexhelper as createRE,
   logFactory,
   $D,
-  splat,
+  splatModule,
 } from "../../Bundle/htmlhelpers.min.js";
-
+window.$ = $;
+const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
-const splatMe = Symbol.for("interpolate"); // see splat examples
+const [splatMe] = addSymbolicStringExtensions();
 
 // set page styling
 initStyling();

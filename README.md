@@ -44,14 +44,14 @@ This will install the bundled code files to a folder of choice.
 ```
 ### The library includes the following packets:
 
-- [jqx-es](https://www.npmjs.com/package/jqx-es): a JQuery alike DOM manipulation library.
+- [jqx-es](https://www.npmjs.com/package/jqx-es): a JQuery alike DOM manipulation module.
   - Exposed as `$`
-- [jsregexhelper](https://www.npmjs.com/package/jsregexphelper): a library to create readable ECMAScript regular expressions (multiline, commenting possible)
+- [jsregexhelper](https://www.npmjs.com/package/jsregexphelper): a small library to create readable ECMAScript regular expressions (multiline, commenting possible)
   - Exposed as `regexhelper`
-- [ticktock-es](https://www.npmjs.com/package/ticktock-es): a library to fiddle extensively with ECMAScript Dates
+- [ticktock-es](https://www.npmjs.com/package/ticktock-es): a module to fiddle extensively with ECMAScript Dates
   - Exposed as `$D`
-- [splat-es](https://www.npmjs.com/package/splat-es): a string templating library
-  - Exposed as `splat`/`splatClear`
+- [splat-es](https://www.npmjs.com/package/splat-es): a string templating module
+  - Exposed as `splatModule` (`{interpolate, interpolateClear, addSymbolicStringExtensions}`)
 
 ### For printing/logging to screen
 - `logFactory`: logfactory logs string(s) to screen within a formatted unordered listing (`<ul>`). It exposes 2 methods

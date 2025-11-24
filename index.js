@@ -1,10 +1,14 @@
 import $ from "jqx-es";
 import $D from "ticktock-es";
 import regexhelper from "jsregexphelper";
-import { default as splat,  } from "splat-es";
+import {
+  default as interpolate,
+  interpolateClear,
+  addSymbolicStringExtensions } from "splat-es";
 setDefaultStyling();
 fixSBLinks2TopProblem();
-export { $, logFactory, regexhelper, $D, splat };
+const splatModule = {interpolate, interpolateClear, addSymbolicStringExtensions};
+export { $, logFactory, regexhelper, $D, splatModule };
 
 function fixSBLinks2TopProblem() {
   // fix for stackblitz rewriting hrefs with target _top (see README)
