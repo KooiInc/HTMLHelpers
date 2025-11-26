@@ -25,29 +25,29 @@ var HTMLHelpers = (() => {
     $: () => mn,
     $D: () => m,
     logFactory: () => logFactory,
-    regexhelper: () => RegexpCreator_default,
+    regexhelper: () => REHelper_default,
     splatModule: () => splatModule
   });
 
-  // ../node_modules/jqx-es/Bundle/jqx.min.js
+  // ../Resource/jqx.min.js
   var { IS: u, maybe: A, $Wrap: pr, isNothing: it, xProxy: yr, addSymbolicExtensions: br } = st({ useSymbolicExtensions: false });
   function st(t = {}) {
-    let { useSymbolicExtensions: e } = t, { shouldbeIsSingleObject: r, ISOneOf: n, isExcept: i, verifyNothingness: a, xProxy: f2, determineType: S, addSymbolicExtensions: y2, maybe: x2, $Wrap: d } = at(b2, e);
-    return e && y2(), { IS: b2, maybe: x2, $Wrap: d, isNothing: a, xProxy: f2, addSymbolicExtensions: y2 };
-    function b2(m2, ...h) {
+    let { useSymbolicExtensions: e } = t, { shouldbeIsSingleObject: r, ISOneOf: n, isExcept: i, verifyNothingness: a, xProxy: f2, determineType: S, addSymbolicExtensions: y2, maybe: x2, $Wrap: d } = at(b3, e);
+    return e && y2(), { IS: b3, maybe: x2, $Wrap: d, isNothing: a, xProxy: f2, addSymbolicExtensions: y2 };
+    function b3(m2, ...h2) {
       let g2 = typeof m2 == "symbol" ? Symbol.isSymbol : m2;
       switch (true) {
-        case !!x2({ trial: (c) => "isTypes" in (h?.[0] ?? {}) }):
-          return r(m2, h[0]);
+        case !!x2({ trial: (c) => "isTypes" in (h2?.[0] ?? {}) }):
+          return r(m2, h2[0]);
         default:
-          return h.length > 1 ? n(g2, ...h) : S(m2, ...h);
+          return h2.length > 1 ? n(g2, ...h2) : S(m2, ...h2);
       }
     }
   }
   function at(t, e) {
-    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: i, verifyNothingness: a, determineType: f2 } = lt(t, b2), { xProxy: S, addSymbolicExtensions: y2 } = r(t, b2, e), [x2, d] = [n(), i(t, b2)];
-    return Object.freeze({ shouldbeIsSingleObject: m2, ISOneOf: h, isExcept: c, verifyNothingness: a, xProxy: S, determineType: f2, addSymbolicExtensions: y2, maybe: x2, $Wrap: d });
-    function b2(o) {
+    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: i, verifyNothingness: a, determineType: f2 } = lt(t, b3), { xProxy: S, addSymbolicExtensions: y2 } = r(t, b3, e), [x2, d] = [n(), i(t, b3)];
+    return Object.freeze({ shouldbeIsSingleObject: m2, ISOneOf: h2, isExcept: c, verifyNothingness: a, xProxy: S, determineType: f2, addSymbolicExtensions: y2, maybe: x2, $Wrap: d });
+    function b3(o) {
       return o?.[Symbol.proxy] ?? t(o);
     }
     function m2(o, s) {
@@ -60,7 +60,7 @@ var HTMLHelpers = (() => {
           return t(o, ...[s.isTypes].flat());
       }
     }
-    function h(o, ...s) {
+    function h2(o, ...s) {
       return s.some((l) => t(o, l));
     }
     function g2(o, { defaultValue: s, isTypes: l = [void 0], notTypes: p } = {}) {
@@ -72,7 +72,7 @@ var HTMLHelpers = (() => {
   }
   function lt() {
     let t = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxy" }, e = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy (" };
-    return Object.freeze({ SymbolAndCustomProxyFactory: n, maybeFactory: g2, WrapAnyFactory: h, verifyNothingness: c, determineType: y2 });
+    return Object.freeze({ SymbolAndCustomProxyFactory: n, maybeFactory: g2, WrapAnyFactory: h2, verifyNothingness: c, determineType: y2 });
     function r(o, s) {
       Symbol.is || (Symbol.is = Symbol.for(t.IS), Symbol.type = Symbol.for(t.TYPE), Object.defineProperties(Object.prototype, { [Symbol.type]: { get() {
         return s(this);
@@ -149,16 +149,16 @@ var HTMLHelpers = (() => {
         case (o?.[Symbol.toStringTag] && typeof s == "string"):
           return String(s) === o[Symbol.toStringTag];
         default:
-          return s ? m2(o, s, p) : b2(o, p);
+          return s ? m2(o, s, p) : b3(o, p);
       }
     }
-    function b2(o, s) {
+    function b3(o, s) {
       return (o?.[Symbol.toStringTag] ?? o?.prototype?.[Symbol.toStringTag]) || s?.name || String(s);
     }
     function m2(o, s, l) {
       return A({ trial: (p) => o instanceof s }) || s === l || s === Object.getPrototypeOf(l) || `${s?.name}` === l?.name;
     }
-    function h(o, s) {
+    function h2(o, s) {
       return function(l) {
         let p = { get value() {
           return l;
@@ -282,22 +282,22 @@ var HTMLHelpers = (() => {
   }
   var { IS: j, maybe: be, $Wrap: Er, isNothing: wt, xProxy: wr, addSymbolicExtensions: Tr } = Tt({ useSymbolicExtensions: false });
   function Tt(t = {}) {
-    let { useSymbolicExtensions: e } = t, { shouldbeIsSingleObject: r, ISOneOf: n, isExcept: i, verifyNothingness: a, xProxy: f2, determineType: S, addSymbolicExtensions: y2, maybe: x2, $Wrap: d } = Lt(b2, e);
-    return e && y2(), { IS: b2, maybe: x2, $Wrap: d, isNothing: a, xProxy: f2, addSymbolicExtensions: y2 };
-    function b2(m2, ...h) {
+    let { useSymbolicExtensions: e } = t, { shouldbeIsSingleObject: r, ISOneOf: n, isExcept: i, verifyNothingness: a, xProxy: f2, determineType: S, addSymbolicExtensions: y2, maybe: x2, $Wrap: d } = Lt(b3, e);
+    return e && y2(), { IS: b3, maybe: x2, $Wrap: d, isNothing: a, xProxy: f2, addSymbolicExtensions: y2 };
+    function b3(m2, ...h2) {
       let g2 = typeof m2 == "symbol" ? Symbol.isSymbol : m2;
       switch (true) {
-        case !!x2({ trial: (c) => "isTypes" in (h?.[0] ?? {}) }):
-          return r(m2, h[0]);
+        case !!x2({ trial: (c) => "isTypes" in (h2?.[0] ?? {}) }):
+          return r(m2, h2[0]);
         default:
-          return h.length > 1 ? n(g2, ...h) : S(m2, ...h);
+          return h2.length > 1 ? n(g2, ...h2) : S(m2, ...h2);
       }
     }
   }
   function Lt(t, e) {
-    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: i, verifyNothingness: a, determineType: f2 } = Ct(t, b2), { xProxy: S, addSymbolicExtensions: y2 } = r(t, b2, e), [x2, d] = [n(), i(t, b2)];
-    return Object.freeze({ shouldbeIsSingleObject: m2, ISOneOf: h, isExcept: c, verifyNothingness: a, xProxy: S, determineType: f2, addSymbolicExtensions: y2, maybe: x2, $Wrap: d });
-    function b2(o) {
+    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: i, verifyNothingness: a, determineType: f2 } = Ct(t, b3), { xProxy: S, addSymbolicExtensions: y2 } = r(t, b3, e), [x2, d] = [n(), i(t, b3)];
+    return Object.freeze({ shouldbeIsSingleObject: m2, ISOneOf: h2, isExcept: c, verifyNothingness: a, xProxy: S, determineType: f2, addSymbolicExtensions: y2, maybe: x2, $Wrap: d });
+    function b3(o) {
       return o?.[Symbol.proxy] ?? t(o);
     }
     function m2(o, s) {
@@ -310,7 +310,7 @@ var HTMLHelpers = (() => {
           return t(o, ...[s.isTypes].flat());
       }
     }
-    function h(o, ...s) {
+    function h2(o, ...s) {
       return s.some((l) => t(o, l));
     }
     function g2(o, { defaultValue: s, isTypes: l = [void 0], notTypes: p } = {}) {
@@ -322,7 +322,7 @@ var HTMLHelpers = (() => {
   }
   function Ct() {
     let t = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxy" }, e = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy (" };
-    return Object.freeze({ SymbolAndCustomProxyFactory: n, maybeFactory: g2, WrapAnyFactory: h, verifyNothingness: c, determineType: y2 });
+    return Object.freeze({ SymbolAndCustomProxyFactory: n, maybeFactory: g2, WrapAnyFactory: h2, verifyNothingness: c, determineType: y2 });
     function r(o, s) {
       Symbol.is || (Symbol.is = Symbol.for(t.IS), Symbol.type = Symbol.for(t.TYPE), Object.defineProperties(Object.prototype, { [Symbol.type]: { get() {
         return s(this);
@@ -399,16 +399,16 @@ var HTMLHelpers = (() => {
         case (o?.[Symbol.toStringTag] && typeof s == "string"):
           return String(s) === o[Symbol.toStringTag];
         default:
-          return s ? m2(o, s, p) : b2(o, p);
+          return s ? m2(o, s, p) : b3(o, p);
       }
     }
-    function b2(o, s) {
+    function b3(o, s) {
       return (o?.[Symbol.toStringTag] ?? o?.prototype?.[Symbol.toStringTag]) || s?.name || String(s);
     }
     function m2(o, s, l) {
       return be({ trial: (p) => o instanceof s }) || s === l || s === Object.getPrototypeOf(l) || `${s?.name}` === l?.name;
     }
-    function h(o, s) {
+    function h2(o, s) {
       return function(l) {
         let p = { get value() {
           return l;
@@ -461,7 +461,7 @@ var HTMLHelpers = (() => {
       let s = n(g2, true), l = s || o.cssRules[o.insertRule(`${g2} {}`, o.cssRules.length || 0)];
       return S(() => x2(l, c), g2, s);
     }
-    function b2(g2) {
+    function b3(g2) {
       let c = g2.trim().split(/{/, 2), o = c.shift().trim();
       if (!j(o, String) || !o?.trim()?.length) return console.error(`StylingFactory ${y2} (doParse): no (valid) selector could be extracted from rule ${he(g2)}`);
       let s = It(c.shift());
@@ -469,21 +469,21 @@ var HTMLHelpers = (() => {
     }
     function m2(g2) {
       let c = r(g2);
-      return c.done ? c.existing : b2(g2);
+      return c.done ? c.existing : b3(g2);
     }
-    function h(g2, c) {
+    function h2(g2, c) {
       return g2.trim().startsWith("@media") ? m2(At(g2, c)) : d(g2, c);
     }
     return function(g2, c = {}) {
-      return i(g2, c) && (Object.keys(c).length ? h(g2, c) : m2(g2));
+      return i(g2, c) && (Object.keys(c).length ? h2(g2, c) : m2(g2));
     };
   }
   function Ft({ styleSheet: t, createWithId: e }) {
     let r = "Note: The rule or some of its properties may not be supported by your browser (yet)", n = `for style#${e}`;
     t = e ? i(e) : t;
     function i(m2) {
-      let h = document.querySelector(`#${m2}`)?.sheet;
-      if (h) return h;
+      let h2 = document.querySelector(`#${m2}`)?.sheet;
+      if (h2) return h2;
       let g2 = Object.assign(document.createElement("style"), { id: m2 });
       return document.head.insertAdjacentElement("beforeend", g2), g2.sheet;
     }
@@ -491,22 +491,22 @@ var HTMLHelpers = (() => {
       return console.error(`StylingFactory ${n} [rule: ${m2}]
     => @charset, @namespace and @import are not supported here`), { done: true };
     }
-    function f2(m2, h) {
-      return [...t.rules].find((g2) => h ? ke(g2.selectorText || "", m2) : Ot`${Pt(m2)}${[..."gim"]}`.test(g2.cssText));
+    function f2(m2, h2) {
+      return [...t.rules].find((g2) => h2 ? ke(g2.selectorText || "", m2) : Ot`${Pt(m2)}${[..."gim"]}`.test(g2.cssText));
     }
     function S(m2) {
       return /^@charset|@import|namespace/i.test(m2.trim()) ? a(m2) : m2.match(/}/g)?.length > 1 ? { existing: d(m2, 1), done: true } : { done: false };
     }
     function y2(m2) {
-      let h = [...t.cssRules].reduce((c, o, s) => ke(o.selectorText || "", m2) && c.concat(s) || c, []), g2 = h.length;
-      return h.forEach((c) => t.deleteRule(c)), g2 > 0 ? console.info(`\u2714 Removed ${g2} instance${g2 > 1 ? "s" : ""} of selector ${m2} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${m2} does not exist in ${n.slice(4)}`);
+      let h2 = [...t.cssRules].reduce((c, o, s) => ke(o.selectorText || "", m2) && c.concat(s) || c, []), g2 = h2.length;
+      return h2.forEach((c) => t.deleteRule(c)), g2 > 0 ? console.info(`\u2714 Removed ${g2} instance${g2 > 1 ? "s" : ""} of selector ${m2} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${m2} does not exist in ${n.slice(4)}`);
     }
-    function x2(m2, h) {
-      return m2 && j(m2, String) && m2.trim().length > 0 && j(h, Object) || (console.error(`StylingFactory ${n} called with invalid parameters`), false);
+    function x2(m2, h2) {
+      return m2 && j(m2, String) && m2.trim().length > 0 && j(h2, Object) || (console.error(`StylingFactory ${n} called with invalid parameters`), false);
     }
     function d(m2) {
       m2 = m2.trim();
-      let h = m2.slice(0, m2.indexOf("{")).trim(), g2 = !!f2(h);
+      let h2 = m2.slice(0, m2.indexOf("{")).trim(), g2 = !!f2(h2);
       try {
         return t.insertRule(`${m2}`, t.cssRules.length), g2;
       } catch (c) {
@@ -516,17 +516,17 @@ Rule: ${he(m2)}
 ${r}`), g2;
       }
     }
-    function b2(m2, h, g2) {
+    function b3(m2, h2, g2) {
       try {
         return m2(), g2;
       } catch (c) {
         return console.error(`StylingFactory ${n} (tryAddOrModify) ${c.name} Error:
 ${c.message}
-Rule: ${he(h)}
+Rule: ${he(h2)}
 ${r}`), g2;
       }
     }
-    return { sheet: t, removeRules: y2, tryParseAtOrNestedRules: S, ruleExists: f2, checkParams: x2, tryParse: d, consider: b2, currentSheetID: n };
+    return { sheet: t, removeRules: y2, tryParseAtOrNestedRules: S, ruleExists: f2, checkParams: x2, tryParse: d, consider: b3, currentSheetID: n };
   }
   function At(t, e) {
     return `${t.trim()} ${Object.entries(e).map(([r, n]) => `${r}: { ${$t(n)}`)}`;
@@ -647,7 +647,7 @@ ${r}`), g2;
     if (t.node("#jqxPopup")) return;
     t.logger.log("JQx: [JQx].Popup first call. Dialog element created."), t.dialog({ id: "jqxPopup" }, t.div({ id: "jqxPopupContent" })).render, t.editCssRules(...He);
     let e = [], [r, n] = [t("#jqxPopupContent"), t.node("#jqxPopup")], i = {};
-    return t.handle({ type: "click, cancel", handlers: m2, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: a, remove: f2, removeModal: b2 });
+    return t.handle({ type: "click, cancel", handlers: m2, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: a, remove: f2, removeModal: b3 });
     function a(c) {
       if (n.open) switch (true) {
         case S(c):
@@ -671,7 +671,7 @@ ${r}`), g2;
       let { content: c, modal: o, closeAfter: s } = i;
       o = t.IS(o, Boolean) ? o : false;
       let l = o ? "" : t.div({ id: "closeHandleIcon" });
-      r.append(l, t.IS(c, String) ? t.div(c) : c), n.showModal(), !o && t.IS(s, Number) && h(f2, s);
+      r.append(l, t.IS(c, String) ? t.div(c) : c), n.showModal(), !o && t.IS(s, Number) && h2(f2, s);
     }
     function x2() {
       if (n.close(i.returnValue), d(), t.IS(i.callback, Function)) return e.push(setTimeout(() => i.callback(i.returnValue), 200));
@@ -680,13 +680,13 @@ ${r}`), g2;
     function d() {
       e.forEach((c) => clearTimeout(c)), e = [];
     }
-    function b2({ callback: c, value: o } = {}) {
+    function b3({ callback: c, value: o } = {}) {
       i.returnValue = o, i.modal = false, i.callback = c || i.callback, f2();
     }
     function m2({ evt: c }) {
       if (!(Object.keys(i).length < 1 || !n.open) && (c.type === "cancel" && i.modal && c.preventDefault(), c.target.closest("#closeHandleIcon") || !c.target.closest("#jqxPopupContent"))) return i.activeTimer && clearTimeout(i.activeTimer), f2();
     }
-    function h(c, o) {
+    function h2(c, o) {
       t.IS(c, Function) && t.IS(o, Number) && o > 0 && (d(), e.push(setTimeout(c, o * 1e3)));
     }
     function g2(c) {
@@ -696,7 +696,7 @@ ${r}`), g2;
         case o.is.empty:
           o = t.div({ class: "warn" }, c);
         default:
-          r.append(o.addClass("active")), h(() => r.find$(".warn").removeClass("active"), 2);
+          r.append(o.addClass("active")), h2(() => r.find$(".warn").removeClass("active"), 2);
       }
     }
   }
@@ -704,23 +704,23 @@ ${r}`), g2;
     let e = {}, r = "anonymous_";
     function n(d) {
       if (d) {
-        let { handler: b2, capture: m2, type: h } = d;
-        document.addEventListener(h, b2, { capture: m2 });
+        let { handler: b3, capture: m2, type: h2 } = d;
+        document.addEventListener(h2, b3, { capture: m2 });
       }
     }
     function i(d) {
       if (d) {
-        let { type: b2, handler: m2, capture: h } = d;
-        document.removeEventListener(b2, m2, { capture: h });
+        let { type: b3, handler: m2, capture: h2 } = d;
+        document.removeEventListener(b3, m2, { capture: h2 });
       }
     }
-    function a(d, b2, m2, h) {
+    function a(d, b3, m2, h2) {
       return function(g2) {
-        if (!T(b2)) return d({ evt: g2 });
-        let c = g2.target.closest(b2);
+        if (!T(b3)) return d({ evt: g2 });
+        let c = g2.target.closest(b3);
         if (c) {
           let o = t(c);
-          d({ self: o, me: o, evt: g2 }), m2 && y2(g2.type, h);
+          d({ self: o, me: o, evt: g2 }), m2 && y2(g2.type, h2);
         }
         return true;
       };
@@ -728,38 +728,38 @@ ${r}`), g2;
     function f2(d) {
       return e[d] = e[d] || {}, e[d];
     }
-    function S(d, b2) {
-      return Object.entries(f2(d)).find(([m2]) => m2 === b2);
+    function S(d, b3) {
+      return Object.entries(f2(d)).find(([m2]) => m2 === b3);
     }
-    function y2(d, b2) {
-      let m2 = S(d, b2);
-      m2 && (i(m2[1]), delete e[d][b2], delete ee[b2], w.warn(`Removed listener [${b2}] for event type [${d}].`));
+    function y2(d, b3) {
+      let m2 = S(d, b3);
+      m2 && (i(m2[1]), delete e[d][b3], delete ee[b3], w.warn(`Removed listener [${b3}] for event type [${d}].`));
     }
     function x2(d) {
-      let { type: b2, handler: m2, name: h, capture: g2, once: c, selector: o, node: s, about: l } = d;
-      e[b2] = e[b2] || {};
-      let p = xe(h || m2.name), v2 = m2;
+      let { type: b3, handler: m2, name: h2, capture: g2, once: c, selector: o, node: s, about: l } = d;
+      e[b3] = e[b3] || {};
+      let p = xe(h2 || m2.name), v2 = m2;
       if (s instanceof HTMLElement) {
         let F = s.dataset.hid || p;
         s.dataset.hid = F, o = `[data-hid=${F}]`;
       }
       switch (true) {
-        case !e[b2][p]:
-          return w.log(`JQx: created listener for event type ${b2}, with handler name ${p}`), e[b2][p] = { name: p, handler: a(m2, o, c, p), capture: Qe(b2, g2), once: !!c, type: b2, initialHandler: v2, selector: !!o && o || false, about: !!l && l || false, unListen() {
-            y2(b2, p);
-          } }, e[b2][p];
+        case !e[b3][p]:
+          return w.log(`JQx: created listener for event type ${b3}, with handler name ${p}`), e[b3][p] = { name: p, handler: a(m2, o, c, p), capture: Qe(b3, g2), once: !!c, type: b3, initialHandler: v2, selector: !!o && o || false, about: !!l && l || false, unListen() {
+            y2(b3, p);
+          } }, e[b3][p];
         default:
-          return console.warn(`The listener [${p}] for [${b2}] exists, it is not re-assigned.`);
+          return console.warn(`The listener [${p}] for [${b3}] exists, it is not re-assigned.`);
       }
     }
     return { remove(...d) {
       return y2(...d);
     }, listen: function(d) {
-      let { type: b2, handler: m2 } = d;
-      if (!T(b2) || !u(m2, Function)) return;
-      let h = x2(d);
-      if (h) return n(h), { type: b2, name: h.name, unListen() {
-        y2(b2, h.name);
+      let { type: b3, handler: m2 } = d;
+      if (!T(b3) || !u(m2, Function)) return;
+      let h2 = x2(d);
+      if (h2) return n(h2), { type: b3, name: h2.name, unListen() {
+        y2(b3, h2.name);
       } };
     }, get ListenerStore() {
       return Object.freeze({ ...e });
@@ -857,7 +857,7 @@ ${r}`), g2;
 `)), n;
     }
     function y2(...x2) {
-      let d = x2.map((b2) => `${re()} \u2714 ${ve(b2)}`);
+      let d = x2.map((b3) => `${re()} \u2714 ${ve(b3)}`);
       switch (!e && r.unshift(...d), t) {
         case true:
           console.log(d.join(`
@@ -1419,14 +1419,14 @@ ${r}`), g2;
   }
   function ur(t) {
     return function(e) {
-      let { type: r, types: n, origin: i, selector: a, handler: f2, handlers: S, node: y2, name: x2, capture: d, once: b2, about: m2 } = e;
+      let { type: r, types: n, origin: i, selector: a, handler: f2, handlers: S, node: y2, name: x2, capture: d, once: b3, about: m2 } = e;
       f2 = S || f2, r = n || r, a = i || a;
-      let h = Ce(r), g2 = x2;
+      let h2 = Ce(r), g2 = x2;
       f2 = u(f2, Function) ? [f2] : f2;
-      let c = { type: h, selector: a || i, capture: d, name: g2, once: b2, node: y2, about: m2 };
+      let c = { type: h2, selector: a || i, capture: d, name: g2, once: b3, node: y2, about: m2 };
       switch (true) {
-        case (u(h, Array) && h.length > 0):
-          for (let o of h) c.type = o, rt(f2, c, t);
+        case (u(h2, Array) && h2.length > 0):
+          for (let o of h2) c.type = o, rt(f2, c, t);
           break;
         default:
           return rt(f2, c, t);
@@ -1445,18 +1445,18 @@ ${r}`), g2;
     return t.activePopup || Object.defineProperty(t, "activePopup", { value: K(t), enumerable: false }), t.activePopup;
   }
   function dr(t) {
-    let e = (d, b2) => Pe(d, b2), r = function(d) {
+    let e = (d, b3) => Pe(d, b3), r = function(d) {
       return Q({ createWithId: d || `jqx${ue()}` });
     }, n = function(...d) {
-      for (let b2 of d) Pe(b2);
+      for (let b3 of d) Pe(b3);
     }, i = rr(t), a = q(t), f2 = ur(a);
     return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: i, handle: f2, capturedHandling: f2, log: (...d) => w.on.log(...d).off, warn: (...d) => w.on.warn(...d).off, error: (...d) => w.on.error(...d).off, handlerWrapper: a };
   }
   function mr(t) {
     let { factoryExtensions: e, instanceExtensions: r } = qe(t);
     $e = e, de = r;
-    let { editCssRule: n, createStyle: i, editCssRules: a, allowProhibit: f2, handle: S, capturedHandling: y2, log: x2, warn: d, error: b2, handlerWrapper: m2 } = dr(t), h = cr(t), g2 = er(t);
-    return { log: x2, warn: d, error: b2, editCssRules: a, createStyle: i, editStylesheet: i, editCssRule: n, escHtml: H, logger: w, text(c, o = false) {
+    let { editCssRule: n, createStyle: i, editCssRules: a, allowProhibit: f2, handle: S, capturedHandling: y2, log: x2, warn: d, error: b3, handlerWrapper: m2 } = dr(t), h2 = cr(t), g2 = er(t);
+    return { log: x2, warn: d, error: b3, editCssRules: a, createStyle: i, editStylesheet: i, editCssRule: n, escHtml: H, logger: w, text(c, o = false) {
       return o ? t.comment(c) : document.createTextNode(c);
     }, node(c, o = document) {
       return o.querySelector(c, o);
@@ -1469,7 +1469,7 @@ ${r}`), g2;
     }, get toBool() {
       return Ne;
     }, get getNamedListener() {
-      return h;
+      return h2;
     }, get virtual() {
       return nr(t);
     }, get allowTag() {
@@ -1520,8 +1520,8 @@ ${r}`), g2;
           y2.collection = y2.collection.filter((g2) => !g2?.dataset?.jqxcreationerror);
           let m2 = y2.collection.map((g2) => `${String(g2.constructor).split(/function|\(/)[1].trim()}`).length > 1;
           y2 = V(y2);
-          let h = y2.collection.length > 0 ? Xe(y2) : "sanitized: no elements remaining";
-          w.log(`JQx: created ${y2.isVirtual ? "(virtual)" : ""} instance from ${m2 ? "array of " : ""}HTML string${m2 ? "s" : ""} ${h}`), y2.isVirtual || D(y2.collection, r, n);
+          let h2 = y2.collection.length > 0 ? Xe(y2) : "sanitized: no elements remaining";
+          w.log(`JQx: created ${y2.isVirtual ? "(virtual)" : ""} instance from ${m2 ? "array of " : ""}HTML string${m2 ? "s" : ""} ${h2}`), y2.isVirtual || D(y2.collection, r, n);
         }
         return y2;
       }
@@ -1530,7 +1530,7 @@ ${r}`), g2;
   }
   var mn = ot;
 
-  // ../node_modules/ticktock-es/Bundle/index.min.js
+  // ../Resource/ticktock.min.js
   var [Z2, w2, q2, H2] = ["2-digit", "numeric", "long", "short"];
   var C2 = { fixed: { MM: { month: q2 }, M: { month: H2 }, m: { month: w2 }, mm: { month: Z2 }, yyyy: { year: w2 }, yy: { year: Z2 }, WD: { weekday: q2 }, wd: { weekday: H2 }, d: { day: w2 }, dd: { day: Z2 }, h: { hour: w2 }, hh: { hour: Z2 }, mi: { minute: w2 }, mmi: { minute: Z2 }, s: { second: w2 }, ss: { second: Z2 }, ms: { fractionalSecondDigits: 3 }, tz: { timeZoneName: "shortOffset" }, dl: { locale: "default" }, h12: { hour12: false }, yn: { yearName: "" }, ry: { relatedYear: true }, msp: { fractionalSecond: true } }, dynamic: { tzn: (e) => ({ timeZoneName: e.slice(4) }), hrc: (e) => ({ hourCycle: `h${e.slice(4)}` }), ds: (e) => ({ dateStyle: e.slice(3) }), ts: (e) => ({ timeStyle: e.slice(3) }), tz: (e) => ({ timeZone: e.slice(3) }), e: (e) => ({ era: e.slice(2) }), l: (e) => ({ locale: e.slice(2) }) } };
   var b = { ...C2, retrieveDynamic(e) {
@@ -1596,14 +1596,14 @@ ${r}`), g2;
     return function({ start: t, end: a, diffs: o = {} } = {}) {
       let s = e(t, a), u2 = a > t ? "+" : "-";
       if (s.error) return s;
-      let l = Math.abs(t - a), i = new Date(l), c = i.getUTCFullYear() - 1970, d = i.getUTCMonth(), h = i.getUTCDate() - 1, F = h % 7, le2 = Math.floor(h / 7), p = i.getUTCHours(), $2 = i.getUTCMinutes(), S = i.getUTCSeconds(), Le2 = i.getUTCMilliseconds(), je2 = Math.floor(l / 864e5);
-      o = { ...o, fromUTC: t, toUTC: a, sign: "", years: c, months: d, days: h, hours: p, minutes: $2, seconds: S, milliseconds: Le2, diffInDays: je2 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
-      let ce2 = p + $2 + S > 0 ? "T" : "";
-      return o.clean !== "Dates are equal" && (o.sign = u2, o.jsPeriod = `${u2}P${c > 0 ? `${c}Y` : ""}${d > 0 ? `${d}M` : ""}${le2 > 0 ? `${le2}W` : ""}${F > 0 ? `${F}D` : ""}${ce2}${p > 0 ? `${p}H` : ""}${$2 > 0 ? `${$2}M` : ""}${S > 0 ? `${S}S` : ""}`, o.ISOPeriod = `P${c > 0 ? `${c}Y` : ""}${d > 0 ? `${d}M` : ""}${h > 0 ? `${h}D` : ""}${ce2}${p > 0 ? `${p}H` : ""}${$2 > 0 ? `${$2}M` : ""}${S > 0 ? `${S}S` : ""}`), o;
+      let l = Math.abs(t - a), i = new Date(l), c = i.getUTCFullYear() - 1970, d = i.getUTCMonth(), h2 = i.getUTCDate() - 1, F = h2 % 7, le2 = Math.floor(h2 / 7), p = i.getUTCHours(), $3 = i.getUTCMinutes(), S = i.getUTCSeconds(), Le2 = i.getUTCMilliseconds(), je2 = Math.floor(l / 864e5);
+      o = { ...o, fromUTC: t, toUTC: a, sign: "", years: c, months: d, days: h2, hours: p, minutes: $3, seconds: S, milliseconds: Le2, diffInDays: je2 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
+      let ce2 = p + $3 + S > 0 ? "T" : "";
+      return o.clean !== "Dates are equal" && (o.sign = u2, o.jsPeriod = `${u2}P${c > 0 ? `${c}Y` : ""}${d > 0 ? `${d}M` : ""}${le2 > 0 ? `${le2}W` : ""}${F > 0 ? `${F}D` : ""}${ce2}${p > 0 ? `${p}H` : ""}${$3 > 0 ? `${$3}M` : ""}${S > 0 ? `${S}S` : ""}`, o.ISOPeriod = `P${c > 0 ? `${c}Y` : ""}${d > 0 ? `${d}M` : ""}${h2 > 0 ? `${h2}D` : ""}${ce2}${p > 0 ? `${p}H` : ""}${$3 > 0 ? `${$3}M` : ""}${S > 0 ? `${S}S` : ""}`), o;
     };
     function n() {
-      let t = (...i) => (c) => i.reduce((d, h) => h(d), c), a = (i, c) => i === 1 ? c.slice(0, -1) : c;
-      return t(({ values: i, full: c }) => [Object.entries(i).filter(([d]) => /^(years|month|days|hours|minutes|seconds)/i.test(d)), c], ([i, c]) => c ? i : i.filter(([, d]) => c ? +d : d > 0), (i) => i.reduce((c, [d, h]) => [...c, `${h} ${a(h, d)}`], []), (i) => i.length < 1 ? "Dates are equal" : `${i.slice(0, -1).join(", ")}${i.length > 1 ? " and " : ""}${i.slice(-1).shift()}`);
+      let t = (...i) => (c) => i.reduce((d, h2) => h2(d), c), a = (i, c) => i === 1 ? c.slice(0, -1) : c;
+      return t(({ values: i, full: c }) => [Object.entries(i).filter(([d]) => /^(years|month|days|hours|minutes|seconds)/i.test(d)), c], ([i, c]) => c ? i : i.filter(([, d]) => c ? +d : d > 0), (i) => i.reduce((c, [d, h2]) => [...c, `${h2} ${a(h2, d)}`], []), (i) => i.length < 1 ? "Dates are equal" : `${i.slice(0, -1).join(", ")}${i.length > 1 ? " and " : ""}${i.slice(-1).shift()}`);
     }
   }
   var ye2 = He2;
@@ -2202,8 +2202,8 @@ ${r}`), g2;
     return E2({ localeInfo: g(n ? e : r), dateValue: new Date(n ? Date.now() : Ae2(e)), customMethods: Ue2 });
   }
 
-  // ../node_modules/jsregexphelper/RegexpCreator.js
-  var RegexpCreator_default = Object.defineProperties(instanceCreator, { escape: { value: escape4RE, enumerable: true } });
+  // ../Resource/REHelper.js
+  var REHelper_default = Object.defineProperties(instanceCreator, { escape: { value: escape4RE, enumerable: true } });
   function instanceCreator(regExStr, ...args) {
     const { flags, cleanedArgs } = maybeFlags(...args);
     return createInstance(
@@ -2296,345 +2296,222 @@ ${r}`), g2;
     }
   }
   function cleanup(str) {
-    return str.replace(/\/\*(?:[^*]|\*+[^*\/])*\*+\/|(?<!:|\\\|')\/\/.*/gm, ``).replace(/\s/g, ``).trim().replace(/<!([^>]\d+)>/g, (a, b2) => String.fromCharCode(+b2) ?? a);
+    return str.replace(/\/\*(?:[^*]|\*+[^*\/])*\*+\/|(?<!:|\\\|')\/\/.*/gm, ``).replace(/\s/g, ``).trim().replace(/<!([^>]\d+)>/g, (a, b3) => String.fromCharCode(+b3) ?? a);
   }
 
-  // ../node_modules/splat-es/Resource/toaModule.js
-  var { IS, maybe, $Wrap, isNothing, xProxy, addSymbolicExtensions } = TOAFactory({ useSymbolicExtensions: false });
-  function TOAFactory(specs = {}) {
-    const { useSymbolicExtensions } = specs;
-    const {
-      shouldbeIsSingleObject,
-      ISOneOf,
-      isExcept,
-      verifyNothingness,
-      xProxy: xProxy2,
-      determineType,
-      addSymbolicExtensions: addSymbolicExtensions2,
-      maybe: maybe2,
-      $Wrap: $Wrap2
-    } = TOAHelpers(IS2, useSymbolicExtensions);
-    if (!!useSymbolicExtensions) {
-      addSymbolicExtensions2();
-    }
-    return { IS: IS2, maybe: maybe2, $Wrap: $Wrap2, isNothing: verifyNothingness, xProxy: xProxy2, addSymbolicExtensions: addSymbolicExtensions2 };
-    function IS2(anything, ...shouldBe) {
-      const input = typeof anything === `symbol` ? Symbol.isSymbol : anything;
+  // ../Resource/splat.min.js
+  var { IS: b2, maybe: E3, $Wrap: X3, isNothing: j3, xProxy: h, addSymbolicExtensions: T3 } = Y3({ useSymbolicExtensions: false });
+  function Y3(i = {}) {
+    let { useSymbolicExtensions: a } = i, { shouldbeIsSingleObject: m2, ISOneOf: g2, isExcept: P3, verifyNothingness: d, xProxy: x2, determineType: N3, addSymbolicExtensions: y2, maybe: S, $Wrap: O3 } = _3(e, a);
+    return a && y2(), { IS: e, maybe: S, $Wrap: O3, isNothing: d, xProxy: x2, addSymbolicExtensions: y2 };
+    function e(c, ...u2) {
+      let l = typeof c == "symbol" ? Symbol.isSymbol : c;
       switch (true) {
-        case !!maybe2({ trial: (_3) => `isTypes` in (shouldBe?.[0] ?? {}) }):
-          return shouldbeIsSingleObject(anything, shouldBe[0]);
+        case !!S({ trial: (f2) => "isTypes" in (u2?.[0] ?? {}) }):
+          return m2(c, u2[0]);
         default:
-          return shouldBe.length > 1 ? ISOneOf(input, ...shouldBe) : determineType(anything, ...shouldBe);
+          return u2.length > 1 ? g2(l, ...u2) : N3(c, ...u2);
       }
     }
   }
-  function TOAHelpers(IS2, useSymbolicExtensions) {
-    const {
-      SymbolAndCustomProxyFactory,
-      maybeFactory,
-      WrapAnyFactory,
-      verifyNothingness,
-      determineType
-    } = AUXHelperFactory(IS2, typeOf);
-    const { xProxy: xProxy2, addSymbolicExtensions: addSymbolicExtensions2 } = SymbolAndCustomProxyFactory(IS2, typeOf, useSymbolicExtensions);
-    const [maybe2, $Wrap2] = [maybeFactory(), WrapAnyFactory(IS2, typeOf)];
-    return Object.freeze({
-      shouldbeIsSingleObject,
-      ISOneOf,
-      isExcept,
-      verifyNothingness,
-      xProxy: xProxy2,
-      determineType,
-      addSymbolicExtensions: addSymbolicExtensions2,
-      maybe: maybe2,
-      $Wrap: $Wrap2
-    });
-    function typeOf(anything) {
-      return anything?.[Symbol.proxy] ?? IS2(anything);
+  function _3(i, a) {
+    let { SymbolAndCustomProxyFactory: m2, maybeFactory: g2, WrapAnyFactory: P3, verifyNothingness: d, determineType: x2 } = w3(i, e), { xProxy: N3, addSymbolicExtensions: y2 } = m2(i, e, a), [S, O3] = [g2(), P3(i, e)];
+    return Object.freeze({ shouldbeIsSingleObject: c, ISOneOf: u2, isExcept: f2, verifyNothingness: d, xProxy: N3, determineType: x2, addSymbolicExtensions: y2, maybe: S, $Wrap: O3 });
+    function e(r) {
+      return r?.[Symbol.proxy] ?? i(r);
     }
-    function shouldbeIsSingleObject(anything, isTypeObj) {
+    function c(r, t) {
       switch (true) {
-        case `defaultValue` in isTypeObj:
-          return isOrDefault(anything, isTypeObj);
-        case `notTypes` in isTypeObj:
-          return isExcept(anything, isTypeObj);
+        case "defaultValue" in t:
+          return l(r, t);
+        case "notTypes" in t:
+          return f2(r, t);
         default:
-          return IS2(anything, ...[isTypeObj.isTypes].flat());
+          return i(r, ...[t.isTypes].flat());
       }
     }
-    function ISOneOf(obj, ...params) {
-      return params.some((param) => IS2(obj, param));
+    function u2(r, ...t) {
+      return t.some((n) => i(r, n));
     }
-    function isOrDefault(input, { defaultValue, isTypes = [void 0], notTypes } = {}) {
-      isTypes = isTypes?.constructor !== Array ? [isTypes] : isTypes;
-      notTypes = notTypes && notTypes?.constructor !== Array ? [notTypes] : [];
-      return notTypes.length < 1 ? IS2(input, ...isTypes) ? input : defaultValue : isExcept(input, { isTypes, notTypes }) ? input : defaultValue;
+    function l(r, { defaultValue: t, isTypes: n = [void 0], notTypes: o } = {}) {
+      return n = n?.constructor !== Array ? [n] : n, o = o && o?.constructor !== Array ? [o] : [], o.length < 1 ? i(r, ...n) ? r : t : f2(r, { isTypes: n, notTypes: o }) ? r : t;
     }
-    function isExcept(input, { isTypes = [void 0], notTypes = [void 0] } = {}) {
-      isTypes = isTypes?.constructor !== Array ? [isTypes] : isTypes;
-      notTypes = notTypes?.constructor !== Array ? [notTypes] : notTypes;
-      return IS2(input, ...isTypes) && !IS2(input, ...notTypes);
+    function f2(r, { isTypes: t = [void 0], notTypes: n = [void 0] } = {}) {
+      return t = t?.constructor !== Array ? [t] : t, n = n?.constructor !== Array ? [n] : n, i(r, ...t) && !i(r, ...n);
     }
   }
-  function AUXHelperFactory() {
-    const SYMBOL_KEYS = {
-      IS: "toa.is",
-      TYPE: "toa.type",
-      IS_SYMBOL: "toa.isASymbol",
-      PROXY: "toa.proxy"
-    };
-    const TYPE_STRINGS = {
-      NAN: "NaN",
-      INFINITY: "Infinity",
-      BOOLEAN: "Boolean",
-      OBJECT: "Object",
-      PROXY_PREFIX: "Proxy ("
-    };
-    return Object.freeze(
-      {
-        SymbolAndCustomProxyFactory,
-        maybeFactory,
-        WrapAnyFactory,
-        verifyNothingness,
-        determineType
-      }
-    );
-    function addSymbols2Anything(IS2, typeOf) {
-      if (!Symbol.is) {
-        Symbol.is = Symbol.for(SYMBOL_KEYS.IS);
-        Symbol.type = Symbol.for(SYMBOL_KEYS.TYPE);
-        Object.defineProperties(Object.prototype, {
-          [Symbol.type]: { get() {
-            return typeOf(this);
-          }, enumerable: false, configurable: false },
-          [Symbol.is]: { value: function(...args) {
-            return IS2(this, ...args);
-          }, enumerable: false, configurable: false }
-        });
-        Object.defineProperties(Object, {
-          [Symbol.type]: { value(obj) {
-            return typeOf(obj);
-          }, enumerable: false, configurable: false },
-          [Symbol.is]: { value: function(obj, ...args) {
-            return IS2(obj, ...args);
-          }, enumerable: false, configurable: false }
-        });
-      }
+  function w3() {
+    let i = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxy" }, a = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy (" };
+    return Object.freeze({ SymbolAndCustomProxyFactory: g2, maybeFactory: l, WrapAnyFactory: u2, verifyNothingness: f2, determineType: y2 });
+    function m2(r, t) {
+      Symbol.is || (Symbol.is = Symbol.for(i.IS), Symbol.type = Symbol.for(i.TYPE), Object.defineProperties(Object.prototype, { [Symbol.type]: { get() {
+        return t(this);
+      }, enumerable: false, configurable: false }, [Symbol.is]: { value: function(...n) {
+        return r(this, ...n);
+      }, enumerable: false, configurable: false } }), Object.defineProperties(Object, { [Symbol.type]: { value(n) {
+        return t(n);
+      }, enumerable: false, configurable: false }, [Symbol.is]: { value: function(n, ...o) {
+        return r(n, ...o);
+      }, enumerable: false, configurable: false } }));
     }
-    function SymbolAndCustomProxyFactory(IS2, typeOf, useSymbolicExtension) {
-      if (!Symbol.isSymbol) {
-        Symbol.isSymbol = Symbol.for(SYMBOL_KEYS.IS_SYMBOL);
-      }
-      return { xProxy: setCustomOrDefaultProxyFactory(), addSymbolicExtensions: () => addSymbols2Anything(IS2, typeOf) };
+    function g2(r, t, n) {
+      return Symbol.isSymbol || (Symbol.isSymbol = Symbol.for(i.IS_SYMBOL)), { xProxy: x2(), addSymbolicExtensions: () => m2(r, t) };
     }
-    function constructor2String(obj) {
-      const ctor = !isNothing(obj, true) ? Object.getPrototypeOf(obj)?.constructor : { name: `unknown` };
-      return ctor.name;
+    function P3(r) {
+      return (j3(r, true) ? { name: "unknown" } : Object.getPrototypeOf(r)?.constructor).name;
     }
-    function createCustomProxy(nativeProxy, proxySymbol) {
-      Proxy = new nativeProxy(nativeProxy, {
-        construct(target, args) {
-          const wrappedProxy = new target(...args);
-          Object.defineProperty(wrappedProxy, proxySymbol, {
-            value: `${TYPE_STRINGS.PROXY_PREFIX}${constructor2String(args[0])})`
-          });
-          return wrappedProxy;
-        }
-      });
-      return Proxy;
+    function d(r, t) {
+      return Proxy = new r(r, { construct(n, o) {
+        let s = new n(...o);
+        return Object.defineProperty(s, t, { value: `${a.PROXY_PREFIX}${P3(o[0])})` }), s;
+      } }), Proxy;
     }
-    function setCustomOrDefaultProxyFactory() {
-      if (!Symbol.proxy) {
-        Symbol.proxy = Symbol.for(SYMBOL_KEYS.PROXY);
-      }
-      const nativeProxy = Proxy;
-      return {
-        native() {
-          Proxy = nativeProxy;
-        },
-        custom() {
-          Proxy = createCustomProxy(nativeProxy, Symbol.proxy);
-        }
-      };
+    function x2() {
+      Symbol.proxy || (Symbol.proxy = Symbol.for(i.PROXY));
+      let r = Proxy;
+      return { native() {
+        Proxy = r;
+      }, custom() {
+        Proxy = d(r, Symbol.proxy);
+      } };
     }
-    function processInput(input, ...shouldBe) {
-      const noShouldbe = shouldBe.length < 1;
-      const noInput = input === void 0 || input === null;
-      return {
-        noInput,
-        noShouldbe,
-        compareTo: !noShouldbe && shouldBe[0],
-        inputCTOR: !noInput && (input?.constructor || Object.getPrototypeOf(input)?.constructor),
-        isNaN: Number.isNaN(input) || maybe({ trial: (_3) => String(input) === TYPE_STRINGS.NAN }),
-        isInfinity: maybe({ trial: (_3) => String(input) }) === TYPE_STRINGS.INFINITY,
-        shouldBeFirstElementIsNothing: !noShouldbe && verifyNothingness(shouldBe[0])
-      };
+    function N3(r, ...t) {
+      let n = t.length < 1, o = r == null;
+      return { noInput: o, noShouldbe: n, compareTo: !n && t[0], inputCTOR: !o && (r?.constructor || Object.getPrototypeOf(r)?.constructor), isNaN: Number.isNaN(r) || E3({ trial: (s) => String(r) === a.NAN }), isInfinity: E3({ trial: (s) => String(r) }) === a.INFINITY, shouldBeFirstElementIsNothing: !n && f2(t[0]) };
     }
-    function determineType(input, ...shouldBe) {
-      let { noInput, noShouldbe, compareTo, inputCTOR, isNaN: isNaN2, isInfinity, shouldBeFirstElementIsNothing } = processInput(input, ...shouldBe);
-      shouldBe = shouldBe.length && shouldBe[0];
-      switch (true) {
-        case shouldBeFirstElementIsNothing:
-          return String(input) === String(compareTo);
-        case (input?.[Symbol.proxy] && noShouldbe):
-          return input[Symbol.proxy];
-        case isNaN2:
-          return noShouldbe ? TYPE_STRINGS.NAN : String(compareTo) === String(input);
-        case isInfinity:
-          return noShouldbe ? TYPE_STRINGS.INFINITY : String(compareTo) === String(input);
-        case noInput:
-          return noShouldbe ? String(input) : String(compareTo) === String(input);
-        case inputCTOR === Boolean:
-          return noShouldbe ? TYPE_STRINGS.BOOLEAN : inputCTOR === shouldBe;
+    function y2(r, ...t) {
+      let { noInput: n, noShouldbe: o, compareTo: s, inputCTOR: A3, isNaN: F, isInfinity: v2, shouldBeFirstElementIsNothing: p } = N3(r, ...t);
+      switch (t = t.length && t[0], true) {
+        case p:
+          return String(r) === String(s);
+        case (r?.[Symbol.proxy] && o):
+          return r[Symbol.proxy];
+        case F:
+          return o ? a.NAN : String(s) === String(r);
+        case v2:
+          return o ? a.INFINITY : String(s) === String(r);
+        case n:
+          return o ? String(r) : String(s) === String(r);
+        case A3 === Boolean:
+          return o ? a.BOOLEAN : A3 === t;
         default:
-          return getResult(input, shouldBe, noShouldbe, finalInputResolver(input, inputCTOR));
+          return O3(r, t, o, S(r, A3));
       }
     }
-    function finalInputResolver(input, inputCTOR) {
+    function S(r, t) {
       switch (true) {
-        case input === 0:
+        case r === 0:
           return Number;
-        case input === ``:
+        case r === "":
           return String;
-        case !input:
-          return { name: String(input) };
+        case !r:
+          return { name: String(r) };
         default:
-          return inputCTOR;
+          return t;
       }
     }
-    function getResult(input, compareWith, noShouldbe, maybeResult) {
+    function O3(r, t, n, o) {
       switch (true) {
-        case (!noShouldbe && compareWith === input || input?.[Symbol.proxy] && compareWith === Proxy):
+        case (!n && t === r || r?.[Symbol.proxy] && t === Proxy):
           return true;
-        case String(compareWith) === TYPE_STRINGS.NAN:
-          return String(input) === TYPE_STRINGS.NAN;
-        case (input?.[Symbol.toStringTag] && typeof compareWith === `string`):
-          return String(compareWith) === input[Symbol.toStringTag];
+        case String(t) === a.NAN:
+          return String(r) === a.NAN;
+        case (r?.[Symbol.toStringTag] && typeof t == "string"):
+          return String(t) === r[Symbol.toStringTag];
         default:
-          return compareWith ? resultWithComparison(input, compareWith, maybeResult) : resultWithoutComparison(input, maybeResult);
+          return t ? c(r, t, o) : e(r, o);
       }
     }
-    function resultWithoutComparison(input, maybeResult) {
-      const toStringTag = input?.[Symbol.toStringTag] ?? input?.prototype?.[Symbol.toStringTag];
-      return toStringTag || maybeResult?.name || String(maybeResult);
+    function e(r, t) {
+      return (r?.[Symbol.toStringTag] ?? r?.prototype?.[Symbol.toStringTag]) || t?.name || String(t);
     }
-    function resultWithComparison(input, compareWith, maybeResult) {
-      return maybe({ trial: (_3) => input instanceof compareWith }) || compareWith === maybeResult || compareWith === Object.getPrototypeOf(maybeResult) || `${compareWith?.name}` === maybeResult?.name;
+    function c(r, t, n) {
+      return E3({ trial: (o) => r instanceof t }) || t === n || t === Object.getPrototypeOf(n) || `${t?.name}` === n?.name;
     }
-    function WrapAnyFactory(IS2, typeOf) {
-      return function(someObj) {
-        const wrapper = {
-          get value() {
-            return someObj;
-          },
-          is(...args) {
-            return IS2(someObj, ...args);
-          },
-          get type() {
-            return typeOf(someObj);
-          }
-        };
-        if (Object[Symbol.type]) {
-          Object.defineProperties(wrapper, {
-            [Symbol.type]: { get() {
-              return typeOf(someObj);
-            } },
-            [Symbol.is]: { value(...args) {
-              return IS2(someObj, ...args);
-            } }
-          });
-        }
-        return Object.freeze(wrapper);
+    function u2(r, t) {
+      return function(n) {
+        let o = { get value() {
+          return n;
+        }, is(...s) {
+          return r(n, ...s);
+        }, get type() {
+          return t(n);
+        } };
+        return Object[Symbol.type] && Object.defineProperties(o, { [Symbol.type]: { get() {
+          return t(n);
+        } }, [Symbol.is]: { value(...s) {
+          return r(n, ...s);
+        } } }), Object.freeze(o);
       };
     }
-    function maybeFactory() {
-      const errFn = (err) => void 0;
-      return function({ trial, whenError = errFn } = {}) {
+    function l() {
+      let r = (t) => {
+      };
+      return function({ trial: t, whenError: n = r } = {}) {
         try {
-          return trial();
-        } catch (err) {
-          return whenError(err);
+          return t();
+        } catch (o) {
+          return n(o);
         }
       };
     }
-    function verifyNothingness(maybeNothing, all = false) {
-      let nada = maybeNothing === null || maybeNothing === void 0;
-      nada = all ? nada || IS(maybeNothing, Infinity) || IS(maybeNothing, NaN) : nada;
-      return nada;
+    function f2(r, t = false) {
+      let n = r == null;
+      return n = t ? n || b2(r, 1 / 0) || b2(r, NaN) : n, n;
     }
   }
-
-  // ../node_modules/splat-es/index.js
-  var interpolateDefault = interpolateFactory();
-  var interpolateClear = interpolateFactory("");
-  function interpolateFactory(defaultReplacer, specs = {}) {
-    const { useSymbolicExtensions } = specs;
-    defaultReplacer = IS(defaultReplacer, String, Number) ? String(defaultReplacer) : void 0;
-    if (!!useSymbolicExtensions) {
-      addSymbolicStringExtensions();
-    }
-    return function(str, ...tokens) {
-      return interpolate(str, processTokens(tokens));
+  var C3 = I3();
+  var $2 = I3("");
+  function I3(i, a = {}) {
+    let { useSymbolicExtensions: m2 } = a;
+    return i = b2(i, String, Number) ? String(i) : void 0, m2 && L3(), function(e, ...c) {
+      return O3(e, S(c));
     };
-    function invalidate(key, keyExists) {
-      if (keyExists && IS(defaultReplacer, String, Number)) {
-        return String(defaultReplacer);
-      }
-      return `{${key}}`;
+    function g2(e, c) {
+      return c && b2(i, String, Number) ? String(i) : `{${e}}`;
     }
-    function replacement(key, token) {
-      const isValid = key in token;
-      return isValid && IS(token[key], String, Number) ? String(token[key]) : invalidate(key, isValid);
+    function P3(e, c) {
+      let u2 = e in c;
+      return u2 && b2(c[e], String, Number) ? String(c[e]) : g2(e, u2);
     }
-    function getReplacerLambda(token) {
-      return (...args) => {
-        const replacementObject = args.find((a) => a.key);
-        return replacement(replacementObject ? replacementObject.key : `_`, token);
+    function d(e) {
+      return (...c) => {
+        let u2 = c.find((l) => l.key);
+        return P3(u2 ? u2.key : "_", e);
       };
     }
-    function replace(str, token) {
-      return str.replace(/\{(?<key>[a-z_\d]+)}/gim, getReplacerLambda(token));
+    function x2(e, c) {
+      return e.replace(/\{(?<key>[a-z_\d]+)}/gim, d(c));
     }
-    function convertTokensFromArrayValues(tokenObject) {
-      const converted = [];
-      Object.entries(tokenObject).forEach(([key, value]) => {
-        value.forEach((v2, i) => (converted[i] ??= {}, converted[i][key] = v2));
-      });
-      return converted;
+    function N3(e) {
+      let c = [];
+      return Object.entries(e).forEach(([u2, l]) => {
+        l.forEach((f2, r) => (c[r] ??= {}, c[r][u2] = f2));
+      }), c;
     }
-    function isMultiLineWithArrays(tokens) {
-      return tokens.length === 1 && Object.values(tokens[0]).every(Array.isArray);
+    function y2(e) {
+      return e.length === 1 && Object.values(e[0]).every(Array.isArray);
     }
-    function processTokens(tokens) {
-      return isMultiLineWithArrays(tokens) ? convertTokensFromArrayValues(tokens[0]) : tokens;
+    function S(e) {
+      return y2(e) ? N3(e[0]) : e;
     }
-    function interpolate(str, tokens) {
-      const injected = !tokens?.length ? str : tokens.filter((token) => IS(token, Object)).map((token, i) => replace(str, { ...token, index: i + 1 })).join(``);
-      return IS(defaultReplacer, void 0) ? injected : injected.replace(/\{[a-z_\d].+\}/gim, String(defaultReplacer));
+    function O3(e, c) {
+      let u2 = c?.length ? c.filter((l) => b2(l, Object)).map((l, f2) => x2(e, { ...l, index: f2 + 1 })).join("") : e;
+      return b2(i, void 0) ? u2 : u2.replace(/\{[a-z_\d].+\}/gim, String(i));
     }
   }
-  function addSymbolicStringExtensions() {
-    if (!String.prototype[Symbol.for(`interpolate`)]) {
-      Object.defineProperties(String.prototype, {
-        [Symbol.for(`interpolate`)]: {
-          value(...args) {
-            return interpolateDefault(this, ...args);
-          }
-        },
-        [Symbol.for(`interpolate$`)]: {
-          value(...args) {
-            return interpolateClear(this, ...args);
-          }
-        }
-      });
-    }
-    return [Symbol.for("interpolate"), Symbol.for(`interpolate$`)];
+  function L3() {
+    return String.prototype[Symbol.for("interpolate")] || Object.defineProperties(String.prototype, { [Symbol.for("interpolate")]: { value(...i) {
+      return C3(this, ...i);
+    } }, [Symbol.for("interpolate$")]: { value(...i) {
+      return $2(this, ...i);
+    } } }), [Symbol.for("interpolate"), Symbol.for("interpolate$")];
   }
 
   // ../index.js
   setDefaultStyling();
   fixSBLinks2TopProblem();
-  var splatModule = { interpolate: interpolateDefault, interpolateClear, addSymbolicStringExtensions };
+  var splatModule = { interpolate: C3, interpolateClear: $2, addSymbolicStringExtensions: L3 };
   function fixSBLinks2TopProblem() {
     /stackblitz/i.test(location.href) && console.info(`\u2714 Stackblitz rewrites links to _top. The 'stackblitzhelpers' module fixed it.`);
     document.addEventListener(`click`, (evt) => {
