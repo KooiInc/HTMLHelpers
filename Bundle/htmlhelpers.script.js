@@ -29,7 +29,7 @@ var HTMLHelpers = (() => {
     splatModule: () => splatModule
   });
 
-  // ../Resource/jqx.min.js
+  // ../Resource/Externals/jqx.min.js
   var { IS: u, maybe: A, $Wrap: pr, isNothing: it, xProxy: yr, addSymbolicExtensions: br } = st({ useSymbolicExtensions: false });
   function st(t = {}) {
     let { useSymbolicExtensions: e } = t, { shouldbeIsSingleObject: r, ISOneOf: n, isExcept: i, verifyNothingness: a, xProxy: f2, determineType: S, addSymbolicExtensions: y2, maybe: x2, $Wrap: d } = at(b3, e);
@@ -1530,7 +1530,7 @@ ${r}`), g2;
   }
   var mn = ot;
 
-  // ../Resource/ticktock.min.js
+  // ../Resource/Externals/ticktock.min.js
   var [Z2, w2, q2, H2] = ["2-digit", "numeric", "long", "short"];
   var C2 = { fixed: { MM: { month: q2 }, M: { month: H2 }, m: { month: w2 }, mm: { month: Z2 }, yyyy: { year: w2 }, yy: { year: Z2 }, WD: { weekday: q2 }, wd: { weekday: H2 }, d: { day: w2 }, dd: { day: Z2 }, h: { hour: w2 }, hh: { hour: Z2 }, mi: { minute: w2 }, mmi: { minute: Z2 }, s: { second: w2 }, ss: { second: Z2 }, ms: { fractionalSecondDigits: 3 }, tz: { timeZoneName: "shortOffset" }, dl: { locale: "default" }, h12: { hour12: false }, yn: { yearName: "" }, ry: { relatedYear: true }, msp: { fractionalSecond: true } }, dynamic: { tzn: (e) => ({ timeZoneName: e.slice(4) }), hrc: (e) => ({ hourCycle: `h${e.slice(4)}` }), ds: (e) => ({ dateStyle: e.slice(3) }), ts: (e) => ({ timeStyle: e.slice(3) }), tz: (e) => ({ timeZone: e.slice(3) }), e: (e) => ({ era: e.slice(2) }), l: (e) => ({ locale: e.slice(2) }) } };
   var b = { ...C2, retrieveDynamic(e) {
@@ -2202,7 +2202,7 @@ ${r}`), g2;
     return E2({ localeInfo: g(n ? e : r), dateValue: new Date(n ? Date.now() : Ae2(e)), customMethods: Ue2 });
   }
 
-  // ../Resource/REHelper.js
+  // ../Resource/Externals/REHelper.js
   var REHelper_default = Object.defineProperties(instanceCreator, { escape: { value: escape4RE, enumerable: true } });
   function instanceCreator(regExStr, ...args) {
     const { flags, cleanedArgs } = maybeFlags(...args);
@@ -2299,7 +2299,7 @@ ${r}`), g2;
     return str.replace(/\/\*(?:[^*]|\*+[^*\/])*\*+\/|(?<!:|\\\|')\/\/.*/gm, ``).replace(/\s/g, ``).trim().replace(/<!([^>]\d+)>/g, (a, b3) => String.fromCharCode(+b3) ?? a);
   }
 
-  // ../Resource/splat.min.js
+  // ../Resource/Externals/splat.min.js
   var { IS: b2, maybe: E3, $Wrap: X3, isNothing: j3, xProxy: h, addSymbolicExtensions: T3 } = Y3({ useSymbolicExtensions: false });
   function Y3(i = {}) {
     let { useSymbolicExtensions: a } = i, { shouldbeIsSingleObject: m2, ISOneOf: g2, isExcept: P3, verifyNothingness: d, xProxy: x2, determineType: N3, addSymbolicExtensions: y2, maybe: S, $Wrap: O3 } = _3(e, a);

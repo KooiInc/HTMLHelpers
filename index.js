@@ -1,11 +1,11 @@
-import $ from "./Resource/jqx.min.js";
-import $D from "./Resource/ticktock.min.js";
-import regexhelper from "./Resource/REHelper.js";
+import $ from "./Resource/Externals/jqx.min.js";
+import $D from "./Resource/Externals/ticktock.min.js";
+import regexhelper from "./Resource/Externals/REHelper.js";
 
 import {
   default as interpolate,
   interpolateClear,
-  addSymbolicStringExtensions } from "./Resource/splat.min.js";
+  addSymbolicStringExtensions } from "./Resource/Externals/splat.min.js";
 setDefaultStyling();
 fixSBLinks2TopProblem();
 const splatModule = {interpolate, interpolateClear, addSymbolicStringExtensions};
