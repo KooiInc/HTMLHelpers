@@ -240,6 +240,7 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
 // page styling (using $.editCssRules)
 function initStyling() {
   $.link({href: `./codebergicon.ico`, rel: `icon`, type: `image/x-icon`}).appendTo($(`head`));
+  $.img({src: `https://sdn.nicon.nl/px0_CB-HTMLHelpersDemo.png`});
   // style rules are stored in <head>style#JQxStylesheet
   $.editCssRules(
     `:root {
