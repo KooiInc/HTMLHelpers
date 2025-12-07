@@ -242,7 +242,9 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
 
 // page styling (using $.editCssRules)
 function initStyling() {
+  const prefix = /codeberg/i.test(location.href) ? `CB` : `GH`;
   $.link({href: `./codebergicon.ico`, rel: `icon`, type: `image/x-icon`}).appendTo($(`head`));
+  $.img({src: `https://sdn.nicon.nl/px0_${prefix}-HTMLHelpersBrwsrDemo.png`});
   // style rules are stored in <head>style#JQxStylesheet
   $.editCssRules(
     `:root {
