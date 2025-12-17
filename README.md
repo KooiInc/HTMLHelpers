@@ -1,7 +1,5 @@
-<div align="center">
-  <a target="_blank" href="https://www.npmjs.com/package/dynamic-html-helpers"
-    ><img src="https://img.shields.io/npm/v/dynamic-html-helpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9"></a>
-</div>
+[![](https://img.shields.io/npm/v/dynamic-html-helpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9)](https://www.npmjs.com/package/dynamic-html-helpers)
+[![](https://depx.co/api/badge/dynamic-html-helpers)](https://depx.co/pkg/dynamic-html-helpers)
 
 # HtmlHelpers
 Some handy helpers to create/maintain HTML pages.
