@@ -1,6 +1,6 @@
 {
   "name": "dynamic-html-helpers",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Helpers for ES/JS/HTML projects",
   "keywords": [
     "es20xx",
@@ -17,7 +17,7 @@
     "//* installBundleTo:syntax": "npm run installBundleTo [folder to install to]",
     "installBundleTo": "node ./Resource/NpmScripts/installBundledToDirectory.js"
   },
-  "main": "./Bundle/htmlhelpers.min.js",
+  "main": "./index.js",
   "bugs": {
     "url": "https://codeberg.org/KooiInc/HtmlHelpers/issues"
   },
