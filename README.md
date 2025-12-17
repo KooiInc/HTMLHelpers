@@ -72,5 +72,3 @@ Style may be edited dynamically using `$.editCssRules` (see examples).
 > The code base @codeberg.org is therefore *authorative*.
 >
 > The codeberg code is kept in sync with the [Github HTMLHelpers](https://github.com/KooiInc/HTMLHelpers) repository.
-> 
-> <img src="https://sdn.nicon.nl/px0_htmlhelpers-readme.png">
