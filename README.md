@@ -1,6 +1,8 @@
 <!--
   bundlephobia is a lost case
   [![](https://badgen.net/bundlephobia/min/dynamic-html-helpers@latest)](https://bundlephobia.com/package/dynamic-html-helpers@latest)
+  maybe ...
+  [![bundled](https://deno.bundlejs.com/?q=dynamic-html-helpers&badge](https://bundlejs.com/?q=dynamic-html-helpers)
 -->
 [![](https://img.shields.io/npm/v/dynamic-html-helpers.svg?labelColor=cb3837&logo=npm&color=dcfdd9)](https://www.npmjs.com/package/dynamic-html-helpers)
 [![](https://depx.co/api/badge/dynamic-html-helpers)](https://depx.co/pkg/dynamic-html-helpers)
