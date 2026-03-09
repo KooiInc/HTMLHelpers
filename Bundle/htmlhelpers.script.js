@@ -1553,31 +1553,31 @@ ${r}`), g2;
     }, get re() {
       return new RegExp(`\\b(${Object.keys(a.fixed).join("|")})\\b`, "g");
     } }, s = (i = "dtf", y = 0) => {
-      let h2 = ` ${i.replace(/(?<=\{)(.+?)(?=})/g, (d) => `[${y++}]`).replace(/[{}]/g, "").trim()} `, D2 = i.match(/(?<=\{)(.+?)(?=})/g) || [];
+      let D2 = ` ${i.replace(/(?<=\{)(.+?)(?=})/g, (d) => `[${y++}]`).replace(/[{}]/g, "").trim()} `, h2 = i.match(/(?<=\{)(.+?)(?=})/g) || [];
       return { get texts() {
-        return D2;
-      }, formatString(d) {
-        h2 = d;
-      }, set formatStr(d) {
-        h2 = d;
-      }, get formatStr() {
         return h2;
+      }, formatString(d) {
+        D2 = d;
+      }, set formatStr(d) {
+        D2 = d;
+      }, get formatStr() {
+        return D2;
       }, get units() {
-        return h2.match(o.re) || [];
+        return D2.match(o.re) || [];
       }, finalize(d = "", b2 = "", v2 = "", $3 = "") {
-        return h2.replace(/~([\d+]?)/g, "$1").replace(/dtf/, d).replace(/era/, v2).replace(/dp\b|~dp\b/, b2).replace(/yn\b/, $3).replace(/\[(\d+?)]/g, (S, Me2) => D2[Me2].trim()).trim();
+        return D2.replace(/~([\d+]?)/g, "$1").replace(/dtf/, d).replace(/era/, v2).replace(/dp\b|~dp\b/, b2).replace(/yn\b/, $3).replace(/\[(\d+?)]/g, (S, Me2) => h2[Me2].trim()).trim();
       } };
-    }, u2 = (i) => i.replace(/\s+/g, ""), c = (...i) => i?.reduce((y, h2) => ({ ...y, ...o.retrieveDyn(h2) || o.fixed[h2] }), o.fixed.dl), l = (i, y, h2) => {
-      let D2 = c(...u2(h2).split(",")), d = Intl.DateTimeFormat(D2.locale, D2).format(i);
+    }, u2 = (i) => i.replace(/\s+/g, ""), c = (...i) => i?.reduce((y, D2) => ({ ...y, ...o.retrieveDyn(D2) || o.fixed[D2] }), o.fixed.dl), l = (i, y, D2) => {
+      let h2 = c(...u2(D2).split(",")), d = Intl.DateTimeFormat(h2.locale, h2).format(i);
       return y.finalize(d);
-    }, m = (i, y, h2, D2) => i.toLocaleString(y, { timeZone: h2, month: D2 ? t : n }), T3 = (i, y, h2) => {
-      let D2 = c(...y.units.concat(u2(h2).split(",")).flat()), d = { ...o.fixed }, b2 = ($3, S) => D2[$3] === "numeric" && S.startsWith("0") ? S.slice(1) : S, v2 = Intl.DateTimeFormat(D2.locale, D2).formatToParts(i).reduce(($3, S) => S.type === "literal" && /[ ,/-]/.test(S.value) ? $3 : { ...$3, [S.type]: b2(S.type, S.value) }, {});
-      return d.ms = D2.fractionalSecondDigits ? d.msp : d.ms, d.yyyy = v2.relatedYear ? d.ry : d.yyyy, y.formatStr = y.formatStr.replace(o.re, ($3) => /^(M|MM)$/.test($3) ? m(i, D2.locale, D2.timeZone, /^M$/.test($3)) : v2[Object.keys(d[$3]).shift()] || $3), y.finalize(void 0, v2.dayPeriod, v2.era, v2.yearName);
+    }, m = (i, y, D2, h2) => i.toLocaleString(y, { timeZone: D2, month: h2 ? t : n }), T3 = (i, y, D2) => {
+      let h2 = c(...y.units.concat(u2(D2).split(",")).flat()), d = { ...o.fixed }, b2 = ($3, S) => h2[$3] === "numeric" && S.startsWith("0") ? S.slice(1) : S, v2 = Intl.DateTimeFormat(h2.locale, h2).formatToParts(i).reduce(($3, S) => S.type === "literal" && /[ ,/-]/.test(S.value) ? $3 : { ...$3, [S.type]: b2(S.type, S.value) }, {});
+      return d.ms = h2.fractionalSecondDigits ? d.msp : d.ms, d.yyyy = v2.relatedYear ? d.ry : d.yyyy, y.formatStr = y.formatStr.replace(o.re, ($3) => /^(M|MM)$/.test($3) ? m(i, h2.locale, h2.timeZone, /^M$/.test($3)) : v2[Object.keys(d[$3]).shift()] || $3), y.finalize(void 0, v2.dayPeriod, v2.era, v2.yearName);
     };
-    return (i, y, h2 = "l:default") => /ds:|ts:/.test(h2) ? l(i, s(void 0), h2) : T3(i, s(y || void 0), h2);
+    return (i, y, D2 = "l:default") => /ds:|ts:/.test(D2) ? l(i, s(void 0), D2) : T3(i, s(y || void 0), D2);
   }
-  var ue2 = Ce2;
-  function Ce2() {
+  var ue2 = ke2;
+  function ke2() {
     let e = (t, a) => {
       let o = isNaN(new Date(t)), s = isNaN(new Date(a));
       if (s) {
@@ -1597,18 +1597,18 @@ ${r}`), g2;
     return function({ start: t, end: a, diffs: o = {} } = {}) {
       let s = e(t, a), u2 = a > t ? "+" : "-";
       if (s.error) return s;
-      let c = Math.abs(t - a), l = new Date(c), m = l.getUTCFullYear() - 1970, T3 = l.getUTCMonth(), i = l.getUTCDate() - 1, y = i % 7, h2 = Math.floor(i / 7), D2 = l.getUTCHours(), d = l.getUTCMinutes(), b2 = l.getUTCSeconds(), v2 = l.getUTCMilliseconds(), $3 = Math.floor(c / 864e5);
-      o = { ...o, fromUTC: t, toUTC: a, sign: "", years: m, months: T3, days: i, hours: D2, minutes: d, seconds: b2, milliseconds: v2, diffInDays: $3 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
-      let S = D2 + d + b2 > 0 ? "T" : "";
-      return o.clean !== "Dates are equal" && (o.sign = u2, o.jsPeriod = `${u2}P${m > 0 ? `${m}Y` : ""}${T3 > 0 ? `${T3}M` : ""}${h2 > 0 ? `${h2}W` : ""}${y > 0 ? `${y}D` : ""}${S}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${b2 > 0 ? `${b2}S` : ""}`, o.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T3 > 0 ? `${T3}M` : ""}${i > 0 ? `${i}D` : ""}${S}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${b2 > 0 ? `${b2}S` : ""}`), o;
+      let c = Math.abs(t - a), l = new Date(c), m = l.getUTCFullYear() - 1970, T3 = l.getUTCMonth(), i = l.getUTCDate() - 1, y = i % 7, D2 = Math.floor(i / 7), h2 = l.getUTCHours(), d = l.getUTCMinutes(), b2 = l.getUTCSeconds(), v2 = l.getUTCMilliseconds(), $3 = Math.floor(c / 864e5);
+      o = { ...o, fromUTC: t, toUTC: a, sign: "", years: m, months: T3, days: i, hours: h2, minutes: d, seconds: b2, milliseconds: v2, diffInDays: $3 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
+      let S = h2 + d + b2 > 0 ? "T" : "";
+      return o.clean !== "Dates are equal" && (o.sign = u2, o.jsPeriod = `${u2}P${m > 0 ? `${m}Y` : ""}${T3 > 0 ? `${T3}M` : ""}${D2 > 0 ? `${D2}W` : ""}${y > 0 ? `${y}D` : ""}${S}${h2 > 0 ? `${h2}H` : ""}${d > 0 ? `${d}M` : ""}${b2 > 0 ? `${b2}S` : ""}`, o.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T3 > 0 ? `${T3}M` : ""}${i > 0 ? `${i}D` : ""}${S}${h2 > 0 ? `${h2}H` : ""}${d > 0 ? `${d}M` : ""}${b2 > 0 ? `${b2}S` : ""}`), o;
     };
     function n() {
       let t = (...l) => (m) => l.reduce((T3, i) => i(T3), m), a = (l, m) => l === 1 ? m.slice(0, -1) : m;
       return t(({ values: l, full: m }) => [Object.entries(l).filter(([T3]) => /^(years|month|days|hours|minutes|seconds)/i.test(T3)), m], ([l, m]) => m ? l : l.filter(([, T3]) => m ? +T3 : T3 > 0), (l) => l.reduce((m, [T3, i]) => [...m, `${i} ${a(i, T3)}`], []), (l) => l.length < 1 ? "Dates are equal" : `${l.slice(0, -1).join(", ")}${l.length > 1 ? " and " : ""}${l.slice(-1).shift()}`);
     }
   }
-  var ie2 = ke2;
-  function ke2() {
+  var ie2 = Ce2;
+  function Ce2() {
     let e = Object.entries({ year: "FullYear", month: "Month", date: "Date", day: "Date", hour: "Hours", minute: "Minutes", second: "Seconds", millisecond: "Milliseconds" }).reduce((t, [a, o]) => ({ ...t, [a]: o, [`${a}s`]: o }), {}), r = false, n = function(...t) {
       let a = t.length === 1;
       return r = t[0].trim().startsWith("subtract,"), r && (t = a ? t[0].trim().replace(/^subtract,/i, "").split(",").map((o) => o.trim()) : t.filter((o) => !o.startsWith("subtract"))), a && !r && (t = t[0].split(",").map((o) => o.trim())), t.map(function(o) {
@@ -1631,13 +1631,13 @@ ${r}`), g2;
   }
   var de = ue2();
   var ge2 = Pe2();
-  var w2 = ie2();
+  var Z2 = ie2();
   var Ae2 = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   var ye2 = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   function q2(e, ...r) {
-    return w2(e, ...r), e;
+    return Z2(e, ...r), e;
   }
-  function he2(e, r = false) {
+  function De2(e, r = false) {
     let n = K2(e.clone, { sunday: r }), t = [n];
     return { weekStart: n.format("WD", "l:en-GB"), inputDate: e, dates: t.concat([...Array(6)].map((a, o) => n.clone.addDays(o + 1))) };
   }
@@ -1652,7 +1652,7 @@ ${r}`), g2;
     let t = e.clone.relocate(g);
     return n = (n || "").startsWith("+") ? `${t.localeInfo.formatOptions},${n.slice(1)}` : n || t.localeInfo.formatOptions, I2(t, r, n);
   }
-  function De2(e, r) {
+  function he2(e, r) {
     let n = de({ start: e, end: r || e });
     return parseInt(`${n.sign}${n.diffInDays}`);
   }
@@ -1680,7 +1680,7 @@ ${r}`), g2;
     return n[1] -= 1, n;
   }
   function Ue2(e) {
-    let r = new Intl.Locale(e.localeInfo.locale), n = r.getWeekInfo && r.getWeekInfo().firstDay || 1;
+    let r = new Intl.Locale(e.locale), n = r.weekInfo ? r.weekInfo.firstDay : r.getWeekInfo ? r.getWeekInfo().firstDay : 1;
     return n = n === 7 ? 0 : n, ye2[n];
   }
   function K2(e, { sunday: r = false } = {}) {
@@ -1693,7 +1693,7 @@ ${r}`), g2;
   }
   function Q2({ start: e, end: r } = {}) {
     r || (r = e.clone), r?.clone || (r = f(r, { timeZone: e.timeZone })), e = f(me(e, e.timeZone), { timeZone: e.timeZone }), r = f(me(r, r.timeZone), { timeZone: r.timeZone });
-    let n = de({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = Le2(r, e), a = n.sign.startsWith("-") ? "ahead of" : "behind", [o, s] = t.map((l) => Math.abs(l)), [u2, c] = [`${o} ${k2(o, "hour")}`, `${s} ${k2(s, "minute")}`];
+    let n = de({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = Le2(r, e), a = n.sign.startsWith("-") ? "ahead of" : "behind", [o, s] = t.map((l) => Math.abs(l)), [u2, c] = [`${o} ${C(o, "hour")}`, `${s} ${C(s, "minute")}`];
     return n.timeZonesOffsetDifference = n.sign.length < 1 || o + s === 0 ? `Offsets of ${e.timeZone} and ${r.timeZone} are equal` : `${e.timeZone} is ${u2}${s > 0 ? ` and ${c}` : ""} ${a} ${r.timeZone}`, n;
   }
   function R2(e, r) {
@@ -1704,12 +1704,12 @@ ${r}`), g2;
   function le2(e, r = 2) {
     return `${e}`.padStart(r, "0");
   }
-  function k2(e, r) {
+  function C(e, r) {
     return `${r}${e > 1 || e === 0 ? "s" : ""}`;
   }
   function xe2(e) {
     if (/00:00/.test(e)) return "no time diffence to";
-    let r = e.slice(1).split(":").map(Number), [n, t] = r, a = k2(n, "hour"), o = k2(t, "minute"), s = e.startsWith("+");
+    let r = e.slice(1).split(":").map(Number), [n, t] = r, a = C(n, "hour"), o = C(t, "minute"), s = e.startsWith("+");
     return t > 0 ? `${n} ${a} and ${t} ${o} ${s ? "ahead of" : "behind"}` : `${n} ${a} ${s ? "ahead of" : "behind"}`;
   }
   function ce2(e, r, n) {
@@ -1768,10 +1768,10 @@ ${r}`), g2;
     return new Date(new Date(e).toLocaleString("en", n));
   }
   function z2(e, { year: r, month: n, date: t } = {}) {
-    return Z2(r) && e.setFullYear(parseInt(r)), Z2(t) && e.setDate(parseInt(t)), Z2(n) && e.setMonth(parseInt(n)), e;
+    return w2(r) && e.setFullYear(parseInt(r)), w2(t) && e.setDate(parseInt(t)), w2(n) && e.setMonth(parseInt(n)), e;
   }
   function N2(e, { hours: r, minutes: n, seconds: t, milliseconds: a } = {}) {
-    return Z2(r) && e.setHours(parseInt(r)), Z2(n) && e.setMinutes(parseInt(n)), Z2(t) && e.setSeconds(parseInt(t)), Z2(a) && e.setMilliseconds(parseInt(a)), e;
+    return w2(r) && e.setHours(parseInt(r)), w2(n) && e.setMinutes(parseInt(n)), w2(t) && e.setSeconds(parseInt(t)), w2(a) && e.setMilliseconds(parseInt(a)), e;
   }
   function $e2(e) {
     return e?.constructor === Date || e?.value;
@@ -1804,15 +1804,15 @@ ${r}`), g2;
   function P2(e, r) {
     return r = r || e?.timeZone || g.timeZone, e = e?.hasDST ? e : e?.constructor === Date ? f(e, { timeZone: r }) : f({ timeZone: r }), e.hasDST ? !/standard/i.test(e.toString()) : false;
   }
-  function Ze2(e, { locale: r, timeZone: n, l: t, tz: a } = {}) {
+  function we2(e, { locale: r, timeZone: n, l: t, tz: a } = {}) {
     return e.localeInfo = p({ locale: t || r || e.l || e.locale, timeZone: a || n || e.tz || e.timeZone }), e;
   }
-  function we2(e, r) {
+  function Ze2(e, r) {
     return $e2(r) && (e = f(r.value || r, r.localeInfo || e.localeInfo)), e;
   }
-  function C(e, r) {
+  function k2(e, r) {
     let n = ne2(new Date(e, 11, r || 31));
-    return n === 1 ? C(e, (r || 31) - 1) : n;
+    return n === 1 ? k2(e, (r || 31) - 1) : n;
   }
   function re2(e, r) {
     let n = e.month;
@@ -1844,7 +1844,7 @@ ${r}`), g2;
     }, cloneWith(o) {
       return te2(t, o);
     }, daysUntil(o) {
-      return De2(t, o);
+      return he2(t, o);
     }, differenceTo(o) {
       return Q2({ start: t, end: o });
     }, differenceUntil(o) {
@@ -1856,7 +1856,7 @@ ${r}`), g2;
     }, fullMonth(o) {
       return L2(t, o);
     }, fullWeek(o = false) {
-      return he2(t, !!o);
+      return De2(t, !!o);
     }, isFuture(o) {
       return W2(t, { start: t, end: o, future: true });
     }, isPast(o) {
@@ -1868,9 +1868,9 @@ ${r}`), g2;
     }, previous(o, s) {
       return x(t, { day: o, next: false, preserveTodayWhenEqual: !!s });
     }, relocate({ locale: o, timeZone: s, l: u2, tz: c } = {}) {
-      return Ze2(t, { locale: o, timeZone: s, l: u2, tz: c });
+      return we2(t, { locale: o, timeZone: s, l: u2, tz: c });
     }, revalue(o) {
-      return t = we2(t, o), t;
+      return t = Ze2(t, o), t;
     }, setDateValues({ year: o, month: s, date: u2 } = {}) {
       return z2(t, { year: o, month: s, date: u2 });
     }, setTimeValues({ hours: o, minutes: s, seconds: u2, milliseconds: c } = {}) {
@@ -1988,7 +1988,7 @@ ${r}`), g2;
     }, get weeknr() {
       return ne2(t);
     }, get weeksInYear() {
-      return C(t.year, 31);
+      return k2(t.year, 31);
     }, get year() {
       return t.date.year;
     }, get zoneDate() {
@@ -2046,7 +2046,7 @@ ${r}`), g2;
     return e = p({ locale: e }).locale, { long: [...Array(12).keys()].map((r) => new Date(Date.UTC(1970, r, 1)).toLocaleDateString(e, { timeZone: "Etc/UTC", month: "long" })), short: [...Array(12).keys()].map((r) => new Date(Date.UTC(1970, r, 1)).toLocaleDateString(e, { timeZone: "Etc/UTC", month: "short" })) };
   }
   function qe2({ year: e, locale: r } = {}) {
-    e = Z2(e) ? parseInt(e) : (/* @__PURE__ */ new Date()).getFullYear();
+    e = w2(e) ? parseInt(e) : (/* @__PURE__ */ new Date()).getFullYear();
     let n = { year: e, calendar: {} }, t = Y2().long.map((a) => a.toLowerCase());
     for (let a = 0; a < 12; a += 1) {
       let o = f.from(e, a, 1);
@@ -2055,7 +2055,7 @@ ${r}`), g2;
     return n;
   }
   function He2({ year: e, monthNr: r, locale: n = "en-CA" } = {}) {
-    e = Z2(r) && parseInt(e) || -1, r = Z2(r) && parseInt(r) || (/* @__PURE__ */ new Date()).getFullYear();
+    e = w2(r) && parseInt(e) || -1, r = w2(r) && parseInt(r) || (/* @__PURE__ */ new Date()).getFullYear();
     let t = r >= 1 && r <= 12;
     return n = p({ locale: n }).locale, r = t ? r - 1 : void 0, t ? f.from(e, r, 1).relocate({ locale: n }).fullMonth(n) : "MonthNr should be a specific number (1 = january - 12 = december)";
   }
@@ -2081,12 +2081,12 @@ ${r}`), g2;
     return p({ locale: e, timeZone: r, l: n, tz: t }, true);
   }
   function be2(e) {
-    return !Number.isNaN(+e) && e?.constructor === Date && !e?.toISOString?.().startsWith("1970-01-01T00:00:00") ? e : /* @__PURE__ */ new Date();
+    return !Number.isNaN(+e) && e?.constructor === Date ? e : /* @__PURE__ */ new Date();
   }
   function Ie2(e) {
     let r = /* @__PURE__ */ new Date();
     switch (true) {
-      case e?.constructor === String:
+      case (typeof e == "string" || typeof e == "number"):
         return be2(new Date(e));
       case (Array.isArray(e) && e.map(Number).length === e.length):
         return e.length === 1 ? new Date(e[0], 0, 1) : new Date(...e);
@@ -2108,11 +2108,11 @@ ${r}`), g2;
     let t = { timeZone: p({ timeZone: r }).timeZone }, a = { timeZone: p({ timeZone: n || "" }).timeZone }, o = f(e, t), s = f(e, a), u2 = s.differenceTo(o), c = o.offsetFrom(s).offset, [l, m] = A2(c, true), T3 = s.clone.add(`${l} hours, ${m} minutes`), y = u2.equalDates ? "No difference" : `Time offset ${c}: ${a.timeZone} is ${u2.clean} ${l < 0 ? "behind" : "ahead of"} ${t.timeZone}`;
     return { remoteTimezone: t.timeZone, userTimezone: a.timeZone, timeDifference: y, result: { [t.timeZone.replace(/\//, "_")]: f(e).toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }), [a.timeZone.replace(/\//, "_")]: T3.toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }) } };
   }
-  function Z2(e) {
+  function w2(e) {
     return !Number.isNaN(parseInt(e));
   }
   function V2(e, r, n) {
-    return e?.constructor === Number ? w2(r, `${e} ${n}`) : r;
+    return e?.constructor === Number ? Z2(r, `${e} ${n}`) : r;
   }
   function Ge2(e) {
     let r = { addYears(n = 1) {
@@ -2124,21 +2124,21 @@ ${r}`), g2;
     }, addDays(n = 1) {
       return V2(n, e, "days");
     }, get nextYear() {
-      return w2(e, "1 year");
+      return Z2(e, "1 year");
     }, get nextWeek() {
-      return w2(e, "7 days");
+      return Z2(e, "7 days");
     }, get previousWeek() {
-      return w2(e, "-7 days");
+      return Z2(e, "-7 days");
     }, get previousYear() {
-      return w2(e, "-1 year");
+      return Z2(e, "-1 year");
     }, get nextMonth() {
-      return w2(e, "1 month");
+      return Z2(e, "1 month");
     }, get previousMonth() {
-      return w2(e, "-1 month");
+      return Z2(e, "-1 month");
     }, get tomorrow() {
-      return w2(e, "1 day");
+      return Z2(e, "1 day");
     }, get yesterday() {
-      return w2(e, "-1 day");
+      return Z2(e, "-1 day");
     } };
     for (let n of Ve2) r[n.syn] = function(...t) {
       return e[n.native](...t), e;
@@ -2167,11 +2167,11 @@ ${r}`), g2;
     } }, localMonthnames: { value(n) {
       return Y2(n);
     } }, daysInMonth: { value(n, t = false) {
-      return n = Z2(n) ? parseInt(n) : 0, n >= 1 && n <= 12 ? new Date(t ? 2e3 : 2005, n, 0).getDate() : `${n} should be a Number between (1 (january) - 12 (december))`;
+      return n = w2(n) ? parseInt(n) : 0, n >= 1 && n <= 12 ? new Date(t ? 2e3 : 2005, n, 0).getDate() : `${n} should be a Number between (1 (january) - 12 (december))`;
     } }, yearCalendar: { value: qe2 }, monthCalendar: { value: He2 }, from: { value(...n) {
       return e(n);
     } }, fromUxTS: { value(n, t) {
-      n = Z2(n) ? parseInt(n) * 1e3 : void 0;
+      n = w2(n) ? parseInt(n) * 1e3 : void 0;
       let a = n ? new Date(n) : /* @__PURE__ */ new Date();
       return f(a, t || g);
     } }, hasDST: { value({ date: n, timeZone: t } = {}) {
@@ -2189,7 +2189,7 @@ ${r}`), g2;
     } }, addCustom: { value({ name: n, method: t, enumerable: a = false, isGetter: o = false } = {}) {
       n?.constructor === String && t?.constructor === Function && t.length > 0 && (r[n] = { method: t, enumerable: a, isGetter: o });
     } }, validateLocaleInformation: { value: p }, timeAcrossZones: { value: _e2 }, weeksInYear: { value(n) {
-      return C(n, 31);
+      return k2(n, 31);
     } }, keys: { get() {
       let n = Object.fromEntries(Object.entries(r).filter(([a, o]) => o.enumerable === true));
       return [...Object.keys(E()), ...Object.keys(se2()), ...Object.keys(n)].sort((a, o) => a.localeCompare(o));
