@@ -5,9 +5,9 @@ const {
   regexhelper: createRE,
   logFactory,
   $D,
-  splat,
+  splatModule,
 } = HTMLHelpers;
-
+splatModule.addSymbolicStringExtensions();
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 const splatMe = Symbol.for("interpolate"); // see splat examples
@@ -17,6 +17,8 @@ const moduleOrBrowserLink = $.a({
   href: "./index.html",
   html: " examples <i>module</i> version"
 });
+const splat = splatModule.interpolate;
+
 // set page styling
 initStyling();
 
