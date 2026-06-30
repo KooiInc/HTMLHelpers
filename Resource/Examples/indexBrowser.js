@@ -256,6 +256,7 @@ function initStyling() {
     `body {
       margin: 2rem;
       overflow-x: hidden;
+      font: 14px/17px monospace, Arial, sans-serif;
     }`,
     `.container {
       width: 100vw;
