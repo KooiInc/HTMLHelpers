@@ -250,7 +250,7 @@ var HTMLHelpers = (() => {
     return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(Q)));
   }
   function St(t, e, r) {
-    return e = e?.isJQx && e.node || e, $({ trial: (n) => Be(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
+    return e = e?.isJQx && e.node || e[Symbol.is](String, Number) ? String(e) : e, $({ trial: (n) => Be(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
 `, n) });
   }
   function xt(t, e, ...r) {
