@@ -22,7 +22,7 @@ var HTMLHelpers = (() => {
   // ../index.js
   var index_exports = {};
   __export(index_exports, {
-    $: () => hn,
+    $: () => Sn,
     $D: () => f,
     logFactory: () => logFactory,
     regexhelper: () => REHelper_default,
@@ -30,7 +30,7 @@ var HTMLHelpers = (() => {
   });
 
   // ../Resource/Externals/jqx.min.js
-  var { IS: l, isOnly: vr, maybe: O, $Wrap: Lr, isNothing: ut, addSymbolicExtensions: Ne, detectableProxy: G } = ct({ useSymbolicExtensions: false });
+  var { IS: l, isOnly: Lr, maybe: O, $Wrap: Fr, isNothing: ut, addSymbolicExtensions: Ne, detectableProxy: Y } = ct({ useSymbolicExtensions: false });
   function ct(t = {}) {
     let { useSymbolicExtensions: e } = t, r = mt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: b, addSymbolicExtensions: p3, maybe: x2, $Wrap: d, detectableProxy: y } = ft(m, e);
     return e && p3(), { IS: m, isOnly: S2, maybe: x2, $Wrap: d, isNothing: a, addSymbolicExtensions: p3, detectableProxy: y };
@@ -226,15 +226,15 @@ var HTMLHelpers = (() => {
   }
   var Me = { html: "innerHTML", text: "textContent", class: "className" };
   var bt = Ot();
+  var G = {};
   var j = {};
-  var z = {};
   var J = Pt();
   var De = (t) => {
     console.error(`tinyDOM error: "${t}" is not a valid HTML tag`);
   };
   var k = ht();
   function ht() {
-    return Object.freeze(new Proxy(j, Ie()));
+    return Object.seal(new Proxy(G, Ie()));
   }
   function Ie() {
     return { get(t, e) {
@@ -258,7 +258,7 @@ var HTMLHelpers = (() => {
     } }), Pe(i, t);
     if (t.includes("-")) {
       let [a, b] = t.includes("-") ? [t, Mt(t)] : [Ht(t), t];
-      z[a] = a, z[b] = a, r = b;
+      j[a] = a, j[b] = a, r = b;
     }
     return r && Object.defineProperty(i, r, { get() {
       return Re(t);
@@ -267,10 +267,10 @@ var HTMLHelpers = (() => {
     } }), Pe(i, t);
   }
   function Pe(t, e) {
-    return j = Object.freeze(new Proxy(t, Ie())), j[Symbol.for.proxy] = "Proxy (Object)", j[e];
+    return G = Object.seal(new Proxy(t, Ie())), G[e];
   }
   function St() {
-    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(j)));
+    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(G)));
   }
   function xt(t, e, r) {
     return e = e?.isJQx && e.node || (J(e, Number) ? String(e) : e), bt({ trial: (n) => Je(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
@@ -326,13 +326,13 @@ var HTMLHelpers = (() => {
     return /comment/i.test(t);
   }
   function Tt(t) {
-    return Ct(t) && (t in z || !J(X(t), HTMLUnknownElement));
+    return Ct(t) && (t in j || !J(X(t), HTMLUnknownElement));
   }
   function Ct(t) {
     return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
   }
   function Re(t) {
-    return t = t in z ? z[t] : t, (e, ...r) => Et(t, e, ...r);
+    return t = t in j ? j[t] : t, (e, ...r) => Et(t, e, ...r);
   }
   function Nt([t, ...e]) {
     return `${t.toUpperCase()}${e.join("")}`;
@@ -369,7 +369,7 @@ var HTMLHelpers = (() => {
       return n(i, a?.[0]);
     };
   }
-  var W = Rt;
+  var z = Rt;
   function Rt({ styleSheet: t, createWithId: e } = {}) {
     let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: b, currentSheetID: p3 } = Dt({ styleSheet: t, createWithId: e });
     function x2(f2, c) {
@@ -421,13 +421,13 @@ var HTMLHelpers = (() => {
     => @charset, @namespace and @import are not supported here`), { done: true };
     }
     function a(m, S2) {
-      return [...t.rules].find((f2) => S2 ? ze(f2.selectorText || "", m) : jt`${Qt(m)}${[..."gim"]}`.test(f2.cssText));
+      return [...t.rules].find((f2) => S2 ? ke(f2.selectorText || "", m) : jt`${Qt(m)}${[..."gim"]}`.test(f2.cssText));
     }
     function b(m) {
       return /^@charset|@import|namespace/i.test(m.trim()) ? i(m) : m.match(/}/g)?.length > 1 ? { existing: d(m, 1), done: true } : { done: false };
     }
     function p3(m) {
-      let S2 = [...t.cssRules].reduce((c, s, u2) => ze(s.selectorText || "", m) && c.concat(u2) || c, []), f2 = S2.length;
+      let S2 = [...t.cssRules].reduce((c, s, u2) => ke(s.selectorText || "", m) && c.concat(u2) || c, []), f2 = S2.length;
       return S2.forEach((c) => t.deleteRule(c)), f2 > 0 ? console.info(`\u2714 Removed ${f2} instance${f2 > 1 ? "s" : ""} of selector ${m} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${m} does not exist in ${n.slice(4)}`);
     }
     function x2(m, S2) {
@@ -486,21 +486,21 @@ ${r}`), f2;
       console.error(`${e || "an error occured"}: ${r.message}`);
     }
   }
-  function zt(t) {
+  function kt(t) {
     return t.replace(/\/\*.+?\*\//gm, "").replace(/[}{\r\n]/g, "").replace(/(data:.+?);/g, (e, r) => `${r}\\3b`).split(";").map((e) => e.trim()).join(`;
 `).replaceAll("\\3b", ";").split(`
 `);
   }
-  function kt(t) {
+  function zt(t) {
     return t.reduce((e, r) => {
       let [n, o] = [r.slice(0, r.indexOf(":")).trim(), r.slice(r.indexOf(":") + 1).trim().replace(/;$|;.+(?=\/*).+\/$/, "")];
       return n && o ? { ...e, [n]: o } : e;
     }, {});
   }
   function Wt(t) {
-    return kt(zt(t));
+    return zt(kt(t));
   }
-  function ze(t, e) {
+  function ke(t, e) {
     return t?.replace("::", ":") === e?.replace("::", ":");
   }
   var ye = false;
@@ -674,7 +674,7 @@ ${r}`), f2;
       }
       switch (true) {
         case !e[y][h2]:
-          return v.log(`JQx: created listener for event type ${y}, with handler name ${h2}`), e[y][h2] = { name: h2, handler: i(m, s, c, h2), capture: ke(y, f2), once: !!c, type: y, initialHandler: w, selector: !!s && s || false, about: !!g2 && g2 || false, unListen() {
+          return v.log(`JQx: created listener for event type ${y}, with handler name ${h2}`), e[y][h2] = { name: h2, handler: i(m, s, c, h2), capture: ze(y, f2), once: !!c, type: y, initialHandler: w, selector: !!s && s || false, about: !!g2 && g2 || false, unListen() {
             p3(y, h2);
           } }, e[y][h2];
         default:
@@ -702,7 +702,7 @@ ${r}`), f2;
   } }));
   var Kt = [...Array(26)].map((t, e) => String.fromCharCode(e + 65)).concat([...Array(26)].map((t, e) => String.fromCharCode(e + 97))).concat([...Array(10)].map((t, e) => `${e}`));
   var Se = Object.freeze({ get(t, e) {
-    return t[V(e)] || t[e];
+    return t[U(e)] || t[e];
   }, enumerable: false, configurable: false });
   var re = {};
   function xe() {
@@ -727,7 +727,7 @@ ${r}`), f2;
     let e = `anonymous_${Math.random().toString(36).slice(2)}`;
     return re[e] ? We() : (re[e] = e, e);
   }
-  function ke(t, e) {
+  function ze(t, e) {
     return !!Zt.find((r) => r === t) || !!e;
   }
   function ie(t) {
@@ -736,8 +736,8 @@ ${r}`), f2;
   function se(t) {
     return t && (t.textContent = "");
   }
-  function B(t, e = 0, r = true) {
-    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? B(t, e, r) : e;
+  function W(t, e = 0, r = true) {
+    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? W(t, e, r) : e;
   }
   function L(t, e = 1) {
     return e = l(e, Number) && e || 1, l(t, String) && t.length >= e;
@@ -811,7 +811,7 @@ ${r}`), f2;
     if (t && l(e, Object)) for (let [r, n] of Object.entries(e)) t.setAttribute(`data-${$(r)}`, n);
   }
   function le(t) {
-    return t ? t.EL ? [t.EL] : l(t, NodeList) ? [...t] : N(t) ? [t] : Y(t) ? t : t.isJQx ? t.collection : void 0 : [];
+    return t ? t.EL ? [t.EL] : l(t, NodeList) ? [...t] : N(t) ? [t] : _(t) ? t : t.isJQx ? t.collection : void 0 : [];
   }
   function D(t, e, r = true, ...n) {
     if (t.is.empty) return v.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), t;
@@ -824,7 +824,7 @@ ${r}`), f2;
   function N(t) {
     return l(t, Text, HTMLElement, Comment);
   }
-  function U(t, e) {
+  function B(t, e) {
     if (l(e, Object)) for (let [r, n] of Object.entries(e)) {
       let o;
       /!important/i.test(n) && (n = n.slice(0, n.indexOf("!")).trim(), o = "important"), t.style.setProperty($(r), n, o);
@@ -878,7 +878,7 @@ ${r}`), f2;
     }
     return t;
   }
-  function V(t) {
+  function U(t) {
     return l(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${tr(e)}` || e).join("") : t;
   }
   function $(t) {
@@ -896,14 +896,14 @@ ${r}`), f2;
   function Ge(t) {
     return l(t, Text);
   }
-  function _(t) {
+  function V(t) {
     return l(t, String) && /^<|>$/.test(`${t}`.trim());
   }
-  function Y(t) {
+  function _(t) {
     return l(t, Array) && !t?.find((e) => !N(e));
   }
   function fe(t) {
-    return l(t, Array) && !t?.find((e) => !_(e));
+    return l(t, Array) && !t?.find((e) => !V(e));
   }
   function E(t, e) {
     let r = t.collection.filter((n) => !ce(n));
@@ -922,7 +922,7 @@ ${r}`), f2;
     }
   }
   function Ze() {
-    return { isCommentOrTextNode: ce, isNode: N, isComment: Fe, isText: Ge, isHtmlString: _, isArrayOfHtmlElements: Y, isArrayOfHtmlStrings: fe, ElemArray2HtmlString: Ve, input2Collection: le, setCollectionFromCssSelector: Ae, cssRuleEdit: W({ createWithId: "JQxStylesheet" }) };
+    return { isCommentOrTextNode: ce, isNode: N, isComment: Fe, isText: Ge, isHtmlString: V, isArrayOfHtmlElements: _, isArrayOfHtmlStrings: fe, ElemArray2HtmlString: Ve, input2Collection: le, setCollectionFromCssSelector: Ae, cssRuleEdit: z({ createWithId: "JQxStylesheet" }) };
   }
   function Ke() {
     let e = Object.freeze({ notInDOM: "n/a", writable: "n/a", modal: "n/a", empty: true, open: "n/a", visible: "n/a" });
@@ -974,7 +974,7 @@ ${r}`), f2;
     }, dimensions(e) {
       if (e.is.empty) return v.error("[JQx instance].dimensions called on empty instance"), { error: "[JQx instance].dimensions: NO ELEMENTS" };
       let { node: r } = e, n = r.getBoundingClientRect().toJSON();
-      return n.scrollTopDistance = B(r, 0), n.scrollLeftDistance = B(r, 0, false), n;
+      return n.scrollTopDistance = W(r, 0), n.scrollLeftDistance = W(r, 0, false), n;
     }, node(e) {
       return e[0];
     }, HTML(e) {
@@ -1106,7 +1106,7 @@ ${r}`), f2;
     }, hasClass(e, ...r) {
       return e.is.empty || !e.node.classList.length ? false : r.find((n) => e.node.classList.contains(n)) && true || false;
     }, hide(e) {
-      return E(e, (r) => U(r, { display: "none !important" }));
+      return E(e, (r) => B(r, { display: "none !important" }));
     }, html(e, r, n) {
       switch (true) {
         case (e.is.empty && !L(r)):
@@ -1205,7 +1205,7 @@ ${r}`), f2;
     }, setData(e, r) {
       return E(e, (n) => ae(n, r));
     }, show(e) {
-      return E(e, (r) => U(r, { display: "revert-layer !important" }));
+      return E(e, (r) => B(r, { display: "revert-layer !important" }));
     }, single(e, r) {
       let n = e.collection.length > 0;
       switch (r = r ?? 0, true) {
@@ -1220,7 +1220,7 @@ ${r}`), f2;
       }
     }, style(e, r, n) {
       return E(e, (i) => {
-        n && l(r, String) && (r = { [r]: n || "none" }), U(i, r);
+        n && l(r, String) && (r = { [r]: n || "none" }), B(i, r);
       });
     }, text(e, r, n = false) {
       switch (true) {
@@ -1254,7 +1254,7 @@ ${r}`), f2;
   }
   var $e;
   var de;
-  var { isComment: an, isText: ln, isHtmlString: un, isArrayOfHtmlElements: cn, isArrayOfHtmlStrings: fn, ElemArray2HtmlString: dn, cssRuleEdit: Te, addFn: ir } = sr();
+  var { isComment: ln, isText: un, isHtmlString: cn, isArrayOfHtmlElements: fn, isArrayOfHtmlStrings: dn, ElemArray2HtmlString: mn, cssRuleEdit: Te, addFn: ir } = sr();
   function sr() {
     return { ...Ze(), addFn: ar };
   }
@@ -1278,21 +1278,28 @@ ${r}`), f2;
     };
   }
   function me(t) {
-    return new Proxy(t, { get: (e, r) => ur(e, r, t) });
+    return new Proxy(t, { get: (e, r) => cr(e, r, t) });
   }
-  function tt(t, e) {
-    return (...r) => e = typeof t == "function" ? t(me(e), ...r) : e;
+  function tt(t, e, r = false) {
+    e = e[Symbol.proxy] ? e : me(e);
+    let n = function(...o) {
+      return t(e, ...o);
+    };
+    return r ? n() : n;
   }
-  function ur(t, e, r) {
+  function ur(t) {
+    return `Proxy for JQx${t.collection.length < 1 ? " (empty)" : ""} instance`;
+  }
+  function cr(t, e, r) {
     switch (true) {
-      case (e === Symbol.proxy || e === Symbol.type):
-        return "JQx instance proxy";
+      case e === Symbol.proxy:
+        return ur(r);
       case typeof e == "symbol":
         return O({ trial: () => t[e], whenError: () => t });
       case (!Number.isNaN(+e) && typeof +e == "number"):
         return t.collection?.[e] || void 0;
       case e in $e:
-        return tt($e[e], r)();
+        return tt($e[e], r, true);
       case e in de:
         return tt(de[e], r);
       default:
@@ -1300,14 +1307,14 @@ ${r}`), f2;
     }
   }
   function ot(t) {
-    let e = gr(t);
+    let e = pr(t);
     for (let [r, n] of Object.entries(Object.getOwnPropertyDescriptors(e))) Object.defineProperty(t, r, n);
     return t;
   }
-  function cr(t) {
+  function fr(t) {
     return { allow(e) {
       let r = /-/.test(e), n = r && e;
-      e = r ? V(e) : e.toLowerCase(), C.allowTag(e), Object.defineProperties(t, Ce(e, true, t, n));
+      e = r ? U(e) : e.toLowerCase(), C.allowTag(e), Object.defineProperties(t, Ce(e, true, t, n));
     }, prohibit(e) {
       e = e.toLowerCase(), C.prohibitTag(e), Object.defineProperties(t, Ce(e, false, t));
     } };
@@ -1319,7 +1326,7 @@ ${r}`), f2;
     }
     for (let e of t.map((r) => r.startsWith("!") ? r.slice(1, -1) : r)) Te(e, { removeRule: 1 });
   }
-  function fr(t) {
+  function dr(t) {
     return function(e, r, n) {
       r = r?.isJQx ? r?.[0] : r, n = n && Object.values(F).find((i) => n === i);
       let o = t(e, document.createElement("br"));
@@ -1327,7 +1334,7 @@ ${r}`), f2;
       return o;
     };
   }
-  function dr(...t) {
+  function mr(...t) {
     let e = {};
     for (let r of t) {
       let n = Object.getOwnPropertyDescriptors(r);
@@ -1335,7 +1342,7 @@ ${r}`), f2;
     }
     return e;
   }
-  function mr(t, e, r, n) {
+  function gr(t, e, r, n) {
     return t = $(n || t.toLowerCase()), { get() {
       return (...o) => {
         let i = e && r.virtual(P(k[t](...o))) || void 0, b = !l(i?.node, Comment, Text, void 0) ? Ee(i) : "";
@@ -1345,23 +1352,23 @@ ${r}`), f2;
   }
   function Ce(t, e, r, n) {
     t = t.toLowerCase();
-    let o = mr(t, e, r, n);
-    return n ? { [n]: o, [V(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
-  }
-  function gr(t) {
-    return dr(Object.entries(C.tagsRaw).reduce(pr(t), {}), Er(t));
+    let o = gr(t, e, r, n);
+    return n ? { [n]: o, [U(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
   }
   function pr(t) {
+    return mr(Object.entries(C.tagsRaw).reduce(yr(t), {}), wr(t));
+  }
+  function yr(t) {
     return function(e, [r, n]) {
       return Object.defineProperties(e, Ce(r, n, t)), e;
     };
   }
-  function yr(t) {
+  function br(t) {
     return function(e, r, ...n) {
       l(r, Function) && (n.push(r), r = void 0), t({ type: e, selector: r, handlers: n });
     };
   }
-  function br(t) {
+  function hr(t) {
     return function(e) {
       let { type: r, types: n, origin: o, selector: i, handler: a, handlers: b, node: p3, name: x2, capture: d, once: y, about: m } = e;
       a = b || a, r = n || r, i = o || i;
@@ -1380,27 +1387,27 @@ ${r}`), f2;
   function nt(t, e, r) {
     for (let n of t) r.listen({ ...e, handler: n });
   }
-  function hr(t) {
+  function Sr(t) {
     return function(e, r) {
       return r = L(r) && r, e = L(e) && e, r && e && t.listenerStore[e][r];
     };
   }
-  function Sr(t) {
+  function xr(t) {
     return t.activePopup || Object.defineProperty(t, "activePopup", { value: ee(t), enumerable: false }), t.activePopup;
   }
-  function xr(t) {
+  function Er(t) {
     let e = (d, y) => Te(d, y), r = function(d) {
-      return W({ createWithId: d || `jqx${ue()}` });
+      return z({ createWithId: d || `jqx${ue()}` });
     }, n = function(...d) {
       for (let y of d) Te(y);
-    }, o = cr(t), i = te(t), a = br(i);
+    }, o = fr(t), i = te(t), a = hr(i);
     return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: a, capturedHandling: a, log: (...d) => v.on.log(...d).off, warn: (...d) => v.on.warn(...d).off, error: (...d) => v.on.error(...d).off, handlerWrapper: i };
   }
-  function Er(t) {
+  function wr(t) {
     let { factoryExtensions: e, instanceExtensions: r } = et(t);
     $e = e, de = r;
-    let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: b, capturedHandling: p3, log: x2, warn: d, error: y, handlerWrapper: m } = xr(t), S2 = hr(t), f2 = lr(t);
-    return k.setError = (c) => (y(`JQx direct element creation error: [${c}] is not a valid tag`), t.br()), { log: x2, warn: d, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: H, logger: v, proxyWrapper: G, text(c, s = false) {
+    let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: b, capturedHandling: p3, log: x2, warn: d, error: y, handlerWrapper: m } = Er(t), S2 = Sr(t), f2 = lr(t);
+    return k.setError = (c) => (y(`JQx direct element creation error: [${c}] is not a valid tag`), t.br()), { log: x2, warn: d, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: H, logger: v, proxyWrapper: Y, text(c, s = false) {
       return s ? t.comment(c) : document.createTextNode(c);
     }, node(c, s = document) {
       return s.querySelector(c, s);
@@ -1415,7 +1422,7 @@ ${r}`), f2;
     }, get getNamedListener() {
       return S2;
     }, get virtual() {
-      return fr(t);
+      return dr(t);
     }, get allowTag() {
       return a.allow;
     }, get prohibitTag() {
@@ -1425,7 +1432,7 @@ ${r}`), f2;
     }, get removeCssRules() {
       return rt;
     }, get delegate() {
-      return yr(p3);
+      return br(p3);
     }, get delegateCaptured() {
       return p3;
     }, get handle() {
@@ -1443,18 +1450,18 @@ ${r}`), f2;
     }, get IS() {
       return l;
     }, get Popup() {
-      return Sr(t);
+      return xr(t);
     }, get listenerStore() {
       return m.ListenerStore;
     } };
   }
-  var it = ot(wr());
-  function wr() {
-    return function(e, r, n = F.BeforeEnd) {
+  var it = vr();
+  function vr() {
+    return ot(function(e, r, n = F.BeforeEnd) {
       if (e?.isJQx) return e;
       let o = l(r, HTMLBRElement);
       r = (!o && r && r.isJQx ? r[0] : r) || document.body, n = n && Object.values(F).find((d) => n === d) ? n : void 0;
-      let i = _(e), b = !i && fe(e) || i, p3 = { collection: le(e) ?? [], isVirtual: o, isJQx: true }, x2 = Y(p3.collection);
+      let i = V(e), b = !i && fe(e) || i, p3 = { collection: le(e) ?? [], isVirtual: o, isJQx: true }, x2 = _(p3.collection);
       switch (true) {
         case (p3.collection.length && x2 && !o):
           for (let d of p3.collection) r.contains(d) || R([d], r, n);
@@ -1474,9 +1481,9 @@ ${r}`), f2;
           Ae(e, r, p3);
       }
       return me(p3);
-    };
+    });
   }
-  var hn = it;
+  var Sn = it;
 
   // ../Resource/Externals/ticktock.min.js
   var M2 = ke2();
@@ -2322,20 +2329,20 @@ ${r}`), f2;
     });
   }
   function logFactory(formatJSON = true) {
-    const logContainer = hn(`<ul id="log2screen">`).first();
+    const logContainer = Sn(`<ul id="log2screen">`).first();
     function logItem(top2 = false) {
-      const where2PutIt = top2 ? hn.at.start : hn.at.end;
+      const where2PutIt = top2 ? Sn.at.start : Sn.at.end;
       return (content) => {
         if (content?.isJQx) {
-          return hn.li(
+          return Sn.li(
             content.data.get(`header`) ? { class: `head` } : ``,
             content
           ).renderTo(logContainer, where2PutIt);
         }
-        content = !hn.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
+        content = !Sn.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
         const isHead = content.startsWith(`!!`);
         content = isHead ? content.slice(2) : content;
-        hn.li(isHead ? { class: `head` } : ``, content).renderTo(logContainer, where2PutIt);
+        Sn.li(isHead ? { class: `head` } : ``, content).renderTo(logContainer, where2PutIt);
       };
     }
     const [logLamda, logTopLambda] = [logItem(), logItem(true)];
@@ -2352,7 +2359,7 @@ ${r}`), f2;
     }
   }
   function setDefaultStyling() {
-    hn.editCssRules(`li::marker{vertical-align:top;}`, `code{color:green;background-color:#eee;padding:2px;font-family:monospace;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
+    Sn.editCssRules(`li::marker{vertical-align:top;}`, `code{color:green;background-color:#eee;padding:2px;font-family:monospace;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
   }
   return __toCommonJS(index_exports);
 })();
