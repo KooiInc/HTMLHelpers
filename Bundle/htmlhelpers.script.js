@@ -30,7 +30,7 @@ var HTMLHelpers = (() => {
   });
 
   // ../Resource/Externals/jqx.min.js
-  var { IS: l, isOnly: Lr, maybe: O, $Wrap: Fr, isNothing: ut, addSymbolicExtensions: Ne, detectableProxy: Y } = ct({ useSymbolicExtensions: false });
+  var { IS: l, isOnly: Lr, maybe: O, $Wrap: Fr, isNothing: ut, addSymbolicExtensions: Ne, detectableProxy: _ } = ct({ useSymbolicExtensions: false });
   function ct(t = {}) {
     let { useSymbolicExtensions: e } = t, r = mt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: b, addSymbolicExtensions: p3, maybe: x2, $Wrap: d, detectableProxy: y } = ft(m, e);
     return e && p3(), { IS: m, isOnly: S2, maybe: x2, $Wrap: d, isNothing: a, addSymbolicExtensions: p3, detectableProxy: y };
@@ -226,15 +226,15 @@ var HTMLHelpers = (() => {
   }
   var Me = { html: "innerHTML", text: "textContent", class: "className" };
   var bt = Ot();
-  var G = {};
-  var j = {};
+  var Y = Object.create(null, {});
+  var G = Object.create(null, {});
   var J = Pt();
   var De = (t) => {
     console.error(`tinyDOM error: "${t}" is not a valid HTML tag`);
   };
-  var k = ht();
+  var j = ht();
   function ht() {
-    return Object.seal(new Proxy(G, Ie()));
+    return Object.seal(new Proxy(Y, Ie()));
   }
   function Ie() {
     return { get(t, e) {
@@ -258,7 +258,7 @@ var HTMLHelpers = (() => {
     } }), Pe(i, t);
     if (t.includes("-")) {
       let [a, b] = t.includes("-") ? [t, Mt(t)] : [Ht(t), t];
-      j[a] = a, j[b] = a, r = b;
+      G[a] = a, G[b] = a, r = b;
     }
     return r && Object.defineProperty(i, r, { get() {
       return Re(t);
@@ -267,10 +267,10 @@ var HTMLHelpers = (() => {
     } }), Pe(i, t);
   }
   function Pe(t, e) {
-    return G = Object.seal(new Proxy(t, Ie())), G[e];
+    return Y = Object.seal(new Proxy(t, Ie())), Y[e];
   }
   function St() {
-    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(G)));
+    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(Y)));
   }
   function xt(t, e, r) {
     return e = e?.isJQx && e.node || (J(e, Number) ? String(e) : e), bt({ trial: (n) => Je(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
@@ -326,13 +326,13 @@ var HTMLHelpers = (() => {
     return /comment/i.test(t);
   }
   function Tt(t) {
-    return Ct(t) && (t in j || !J(X(t), HTMLUnknownElement));
+    return Ct(t) && (t in G || !J(X(t), HTMLUnknownElement));
   }
   function Ct(t) {
     return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
   }
   function Re(t) {
-    return t = t in j ? j[t] : t, (e, ...r) => Et(t, e, ...r);
+    return t = G[t] ?? t, (e, ...r) => Et(t, e, ...r);
   }
   function Nt([t, ...e]) {
     return `${t.toUpperCase()}${e.join("")}`;
@@ -369,7 +369,7 @@ var HTMLHelpers = (() => {
       return n(i, a?.[0]);
     };
   }
-  var z = Rt;
+  var k = Rt;
   function Rt({ styleSheet: t, createWithId: e } = {}) {
     let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: b, currentSheetID: p3 } = Dt({ styleSheet: t, createWithId: e });
     function x2(f2, c) {
@@ -702,7 +702,7 @@ ${r}`), f2;
   } }));
   var Kt = [...Array(26)].map((t, e) => String.fromCharCode(e + 65)).concat([...Array(26)].map((t, e) => String.fromCharCode(e + 97))).concat([...Array(10)].map((t, e) => `${e}`));
   var Se = Object.freeze({ get(t, e) {
-    return t[U(e)] || t[e];
+    return t[B(e)] || t[e];
   }, enumerable: false, configurable: false });
   var re = {};
   function xe() {
@@ -736,8 +736,8 @@ ${r}`), f2;
   function se(t) {
     return t && (t.textContent = "");
   }
-  function W(t, e = 0, r = true) {
-    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? W(t, e, r) : e;
+  function z(t, e = 0, r = true) {
+    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? z(t, e, r) : e;
   }
   function L(t, e = 1) {
     return e = l(e, Number) && e || 1, l(t, String) && t.length >= e;
@@ -811,7 +811,7 @@ ${r}`), f2;
     if (t && l(e, Object)) for (let [r, n] of Object.entries(e)) t.setAttribute(`data-${$(r)}`, n);
   }
   function le(t) {
-    return t ? t.EL ? [t.EL] : l(t, NodeList) ? [...t] : N(t) ? [t] : _(t) ? t : t.isJQx ? t.collection : void 0 : [];
+    return t ? t.EL ? [t.EL] : l(t, NodeList) ? [...t] : N(t) ? [t] : V(t) ? t : t.isJQx ? t.collection : void 0 : [];
   }
   function D(t, e, r = true, ...n) {
     if (t.is.empty) return v.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), t;
@@ -824,7 +824,7 @@ ${r}`), f2;
   function N(t) {
     return l(t, Text, HTMLElement, Comment);
   }
-  function B(t, e) {
+  function W(t, e) {
     if (l(e, Object)) for (let [r, n] of Object.entries(e)) {
       let o;
       /!important/i.test(n) && (n = n.slice(0, n.indexOf("!")).trim(), o = "important"), t.style.setProperty($(r), n, o);
@@ -878,7 +878,7 @@ ${r}`), f2;
     }
     return t;
   }
-  function U(t) {
+  function B(t) {
     return l(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${tr(e)}` || e).join("") : t;
   }
   function $(t) {
@@ -896,14 +896,14 @@ ${r}`), f2;
   function Ge(t) {
     return l(t, Text);
   }
-  function V(t) {
+  function U(t) {
     return l(t, String) && /^<|>$/.test(`${t}`.trim());
   }
-  function _(t) {
+  function V(t) {
     return l(t, Array) && !t?.find((e) => !N(e));
   }
   function fe(t) {
-    return l(t, Array) && !t?.find((e) => !V(e));
+    return l(t, Array) && !t?.find((e) => !U(e));
   }
   function E(t, e) {
     let r = t.collection.filter((n) => !ce(n));
@@ -922,7 +922,7 @@ ${r}`), f2;
     }
   }
   function Ze() {
-    return { isCommentOrTextNode: ce, isNode: N, isComment: Fe, isText: Ge, isHtmlString: V, isArrayOfHtmlElements: _, isArrayOfHtmlStrings: fe, ElemArray2HtmlString: Ve, input2Collection: le, setCollectionFromCssSelector: Ae, cssRuleEdit: z({ createWithId: "JQxStylesheet" }) };
+    return { isCommentOrTextNode: ce, isNode: N, isComment: Fe, isText: Ge, isHtmlString: U, isArrayOfHtmlElements: V, isArrayOfHtmlStrings: fe, ElemArray2HtmlString: Ve, input2Collection: le, setCollectionFromCssSelector: Ae, cssRuleEdit: k({ createWithId: "JQxStylesheet" }) };
   }
   function Ke() {
     let e = Object.freeze({ notInDOM: "n/a", writable: "n/a", modal: "n/a", empty: true, open: "n/a", visible: "n/a" });
@@ -974,7 +974,7 @@ ${r}`), f2;
     }, dimensions(e) {
       if (e.is.empty) return v.error("[JQx instance].dimensions called on empty instance"), { error: "[JQx instance].dimensions: NO ELEMENTS" };
       let { node: r } = e, n = r.getBoundingClientRect().toJSON();
-      return n.scrollTopDistance = W(r, 0), n.scrollLeftDistance = W(r, 0, false), n;
+      return n.scrollTopDistance = z(r, 0), n.scrollLeftDistance = z(r, 0, false), n;
     }, node(e) {
       return e[0];
     }, HTML(e) {
@@ -1106,7 +1106,7 @@ ${r}`), f2;
     }, hasClass(e, ...r) {
       return e.is.empty || !e.node.classList.length ? false : r.find((n) => e.node.classList.contains(n)) && true || false;
     }, hide(e) {
-      return E(e, (r) => B(r, { display: "none !important" }));
+      return E(e, (r) => W(r, { display: "none !important" }));
     }, html(e, r, n) {
       switch (true) {
         case (e.is.empty && !L(r)):
@@ -1205,7 +1205,7 @@ ${r}`), f2;
     }, setData(e, r) {
       return E(e, (n) => ae(n, r));
     }, show(e) {
-      return E(e, (r) => B(r, { display: "revert-layer !important" }));
+      return E(e, (r) => W(r, { display: "revert-layer !important" }));
     }, single(e, r) {
       let n = e.collection.length > 0;
       switch (r = r ?? 0, true) {
@@ -1220,7 +1220,7 @@ ${r}`), f2;
       }
     }, style(e, r, n) {
       return E(e, (i) => {
-        n && l(r, String) && (r = { [r]: n || "none" }), B(i, r);
+        n && l(r, String) && (r = { [r]: n || "none" }), W(i, r);
       });
     }, text(e, r, n = false) {
       switch (true) {
@@ -1298,9 +1298,9 @@ ${r}`), f2;
         return O({ trial: () => t[e], whenError: () => t });
       case (!Number.isNaN(+e) && typeof +e == "number"):
         return t.collection?.[e] || void 0;
-      case e in $e:
+      case $e.hasOwnProperty(e):
         return tt($e[e], r, true);
-      case e in de:
+      case de.hasOwnProperty(e):
         return tt(de[e], r);
       default:
         return Reflect.get(t, e);
@@ -1314,7 +1314,7 @@ ${r}`), f2;
   function fr(t) {
     return { allow(e) {
       let r = /-/.test(e), n = r && e;
-      e = r ? U(e) : e.toLowerCase(), C.allowTag(e), Object.defineProperties(t, Ce(e, true, t, n));
+      e = r ? B(e) : e.toLowerCase(), C.allowTag(e), Object.defineProperties(t, Ce(e, true, t, n));
     }, prohibit(e) {
       e = e.toLowerCase(), C.prohibitTag(e), Object.defineProperties(t, Ce(e, false, t));
     } };
@@ -1345,7 +1345,7 @@ ${r}`), f2;
   function gr(t, e, r, n) {
     return t = $(n || t.toLowerCase()), { get() {
       return (...o) => {
-        let i = e && r.virtual(P(k[t](...o))) || void 0, b = !l(i?.node, Comment, Text, void 0) ? Ee(i) : "";
+        let i = e && r.virtual(P(j[t](...o))) || void 0, b = !l(i?.node, Comment, Text, void 0) ? Ee(i) : "";
         return v.log(e ? `JQx: created (virtual) instance from [JQx].${t} ${b}` : `JQx: ${t.toUpperCase()} is prohibited. Use [JQx].allowTag if necessary.`), i;
       };
     }, enumerable: false, configurable: true };
@@ -1353,7 +1353,7 @@ ${r}`), f2;
   function Ce(t, e, r, n) {
     t = t.toLowerCase();
     let o = gr(t, e, r, n);
-    return n ? { [n]: o, [U(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
+    return n ? { [n]: o, [B(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
   }
   function pr(t) {
     return mr(Object.entries(C.tagsRaw).reduce(yr(t), {}), wr(t));
@@ -1397,7 +1397,7 @@ ${r}`), f2;
   }
   function Er(t) {
     let e = (d, y) => Te(d, y), r = function(d) {
-      return z({ createWithId: d || `jqx${ue()}` });
+      return k({ createWithId: d || `jqx${ue()}` });
     }, n = function(...d) {
       for (let y of d) Te(y);
     }, o = fr(t), i = te(t), a = hr(i);
@@ -1407,7 +1407,7 @@ ${r}`), f2;
     let { factoryExtensions: e, instanceExtensions: r } = et(t);
     $e = e, de = r;
     let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: b, capturedHandling: p3, log: x2, warn: d, error: y, handlerWrapper: m } = Er(t), S2 = Sr(t), f2 = lr(t);
-    return k.setError = (c) => (y(`JQx direct element creation error: [${c}] is not a valid tag`), t.br()), { log: x2, warn: d, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: H, logger: v, proxyWrapper: Y, text(c, s = false) {
+    return j.setError = (c) => (y(`JQx direct element creation error: [${c}] is not a valid tag`), t.br()), { log: x2, warn: d, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: H, logger: v, proxyWrapper: _, text(c, s = false) {
       return s ? t.comment(c) : document.createTextNode(c);
     }, node(c, s = document) {
       return s.querySelector(c, s);
@@ -1461,7 +1461,7 @@ ${r}`), f2;
       if (e?.isJQx) return e;
       let o = l(r, HTMLBRElement);
       r = (!o && r && r.isJQx ? r[0] : r) || document.body, n = n && Object.values(F).find((d) => n === d) ? n : void 0;
-      let i = V(e), b = !i && fe(e) || i, p3 = { collection: le(e) ?? [], isVirtual: o, isJQx: true }, x2 = _(p3.collection);
+      let i = U(e), b = !i && fe(e) || i, p3 = { collection: le(e) ?? [], isVirtual: o, isJQx: true }, x2 = V(p3.collection);
       switch (true) {
         case (p3.collection.length && x2 && !o):
           for (let d of p3.collection) r.contains(d) || R([d], r, n);
