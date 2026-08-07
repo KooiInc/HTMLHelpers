@@ -224,75 +224,50 @@ var HTMLHelpers = (() => {
   function yt() {
     return ["::backdrop{background-color:grey;opacity:0.2;}", `#jqxPopup{overflow:hidden;background-color:transparent;outline:none;border:none;inset:0;animation:fade-out 0.5s ease-out;&[open]{display:flex;align-items:center;justify-content:center;animation:fade-in 0.5s ease;}#jqxPopupContent{background-color:white;border:solid 1px #eee;box-shadow:1px 2px 8px #999;border-radius:4px;padding:12px;vertical-align:middle;max-height:40vh;max-width:50vw;overflow:auto;margin:0 auto;div:not(#closeHandleIcon){clear:both;}@media (width <= 640px){max-width:80vw;max-height:60vh;}#closeHandleIcon{cursor:pointer;width:24px;height:24px;display:inline;position:absolute;top:4px;right:4px;justify-content:right;background-image:url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20version%3D%221.1%22%20id%3D%22Layer_1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20128%20128%22%20style%3D%22enable-background%3Anew%200%200%20128%20128%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20x%3D%22-368%22%20y%3D%226%22%20style%3D%22display%3Anone%3Bfill%3A%23E0E0E0%3B%22%20width%3D%22866%22%20height%3D%221018%22%2F%3E%3Ccircle%20style%3D%22fill%3A%23FFFFFF%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Ccircle%20style%3D%22fill%3A%238CCFB9%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2239%22%2F%3E%3Ccircle%20style%3D%22fill%3Anone%3Bstroke%3A%23444B54%3Bstroke-width%3A6%3Bstroke-miterlimit%3A10%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Cpolyline%20style%3D%22fill%3Anone%3Bstroke%3A%23FFFFFF%3Bstroke-width%3A6%3Bstroke-linecap%3Around%3Bstroke-miterlimit%3A10%3B%22%20points%3D%2242%2C69%2055.55%2C81%20%20%2086%2C46%20%22%2F%3E%3C%2Fsvg%3E");@media (width <= 640px){background-image:none;position:relative;margin:-15px -15px 4px 0;float:right;vertical-align:middle;border:1px solid #AAA;padding:2px;border-radius:50%;width:12px;height:12px;font-size:12px;line-height:12px;font-weight:bold;text-align:center;&:after{content:'\\2714';color:green;}}}.warn{display:none;text-align:center;color:red;border-top:1px solid #999;margin-top:1em;padding-top:3px;animation:warn-fade-out 0.2s ease-out;}.warn.active{opacity:1;display:block;animation:warn-fade-in 0.2s ease-in;}}}`, "@keyframes fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1, 1);display:flex;}}", "@keyframes fade-out{0%{opacity:1;transform:scale(1, 1);display:flex;}100%{opacity:0;transform:scale(0, 0);display:none;}}", "@keyframes warn-fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1,1 );display:block;}}", "@keyframes warn-fade-out{0%{opacity:1;transform:scale(1, 1);display:block;}100%{opacity:0;transform:scale(0, 0);display:none;}}"];
   }
+  var J = ht();
+  var bt = wt();
   var Me = { html: "innerHTML", text: "textContent", class: "className" };
-  var bt = Ot();
-  var Y = Object.create(null, {});
-  var G = Object.create(null, {});
-  var J = Pt();
-  var De = (t) => {
-    console.error(`tinyDOM error: "${t}" is not a valid HTML tag`);
-  };
-  var j = ht();
   function ht() {
-    return Object.seal(new Proxy(Y, Ie()));
-  }
-  function Ie() {
-    return { get(t, e) {
-      let r = String(e);
+    let t = new Intl.Collator("en", { sensitivity: "base" }), e = (o) => typeof o?.constructor == "function" ? o?.name || o?.constructor?.name : typeof o == "string" ? o : typeof o, r = (o) => [null, void 0, 1 / 0, NaN].some((i) => i === o);
+    function n(o, i) {
       switch (true) {
-        case r in t:
-          return t[r];
-        case Tt(r):
-          return Oe({ tag: r, key: e });
+        case (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o)))):
+          return false;
         default:
-          return Oe({ tag: r, key: e, isError: true });
+          let [a, b] = [e(o), e(i)];
+          return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, b) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${b}]`) === 0;
       }
-    }, set(t, e, r) {
-      return e === "setError" && typeof r == "function" && (De = r), true;
-    }, enumerable: false, configurable: false };
-  }
-  function Oe({ tag: t, key: e, custom: r, debug: n = false, isError: o = false } = {}) {
-    let i = St();
-    if (o) return Object.defineProperty(i, t, { get() {
-      return (a) => De(e) ?? "";
-    } }), Pe(i, t);
-    if (t.includes("-")) {
-      let [a, b] = t.includes("-") ? [t, Mt(t)] : [Ht(t), t];
-      G[a] = a, G[b] = a, r = b;
     }
-    return r && Object.defineProperty(i, r, { get() {
-      return Re(t);
-    } }), Object.defineProperty(i, t, { get() {
-      return Re(t);
-    } }), Pe(i, t);
+    return function(i, ...a) {
+      if (Array.isArray(a) && a.length > 1) {
+        for (let b of a) if (n(i, b)) return true;
+        return false;
+      }
+      return n(i, a?.[0]);
+    };
   }
-  function Pe(t, e) {
-    return Y = Object.seal(new Proxy(t, Ie())), Y[e];
+  function St([t, ...e]) {
+    return `${t.toUpperCase()}${e.join("")}`;
   }
-  function St() {
-    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(Y)));
+  function xt(t) {
+    return t.replace(/[A-Z]/g, (e) => `-${e.toLowerCase()}`).replace(/^-|-$/, "");
   }
-  function xt(t, e, r) {
-    return e = e?.isJQx && e.node || (J(e, Number) ? String(e) : e), bt({ trial: (n) => Je(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
-`, n) });
+  function Et(t) {
+    return J(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${St(e)}` || e).join("") : t;
   }
-  function Et(t, e, ...r) {
-    let n = wt(e, t);
-    return r?.forEach((o) => xt(n, o, t)), n;
+  function wt() {
+    let t = (e) => {
+    };
+    return function({ trial: e, whenError: r = t } = {}) {
+      try {
+        return e();
+      } catch (n) {
+        return r(n);
+      }
+    };
   }
-  function wt(t, e) {
-    switch (t = ge(e) ? $t(t) : t?.isJQx ? t.node : t, true) {
-      case J(t, String):
-        return X(e, Je(t, e) ? { html: t } : { text: t });
-      case t instanceof Node:
-        return vt(e, t);
-      default:
-        return X(e, t);
-    }
-  }
-  function vt(t, e) {
-    let r = X(t);
-    return r.append(e), r;
+  function vt(t) {
+    return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(t)));
   }
   function Lt(t) {
     if (Object.keys(t).length < 1) return { assignable: {}, specials: [...Array(3)] };
@@ -307,67 +282,96 @@ var HTMLHelpers = (() => {
     let e = Object.entries(t.data ?? {}), r = Object.entries(t.attributes ?? {}), n = t.class?.split(/[ ,]/).map((o) => o.trim()).filter((o) => o.length > 1);
     return delete t.data, delete t.attributes, delete t.class, [e, r, n];
   }
-  function At(t, e) {
+  function At(t) {
+    return t?.constructor === Comment ? t?.textContent : String(t);
+  }
+  function ge(t) {
+    return /comment/i.test(t);
+  }
+  function De(t, e) {
+    return !ge(e) && J(t, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(t);
+  }
+  function $t(t) {
+    return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
+  }
+  function Tt(t, e, r) {
+    return $t(t) && (t in e || !J(r(t), HTMLUnknownElement));
+  }
+  var Y = Object.create(null, {});
+  var G = Object.create(null, {});
+  var Ie = (t) => {
+    console.error(`tinyDOM error: "${t}" is not a valid HTML tag`);
+  };
+  var j = Ct();
+  function Ct() {
+    return Object.seal(new Proxy(Y, Je()));
+  }
+  function Je() {
+    return { get(t, e) {
+      let r = String(e);
+      switch (true) {
+        case r in t:
+          return t[r];
+        case Tt(r, G, X):
+          return Oe({ tag: r, key: e });
+        default:
+          return Oe({ tag: r, key: e, isError: true });
+      }
+    }, set(t, e, r) {
+      return e === "setError" && typeof r == "function" && (Ie = r), true;
+    }, enumerable: false, configurable: false };
+  }
+  function Oe({ tag: t, key: e, custom: r, debug: n = false, isError: o = false } = {}) {
+    let i = vt(Y);
+    if (o) return Object.defineProperty(i, t, { get() {
+      return (a) => Ie(e) ?? "";
+    } }), Pe(i, t);
+    if (t.includes("-")) {
+      let [a, b] = t.includes("-") ? [t, Et(t)] : [xt(t), t];
+      G[a] = a, G[b] = a, r = b;
+    }
+    return r && Object.defineProperty(i, r, { get() {
+      return Re(t);
+    } }), Object.defineProperty(i, t, { get() {
+      return Re(t);
+    } }), Pe(i, t);
+  }
+  function Pe(t, e) {
+    return Y = Object.seal(new Proxy(t, Je())), Y[e];
+  }
+  function Nt(t, e, r) {
+    return e = e?.isJQx && e.node || (J(e, Number) ? String(e) : e), bt({ trial: (n) => De(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
+`, n) });
+  }
+  function Ht(t, e, ...r) {
+    let n = Mt(e, t);
+    return r?.forEach((o) => Nt(n, o, t)), n;
+  }
+  function Mt(t, e) {
+    switch (t = ge(e) ? At(t) : t?.isJQx ? t.node : t, true) {
+      case J(t, String):
+        return X(e, De(t, e) ? { html: t } : { text: t });
+      case t instanceof Node:
+        return Ot(e, t);
+      default:
+        return X(e, t);
+    }
+  }
+  function Ot(t, e) {
+    let r = X(t);
+    return r.append(e), r;
+  }
+  function Pt(t, e) {
     let [r, n, o] = t;
     r?.length && r.forEach(([i, a]) => e.dataset[i] = a), n?.length && n.forEach(([i, a]) => e.setAttribute(i, a)), o?.forEach((i) => e.classList.add(i));
   }
   function X(t, e) {
     e = e || {};
     let { assignable: r, specials: n } = Lt(e), o = Object.assign(ge(t) ? new Comment() : document.createElement(t), r);
-    return At(n, o), o;
-  }
-  function $t(t) {
-    return t?.constructor === Comment ? t?.textContent : String(t);
-  }
-  function Je(t, e) {
-    return !ge(e) && J(t, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(t);
-  }
-  function ge(t) {
-    return /comment/i.test(t);
-  }
-  function Tt(t) {
-    return Ct(t) && (t in G || !J(X(t), HTMLUnknownElement));
-  }
-  function Ct(t) {
-    return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
+    return Pt(n, o), o;
   }
   function Re(t) {
-    return t = G[t] ?? t, (e, ...r) => Et(t, e, ...r);
-  }
-  function Nt([t, ...e]) {
-    return `${t.toUpperCase()}${e.join("")}`;
-  }
-  function Ht(t) {
-    return t.replace(/[A-Z]/g, (e) => `-${e.toLowerCase()}`).replace(/^-|-$/, "");
-  }
-  function Mt(t) {
-    return J(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${Nt(e)}` || e).join("") : t;
-  }
-  function Ot() {
-    let t = (e) => {
-    };
-    return function({ trial: e, whenError: r = t } = {}) {
-      try {
-        return e();
-      } catch (n) {
-        return r(n);
-      }
-    };
-  }
-  function Pt() {
-    let t = new Intl.Collator("en", { sensitivity: "base" }), e = (o) => typeof o?.constructor == "function" ? o?.name || o?.constructor?.name : typeof o == "string" ? o : typeof o, r = (o) => [null, void 0, 1 / 0, NaN].some((i) => i === o);
-    function n(o, i) {
-      if (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o)))) return false;
-      let [a, b] = [e(o), e(i)];
-      return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, b) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${b}]`) === 0;
-    }
-    return function(i, ...a) {
-      if (Array.isArray(a) && a.length > 1) {
-        for (let b of a) if (n(i, b)) return true;
-        return false;
-      }
-      return n(i, a?.[0]);
-    };
+    return t = G[t] ?? t, (e, ...r) => Ht(t, e, ...r);
   }
   var k = Rt;
   function Rt({ styleSheet: t, createWithId: e } = {}) {
