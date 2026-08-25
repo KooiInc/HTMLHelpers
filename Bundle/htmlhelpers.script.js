@@ -30,14 +30,14 @@ var HTMLHelpers = (() => {
   });
 
   // ../Resource/Externals/jqx.min.js
-  var F = Symbol.for("toa.symbols");
+  var F = /* @__PURE__ */ Symbol.for("toa.symbols");
   Object[F] = Object.create(null, {});
   var { IS: c, isOnly: Fr, maybe: R, $Wrap: Tr, isNothing: ft, addSymbolicExtensions: He, proxyWrapper: G } = dt({ useSymbolicExtensions: false });
   function dt(t = {}) {
-    let { useSymbolicExtensions: e } = t, r = pt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: h2, addSymbolicExtensions: p3, maybe: E2, $Wrap: f2, detectableProxy: y } = mt(m, e), g2 = y;
-    e && p3();
+    let { useSymbolicExtensions: e } = t, r = pt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: h2, addSymbolicExtensions: p2, maybe: E2, $Wrap: f3, detectableProxy: y } = mt(m, e), g2 = y;
+    e && p2();
     let S2 = Object[F];
-    return { IS: m, isOnly: u2, maybe: E2, $Wrap: f2, isNothing: a, addSymbolicExtensions: p3, proxyWrapper: g2 };
+    return { IS: m, isOnly: u, maybe: E2, $Wrap: f3, isNothing: a, addSymbolicExtensions: p2, proxyWrapper: g2 };
     function m(l, ...s) {
       let d = Object.getOwnPropertySymbols(l || {})?.some((w) => w === S2.justME) && s.length > 0, b = l?.[S2.justME], x2 = d ? b : typeof l == "symbol" ? S2.isSymbol : l;
       switch (true) {
@@ -49,13 +49,13 @@ var HTMLHelpers = (() => {
           return s.length > 1 ? o(x2, ...s) : h2(l, ...s);
       }
     }
-    function u2(l, ...s) {
+    function u(l, ...s) {
       return m({ [S2.justME]: l }, ...s);
     }
   }
   function mt(t, e) {
-    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: o, verifyNothingness: i, determineType: a, detectableProxy: h2 } = gt(t, y), { addSymbolicExtensions: p3 } = r(t, y, e), [E2, f2] = [n(), o(t, y)];
-    return Object.freeze({ shouldbeIsSingleObject: g2, ISOneOf: S2, isExcept: u2, verifyNothingness: i, determineType: a, detectableProxy: h2, addSymbolicExtensions: p3, maybe: E2, $Wrap: f2 });
+    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: o, verifyNothingness: i, determineType: a, detectableProxy: h2 } = gt(t, y), { addSymbolicExtensions: p2 } = r(t, y, e), [E2, f3] = [n(), o(t, y)];
+    return Object.freeze({ shouldbeIsSingleObject: g2, ISOneOf: S2, isExcept: u, verifyNothingness: i, determineType: a, detectableProxy: h2, addSymbolicExtensions: p2, maybe: E2, $Wrap: f3 });
     function y(l) {
       return l?.[Object[F].proxy] || t(l);
     }
@@ -64,7 +64,7 @@ var HTMLHelpers = (() => {
         case "defaultValue" in s:
           return m(l, s);
         case "notTypes" in s:
-          return u2(l, s);
+          return u(l, s);
         default:
           return t(l, ...[s.isTypes].flat());
       }
@@ -73,15 +73,15 @@ var HTMLHelpers = (() => {
       return s.some((d) => t(l, d));
     }
     function m(l, { defaultValue: s, isTypes: d = [void 0], notTypes: b } = {}) {
-      return d = d?.constructor !== Array ? [d] : d, b = b && b?.constructor !== Array ? [b] : [], b.length < 1 ? t(l, ...d) ? l : s : u2(l, { isTypes: d, notTypes: b }) ? l : s;
+      return d = d?.constructor !== Array ? [d] : d, b = b && b?.constructor !== Array ? [b] : [], b.length < 1 ? t(l, ...d) ? l : s : u(l, { isTypes: d, notTypes: b }) ? l : s;
     }
-    function u2(l, { isTypes: s = [void 0], notTypes: d = [void 0] } = {}) {
+    function u(l, { isTypes: s = [void 0], notTypes: d = [void 0] } = {}) {
       return s = s?.constructor !== Array ? [s] : s, d = d?.constructor !== Array ? [d] : d, t(l, ...s) && !t(l, ...d);
     }
   }
   function gt() {
     let t = Object[F], e = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxyFor", TARGET: "toa.target", JUSTME: "toa.justME" }, r = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy for" }, n = o();
-    return Object.freeze({ SymbolAndCustomProxyFactory: a, maybeFactory: u2, WrapAnyFactory: m, verifyNothingness: l, determineType: E2, detectableProxy: n });
+    return Object.freeze({ SymbolAndCustomProxyFactory: a, maybeFactory: u, WrapAnyFactory: m, verifyNothingness: l, determineType: E2, detectableProxy: n });
     function o() {
       let s = (x2) => ({ get(w, O3) {
         return O3 === Object[F].proxy ? `Proxy for ${x2}` : O3 === Object[F].target ? w : Reflect.get(w, O3);
@@ -114,12 +114,12 @@ var HTMLHelpers = (() => {
     function h2(s) {
       return (ft(s, true) ? { name: "unknown" } : Object.getPrototypeOf(s)?.constructor).name;
     }
-    function p3(s, ...d) {
+    function p2(s, ...d) {
       let b = d.length < 1, x2 = s == null;
       return { noInput: x2, noShouldbe: b, compareTo: !b && d[0], inputCTOR: !x2 && (s?.constructor || Object.getPrototypeOf(s)?.constructor), isNaN: Number.isNaN(s) || R({ trial: (w) => String(s) === r.NAN }), isInfinity: R({ trial: (w) => String(s) }) === r.INFINITY, shouldBeFirstElementIsNothing: !b && l(d[0]) };
     }
     function E2(s, ...d) {
-      let { noInput: b, noShouldbe: x2, compareTo: w, inputCTOR: O3, isNaN: ct, isInfinity: lt, shouldBeFirstElementIsNothing: ut } = p3(s, ...d);
+      let { noInput: b, noShouldbe: x2, compareTo: w, inputCTOR: O3, isNaN: ct, isInfinity: lt, shouldBeFirstElementIsNothing: ut } = p2(s, ...d);
       switch (d = d.length && d[0], true) {
         case ut:
           return String(s) === String(w);
@@ -136,10 +136,10 @@ var HTMLHelpers = (() => {
         case O3 === Boolean:
           return x2 ? r.BOOLEAN : O3 === d;
         default:
-          return y(s, d, x2, f2(s, O3));
+          return y(s, d, x2, f3(s, O3));
       }
     }
-    function f2(s, d) {
+    function f3(s, d) {
       switch (true) {
         case s === 0:
           return Number;
@@ -185,7 +185,7 @@ var HTMLHelpers = (() => {
         } } }), Object.freeze(x2);
       };
     }
-    function u2() {
+    function u() {
       let s = (d) => {
       };
       return function({ trial: d, whenError: b = s } = {}) {
@@ -379,40 +379,40 @@ var HTMLHelpers = (() => {
   }
   var W = It;
   function It({ styleSheet: t, createWithId: e } = {}) {
-    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: h2, currentSheetID: p3 } = jt({ styleSheet: t, createWithId: e });
-    function E2(m, u2) {
-      if (m && u2.removeProperties) {
-        Object.keys(u2.removeProperties).forEach((l) => m.style.removeProperty(ke(l)));
+    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: h2, currentSheetID: p2 } = jt({ styleSheet: t, createWithId: e });
+    function E2(m, u) {
+      if (m && u.removeProperties) {
+        Object.keys(u.removeProperties).forEach((l) => m.style.removeProperty(ke(l)));
         return;
       }
-      Object.entries(u2).forEach(([l, s]) => {
+      Object.entries(u).forEach(([l, s]) => {
         l = ke(l.trim()), s = s.trim();
         let d;
-        if (/!important/.test(s) && (s = s.slice(0, s.indexOf("!important")).trim(), d = "important"), !CSS.supports(l, s)) return console.error(`StylingFactory ${p3} error: '${l}' with value '${s}' not supported (yet)`);
-        ze(() => m.style.setProperty(l, s, d), `StylingFactory ${p3} (setRule4Selector) failed`);
+        if (/!important/.test(s) && (s = s.slice(0, s.indexOf("!important")).trim(), d = "important"), !CSS.supports(l, s)) return console.error(`StylingFactory ${p2} error: '${l}' with value '${s}' not supported (yet)`);
+        ze(() => m.style.setProperty(l, s, d), `StylingFactory ${p2} (setRule4Selector) failed`);
       });
     }
-    function f2(m, u2, l = i) {
-      if (m = m?.trim?.(), !c(m, String) || !m.length || /[;,]$/g.test(m)) return console.error(`StylingFactory ${p3} (setRules): [${m || "[no selector given]"}] is not a valid selector`);
-      if (u2.removeRule) return a(m);
+    function f3(m, u, l = i) {
+      if (m = m?.trim?.(), !c(m, String) || !m.length || /[;,]$/g.test(m)) return console.error(`StylingFactory ${p2} (setRules): [${m || "[no selector given]"}] is not a valid selector`);
+      if (u.removeRule) return a(m);
       let s = n(m, true), d = s || l.cssRules[l.insertRule(`${m} {}`, l.cssRules.length || 0)];
-      return h2(() => E2(d, u2), m, s);
+      return h2(() => E2(d, u), m, s);
     }
     function y(m) {
-      let u2 = m.trim().split(/{/, 2), l = u2.shift().trim();
-      if (!c(l, String) || !l?.trim()?.length) return console.error(`StylingFactory ${p3} (doParse): no (valid) selector could be extracted from rule ${be(m)}`);
-      let s = Ut(u2.shift());
-      return ze(() => f2(l, s), `StylingFactory ${p3} (setRules) failed`);
+      let u = m.trim().split(/{/, 2), l = u.shift().trim();
+      if (!c(l, String) || !l?.trim()?.length) return console.error(`StylingFactory ${p2} (doParse): no (valid) selector could be extracted from rule ${be(m)}`);
+      let s = Ut(u.shift());
+      return ze(() => f3(l, s), `StylingFactory ${p2} (setRules) failed`);
     }
     function g2(m) {
-      let u2 = r(m);
-      return u2.done ? u2.existing : y(m);
+      let u = r(m);
+      return u.done ? u.existing : y(m);
     }
-    function S2(m, u2) {
-      return m.trim().startsWith("@media") ? g2(Jt(m, u2)) : f2(m, u2);
+    function S2(m, u) {
+      return m.trim().startsWith("@media") ? g2(Jt(m, u)) : f3(m, u);
     }
-    return function(m, u2 = {}) {
-      return o(m, u2) && (Object.keys(u2).length ? S2(m, u2) : g2(m));
+    return function(m, u = {}) {
+      return o(m, u) && (Object.keys(u).length ? S2(m, u) : g2(m));
     };
   }
   function jt({ styleSheet: t, createWithId: e }) {
@@ -432,23 +432,23 @@ var HTMLHelpers = (() => {
       return [...t.rules].find((m) => S2 ? We(m.selectorText || "", g2) : zt`${kt(g2)}${[..."gim"]}`.test(m.cssText));
     }
     function h2(g2) {
-      return /^@charset|@import|namespace/i.test(g2.trim()) ? i(g2) : g2.match(/}/g)?.length > 1 ? { existing: f2(g2, 1), done: true } : { done: false };
+      return /^@charset|@import|namespace/i.test(g2.trim()) ? i(g2) : g2.match(/}/g)?.length > 1 ? { existing: f3(g2, 1), done: true } : { done: false };
     }
-    function p3(g2) {
-      let S2 = [...t.cssRules].reduce((u2, l, s) => We(l.selectorText || "", g2) && u2.concat(s) || u2, []), m = S2.length;
-      return S2.forEach((u2) => t.deleteRule(u2)), m > 0 ? console.info(`\u2714 Removed ${m} instance${m > 1 ? "s" : ""} of selector ${g2} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${g2} does not exist in ${n.slice(4)}`);
+    function p2(g2) {
+      let S2 = [...t.cssRules].reduce((u, l, s) => We(l.selectorText || "", g2) && u.concat(s) || u, []), m = S2.length;
+      return S2.forEach((u) => t.deleteRule(u)), m > 0 ? console.info(`\u2714 Removed ${m} instance${m > 1 ? "s" : ""} of selector ${g2} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${g2} does not exist in ${n.slice(4)}`);
     }
     function E2(g2, S2) {
       return g2 && c(g2, String) && g2.trim().length > 0 && c(S2, Object) || (console.error(`StylingFactory ${n} called with invalid parameters`), false);
     }
-    function f2(g2) {
+    function f3(g2) {
       g2 = g2.trim();
       let S2 = g2.slice(0, g2.indexOf("{")).trim(), m = !!a(S2);
       try {
         return t.insertRule(`${g2}`, t.cssRules.length), m;
-      } catch (u2) {
-        return console.error(`StylingFactory ${n} (tryParse) ${u2.name} Error:
-${u2.message}
+      } catch (u) {
+        return console.error(`StylingFactory ${n} (tryParse) ${u.name} Error:
+${u.message}
 Rule: ${be(g2)}
 ${r}`), m;
       }
@@ -456,14 +456,14 @@ ${r}`), m;
     function y(g2, S2, m) {
       try {
         return g2(), m;
-      } catch (u2) {
-        return console.error(`StylingFactory ${n} (tryAddOrModify) ${u2.name} Error:
-${u2.message}
+      } catch (u) {
+        return console.error(`StylingFactory ${n} (tryAddOrModify) ${u.name} Error:
+${u.message}
 Rule: ${be(S2)}
 ${r}`), m;
       }
     }
-    return { sheet: t, removeRules: p3, tryParseAtOrNestedRules: h2, ruleExists: a, checkParams: E2, tryParse: f2, consider: y, currentSheetID: n };
+    return { sheet: t, removeRules: p2, tryParseAtOrNestedRules: h2, ruleExists: a, checkParams: E2, tryParse: f3, consider: y, currentSheetID: n };
   }
   function Jt(t, e) {
     return `${t.trim()} ${Object.entries(e).map(([r, n]) => `${r}: { ${Qt(n)}`)}`;
@@ -536,10 +536,10 @@ ${r}`), m;
       if (r?.children?.length && D(r), r?.attributes) {
         let o = c(r, SVGElement) ? J.svg : J.html;
         [...(r ?? { attributes: [] }).attributes].forEach((i) => {
-          let a = i.name.trim().toLowerCase(), h2 = i.value.trim().toLowerCase().replace(q.whiteSpace, ""), p3 = a === "href" ? !q.validURL.test(h2) : q.notAllowedValues.test(h2), E2 = a.startsWith("data") ? !q.data.test(a) : !!o[a];
-          if (p3 || E2) {
-            let f2 = ee(i.value || "none", 60);
-            f2 += f2.length === 60 ? "..." : "", e.removed[`${i.name}`] = `attribute/property/value not allowed, removed. Value: ${f2}`, r.removeAttribute(i.name);
+          let a = i.name.trim().toLowerCase(), h2 = i.value.trim().toLowerCase().replace(q.whiteSpace, ""), p2 = a === "href" ? !q.validURL.test(h2) : q.notAllowedValues.test(h2), E2 = a.startsWith("data") ? !q.data.test(a) : !!o[a];
+          if (p2 || E2) {
+            let f3 = ee(i.value || "none", 60);
+            f3 += f3.length === 60 ? "..." : "", e.removed[`${i.name}`] = `attribute/property/value not allowed, removed. Value: ${f3}`, r.removeAttribute(i.name);
           }
         });
       }
@@ -585,53 +585,53 @@ ${r}`), m;
     t.logger.log("JQx: [JQx].Popup first call. Dialog element created."), t.dialog({ id: "jqxPopup" }, t.div({ id: "jqxPopupContent" })).render, t.editCssRules(...Me);
     let e = [], [r, n] = [t("#jqxPopupContent"), t.node("#jqxPopup")], o = {};
     return t.handle({ type: "click, cancel", handlers: g2, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: i, remove: a, removeModal: y });
-    function i(u2) {
+    function i(u) {
       if (n.open) switch (true) {
-        case h2(u2):
+        case h2(u):
           return;
         default:
-          return a(), setTimeout(() => i(u2), 200);
+          return a(), setTimeout(() => i(u), 200);
       }
-      o = { ...u2 };
+      o = { ...u };
       let { content: l } = o;
-      return t.IS(l, String, HTMLElement) || l?.isJQx ? p3() : true;
+      return t.IS(l, String, HTMLElement) || l?.isJQx ? p2() : true;
     }
     function a() {
       return o.modal ? m(o.warnMessage) : E2();
     }
-    function h2(u2) {
-      for (let [l, s] of Object.entries(o)) if (s !== u2[l]) return false;
+    function h2(u) {
+      for (let [l, s] of Object.entries(o)) if (s !== u[l]) return false;
       return true;
     }
-    function p3() {
+    function p2() {
       r.clear();
-      let { content: u2, modal: l, closeAfter: s } = o;
+      let { content: u, modal: l, closeAfter: s } = o;
       l = t.IS(l, Boolean) ? l : false;
       let d = l ? "" : t.div({ id: "closeHandleIcon" });
-      r.append(d, t.IS(u2, String) ? t.div(u2) : u2), n.showModal(), !l && t.IS(s, Number) && S2(a, s);
+      r.append(d, t.IS(u, String) ? t.div(u) : u), n.showModal(), !l && t.IS(s, Number) && S2(a, s);
     }
     function E2() {
-      if (n.close(o.returnValue), f2(), t.IS(o.callback, Function)) return e.push(setTimeout(() => o.callback(o.returnValue), 200));
+      if (n.close(o.returnValue), f3(), t.IS(o.callback, Function)) return e.push(setTimeout(() => o.callback(o.returnValue), 200));
       o = {};
     }
-    function f2() {
-      e.forEach((u2) => clearTimeout(u2)), e = [];
+    function f3() {
+      e.forEach((u) => clearTimeout(u)), e = [];
     }
-    function y({ callback: u2, value: l } = {}) {
-      o.returnValue = l, o.modal = false, o.callback = u2 || o.callback, a();
+    function y({ callback: u, value: l } = {}) {
+      o.returnValue = l, o.modal = false, o.callback = u || o.callback, a();
     }
-    function g2({ evt: u2 }) {
-      if (!(Object.keys(o).length < 1 || !n.open) && (u2.type === "cancel" && o.modal && u2.preventDefault(), u2.target.closest("#closeHandleIcon") || !u2.target.closest("#jqxPopupContent"))) return o.activeTimer && clearTimeout(o.activeTimer), a();
+    function g2({ evt: u }) {
+      if (!(Object.keys(o).length < 1 || !n.open) && (u.type === "cancel" && o.modal && u.preventDefault(), u.target.closest("#closeHandleIcon") || !u.target.closest("#jqxPopupContent"))) return o.activeTimer && clearTimeout(o.activeTimer), a();
     }
-    function S2(u2, l) {
-      t.IS(u2, Function) && t.IS(l, Number) && l > 0 && (f2(), e.push(setTimeout(u2, l * 1e3)));
+    function S2(u, l) {
+      t.IS(u, Function) && t.IS(l, Number) && l > 0 && (f3(), e.push(setTimeout(u, l * 1e3)));
     }
-    function m(u2) {
-      if (!t.IS(u2, String, HTMLElement) && !u2.isJQx) return;
+    function m(u) {
+      if (!t.IS(u, String, HTMLElement) && !u.isJQx) return;
       let l = r.find$(".warn");
       switch (true) {
         case l.is.empty:
-          l = t.div({ class: "warn" }, u2);
+          l = t.div({ class: "warn" }, u);
         default:
           r.append(l.addClass("active")), S2(() => r.find$(".warn").removeClass("active"), 2);
       }
@@ -639,41 +639,41 @@ ${r}`), m;
   }
   function ne(t) {
     let e = {}, r = "anonymous_";
-    function n(f2) {
-      if (f2) {
-        let { handler: y, capture: g2, type: S2 } = f2;
+    function n(f3) {
+      if (f3) {
+        let { handler: y, capture: g2, type: S2 } = f3;
         document.addEventListener(S2, y, { capture: g2 });
       }
     }
-    function o(f2) {
-      if (f2) {
-        let { type: y, handler: g2, capture: S2 } = f2;
+    function o(f3) {
+      if (f3) {
+        let { type: y, handler: g2, capture: S2 } = f3;
         document.removeEventListener(y, g2, { capture: S2 });
       }
     }
-    function i(f2, y, g2, S2) {
+    function i(f3, y, g2, S2) {
       return function(m) {
-        if (!A(y)) return f2({ evt: m });
-        let u2 = m.target.closest(y);
-        if (u2) {
-          let l = t(u2);
-          f2({ self: l, me: l, evt: m }), g2 && p3(m.type, S2);
+        if (!A(y)) return f3({ evt: m });
+        let u = m.target.closest(y);
+        if (u) {
+          let l = t(u);
+          f3({ self: l, me: l, evt: m }), g2 && p2(m.type, S2);
         }
         return true;
       };
     }
-    function a(f2) {
-      return e[f2] = e[f2] || {}, e[f2];
+    function a(f3) {
+      return e[f3] = e[f3] || {}, e[f3];
     }
-    function h2(f2, y) {
-      return Object.entries(a(f2)).find(([g2]) => g2 === y);
+    function h2(f3, y) {
+      return Object.entries(a(f3)).find(([g2]) => g2 === y);
     }
-    function p3(f2, y) {
-      let g2 = h2(f2, y);
-      g2 && (o(g2[1]), delete e[f2][y], delete oe[y], L.warn(`Removed listener [${y}] for event type [${f2}].`));
+    function p2(f3, y) {
+      let g2 = h2(f3, y);
+      g2 && (o(g2[1]), delete e[f3][y], delete oe[y], L.warn(`Removed listener [${y}] for event type [${f3}].`));
     }
-    function E2(f2) {
-      let { type: y, handler: g2, name: S2, capture: m, once: u2, selector: l, node: s, about: d } = f2;
+    function E2(f3) {
+      let { type: y, handler: g2, name: S2, capture: m, once: u, selector: l, node: s, about: d } = f3;
       e[y] = e[y] || {};
       let b = Se(S2 || g2.name), x2 = g2;
       if (s instanceof HTMLElement) {
@@ -682,21 +682,21 @@ ${r}`), m;
       }
       switch (true) {
         case !e[y][b]:
-          return L.log(`JQx: created listener for event type ${y}, with handler name ${b}`), e[y][b] = { name: b, handler: i(g2, l, u2, b), capture: Be(y, m), once: !!u2, type: y, initialHandler: x2, selector: !!l && l || false, about: !!d && d || false, unListen() {
-            p3(y, b);
+          return L.log(`JQx: created listener for event type ${y}, with handler name ${b}`), e[y][b] = { name: b, handler: i(g2, l, u, b), capture: Be(y, m), once: !!u, type: y, initialHandler: x2, selector: !!l && l || false, about: !!d && d || false, unListen() {
+            p2(y, b);
           } }, e[y][b];
         default:
           return console.warn(`The listener [${b}] for [${y}] exists, it is not re-assigned.`);
       }
     }
-    return { remove(...f2) {
-      return p3(...f2);
-    }, listen: function(f2) {
-      let { type: y, handler: g2 } = f2;
+    return { remove(...f3) {
+      return p2(...f3);
+    }, listen: function(f3) {
+      let { type: y, handler: g2 } = f3;
       if (!A(y) || !c(g2, Function)) return;
-      let S2 = E2(f2);
+      let S2 = E2(f3);
       if (S2) return n(S2), { type: y, name: S2.name, unListen() {
-        p3(y, S2.name);
+        p2(y, S2.name);
       } };
     }, get ListenerStore() {
       return Object.freeze({ ...e });
@@ -787,24 +787,24 @@ ${r}`), m;
       e = false;
     }
     function a(...E2) {
-      return r.unshift(...E2.map((f2) => `${se()} \u2A3B ${xe(f2)}`)), console.error(r.slice(0, E2.length).join(`
+      return r.unshift(...E2.map((f3) => `${se()} \u2A3B ${xe(f3)}`)), console.error(r.slice(0, E2.length).join(`
 `)), n;
     }
     function h2(...E2) {
-      return r.unshift(...E2.map((f2) => `${se()} \u26A0 ${xe(f2)}`)), console.warn(r.slice(0, E2.length).join(`
+      return r.unshift(...E2.map((f3) => `${se()} \u26A0 ${xe(f3)}`)), console.warn(r.slice(0, E2.length).join(`
 `)), n;
     }
-    function p3(...E2) {
-      let f2 = E2.map((y) => `${se()} \u2714 ${xe(y)}`);
-      switch (!e && r.unshift(...f2), t) {
+    function p2(...E2) {
+      let f3 = E2.map((y) => `${se()} \u2714 ${xe(y)}`);
+      switch (!e && r.unshift(...f3), t) {
         case true:
-          console.log(f2.join(`
+          console.log(f3.join(`
 `));
         default:
           return n;
       }
     }
-    return Object.defineProperties(n, { log: { value: p3, enumerable: false }, error: { value: a, enumerable: false }, warn: { value: h2, enumerable: false } }), Object.freeze(n);
+    return Object.defineProperties(n, { log: { value: p2, enumerable: false }, error: { value: a, enumerable: false }, warn: { value: h2, enumerable: false } }), Object.freeze(n);
   }
   function se() {
     return ((t) => `[${ie(t.getHours())}:${ie(t.getMinutes())}:${ie(t.getSeconds())}.${ie(t.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
@@ -844,8 +844,8 @@ ${r}`), m;
   }
   function Ve(t) {
     if (!c(t, HTMLElement)) return;
-    let e = t.style, r = getComputedStyle(t), n = !![e.visibility, r.visibility].includes("hidden"), o = !![e.display, r.display].includes("none"), i = !!t.hidden, a = parseInt(r.height) < 1 || parseInt(r.width) < 1, h2 = t.offsetTop < 0 || t.offsetLeft + t.offsetWidth < 0 || t.offsetLeft > document.body.offsetWidth, p3 = +r.opacity == 0 || +(e.opacity || 1) == 0;
-    return !(i || h2 || p3 || o || n || a);
+    let e = t.style, r = getComputedStyle(t), n = !![e.visibility, r.visibility].includes("hidden"), o = !![e.display, r.display].includes("none"), i = !!t.hidden, a = parseInt(r.height) < 1 || parseInt(r.width) < 1, h2 = t.offsetTop < 0 || t.offsetLeft + t.offsetWidth < 0 || t.offsetLeft > document.body.offsetWidth, p2 = +r.opacity == 0 || +(e.opacity || 1) == 0;
+    return !(i || h2 || p2 || o || n || a);
   }
   function _e(t) {
     return t?.isConnected ? !![...document.querySelectorAll(":is(:read-write)")].find((e) => e === t) : false;
@@ -1050,7 +1050,7 @@ ${r}`), m;
       for (let o of r) {
         if (!o.isJQx && A(o)) {
           let i = o.trim(), h2 = !/^<(.+)[^>]+>$/m.test(i) ? t.text(o) : C(o);
-          v(e, (p3) => p3.append(n ? h2 : P(h2)));
+          v(e, (p2) => p2.append(n ? h2 : P(h2)));
         }
         H(o) && v(e, (i) => i.append(n ? o : P(o))), o.isJQx && !o.is.empty && v(e, (i) => o.collection.forEach((a) => i.append(n ? a : P(a))));
       }
@@ -1176,9 +1176,9 @@ ${r}`), m;
       for (let [i, a] of Object.entries(o)) {
         if (i = i.trim(), a && !ae(i) || !a) return false;
         if (i.toLowerCase() === "id") return e[0].id = a;
-        v(e, (p3) => {
-          if (i.startsWith("data")) return p3.dataset[i.slice(i.indexOf("-") + 1)] = a;
-          p3[i] = a;
+        v(e, (p2) => {
+          if (i.startsWith("data")) return p2.dataset[i.slice(i.indexOf("-") + 1)] = a;
+          p2[i] = a;
         });
       }
       return e;
@@ -1378,17 +1378,17 @@ ${r}`), m;
   }
   function xr(t) {
     return function(e) {
-      let { type: r, types: n, origin: o, selector: i, handler: a, handlers: h2, node: p3, name: E2, capture: f2, once: y, about: g2 } = e;
+      let { type: r, types: n, origin: o, selector: i, handler: a, handlers: h2, node: p2, name: E2, capture: f3, once: y, about: g2 } = e;
       a = h2 || a, r = n || r, i = o || i;
       let S2 = Ae(r), m = E2;
       a = c(a, Function) ? [a] : a;
-      let u2 = { type: S2, selector: i || o, capture: f2, name: m, once: y, node: p3, about: g2 };
+      let u = { type: S2, selector: i || o, capture: f3, name: m, once: y, node: p2, about: g2 };
       switch (true) {
         case (c(S2, Array) && S2.length > 0):
-          for (let l of S2) u2.type = l, it(a, u2, t);
+          for (let l of S2) u.type = l, it(a, u, t);
           break;
         default:
-          return it(a, u2, t);
+          return it(a, u, t);
       }
     };
   }
@@ -1404,26 +1404,26 @@ ${r}`), m;
     return t.activePopup || Object.defineProperty(t, "activePopup", { value: re(t), enumerable: false }), t.activePopup;
   }
   function vr(t) {
-    let e = (f2, y) => Ce(f2, y), r = function(f2) {
-      return W({ createWithId: f2 || `jqx${fe()}` });
-    }, n = function(...f2) {
-      for (let y of f2) Ce(y);
+    let e = (f3, y) => Ce(f3, y), r = function(f3) {
+      return W({ createWithId: f3 || `jqx${fe()}` });
+    }, n = function(...f3) {
+      for (let y of f3) Ce(y);
     }, o = mr(t), i = ne(t), a = xr(i);
-    return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: a, capturedHandling: a, log: (...f2) => L.on.log(...f2).off, warn: (...f2) => L.on.warn(...f2).off, error: (...f2) => L.on.error(...f2).off, handlerWrapper: i };
+    return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: a, capturedHandling: a, log: (...f3) => L.on.log(...f3).off, warn: (...f3) => L.on.warn(...f3).off, error: (...f3) => L.on.error(...f3).off, handlerWrapper: i };
   }
   function Lr(t) {
     let { factoryExtensions: e, instanceExtensions: r } = rt(t);
     Oe = e, ge = r;
-    let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: h2, capturedHandling: p3, log: E2, warn: f2, error: y, handlerWrapper: g2 } = vr(t), S2 = Er(t), m = ur(t);
-    return z.setError = (u2) => (y(`JQx direct element creation error: [${u2}] is not a valid tag`), t.br()), { log: E2, warn: f2, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: M, logger: L, proxyWrapper: G, text(u2, l = false) {
-      return l ? t.comment(u2) : document.createTextNode(u2);
-    }, node(u2, l = document) {
-      return l.querySelector(u2, l);
-    }, nodes(u2, l = document) {
-      return [...l.querySelectorAll(u2, l)];
+    let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: h2, capturedHandling: p2, log: E2, warn: f3, error: y, handlerWrapper: g2 } = vr(t), S2 = Er(t), m = ur(t);
+    return z.setError = (u) => (y(`JQx direct element creation error: [${u}] is not a valid tag`), t.br()), { log: E2, warn: f3, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: M, logger: L, proxyWrapper: G, text(u, l = false) {
+      return l ? t.comment(u) : document.createTextNode(u);
+    }, node(u, l = document) {
+      return l.querySelector(u, l);
+    }, nodes(u, l = document) {
+      return [...l.querySelectorAll(u, l)];
     }, clearAllTimers: we, get staticFn() {
-      return function(u2, l, s) {
-        return m(u2, l, s);
+      return function(u, l, s) {
+        return m(u, l, s);
       };
     }, get toBool() {
       return Fe;
@@ -1440,11 +1440,11 @@ ${r}`), m;
     }, get removeCssRules() {
       return ot;
     }, get delegate() {
-      return Sr(p3);
+      return Sr(p2);
     }, get delegateCaptured() {
-      return p3;
+      return p2;
     }, get handle() {
-      return p3;
+      return p2;
     }, get listen() {
       return g2.listen;
     }, get at() {
@@ -1468,27 +1468,27 @@ ${r}`), m;
     return st(function(e, r, n = T.BeforeEnd) {
       if (e?.isJQx) return e;
       let o = c(r, HTMLBRElement);
-      r = (!o && r && r.isJQx ? r[0] : r) || document.body, n = n && Object.values(T).find((f2) => n === f2) ? n : void 0;
-      let i = _(e), h2 = !i && me(e) || i, p3 = { collection: ue(e) ?? [], isVirtual: o, isJQx: true }, E2 = Y(p3.collection);
+      r = (!o && r && r.isJQx ? r[0] : r) || document.body, n = n && Object.values(T).find((f3) => n === f3) ? n : void 0;
+      let i = _(e), h2 = !i && me(e) || i, p2 = { collection: ue(e) ?? [], isVirtual: o, isJQx: true }, E2 = Y(p2.collection);
       switch (true) {
-        case (p3.collection.length && E2 && !o):
-          for (let f2 of p3.collection) r.contains(f2) || I([f2], r, n);
+        case (p2.collection.length && E2 && !o):
+          for (let f3 of p2.collection) r.contains(f3) || I([f3], r, n);
           break;
         case h2:
-          for (let f2 of [e].flat()) p3.collection.push(C(f2));
-          if (p3.collection.length > 0) {
-            let f2 = p3.collection.filter((m) => m?.dataset?.jqxcreationerror);
-            p3.collection = p3.collection.filter((m) => !m?.dataset?.jqxcreationerror);
-            let g2 = p3.collection.map((m) => `${String(m.constructor).split(/function|\(/)[1].trim()}`).length > 1;
-            p3 = pe(p3);
-            let S2 = p3.collection.length > 0 ? Ke(p3) : "sanitized: no elements remaining";
-            L.log(`JQx: created ${p3.isVirtual ? "(virtual)" : ""} instance from ${g2 ? "array of " : ""}HTML string${g2 ? "s" : ""} ${S2}`), p3.isVirtual || I(p3.collection, r, n);
+          for (let f3 of [e].flat()) p2.collection.push(C(f3));
+          if (p2.collection.length > 0) {
+            let f3 = p2.collection.filter((m) => m?.dataset?.jqxcreationerror);
+            p2.collection = p2.collection.filter((m) => !m?.dataset?.jqxcreationerror);
+            let g2 = p2.collection.map((m) => `${String(m.constructor).split(/function|\(/)[1].trim()}`).length > 1;
+            p2 = pe(p2);
+            let S2 = p2.collection.length > 0 ? Ke(p2) : "sanitized: no elements remaining";
+            L.log(`JQx: created ${p2.isVirtual ? "(virtual)" : ""} instance from ${g2 ? "array of " : ""}HTML string${g2 ? "s" : ""} ${S2}`), p2.isVirtual || I(p2.collection, r, n);
           }
           break;
         default:
-          $e(e, r, p3);
+          $e(e, r, p2);
       }
-      return pe(p3);
+      return pe(p2);
     });
   }
   var En = at;
@@ -1516,11 +1516,11 @@ ${r}`), m;
       }, finalize(d = "", Z2 = "", b = "", $2 = "") {
         return h2.replace(/~([\d+]?)/g, "$1").replace(/dtf/, d).replace(/era/, b).replace(/dp\b|~dp\b/, Z2).replace(/yn\b/, $2).replace(/\[(\d+?)]/g, (w, Fe2) => D2[Fe2].trim()).trim();
       } };
-    }, u2 = (l) => l.replace(/\s+/g, ""), c2 = (...l) => l?.reduce((y, h2) => ({ ...y, ...o.retrieveDyn(h2) || o.fixed[h2] }), o.fixed.dl), i = (l, y, h2) => {
-      let D2 = c2(...u2(h2).split(",")), d = Intl.DateTimeFormat(D2.locale, D2).format(l);
+    }, u = (l) => l.replace(/\s+/g, ""), c2 = (...l) => l?.reduce((y, h2) => ({ ...y, ...o.retrieveDyn(h2) || o.fixed[h2] }), o.fixed.dl), i = (l, y, h2) => {
+      let D2 = c2(...u(h2).split(",")), d = Intl.DateTimeFormat(D2.locale, D2).format(l);
       return y.finalize(d);
     }, m = (l, y, h2, D2) => l.toLocaleString(y, { timeZone: h2, month: D2 ? t : n }), T2 = (l, y, h2) => {
-      let D2 = c2(...y.units.concat(u2(h2).split(",")).flat()), d = { ...o.fixed }, Z2 = ($2, w) => D2[$2] === "numeric" && w.startsWith("0") ? w.slice(1) : w, b = Intl.DateTimeFormat(D2.locale, D2).formatToParts(l).reduce(($2, w) => w.type === "literal" && /[ ,/-]/.test(w.value) ? $2 : { ...$2, [w.type]: Z2(w.type, w.value) }, {});
+      let D2 = c2(...y.units.concat(u(h2).split(",")).flat()), d = { ...o.fixed }, Z2 = ($2, w) => D2[$2] === "numeric" && w.startsWith("0") ? w.slice(1) : w, b = Intl.DateTimeFormat(D2.locale, D2).formatToParts(l).reduce(($2, w) => w.type === "literal" && /[ ,/-]/.test(w.value) ? $2 : { ...$2, [w.type]: Z2(w.type, w.value) }, {});
       return d.ms = D2.fractionalSecondDigits ? d.msp : d.ms, d.yyyy = b.relatedYear ? d.ry : d.yyyy, y.formatStr = y.formatStr.replace(o.re, ($2) => /^(M|MM)$/.test($2) ? m(l, D2.locale, D2.timeZone, /^M$/.test($2)) : b[Object.keys(d[$2]).shift()] || $2), y.finalize(void 0, b.dayPeriod, b.era, b.yearName);
     };
     return (l, y, h2 = "l:default") => /ds:|ts:/.test(h2) ? i(l, s(void 0), h2) : T2(l, s(y || void 0), h2);
@@ -1530,26 +1530,26 @@ ${r}`), m;
     let e = (t, a) => {
       let o = isNaN(new Date(t)), s = isNaN(new Date(a));
       if (s) {
-        let [u2, c2, i] = Array(3).fill("end date not valid");
-        return { error: true, message: u2, full: c2, clean: i };
+        let [u, c2, i] = Array(3).fill("end date not valid");
+        return { error: true, message: u, full: c2, clean: i };
       }
       if (o) {
-        let [u2, c2, i] = Array(3).fill("start date not valid");
-        return { error: true, message: u2, full: c2, clean: i };
+        let [u, c2, i] = Array(3).fill("start date not valid");
+        return { error: true, message: u, full: c2, clean: i };
       }
       if (o && !s) {
-        let [u2, c2, i] = Array(3).fill("start- and/or end date are not valid");
-        return { error: true, message: u2, full: c2, clean: i };
+        let [u, c2, i] = Array(3).fill("start- and/or end date are not valid");
+        return { error: true, message: u, full: c2, clean: i };
       }
       return { error: false };
     }, r = n();
     return function({ start: t, end: a, diffs: o = {} } = {}) {
-      let s = e(t, a), u2 = a > t ? "+" : "-";
+      let s = e(t, a), u = a > t ? "+" : "-";
       if (s.error) return s;
       let c2 = Math.abs(t - a), i = new Date(c2), m = i.getUTCFullYear() - 1970, T2 = i.getUTCMonth(), l = i.getUTCDate() - 1, y = l % 7, h2 = Math.floor(l / 7), D2 = i.getUTCHours(), d = i.getUTCMinutes(), Z2 = i.getUTCSeconds(), b = i.getUTCMilliseconds(), $2 = Math.floor(c2 / 864e5);
       o = { ...o, fromUTC: t, toUTC: a, sign: "", years: m, months: T2, days: l, hours: D2, minutes: d, seconds: Z2, milliseconds: b, diffInDays: $2 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
       let w = D2 + d + Z2 > 0 ? "T" : "";
-      return o.clean !== "Dates are equal" && (o.sign = u2, o.jsPeriod = `${u2}P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${h2 > 0 ? `${h2}W` : ""}${y > 0 ? `${y}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`, o.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${l > 0 ? `${l}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`), o;
+      return o.clean !== "Dates are equal" && (o.sign = u, o.jsPeriod = `${u}P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${h2 > 0 ? `${h2}W` : ""}${y > 0 ? `${y}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`, o.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${l > 0 ? `${l}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`), o;
     };
     function n() {
       let t = (...i) => (m) => i.reduce((T2, l) => l(T2), m), a = (i, m) => i === 1 ? m.slice(0, -1) : m;
@@ -1563,18 +1563,18 @@ ${r}`), m;
       return r = t[0].trim().startsWith("subtract,"), r && (t = a ? t[0].trim().replace(/^subtract,/i, "").split(",").map((o) => o.trim()) : t.filter((o) => !o.startsWith("subtract"))), a && !r && (t = t[0].split(",").map((o) => o.trim())), t.map(function(o) {
         if (!o) return false;
         let s = o.toLowerCase().split(/ {1,}/);
-        return s.length < 2 ? false : s.map((u2) => {
-          u2 = `${u2}`.trim().replace(/[^a-z0-9-+]/g, "");
-          let c2 = parseInt(u2, 10);
-          return Number.isNaN(c2) ? u2 : r ? -c2 : +c2;
+        return s.length < 2 ? false : s.map((u) => {
+          u = `${u}`.trim().replace(/[^a-z0-9-+]/g, "");
+          let c2 = parseInt(u, 10);
+          return Number.isNaN(c2) ? u : r ? -c2 : +c2;
         });
       }).filter((o) => o);
     };
     return function(t, ...a) {
       if (a.length < 1) return t;
       let o = n(...a);
-      return o.length && o.forEach(([s, u2]) => {
-        u2 = u2, u2 = e[u2], s && u2 && t[`set${u2}`](t[`get${u2}`]() + s);
+      return o.length && o.forEach(([s, u]) => {
+        u = u, u = e[u], s && u && t[`set${u}`](t[`get${u}`]() + s);
       }), t;
     };
   }
@@ -1616,8 +1616,8 @@ ${r}`), m;
     return { locale: n, timeZone: t, monthName: o[0], dayName: o[1], dayNames: ae2(n), monthNames: Y2(n) };
   }
   function B2(e, r = false) {
-    let [n, t, a, o] = U2(e, r), u2 = { values4Timezone: r ? g.timeZone : e.timeZone, hours: n, minutes: t, seconds: a, milliseconds: o };
-    return Object.freeze(u2);
+    let [n, t, a, o] = U2(e, r), u = { values4Timezone: r ? g.timeZone : e.timeZone, hours: n, minutes: t, seconds: a, milliseconds: o };
+    return Object.freeze(u);
   }
   function U2(e, r = false) {
     let t = `l:en-CA,${r ? `tz:${g.timeZone}` : `tz:${e.timeZone}`},hrc:23,ts:medium`;
@@ -1648,8 +1648,8 @@ ${r}`), m;
   }
   function R2({ start: e, end: r } = {}) {
     r || (r = e.clone), r?.clone || (r = f(r, { timeZone: e.timeZone })), e = f(fe2(e, e.timeZone), { timeZone: e.timeZone }), r = f(fe2(r, r.timeZone), { timeZone: r.timeZone });
-    let n = ge2({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = xe2(r, e), a = n.sign.startsWith("-") ? "ahead of" : "behind", [o, s] = t.map((i) => Math.abs(i)), [u2, c2] = [`${o} ${C2(o, "hour")}`, `${s} ${C2(s, "minute")}`];
-    return n.timeZonesOffsetDifference = n.sign.length < 1 || o + s === 0 ? `Offsets of ${e.timeZone} and ${r.timeZone} are equal` : `${e.timeZone} is ${u2}${s > 0 ? ` and ${c2}` : ""} ${a} ${r.timeZone}`, n;
+    let n = ge2({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = xe2(r, e), a = n.sign.startsWith("-") ? "ahead of" : "behind", [o, s] = t.map((i) => Math.abs(i)), [u, c2] = [`${o} ${C2(o, "hour")}`, `${s} ${C2(s, "minute")}`];
+    return n.timeZonesOffsetDifference = n.sign.length < 1 || o + s === 0 ? `Offsets of ${e.timeZone} and ${r.timeZone} are equal` : `${e.timeZone} is ${u}${s > 0 ? ` and ${c2}` : ""} ${a} ${r.timeZone}`, n;
   }
   function X2(e, r) {
     r = String(r).toLowerCase() === "utc" || r.timeZone === "UTC" ? e.clone.relocate({ timeZone: "UTC" }) : f(e.value, { timeZone: r.timeZone || g.timeZone });
@@ -1672,16 +1672,16 @@ ${r}`), m;
   }
   function pe2(e, { withFormat: r, withFormatOptions: n, local: t = false } = {}) {
     if (r) return t ? me2(e, r, $D.localeInformation.formatOptions) : me2(e, r, n);
-    let a = e.clone.relocate({ locale: "en" }), o = t ? g.formatOptions : a.localeInfo.formatOptions, u2 = `wd M dd yyyy hh:mmi:ss ${a.format("tz", o + ",tzn:longOffset").replace(":", "")} (tz)`;
-    return a.format(u2, o + ",tzn:long, hrc:23");
+    let a = e.clone.relocate({ locale: "en" }), o = t ? g.formatOptions : a.localeInfo.formatOptions, u = `wd M dd yyyy hh:mmi:ss ${a.format("tz", o + ",tzn:longOffset").replace(":", "")} (tz)`;
+    return a.format(u, o + ",tzn:long, hrc:23");
   }
   function ee2(e, r = false) {
     let n = Intl.DateTimeFormat("en", { timeZone: r ? e.timeZone : g.timeZone, weekday: "short" });
     return ye2(n.format(e));
   }
   function $e2(e) {
-    let r = g, n = e.localeInfo, t = e.clone.relocate({ locale: r.locale, timeZone: r.timeZone }), a = e.offsetFrom(t), o = t.offsetFrom(e), s = r, u2 = n, c2 = e.format("hh:mmi:ss dp", `hrc:12,tz:${e.timeZone}`), i = t.format("hh:mmi:ss dp", `hrc:12,tz:${t.timeZone}`), m = { note: "'user' are values for your locale/timeZone, 'remote' (if applicable) idem for the instance", locales: { user: { locale: s.locale, timeZone: s.timeZone } }, dateTime: { user: { ...e.dateTime, monthName: t.monthName, weekdayNr: t.day, weekdayName: t.dayName, dayPeriodTime: i, hasDST: t.hasDST, DSTActive: t.DSTActive, offsetFromRemote: a.offset, string: t.toString() } }, offset: { fromUTC: e.UTC.offsetFrom(e).offsetText } };
-    return n.timeZone !== r.timeZone && (m.locales.remote = { locale: u2.locale, timeZone: u2.timeZone }, m.dateTime.remote = { ...e.zoneDateTime, monthName: e.zoneNames.monthName, weekdayNr: ee2(e, true), weekdayName: e.zoneNames.dayName, dayPeriodTime: c2, hasDST: e.hasDST, DSTActive: e.DSTActive, offsetFromUser: o.offset, string: e.toString() }, m.offset.fromUserTime = o.offsetText), m;
+    let r = g, n = e.localeInfo, t = e.clone.relocate({ locale: r.locale, timeZone: r.timeZone }), a = e.offsetFrom(t), o = t.offsetFrom(e), s = r, u = n, c2 = e.format("hh:mmi:ss dp", `hrc:12,tz:${e.timeZone}`), i = t.format("hh:mmi:ss dp", `hrc:12,tz:${t.timeZone}`), m = { note: "'user' are values for your locale/timeZone, 'remote' (if applicable) idem for the instance", locales: { user: { locale: s.locale, timeZone: s.timeZone } }, dateTime: { user: { ...e.dateTime, monthName: t.monthName, weekdayNr: t.day, weekdayName: t.dayName, dayPeriodTime: i, hasDST: t.hasDST, DSTActive: t.DSTActive, offsetFromRemote: a.offset, string: t.toString() } }, offset: { fromUTC: e.UTC.offsetFrom(e).offsetText } };
+    return n.timeZone !== r.timeZone && (m.locales.remote = { locale: u.locale, timeZone: u.timeZone }, m.dateTime.remote = { ...e.zoneDateTime, monthName: e.zoneNames.monthName, weekdayNr: ee2(e, true), weekdayName: e.zoneNames.dayName, dayPeriodTime: c2, hasDST: e.hasDST, DSTActive: e.DSTActive, offsetFromUser: o.offset, string: e.toString() }, m.offset.fromUserTime = o.offsetText), m;
   }
   function O(e, r = true) {
     if (r) return [e.getFullYear(), e.getMonth(), e.getDate(), e.getHours(), e.getMinutes(), e.getSeconds(), e.getMilliseconds()];
@@ -1794,8 +1794,8 @@ ${r}`), m;
   function Ee2({ localeInfo: e, customMethods: r, dateValue: n } = {}) {
     let t, a = { add(...o) {
       return H2(t, ...o);
-    }, between({ start: o, end: s, include: u2 } = {}) {
-      return W2(t, { start: o, end: s, include: u2 });
+    }, between({ start: o, end: s, include: u } = {}) {
+      return W2(t, { start: o, end: s, include: u });
     }, cloneWith(o) {
       return re2(t, o);
     }, daysUntil(o) {
@@ -1822,32 +1822,32 @@ ${r}`), m;
       return X2(t, o);
     }, previous(o, s) {
       return x(t, { day: o, next: false, preserveTodayWhenEqual: !!s });
-    }, relocate({ locale: o, timeZone: s, l: u2, tz: c2 } = {}) {
-      return Ze2(t, { locale: o, timeZone: s, l: u2, tz: c2 });
+    }, relocate({ locale: o, timeZone: s, l: u, tz: c2 } = {}) {
+      return Ze2(t, { locale: o, timeZone: s, l: u, tz: c2 });
     }, revalue(o) {
       return t = be2(t, o), t;
-    }, setDateValues({ year: o, month: s, date: u2 } = {}) {
-      return v2(t, { year: o, month: s, date: u2 });
-    }, setTimeValues({ hours: o, minutes: s, seconds: u2, milliseconds: c2 } = {}) {
-      return I2(t, { hours: o, minutes: s, seconds: u2, milliseconds: c2 });
+    }, setDateValues({ year: o, month: s, date: u } = {}) {
+      return v2(t, { year: o, month: s, date: u });
+    }, setTimeValues({ hours: o, minutes: s, seconds: u, milliseconds: c2 } = {}) {
+      return I2(t, { hours: o, minutes: s, seconds: u, milliseconds: c2 });
     }, subtract(...o) {
       return H2(t, "subtract," + o.join(","));
     }, toArray(o = false) {
       return O(t, o);
-    }, toString({ template: o, formatOptions: s, local: u2 } = {}) {
-      return pe2(t, { withFormat: o, withFormatOptions: s, local: u2 });
+    }, toString({ template: o, formatOptions: s, local: u } = {}) {
+      return pe2(t, { withFormat: o, withFormatOptions: s, local: u });
     }, values(o = false) {
       return o ? t.dateTime : t.zoneDateTime;
     }, zoneFormat(o, s) {
       return _2(t, { zoneTime: true, formatStr: o, moreOptions: s });
-    }, set date({ year: o, month: s, date: u2 }) {
-      v2(t, { year: o, month: s, date: u2 });
+    }, set date({ year: o, month: s, date: u }) {
+      v2(t, { year: o, month: s, date: u });
     }, set dateNr(o) {
       v2(t, { date: o });
     }, set hours(o) {
       I2(t, { hours: o });
-    }, set localeInfo({ locale: o, timeZone: s, l: u2, tz: c2 }) {
-      e = z2({ locale: o, timeZone: s, l: u2, tz: c2 });
+    }, set localeInfo({ locale: o, timeZone: s, l: u, tz: c2 }) {
+      e = z2({ locale: o, timeZone: s, l: u, tz: c2 });
     }, set milliseconds(o) {
       I2(t, { milliseconds: `${o}` });
     }, set minutes(o) {
@@ -1856,8 +1856,8 @@ ${r}`), m;
       v2(t, { month: o });
     }, set seconds(o) {
       I2(t, { seconds: o });
-    }, set time({ hours: o, minutes: s, seconds: u2, milliseconds: c2 }) {
-      I2(t, { hours: o, minutes: s, seconds: u2, milliseconds: c2 });
+    }, set time({ hours: o, minutes: s, seconds: u, milliseconds: c2 }) {
+      I2(t, { hours: o, minutes: s, seconds: u, milliseconds: c2 });
     }, set year(o) {
       v2(t, { year: o });
     }, get age() {
@@ -2060,7 +2060,7 @@ ${r}`), m;
     }
   }
   function Ge2({ timeZoneDate: e, timeZoneID: r, userTimeZoneID: n } = {}) {
-    let t = { timeZone: p({ timeZone: r }).timeZone }, a = { timeZone: p({ timeZone: n || "" }).timeZone }, o = f(e, t), s = f(e, a), u2 = s.differenceTo(o), c2 = o.offsetFrom(s).offset, [i, m] = A2(c2, true), T2 = s.clone.add(`${i} hours, ${m} minutes`), y = u2.equalDates ? "No difference" : `Time offset ${c2}: ${a.timeZone} is ${u2.clean} ${i < 0 ? "behind" : "ahead of"} ${t.timeZone}`;
+    let t = { timeZone: p({ timeZone: r }).timeZone }, a = { timeZone: p({ timeZone: n || "" }).timeZone }, o = f(e, t), s = f(e, a), u = s.differenceTo(o), c2 = o.offsetFrom(s).offset, [i, m] = A2(c2, true), T2 = s.clone.add(`${i} hours, ${m} minutes`), y = u.equalDates ? "No difference" : `Time offset ${c2}: ${a.timeZone} is ${u.clean} ${i < 0 ? "behind" : "ahead of"} ${t.timeZone}`;
     return { remoteTimezone: t.timeZone, userTimezone: a.timeZone, timeDifference: y, result: { [t.timeZone.replace(/\//, "_")]: f(e).toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }), [a.timeZone.replace(/\//, "_")]: T2.toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }) } };
   }
   function S(e) {
@@ -2105,8 +2105,8 @@ ${r}`), m;
     for (let [t, a] of Object.entries(r || {})) {
       let o = a.enumerable, s = a.isGetter ? { get() {
         return a.method(e);
-      }, enumerable: o } : { value(...u2) {
-        return a.method(e, ...u2);
+      }, enumerable: o } : { value(...u) {
+        return a.method(e, ...u);
       }, enumerable: o };
       Object.defineProperty(n, t, s);
     }
@@ -2139,8 +2139,8 @@ ${r}`), m;
       return a[1] -= 1, a;
     } }, format: { value({ date: n, template: t, timeZone: a, locale: o, opts: s } = {}) {
       n = n || n?.value || /* @__PURE__ */ new Date(), t = t?.constructor === String ? t : "yyyy/mm/dd hh:mmi:ss dp";
-      let u2 = p({ timeZone: a, locale: o }).formatOptions;
-      return u2 += s ? `,${s}` : "", M2(n, t, u2);
+      let u = p({ timeZone: a, locale: o }).formatOptions;
+      return u += s ? `,${s}` : "", M2(n, t, u);
     } }, addCustom: { value({ name: n, method: t, enumerable: a = false, isGetter: o = false } = {}) {
       n?.constructor === String && t?.constructor === Function && t.length > 0 && (r[n] = { method: t, enumerable: a, isGetter: o });
     } }, validateLocaleInformation: { value: p }, timeAcrossZones: { value: Ge2 }, weeksInYear: { value(n) {
@@ -2256,74 +2256,64 @@ ${r}`), m;
   }
 
   // ../Resource/Externals/splat.min.js
-  var u = h();
-  var v3 = p2();
-  var N3 = p2("");
-  window.IS = u;
-  function p2(r, f2 = {}) {
-    let { useSymbolicExtensions: a } = f2;
-    return r = u(r, String, Number) ? String(r) : void 0, a && O2(), function(n, ...t) {
-      return d(n, y(t));
+  var O2 = f2();
+  var h = f2({ defaultReplacer: "" });
+  function f2(i = {}) {
+    let { defaultReplacer: n, useSymbolicExtensions: a } = i;
+    return n = l(n) ? String(n) : void 0, typeof a == "boolean" && a && v3(), function(e, ...t) {
+      return j3(e, m(t));
     };
-    function s(n, t) {
-      return t && u(r, String, Number) ? String(r) : `{${n}}`;
+    function p2(e, t) {
+      return t && typeof n == "string" ? String(n) : `{${e}}`;
     }
-    function e(n, t) {
-      let i = n in t;
-      return i && u(t[n], String, Number) ? String(t[n]) : s(n, i);
+    function s(e, t) {
+      let r = Object.hasOwn(t, e);
+      return r && l(t[e]) ? String(t[e]) : p2(e, r);
     }
-    function o(n) {
+    function y(e) {
       return (...t) => {
-        let i = t.find((c2) => c2.key);
-        return e(i ? i.key : "_", n);
+        let r = t.find((o) => o.key);
+        return s(r ? r.key : "_", e);
       };
     }
-    function l(n, t) {
-      return n.replace(/\{(?<key>[a-z_\d]+)}/gim, o(t));
+    function b(e, t) {
+      return e.replace(/\{(?<key>[a-z_\d]+)}/gim, y(t));
     }
-    function b(n) {
+    function d(e) {
       let t = [];
-      return Object.entries(n).forEach(([i, c2]) => {
-        c2.forEach((m, S2) => (t[S2] ??= {}, t[S2][i] = m));
+      return Object.entries(e).forEach(([r, o]) => {
+        o.forEach((c2, u) => (t[u] ??= {}, t[u][r] = c2));
       }), t;
     }
-    function g2(n) {
-      return n.length === 1 && Object.values(n[0]).every(Array.isArray);
+    function g2(e) {
+      return e.length === 1 && Object.values(e[0]).every(Array.isArray);
     }
-    function y(n) {
-      return g2(n) ? b(n[0]) : n;
+    function m(e) {
+      return g2(e) ? d(e[0]) : e;
     }
-    function d(n, t) {
-      let i = t?.length ? t.filter((c2) => u(c2, Object)).map((c2, m) => l(n, { ...c2, index: m + 1 })).join("") : n;
-      return u(r, void 0) ? i : i.replace(/\{[a-z_\d].+\}/gim, String(r));
+    function l(e) {
+      return typeof e == "string" || typeof e == "number";
+    }
+    function S2(e) {
+      return Object.prototype.toString.call(e) === "[object Object]";
+    }
+    function j3(e, t) {
+      let r = t?.length ? t.filter((o) => S2(o)).map((o, c2) => b(e, { ...o, index: c2 + 1 })).join("") : e;
+      return typeof n != "string" ? r : r.replace(/\{.+\}/gmi, n ?? "");
     }
   }
-  function O2() {
-    return String.prototype[Symbol.for("interpolate")] || Object.defineProperties(String.prototype, { [Symbol.for("interpolate")]: { value(...r) {
-      return v3(this, ...r);
-    } }, [Symbol.for("interpolate$")]: { value(...r) {
-      return N3(this, ...r);
-    } } }), [Symbol.for("interpolate"), Symbol.for("interpolate$")];
-  }
-  function h() {
-    let r = new Intl.Collator("en", { sensitivity: "base" }), f2 = (e) => typeof e == "function" ? e?.name || e?.constructor?.name : "noCTOR";
-    function a(e, o) {
-      return o === Number && (Number.isNaN(e) || !Number.isFinite(e)) ? false : r.compare(Object.prototype.toString.call(e), `[object ${f2(o)}]`) === 0 || e?.name === o?.name;
-    }
-    function s(e, ...o) {
-      if (o.length > 1) {
-        for (let l of o) if (a(e, l)) return true;
-        return false;
-      }
-      return a(e, o?.shift());
-    }
-    return s;
+  function v3() {
+    return String.prototype[/* @__PURE__ */ Symbol.for("interpolate")] || Object.defineProperties(String.prototype, { [/* @__PURE__ */ Symbol.for("interpolate")]: { value(...i) {
+      return O2(this, ...i);
+    } }, [/* @__PURE__ */ Symbol.for("interpolate$")]: { value(...i) {
+      return h(this, ...i);
+    } } }), [/* @__PURE__ */ Symbol.for("interpolate"), /* @__PURE__ */ Symbol.for("interpolate$")];
   }
 
   // ../index.js
   setDefaultStyling();
   fixSBLinks2TopProblem();
-  var splatModule = { interpolate: v3, interpolateClear: N3, addSymbolicStringExtensions: O2 };
+  var splatModule = { interpolate: O2, interpolateClear: h, addSymbolicStringExtensions: v3 };
   function fixSBLinks2TopProblem() {
     /stackblitz/i.test(location.href) && console.info(`\u2714 Stackblitz rewrites links to _top. The 'stackblitzhelpers' module fixed it.`);
     document.addEventListener(`click`, (evt) => {
