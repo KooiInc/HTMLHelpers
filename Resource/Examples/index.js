@@ -11,7 +11,7 @@ const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
-const [splatMe] = addSymbolicStringExtensions();
+const [splatMe, splatMe$] = addSymbolicStringExtensions();
 
 // set page styling
 initStyling();
@@ -62,13 +62,16 @@ log(
   $.div(
     $.div({class: "normal"}, `Sure:`),
     $.div({class: "normal"}, `<b>helloWorld1</b> => ${
-      splat("Hello {wrld}", {wrld: "world"}) }`),
+      splat("Hello {wrld} {token ignored}", {wrld: "world"}) }`),
     $.div({class: "normal"}, `<b>helloWorld2</b> => ${
       splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"}) }`),
     $.div({class: "normal"}, `<b>helloWorld3</b> => ${
       "Hello {wrld}"[splatMe]({wrld: "world"})}`),
     $.div({class: "normal"}, `<b>helloWorld4</b> => ${
-      "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`)),
+      "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`),
+    $.div({class: "normal"}, `<b>helloWorld5</b> => ${
+      "Hello {wrld}"[splatMe$]({wrld: `world; `}, {world: "<i>universe</i>"})}`)
+  ),
 
   // ticktock availability
   toHeader($.div, `Is `,

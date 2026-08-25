@@ -24,14 +24,20 @@ const untilNextNewYear = now.differenceFrom($D([now.year + 1, 0 ,1, 0, 0, 0]));
 </template>
 
 <template id="splatEx">
-const splatMe = Symbol.for("interpolate");
+const splatMe = Symbol.for("interpolate");   // &lt;= ignores non existing tokens
+const splatMe$ = Symbol.for("interpolate$"); // &lt;= cleans non existing tokens
 // the [splat] function
-const helloWrld1 = splat("Hello {wrld}", {wrld: "world"});
+const helloWrld1 = splat("Hello {wrld} {ignored}", {wrld: "world"});
 const helloWrld2 = splat("Hello {wrld}", {wrld: "world"}, {wrld: "&lt;i>universe&lt;/i>"});
 
 // the [splatMe] symbolic extension
 const helloWrld3 = "Hello {wrld}"[splatMe]({wrld: "world"});
-const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world;"}, {wrld: "&lt;i>universe&lt;/i>"});
+const helloWrld4 = "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "&lt;i>universe&lt;/i>"});
+
+// replace non-existing tokens with nothing (splatMe$ symbolic string extension)
+const helloWrld5 = "Hello {wrld}"[splatMe$]({wrld: "world; "},{world: "&lt;i>universe&lt;/i>"});
+//                                                             ^ typo
+
 </template>
 
 <template id="onclickEx">
