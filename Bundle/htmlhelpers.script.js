@@ -234,12 +234,10 @@ var HTMLHelpers = (() => {
   function xt() {
     let t = new Intl.Collator("en", { sensitivity: "base" }), e = (o) => typeof o?.constructor == "function" ? o?.name || o?.constructor?.name : typeof o == "string" ? o : typeof o, r = (o) => [null, void 0, 1 / 0, NaN].some((i) => i === o);
     function n(o, i) {
-      switch (true) {
-        case (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o)))):
-          return false;
-        default:
-          let [a, h2] = [e(o), e(i)];
-          return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, h2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${h2}]`) === 0;
+      if (true === (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o))))) return false;
+      {
+        let [a, h2] = [e(o), e(i)];
+        return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, h2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${h2}]`) === 0;
       }
     }
     return function(i, ...a) {
@@ -586,12 +584,7 @@ ${r}`), m;
     let e = [], [r, n] = [t("#jqxPopupContent"), t.node("#jqxPopup")], o = {};
     return t.handle({ type: "click, cancel", handlers: g2, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: i, remove: a, removeModal: y });
     function i(u) {
-      if (n.open) switch (true) {
-        case h2(u):
-          return;
-        default:
-          return a(), setTimeout(() => i(u), 200);
-      }
+      if (n.open) return true === h2(u) ? void 0 : (a(), setTimeout(() => i(u), 200));
       o = { ...u };
       let { content: l } = o;
       return t.IS(l, String, HTMLElement) || l?.isJQx ? p2() : true;
@@ -680,14 +673,9 @@ ${r}`), m;
         let w = s.dataset.hid || b;
         s.dataset.hid = w, l = `[data-hid=${w}]`;
       }
-      switch (true) {
-        case !e[y][b]:
-          return L.log(`JQx: created listener for event type ${y}, with handler name ${b}`), e[y][b] = { name: b, handler: i(g2, l, u, b), capture: Be(y, m), once: !!u, type: y, initialHandler: x2, selector: !!l && l || false, about: !!d && d || false, unListen() {
-            p2(y, b);
-          } }, e[y][b];
-        default:
-          return console.warn(`The listener [${b}] for [${y}] exists, it is not re-assigned.`);
-      }
+      return true === !e[y][b] ? (L.log(`JQx: created listener for event type ${y}, with handler name ${b}`), e[y][b] = { name: b, handler: i(g2, l, u, b), capture: Be(y, m), once: !!u, type: y, initialHandler: x2, selector: !!l && l || false, about: !!d && d || false, unListen() {
+        p2(y, b);
+      } }, e[y][b]) : console.warn(`The listener [${b}] for [${y}] exists, it is not re-assigned.`);
     }
     return { remove(...f3) {
       return p2(...f3);
@@ -722,14 +710,10 @@ ${r}`), m;
     return A(t) && !/^handler|handlers$/gi.test(t.trim()) ? t.trim() : Ue();
   }
   function ve(t) {
-    let e = !!t.node && !c(t, Text, Comment);
-    switch (true) {
-      case e:
-        let r = t.node.dataset ? Object.keys(t.node.dataset).map((i) => `[data-${i}]`) : [], o = [t.attr("id") && `#${t?.attr("id")}` || void 0, t.attr("class") && t?.attr("class").split(" ").map((i) => `.${i}`).join(", ") || void 0, r.length > 0 && r.join(", ") || void 0].filter((i) => !!i).join(", ") || [];
-        return o.length ? `(${o})` : "";
-      default:
-        return "";
-    }
+    if (true === (!!t.node && !c(t, Text, Comment))) {
+      let r = t.node.dataset ? Object.keys(t.node.dataset).map((i) => `[data-${i}]`) : [], o = [t.attr("id") && `#${t?.attr("id")}` || void 0, t.attr("class") && t?.attr("class").split(" ").map((i) => `.${i}`).join(", ") || void 0, r.length > 0 && r.join(", ") || void 0].filter((i) => !!i).join(", ") || [];
+      return o.length ? `(${o})` : "";
+    } else return "";
   }
   function Ue(t) {
     let e = `anonymous_${Math.random().toString(36).slice(2)}`;
@@ -757,13 +741,10 @@ ${r}`), m;
     return `${t}`.trim().slice(0, e).replace(/>\s+</g, "><").replace(/</g, "&lt;").replace(/\s{2,}/g, " ").replace(/\n/g, "\\n") + (t.length > e ? " &hellip;" : "").trim();
   }
   function M(t) {
-    switch (true) {
-      case c(t, String):
-        let e = document.createElement("div");
-        return e.append(t), e.innerHTML;
-      default:
-        return t;
-    }
+    if (true === c(t, String)) {
+      let e = document.createElement("div");
+      return e.append(t), e.innerHTML;
+    } else return t;
   }
   function xe(t) {
     return c(t, String) && Object.assign(document.createElement("textarea"), { innerHTML: t }).textContent || t;
@@ -1011,12 +992,7 @@ ${r}`), m;
       let r = t(e[0]?.parentNode);
       return r.is.empty ? e : r;
     }, render(e) {
-      switch (true) {
-        case !e.is.empty:
-          return e.toDOM();
-        default:
-          return t.logger.warn("[JQx.render]: empty collection"), e;
-      }
+      return true === !e.is.empty ? e.toDOM() : (t.logger.warn("[JQx.render]: empty collection"), e);
     }, Style(e) {
       return { get computed() {
         return e.is.empty ? {} : getComputedStyle(e[0]);
@@ -1037,7 +1013,7 @@ ${r}`), m;
   }
   function sr(t) {
     return { addClass(e, ...r) {
-      return v(e, (n) => n && r.forEach((o) => n.classList.add(o)));
+      return v(e, (n) => n && r.forEach((o) => A(o) && n.classList.add(o)));
     }, after(e, ...r) {
       return j(e, t, true, ...r);
     }, afterMe(e, ...r) {
@@ -1056,23 +1032,9 @@ ${r}`), m;
       }
       return e;
     }, appendTo(e, r) {
-      switch (r = typeof r == "string" ? t(r) : r, true) {
-        case (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1):
-          return t.warn("[JQx instance].appendTo: invalid input"), e;
-        default:
-          return (r.isJQx ? r : t(r)).append(e), e;
-      }
+      return r = typeof r == "string" ? t(r) : r, true === (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1) ? (t.warn("[JQx instance].appendTo: invalid input"), e) : ((r.isJQx ? r : t(r)).append(e), e);
     }, attr(e, r, n) {
-      if (!e.node || c(e.node, Text, Comment)) return e;
-      if (!n && A(r)) return r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r);
-      if (A(r) && n) switch (r = $(r), true) {
-        case r.startsWith("data-"):
-          r = { data: { [r.replace("data-", "")]: n } };
-          break;
-        default:
-          r = { [r]: n };
-      }
-      return c(r, Object) && !e.is.empty && Le(e.node, r), e;
+      return !e.node || c(e.node, Text, Comment) ? e : !n && A(r) ? (r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r)) : (A(r) && n && (r = $(r), true === r.startsWith("data-") ? r = { data: { [r.replace("data-", "")]: n } } : r = { [r]: n }), c(r, Object) && !e.is.empty && Le(e.node, r), e);
     }, before(e, ...r) {
       return j(e, t, false, ...r);
     }, beforeMe(e, ...r) {
@@ -1088,14 +1050,12 @@ ${r}`), m;
     }, css(e, r, n) {
       return v(e, (o) => tt(o, r, n, t));
     }, duplicate(e, r = false, n = document.body) {
-      switch (true) {
-        case e.is.empty:
-          return L.error("Duplicating an empty JQx instance is not possible"), e;
-        default:
-          let o = e.collection[0].cloneNode(true);
-          return o.childNodes.forEach((i) => {
-            i.removeAttribute && i?.removeAttribute("id");
-          }), r ? t(o).toDOM(n) : t.virtual(o);
+      if (true === e.is.empty) return L.error("Duplicating an empty JQx instance is not possible"), e;
+      {
+        let o = e.collection[0].cloneNode(true);
+        return o.childNodes.forEach((i) => {
+          i.removeAttribute && i?.removeAttribute("id");
+        }), r ? t(o).toDOM(n) : t.virtual(o);
       }
     }, each(e, r) {
       return v(e, r);
@@ -1138,19 +1098,9 @@ ${r}`), m;
     }, nth$(e, r) {
       return e.single(r);
     }, on(e, r, ...n) {
-      switch (true) {
-        case (e.is.empty || !c(r, String, Array) || !A(r) || n.length < 1):
-          return e;
-        default:
-          return t.handle({ type: r, node: e.node, handler: n }), e;
-      }
+      return true === (e.is.empty || !c(r, String, Array) || !A(r) || n.length < 1) || t.handle({ type: r, node: e.node, handler: n }), e;
     }, once(e, r, ...n) {
-      switch (true) {
-        case (e.is.empty || !c(r, String, Array) || !A(r) || n.length < 1):
-          return e;
-        default:
-          return t.handle({ type: r, once: true, node: e.node, handler: n }), e;
-      }
+      return true === (e.is.empty || !c(r, String, Array) || !A(r) || n.length < 1) || t.handle({ type: r, once: true, node: e.node, handler: n }), e;
     }, prepend(e, ...r) {
       if (e.is.empty || !r) return;
       let n = e.length === 1;
@@ -1164,12 +1114,7 @@ ${r}`), m;
       }
       return e;
     }, prependTo(e, r) {
-      switch (r = typeof r == "string" ? t(r) : r, true) {
-        case (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1):
-          return t.warn("[JQx instance].appendTo: invalid input"), e;
-        default:
-          return (r.isJQx ? r : t(r)).prepend(e), e;
-      }
+      return r = typeof r == "string" ? t(r) : r, true === (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1) ? (t.warn("[JQx instance].appendTo: invalid input"), e) : ((r.isJQx ? r : t(r)).prepend(e), e);
     }, prop(e, r, n) {
       if (c(r, String) && !n) return r.startsWith("data") ? e[0]?.dataset[r.slice(r.indexOf("-") + 1)] : e[0]?.[r];
       let o = c(r, Object) ? r : { [r]: n };
@@ -2337,17 +2282,13 @@ ${r}`), m;
       const where2PutIt = top2 ? En.at.start : En.at.end;
       return (content) => {
         if (content?.isJQx) {
-          const item2 = En.li().append(content);
-          if (content.data.get(`header`)) {
-            item2.addClass(`head`);
-          }
+          const item2 = En.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
           return item2.renderTo(logContainer, where2PutIt);
         }
         content = !En.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
         const isHead = content.startsWith(`!!`);
         content = isHead ? content.slice(2) : content;
-        const item = En.li(content);
-        isHead && item.addClass(`head`);
+        const item = En.li(content).addClass(isHead ? `head` : ``);
         item.renderTo(logContainer, where2PutIt);
       };
     }

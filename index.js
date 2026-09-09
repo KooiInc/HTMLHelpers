@@ -40,16 +40,14 @@ function logFactory(formatJSON = true) {
     
     return content => {
       if (content?.isJQx) {
-        const item = $.li().append(content);
-        if (content.data.get(`header`)) { item.addClass(`head`);  }
+        const item = $.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
         return item.renderTo(logContainer, where2PutIt);
       }
       
       content = !$.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
       const isHead = content.startsWith(`!!`);
       content = isHead ? content.slice(2) : content;
-      const item = $.li(content);
-      isHead && item.addClass(`head`);
+      const item = $.li(content).addClass(isHead ? `head` : ``);
       item.renderTo(logContainer, where2PutIt);
     };
   }
