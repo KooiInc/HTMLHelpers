@@ -2299,7 +2299,7 @@ ${r}`), m;
     }
     function j3(e, t) {
       let r = t?.length ? t.filter((o) => S2(o)).map((o, c2) => b(e, { ...o, index: c2 + 1 })).join("") : e;
-      return typeof n != "string" ? r : r.replace(/\{.+\}/gmi, n ?? "");
+      return typeof n != "string" ? r : r.replace(/\{.+}/gmi, n ?? "");
     }
   }
   function v3() {
@@ -2328,26 +2328,29 @@ ${r}`), m;
   }
   function logFactory(formatJSON = true) {
     const logContainer = En(`<ul id="log2screen">`).first();
-    function logItem(top2 = false) {
-      const where2PutIt = top2 ? En.at.start : En.at.end;
-      return (content) => {
-        if (content?.isJQx) {
-          return En.li(
-            content.data.get(`header`) ? { class: `head` } : ``,
-            content
-          ).renderTo(logContainer, where2PutIt);
-        }
-        content = !En.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
-        const isHead = content.startsWith(`!!`);
-        content = isHead ? content.slice(2) : content;
-        En.li(isHead ? { class: `head` } : ``, content).renderTo(logContainer, where2PutIt);
-      };
-    }
     const [logLamda, logTopLambda] = [logItem(), logItem(true)];
     return {
       log: (...txt) => txt.forEach(logLamda),
       logTop: (...txt) => txt.forEach(logTopLambda)
     };
+    function logItem(top2 = false) {
+      const where2PutIt = top2 ? En.at.start : En.at.end;
+      return (content) => {
+        if (content?.isJQx) {
+          const item2 = En.li().append(content);
+          if (content.data.get(`header`)) {
+            item2.addClass(`head`);
+          }
+          return item2.renderTo(logContainer, where2PutIt);
+        }
+        content = !En.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
+        const isHead = content.startsWith(`!!`);
+        content = isHead ? content.slice(2) : content;
+        const item = En.li(content);
+        isHead && item.addClass(`head`);
+        item.renderTo(logContainer, where2PutIt);
+      };
+    }
   }
   function tryJSON(content, formatted) {
     try {

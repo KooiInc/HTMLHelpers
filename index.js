@@ -28,29 +28,31 @@ function fixSBLinks2TopProblem() {
 
 function logFactory(formatJSON = true) {
   const logContainer = $(`<ul id="log2screen">`).first();
-  
-  function logItem(top = false) {
-    const where2PutIt = top ? $.at.start : $.at.end;
-    return content => {
-      if (content?.isJQx) {
-        return $.li(
-          content.data.get(`header`) ? {class: `head`} : ``, content
-        ).renderTo(logContainer, where2PutIt);
-      }
-      
-      content = !$.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
-      const isHead = content.startsWith(`!!`);
-      content = isHead ? content.slice(2) : content;
-      $.li(isHead ? {class: `head`} : ``, content)
-        .renderTo(logContainer, where2PutIt);
-    };
-  }
   const [logLamda, logTopLambda] = [logItem(), logItem(true)];
   
   return {
     log: (...txt) => txt.forEach( logLamda ),
     logTop: (...txt) => txt.forEach( logTopLambda ),
   };
+  
+  function logItem(top = false) {
+    const where2PutIt = top ? $.at.start : $.at.end;
+    
+    return content => {
+      if (content?.isJQx) {
+        const item = $.li().append(content);
+        if (content.data.get(`header`)) { item.addClass(`head`);  }
+        return item.renderTo(logContainer, where2PutIt);
+      }
+      
+      content = !$.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
+      const isHead = content.startsWith(`!!`);
+      content = isHead ? content.slice(2) : content;
+      const item = $.li(content);
+      isHead && item.addClass(`head`);
+      item.renderTo(logContainer, where2PutIt);
+    };
+  }
 }
 
 function tryJSON(content, formatted) {
