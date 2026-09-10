@@ -57,17 +57,13 @@ function bttnClickHandling({me}) {
 }
 
 // create a div with button
-const bttnDiv = DIV(
-  {data: {header: 1}, class: `normal`},  `Sure: &nbsp;`,
+const bttnDiv = DIV(`Sure: &nbsp;`,
   $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
   //                                 ^ add click listener
+  // [...] adding the button to DOM
+  // start countdown after bttnDiv is added to DOM
+  bttnDiv.first$(`button`).trigger("click");
 );
-
-// [...] adding the button to DOM
-
-// start countdown after bttnDiv is added to DOM
-bttnDiv.first$(`button`).trigger("click");
-
 </template>
 
 <template data-is-html="1" id="links">

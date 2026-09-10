@@ -10,8 +10,10 @@ window.$ = $;
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
+$.fn(`asHead`, me => me.data.set({header: 1}));
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
+
 
 // set page styling
 initStyling();
@@ -39,28 +41,27 @@ const moduleOrBrowserLink = $.a({
 
 log(
    // styling
-   toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
-   $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
+   $.h3(`Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
+   $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))).asHead(),
    
    // regex
-   toHeader(`div`, "Is ",
+   $.h3("Is ",
      $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
      " (exposed as <code>createRE</code>) available?"),
    codeBlocks.createReEx,
-   $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`),
+   $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`).asHead(),
   
   // splat examples
-  toHeader(
-    $.div, `Can we use `,
+  $.h3(`Can we use `,
       $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
       ` (splat-es)?`,
     $.div({class: `normal`},
       `<b class="note">Note</b>: <code>splat-es</code> includes a
       symbolic String prototype extension called <code>Symbol.for("interpolate")</code>.`)
   ),
-  codeBlocks.splatEx,
+  codeBlocks.splatEx.asHead(),
   $.div(
-    $.div({class: "normal"}, `Sure:`),
+    $.div({class: "normal"}, $.b(`Sure`), `:`),
     $.div({class: "normal"}, `<b>helloWorld1</b> => ${
       splat("Hello {wrld} {token ignored}", {wrld: "world"}) }`),
     $.div({class: "normal"}, `<b>helloWorld2</b> => ${
@@ -71,18 +72,19 @@ log(
       "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`),
     $.div({class: "normal"}, `<b>helloWorld5</b> => ${
       "Hello {wrld}"[splatMe$]({wrld: `world; `}, {world: "<i>universe</i>"})}`)
-  ),
+  ).asHead(),
 
   // ticktock availability
-  toHeader($.div, `Is `,
+  $.h3(`Is `,
     $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
     ` (exposed as <code>$D</code>) available?`),
-  codeBlocks.dateFormatEx,
+  codeBlocks.dateFormatEx.asHead(),
   
-  $.div($.span(`Sure: `), $.b( `later =&gt; `), $.i(later)),
-  toHeader(DIV, "Can we calculate date differences using <code>$D</code>?"),
-  codeBlocks.dateDiffEx,
-  $.span({id: "showNwYear"}),
+  $.div($.span(`Sure: `), $.b( `later =&gt; `), $.i(later)).asHead(),
+  
+  $.H3("Can we calculate date differences using <code>$D</code>?"),
+  codeBlocks.dateDiffEx.asHead(),
+  $.span({id: "showNwYear"}).asHead(),
 );
 
 // create a timer from factory
@@ -105,20 +107,18 @@ function bttnClickHandling({me}) {
 
 // create a div with button
 const bttnDiv = DIV(
-  {data: {header: 1}, class: `normal`},  `Sure: &nbsp;&nbsp;`,
+  `Sure: `,
   $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
 );
 
 log(
-  $.div(
-  {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
-  `Can we handle (and trigger) a button using `,
-  $.span(
+  $.h3(`Can we handle (and trigger) a button using `,
+    $.span(
       $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
       bttnDiv
     )
   ),
-  codeBlocks.onclickEx,
+  codeBlocks.onclickEx.asHead(),
 );
 
 // start countdown
@@ -126,8 +126,8 @@ bttnDiv.first$(`button`).trigger("click");
 
 // add links and used code
 log(
-  toHeader($.h3, `Modules included in the stackblitzhelpers module`),
-  codeBlocks.links,
+  $.h3(`Modules included in the stackblitzhelpers module`),
+  codeBlocks.links.asHead(),
   $.details({data: {header: 1}},
     $.summary($.b(`Code used to create this page`)),
     codeBlocks.pageCode),
@@ -139,14 +139,14 @@ hljs.highlightAll(`javascript`);
 
 // add some lines to the page top
 logTop(
-  toHeader($.h2,
+  $.h2(
     `Let's check if it all works (this log line and the lines above it are `,
     $.i(`prepended`),
     ` (using `,
     $.code(`logTop`),
     `)`
-  ),
-  $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
+  ).asHead(),
+  $.h1({class: "mainHeader"}, `Examples/tests HTMLHelpers`).asHead(),
     $.div(
       {data: {header: 1}, class: "normal"},
       $.a({
@@ -196,10 +196,6 @@ function countDownUntil(displayElement, until) {
   }
   
   return { get stop() { return run(true); }, get start() { return run(); } };
-}
-
-function toHeader(tag, ...elems){
-  return ($.IS(tag, Function) ? tag : $[tag])({data: {header: 1}}, ...elems);
 }
 
 function clearAllTimers() {
@@ -264,6 +260,18 @@ function initStyling() {
       position: absolute;
 
       ul#log2screen {
+        li:not(.head) {
+          color: #c54343;
+          font-family: georgia, serif;
+          font-style: italic;
+          line-height: 1.3em;
+          
+          code { font-style: inherit; }
+          
+          ul {
+            li { color: revert; }
+          }
+        }
         max-width: 40vw;
         margin: 4rem auto;
 
@@ -321,6 +329,11 @@ function initStyling() {
       div.normal {
         font-weight: normal;
         margin: 0.3rem 0;
+ 
+        ul li {
+          color: revert !important;
+          font-family: revert !important;
+        }
       }
       span.normal {
         font-weight: normal;
