@@ -266,7 +266,10 @@ function initStyling() {
           font-style: italic;
           line-height: 1.3em;
           
-          code { font-style: inherit; }
+          code {
+            font-style: inherit;
+            color: inherit;
+          }
           
           ul {
             li { color: revert; }
