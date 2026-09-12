@@ -11,6 +11,7 @@ const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 $.fn(`asHead`, me => me.data.set({header: 1}));
+const usedCodeFile = `./index.js`;
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
 const moduleOrBrowserLink = $.a({
@@ -229,7 +230,7 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
          {data: {header: 1}, class: `codebox`},
         $.code($.escHtml(content.textContent.trim())) );
    });
-  codeBlocks.pageCode = await codeElem(`./index.js`);
+  codeBlocks.pageCode = await codeElem(usedCodeFile);
   return codeBlocks;
 }
 

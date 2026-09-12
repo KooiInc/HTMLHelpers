@@ -1,5 +1,5 @@
-// assign relevant items from
-// ./Bundle/htmlhelpers.script.min.js => [window.]HTMLHelpers
+// assign relevant items from  [window.]HTMLHelpers
+// assigned in: <script src="../../Bundle/htmlhelpers.script.js"></script>
 const {
   $,
   regexhelper: createRE,
@@ -10,14 +10,15 @@ const {
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
+const usedCodeFile = `./indexBrowser.js`;
+const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
+const [splatMe, splatMe$] = addSymbolicStringExtensions();
 const moduleOrBrowserLink = $.a({
   class: "ExternalLink arrow",
   target: "_top",
   href: "./index.html",
   html: " examples <i>module</i> version"
 });
-const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
-const [splatMe, splatMe$] = addSymbolicStringExtensions();
 $.fn(`asHead`, me => me.data.set({header: 1}));
 
 // set page styling
@@ -230,7 +231,7 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
             {data: {header: 1}, class: `codebox`},
             $.code($.escHtml(content.textContent.trim())) );
     });
-  codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
+  codeBlocks.pageCode = await codeElem(usedCodeFile);
   return codeBlocks;
 }
 
