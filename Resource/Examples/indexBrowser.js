@@ -21,7 +21,6 @@ const [splatMe, splatMe$] = addSymbolicStringExtensions();
 $.fn(`asHead`, me => me.data.set({header: 1}));
 
 // set page styling
-// set page styling
 initStyling();
 
 // wrap logging within a container element
