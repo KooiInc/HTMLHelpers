@@ -231,7 +231,7 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
             {data: {header: 1}, class: `codebox`},
             $.code($.escHtml(content.textContent.trim())) );
     });
-  codeBlocks.pageCode = await codeElem(`./index.js`);
+  codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
   return codeBlocks;
 }
 
