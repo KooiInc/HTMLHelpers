@@ -13,7 +13,12 @@ const {DIV, button: $BUTTON} = $;     // html elements can be created with a fun
 $.fn(`asHead`, me => me.data.set({header: 1}));
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
-
+const moduleOrBrowserLink = $.a({
+  class: "ExternalLink arrow",
+  target: "_top",
+  href: "./indexBrowser.html",
+  html: " examples <i>browser</i> version"
+});
 
 // set page styling
 initStyling();
@@ -23,21 +28,13 @@ $.div({class: "container"}).append($(`#log2screen`)).render;
 
 // myRE assignment
 const myRE = createRE`
-    ^[\p{L}]              //=> always start with a letter
-    [\p{L}_\.#\-\d+~=!]+  //=> followed by letters including _ . # - 0-9 ~ = or !
+    ^[\p{L}]              //=> always start with a letter    [\p{L}_\.#\-\d+~=!]+  //=> followed by letters including _ . # - 0-9 ~ = or !
     ${[...'gui']}         //=> flags ([g]lobal, case [i]nsensitive, [u]nicode)`;
 
 // ticktock assignment
 const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .addYears(5).add("23 days, 20 hours")
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
-
-const moduleOrBrowserLink = $.a({
-  class: "ExternalLink arrow",
-  target: "_top",
-  href: "./indexBrowser.html",
-  html: " examples <i>browser</i> version"
-});
 
 log(
    // styling

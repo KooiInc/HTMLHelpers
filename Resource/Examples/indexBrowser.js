@@ -7,18 +7,20 @@ const {
   $D,
   splatModule,
 } = HTMLHelpers;
-splatModule.addSymbolicStringExtensions();
+const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
-const splatMe = Symbol.for("interpolate"); // see splat examples
 const moduleOrBrowserLink = $.a({
   class: "ExternalLink arrow",
   target: "_top",
   href: "./index.html",
   html: " examples <i>module</i> version"
 });
-const splat = splatModule.interpolate;
+const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
+const [splatMe, splatMe$] = addSymbolicStringExtensions();
+$.fn(`asHead`, me => me.data.set({header: 1}));
 
+// set page styling
 // set page styling
 initStyling();
 
@@ -36,147 +38,142 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .addYears(5).add("23 days, 20 hours")
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
-retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`).then(r => createPage(r));
-
-function createPage(codeBlocks) {
-  log(
-    // styling
-    toHeader(`div`, `Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
-    $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))),
-    
-    // regex
-    toHeader(`div`, "Is ",
-      $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
-      " (exposed as <code>createRE</code>) available?"),
-    codeBlocks.createReEx,
-    $.div($.span(`Sure: `), $.b(`myRE =&gt;`), ` <code>${myRE}</code>`),
-    
-    // splat examples
-    toHeader(
-      $.div, `Can we use `,
-      $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
-      ` (splat-es)?`,
-      $.div({class: `normal`},
-        `<b class="note">Note</b>: <code>splat-es</code> includes a
+log(
+  // styling
+  $.h3(`Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
+  $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))).asHead(),
+  
+  // regex
+  $.h3("Is ",
+    $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
+    " (exposed as <code>createRE</code>) available?"),
+  codeBlocks.createReEx,
+  $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`).asHead(),
+  
+  // splat examples
+  $.h3(`Can we use `,
+    $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
+    ` (splat-es)?`,
+    $.div({class: `normal`},
+      `<b class="note">Note</b>: <code>splat-es</code> includes a
       symbolic String prototype extension called <code>Symbol.for("interpolate")</code>.`)
-    ),
-    codeBlocks.splatEx,
-    $.div(
-      $.div({class: "normal"}, `Sure:`),
-      $.div({class: "normal"}, `<b>helloWorld1</b> => ${
-        splat("Hello {wrld}", {wrld: "world"})}`),
-      $.div({class: "normal"}, `<b>helloWorld2</b> => ${
-        splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"})}`),
-      $.div({class: "normal"}, `<b>helloWorld3</b> => ${
-        "Hello {wrld}"[splatMe]({wrld: "world"})}`),
-      $.div({class: "normal"}, `<b>helloWorld4</b> => ${
-        "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`)),
-    
-    // ticktock availability
-    toHeader($.div, `Is `,
-      $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
-      ` (exposed as <code>$D</code>) available?`),
-    codeBlocks.dateFormatEx,
-    
-    $.div($.span(`Sure: `), $.b(`later =&gt; `), $.i(later)),
-    toHeader(DIV, "Can we calculate date differences using <code>$D</code>?"),
-    codeBlocks.dateDiffEx,
-    $.span({id: "showNwYear"}),
-  );
+  ),
+  codeBlocks.splatEx.asHead(),
+  $.div(
+    $.div({class: "normal"}, $.b(`Sure`), `:`),
+    $.div({class: "normal"}, `<b>helloWorld1</b> => ${
+      splat("Hello {wrld} {token ignored}", {wrld: "world"}) }`),
+    $.div({class: "normal"}, `<b>helloWorld2</b> => ${
+      splat("Hello {wrld}", {wrld: "world; "}, {wrld: "<i>universe</i>"}) }`),
+    $.div({class: "normal"}, `<b>helloWorld3</b> => ${
+      "Hello {wrld}"[splatMe]({wrld: "world"})}`),
+    $.div({class: "normal"}, `<b>helloWorld4</b> => ${
+      "Hello {wrld}"[splatMe]({wrld: "world; "}, {wrld: "<i>universe</i>"})}`),
+    $.div({class: "normal"}, `<b>helloWorld5</b> => ${
+      "Hello {wrld}"[splatMe$]({wrld: `world; `}, {world: "<i>universe</i>"})}`)
+  ).asHead(),
+  
+  // ticktock availability
+  $.h3(`Is `,
+    $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
+    ` (exposed as <code>$D</code>) available?`),
+  codeBlocks.dateFormatEx.asHead(),
+  
+  $.div($.span(`Sure: `), $.b( `later =&gt; `), $.i(later)).asHead(),
+  
+  $.H3("Can we calculate date differences using <code>$D</code>?"),
+  codeBlocks.dateDiffEx.asHead(),
+  $.span({id: "showNwYear"}).asHead(),
+);
 
 // create a timer from factory
-  const now = $D.now;
-  const untilNwYearTimer = countDownUntil($(`#showNwYear`), $D([now.year + 1, 0, 1, 0, 0, 0]));
+const now = $D.now;
+const untilNwYearTimer = countDownUntil($(`#showNwYear`), $D([now.year + 1, 0 ,1, 0, 0, 0]));
 
 // start/stop button listener/handler for timer
-  function bttnClickHandling({me}) {
-    const shouldStop = me.getData(`should`).startsWith(`Stop`);
-    switch (true) {
-      case shouldStop:
-        untilNwYearTimer.stop;
-        break;
-      default:
-        untilNwYearTimer.start;
-    }
-    me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
-    $.Popup.show({
-      content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
-      closeAfter: 2,
-    });
+function bttnClickHandling({me}) {
+  const shouldStop = me.getData(`should`).startsWith(`Stop`);
+  switch (true) {
+    case shouldStop: untilNwYearTimer.stop; break;
+    default: untilNwYearTimer.start;
   }
+  me.data.set({should: shouldStop ? `Restart countdown` : `Stop countdown`});
+  $.Popup.show({
+    content: `Next new year countdown ${shouldStop ? `stopped!` : `started!`}`,
+    closeAfter: 2,
+  });
+}
 
 // create a div with button
-  const bttnDiv = DIV(
-    {data: {header: 1}, class: `normal`}, `Sure: &nbsp;&nbsp;`,
-    $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
-  );
-  
-  log(
-    $.div(
-      {data: {header: 1}}, // signifies this must be printed without a list-style and class .head
-      `Can we handle (and trigger) a button using `,
-      $.span(
-        $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
-        bttnDiv
-      )
-    ),
-    codeBlocks.onclickEx,
-  );
+const bttnDiv = DIV(
+  `Sure: `,
+  $BUTTON({data: {should: `Start`}}).on(`click`, bttnClickHandling)
+);
+
+log(
+  $.h3(`Can we handle (and trigger) a button using `,
+    $.span(
+      $.code(`\$("&lt;button ...>").on(...).trigger(...)?`),
+      bttnDiv
+    )
+  ),
+  codeBlocks.onclickEx.asHead(),
+);
 
 // start countdown
-  bttnDiv.first$(`button`).trigger("click");
+bttnDiv.first$(`button`).trigger("click");
 
 // add links and used code
-  log(
-    toHeader($.h3, `Modules included in the stackblitzhelpers module`),
-    codeBlocks.links,
-    $.details({data: {header: 1}},
-      $.summary($.b(`Code used to create this page`)),
-      codeBlocks.pageCode),
-    $.div({class: "spacer", data: {header: 1}}),
-  );
+log(
+  $.h3(`Modules included in the stackblitzhelpers module`),
+  codeBlocks.links.asHead(),
+  $.details({data: {header: 1}},
+    $.summary($.b(`Code used to create this page`)),
+    codeBlocks.pageCode),
+  $.div({class: "spacer", data: {header: 1}}),
+);
 
 // highlight code
-  hljs.highlightAll(`javascript`);
+hljs.highlightAll(`javascript`);
 
 // add some lines to the page top
-  logTop(
-    toHeader($.h2,
-      `Let's check if it all works (this log line and the lines above it are `,
-      $.i(`prepended`),
-      ` (using `,
-      $.code(`logTop`),
-      `)`
-    ),
-    $.h1({data:{header: 1}, class: "mainHeader"}, `Examples/tests HTMLHelpers`),
-    $.div(
-      {data: {header: 1}, class: "normal"},
-      $.a({
-        class: "ExternalLink arrow",
-        target: "_blank",
-        href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-        text: " JQx ($) full documentation"
-      })
-    ),
-    $.div(
-      {data: {header: 1}, class: "normal"},
-      $.a({
-        class: "ExternalLink arrow",
-        target: "_top",
-        href: "https://codeberg.org/KooiInc/HtmlHelpers",
-        text: " Codeberg repository"
-      }),
-      ` | `,
-      $.a({
-        class: "ExternalLink arrow",
-        target: "_top",
-        href: "https://github.com/KooiInc/HTMLHelpers",
-        text: " (synced) Github repository"
-      }),
-      ` | `, moduleOrBrowserLink,
-    ),
-  );
-}
+logTop(
+  $.h2(
+    `Let's check if it all works (this log line and the lines above it are `,
+    $.i(`prepended`),
+    ` (using `,
+    $.code(`logTop`),
+    `)`
+  ).asHead(),
+  $.h1({class: "mainHeader"}, `Examples/tests HTMLHelpers`).asHead(),
+  $.div(
+    {data: {header: 1}, class: "normal"},
+    $.a({
+      class: "ExternalLink arrow",
+      target: "_blank",
+      href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
+      text: " JQx ($) full documentation"
+    })
+  ),
+  $.div(
+    {data: {header: 1}, class: "normal"},
+    $.a({
+      class: "ExternalLink arrow",
+      target: "_top",
+      href: "https://codeberg.org/KooiInc/HtmlHelpers",
+      text: " Codeberg repository"
+    }),
+    ` | `,
+    $.a({
+      class: "ExternalLink arrow",
+      target: "_top",
+      href: "https://github.com/KooiInc/HTMLHelpers",
+      text: " (synced) Github repository"
+    }),
+    ` | `, moduleOrBrowserLink,
+  ),
+);
+
 // count down factory
 function countDownUntil(displayElement, until) {
   let to;
@@ -200,10 +197,6 @@ function countDownUntil(displayElement, until) {
   return { get stop() { return run(true); }, get start() { return run(); } };
 }
 
-function toHeader(tag, ...elems){
-  return ($.IS(tag, Function) ? tag : $[tag])({data: {header: 1}}, ...elems);
-}
-
 function clearAllTimers() {
   let id = setTimeout(() => {});
   while (id >= 0) { clearTimeout(id--); }
@@ -215,7 +208,7 @@ async function codeElem(codeFile) {
     .then(response => response.text())
     .then(code => $.pre(
         {class: "codebox", data: {header: 1}},
-        $.code(code.replace(/</g, `&lt;`).replace(/>/g, `&gt;`))
+        $.code(code.replace(/</g, `&lt;`))
       )
     );
 }
@@ -223,7 +216,7 @@ async function codeElem(codeFile) {
 // retrieve code-/html blocks
 async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   $.allowTag(`template`);
-  const _codeBlocks = {};
+  const codeBlocks = {};
   const templates = await fetch(templatesFile)
     .then(r => r.text());
   const blocks = $.div(templates);
@@ -231,22 +224,22 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   blocks.node.querySelectorAll(`template`)
     .forEach(t => {
       let content = t.content;
-      _codeBlocks[t.id] =
+      codeBlocks[t.id] =
         t.dataset.isHtml
           ? $.virtual(t.innerHTML)
           : $.pre(
             {data: {header: 1}, class: `codebox`},
             $.code($.escHtml(content.textContent.trim())) );
     });
-  _codeBlocks.pageCode = await codeElem(`./indexBrowser.js`);
-  return Promise.resolve(_codeBlocks);
+  codeBlocks.pageCode = await codeElem(`./index.js`);
+  return codeBlocks;
 }
 
 // page styling (using $.editCssRules)
 function initStyling() {
   const prefix = /codeberg/i.test(location.href) ? `CB` : `GH`;
   $.link({href: `./codebergicon.ico`, rel: `icon`, type: `image/x-icon`}).appendTo($(`head`));
-  $.img({src: `https://sdn.nicon.nl/px0_${prefix}-HTMLHelpersBrwsrDemo.png`});
+  $.img({src: `https://sdn.nicon.nl/px0_${prefix}-HTMLHelpersDemo.png`});
   // style rules are stored in <head>style#JQxStylesheet
   $.editCssRules(
     `:root {
@@ -266,6 +259,21 @@ function initStyling() {
       position: absolute;
 
       ul#log2screen {
+        li:not(.head) {
+          color: #c54343;
+          font-family: georgia, serif;
+          font-style: italic;
+          line-height: 1.3em;
+          
+          code {
+            font-style: inherit;
+            color: inherit;
+          }
+          
+          ul {
+            li { color: revert; }
+          }
+        }
         max-width: 40vw;
         margin: 4rem auto;
 
@@ -323,6 +331,15 @@ function initStyling() {
       div.normal {
         font-weight: normal;
         margin: 0.3rem 0;
+ 
+        ul li {
+          color: revert !important;
+          font-family: revert !important;
+        }
+      }
+      span.normal {
+        font-weight: normal;
+        color: #000;
       }
       div.moreSpace {
         margin-bottom: 1em;
