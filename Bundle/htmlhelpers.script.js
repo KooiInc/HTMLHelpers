@@ -287,11 +287,11 @@ var HTMLHelpers = (() => {
   function $t(t) {
     return t?.constructor === Comment ? t?.textContent : String(t);
   }
-  function ye(t) {
+  function be(t) {
     return /comment/i.test(t);
   }
   function je(t, e) {
-    return !ye(e) && Q(t, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(t);
+    return !be(e) && Q(t, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(t);
   }
   function Ot(t) {
     return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
@@ -350,7 +350,7 @@ var HTMLHelpers = (() => {
     return r?.forEach((o) => Ht(n, o, t)), n;
   }
   function Pt(t, e) {
-    switch (t = ye(e) ? $t(t) : t?.isJQx ? t.node : t, true) {
+    switch (t = be(e) ? $t(t) : t?.isJQx ? t.node : t, true) {
       case Q(t, String):
         return K(e, je(t, e) ? { html: t } : { text: t });
       case t instanceof Node:
@@ -369,7 +369,7 @@ var HTMLHelpers = (() => {
   }
   function K(t, e) {
     e = e || {};
-    let { assignable: r, specials: n } = Ft(e), o = Object.assign(ye(t) ? new Comment() : document.createElement(t), r);
+    let { assignable: r, specials: n } = Ft(e), o = Object.assign(be(t) ? new Comment() : document.createElement(t), r);
     return Dt(n, o), o;
   }
   function Ie(t) {
@@ -398,7 +398,7 @@ var HTMLHelpers = (() => {
     }
     function y(m) {
       let u = m.trim().split(/{/, 2), l = u.shift().trim();
-      if (!c(l, String) || !l?.trim()?.length) return console.error(`StylingFactory ${p2} (doParse): no (valid) selector could be extracted from rule ${be(m)}`);
+      if (!c(l, String) || !l?.trim()?.length) return console.error(`StylingFactory ${p2} (doParse): no (valid) selector could be extracted from rule ${he(m)}`);
       let s = Ut(u.shift());
       return ze(() => f3(l, s), `StylingFactory ${p2} (setRules) failed`);
     }
@@ -447,7 +447,7 @@ var HTMLHelpers = (() => {
       } catch (u) {
         return console.error(`StylingFactory ${n} (tryParse) ${u.name} Error:
 ${u.message}
-Rule: ${be(g2)}
+Rule: ${he(g2)}
 ${r}`), m;
       }
     }
@@ -457,7 +457,7 @@ ${r}`), m;
       } catch (u) {
         return console.error(`StylingFactory ${n} (tryAddOrModify) ${u.name} Error:
 ${u.message}
-Rule: ${be(S2)}
+Rule: ${he(S2)}
 ${r}`), m;
       }
     }
@@ -466,7 +466,7 @@ ${r}`), m;
   function Jt(t, e) {
     return `${t.trim()} ${Object.entries(e).map(([r, n]) => `${r}: { ${Qt(n)}`)}`;
   }
-  function be(t) {
+  function he(t) {
     let e = (t || "NO RULE").trim().slice(0, 50).replace(/\n/g, "\\n").replace(/\s{2,}/g, " ");
     return t.length > e.length ? `${e.trim()}...truncated` : e;
   }
@@ -509,10 +509,10 @@ ${r}`), m;
   function We(t, e) {
     return t?.replace("::", ":") === e?.replace("::", ":");
   }
-  var he = false;
-  var Vt = { on: () => he = true, off: () => he = false };
+  var Se = false;
+  var Vt = { on: () => Se = true, off: () => Se = false };
   var N = { tagsRaw: k, allowUnknownHtmlTags: Vt, isAllowed(t) {
-    if (he) return true;
+    if (Se) return true;
     let e = c(t, String) ? t.toLowerCase() : t?.nodeName.toLowerCase() || "none";
     return e === "#text" || !!k[e];
   }, allowTag: (t) => k[t.toLowerCase()] = true, prohibitTag: (t) => k[t.toLowerCase()] = false };
@@ -668,7 +668,7 @@ ${r}`), m;
     function E2(f3) {
       let { type: y, handler: g2, name: S2, capture: m, once: u, selector: l, node: s, about: d } = f3;
       e[y] = e[y] || {};
-      let b = Se(S2 || g2.name), x2 = g2;
+      let b = xe(S2 || g2.name), x2 = g2;
       if (s instanceof HTMLElement) {
         let w = s.dataset.hid || b;
         s.dataset.hid = w, l = `[data-hid=${w}]`;
@@ -697,19 +697,19 @@ ${r}`), m;
     return t[String(e).toLowerCase()] ?? t[e];
   } }));
   var er = [...Array(26)].map((t, e) => String.fromCharCode(e + 65)).concat([...Array(26)].map((t, e) => String.fromCharCode(e + 97))).concat([...Array(10)].map((t, e) => `${e}`));
-  var Ee = Object.freeze({ get(t, e) {
+  var we = Object.freeze({ get(t, e) {
     return t[V(e)] || t[e];
   }, enumerable: false, configurable: false });
   var oe = {};
-  function we() {
+  function ve() {
     let t = setTimeout(() => {
     });
     for (; t >= 0; ) clearTimeout(t--);
   }
-  function Se(t) {
+  function xe(t) {
     return A(t) && !/^handler|handlers$/gi.test(t.trim()) ? t.trim() : Ue();
   }
-  function ve(t) {
+  function Le(t) {
     if (true === (!!t.node && !c(t, Text, Comment))) {
       let r = t.node.dataset ? Object.keys(t.node.dataset).map((i) => `[data-${i}]`) : [], o = [t.attr("id") && `#${t?.attr("id")}` || void 0, t.attr("class") && t?.attr("class").split(" ").map((i) => `.${i}`).join(", ") || void 0, r.length > 0 && r.join(", ") || void 0].filter((i) => !!i).join(", ") || [];
       return o.length ? `(${o})` : "";
@@ -746,7 +746,7 @@ ${r}`), m;
       return e.append(t), e.innerHTML;
     } else return t;
   }
-  function xe(t) {
+  function Ee(t) {
     return c(t, String) && Object.assign(document.createElement("textarea"), { innerHTML: t }).textContent || t;
   }
   function tr() {
@@ -768,15 +768,15 @@ ${r}`), m;
       e = false;
     }
     function a(...E2) {
-      return r.unshift(...E2.map((f3) => `${se()} \u2A3B ${xe(f3)}`)), console.error(r.slice(0, E2.length).join(`
+      return r.unshift(...E2.map((f3) => `${se()} \u2A3B ${Ee(f3)}`)), console.error(r.slice(0, E2.length).join(`
 `)), n;
     }
     function h2(...E2) {
-      return r.unshift(...E2.map((f3) => `${se()} \u26A0 ${xe(f3)}`)), console.warn(r.slice(0, E2.length).join(`
+      return r.unshift(...E2.map((f3) => `${se()} \u26A0 ${Ee(f3)}`)), console.warn(r.slice(0, E2.length).join(`
 `)), n;
     }
     function p2(...E2) {
-      let f3 = E2.map((y) => `${se()} \u2714 ${xe(y)}`);
+      let f3 = E2.map((y) => `${se()} \u2714 ${Ee(y)}`);
       switch (!e && r.unshift(...f3), t) {
         case true:
           console.log(f3.join(`
@@ -790,7 +790,7 @@ ${r}`), m;
   function se() {
     return ((t) => `[${ie(t.getHours())}:${ie(t.getMinutes())}:${ie(t.getSeconds())}.${ie(t.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
   }
-  function Le(t, e) {
+  function Ae(t, e) {
     if (t) for (let [r, n] of Object.entries(e)) {
       if (r = $(r), r.startsWith("data")) return le(t, n);
       c(n, String) && ae(r) && t.setAttribute(r, n.split(/[, ]/)?.join(" "));
@@ -832,7 +832,7 @@ ${r}`), m;
     return t?.isConnected ? !![...document.querySelectorAll(":is(:read-write)")].find((e) => e === t) : false;
   }
   function Ye(t) {
-    return t?.filter((e) => e).reduce((e, r) => e.concat(Te(r) ? `<!--${r.data}-->` : de(r) ? r.textContent : r.outerHTML), "");
+    return t?.filter((e) => e).reduce((e, r) => e.concat($e(r) ? `<!--${r.data}-->` : de(r) ? r.textContent : r.outerHTML), "");
   }
   function ie(t, e = 2) {
     return `${t}`.padStart(e, "0");
@@ -843,13 +843,13 @@ ${r}`), m;
   function fe() {
     return `_${rr(er).slice(0, 8).join("")}`;
   }
-  function Ae(t) {
+  function Fe(t) {
     return t = c(t, String) && /,/.test(t) ? t.split(",").map((e) => e.trim().toLowerCase()).filter((e) => e.length > 0) : t, c(t, Array) ? t : c(t, String) && t?.trim().toLowerCase() || "";
   }
   function Xe(t) {
     return t?.isConnected ? !![...document.querySelectorAll(":is(:modal)")].find((e) => e === t) : false;
   }
-  function Fe(t, e) {
+  function Te(t, e) {
     switch (t = String(t).trim(), true) {
       case /^(0|false|f)$/i.test(t):
         return false;
@@ -879,7 +879,7 @@ ${r}`), m;
   function de(t) {
     return c(t, Comment, Text);
   }
-  function Te(t) {
+  function $e(t) {
     c(t, Comment);
   }
   function Ze(t) {
@@ -902,7 +902,7 @@ ${r}`), m;
   function Ke(t) {
     return t.node ? c(t.node, Comment) ? `<!--${t.node.textContent}-->` : t.HTML.get(1).split(">")[0] + ">..." : "";
   }
-  function $e(t, e, r) {
+  function Oe(t, e, r) {
     let n = e !== document.body && c(t, String) && t.toLowerCase() !== "body" ? e : document;
     if (!(!c(t, String) || t.trim().length < 1)) try {
       r.collection = [...n.querySelectorAll(t)];
@@ -911,7 +911,7 @@ ${r}`), m;
     }
   }
   function qe() {
-    return { isCommentOrTextNode: de, isNode: H, isComment: Te, isText: Ze, isHtmlString: _, isArrayOfHtmlElements: Y, isArrayOfHtmlStrings: me, ElemArray2HtmlString: Ye, input2Collection: ue, setCollectionFromCssSelector: $e, cssRuleEdit: W({ createWithId: "JQxStylesheet" }) };
+    return { isCommentOrTextNode: de, isNode: H, isComment: $e, isText: Ze, isHtmlString: _, isArrayOfHtmlElements: Y, isArrayOfHtmlStrings: me, ElemArray2HtmlString: Ye, input2Collection: ue, setCollectionFromCssSelector: Oe, cssRuleEdit: W({ createWithId: "JQxStylesheet" }) };
   }
   function et() {
     let e = Object.freeze({ notInDOM: "n/a", writable: "n/a", modal: "n/a", empty: true, open: "n/a", visible: "n/a" });
@@ -948,7 +948,7 @@ ${r}`), m;
   function ir(t) {
     return { data(e) {
       return { get all() {
-        return new Proxy(e[0]?.dataset ?? {}, Ee);
+        return new Proxy(e[0]?.dataset ?? {}, we);
       }, set(r = {}) {
         if (!e.is.empty && c(r, Object)) for (let [n, o] of Object.entries(r)) e.setData({ [n]: o });
         return e;
@@ -1034,7 +1034,7 @@ ${r}`), m;
     }, appendTo(e, r) {
       return r = typeof r == "string" ? t(r) : r, true === (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1) ? (t.warn("[JQx instance].appendTo: invalid input"), e) : ((r.isJQx ? r : t(r)).append(e), e);
     }, attr(e, r, n) {
-      return !e.node || c(e.node, Text, Comment) ? e : !n && A(r) ? (r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r)) : (A(r) && n && (r = $(r), true === r.startsWith("data-") ? r = { data: { [r.replace("data-", "")]: n } } : r = { [r]: n }), c(r, Object) && !e.is.empty && Le(e.node, r), e);
+      return !e.node || c(e.node, Text, Comment) ? e : !n && A(r) ? (r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r)) : (A(r) && n && (r = $(r), true === r.startsWith("data-") ? r = { data: { [r.replace("data-", "")]: n } } : r = { [r]: n }), c(r, Object) && !e.is.empty && Ae(e.node, r), e);
     }, before(e, ...r) {
       return j(e, t, false, ...r);
     }, beforeMe(e, ...r) {
@@ -1205,14 +1205,14 @@ ${r}`), m;
       }
     } };
   }
-  var Oe;
   var ge;
+  var pe;
   var { isComment: un, isText: fn, isHtmlString: dn, isArrayOfHtmlElements: mn, isArrayOfHtmlStrings: gn, ElemArray2HtmlString: pn, cssRuleEdit: Ce, addFn: ar } = cr();
   function cr() {
     return { ...qe(), addFn: lr };
   }
-  function lr(t, e) {
-    return t = t?.trim(), !A(t) || !c(e, Function) ? L.error("JQx.fn: method invalid parameter(s)") : (ge[t] = (r, ...n) => e(r, ...n), L.log(`JQx: added extension function [${t}]`));
+  function lr(t, e, r) {
+    return t = t?.trim(), !A(t) || !c(e, Function) ? L.error("JQx.fn: method invalid parameter(s)") : (!!r === true ? ge[t] = (n) => e(n) : pe[t] = (n, ...o) => e(n, ...o), L.log(`JQx: added instance extension ${r ? "getter" : "function"} [${t}]`));
   }
   function ur(t) {
     return function(e, r, n) {
@@ -1227,14 +1227,14 @@ ${r}`), m;
       } catch {
         return t.warn(`JQx.staticFn: extension [${e}] already exists`);
       }
-      return L.log(`JQx: added static extension function [${e}]`);
+      return L.log(`JQx: added static extension ${n ? "getter" : "function"} [${e}]`);
     };
   }
-  function pe(t) {
+  function ye(t) {
     return new Proxy(t, { get: (e, r) => dr(e, r, t) });
   }
   function nt(t, e, r = false) {
-    e = e[Symbol.proxy] ? e : pe(e);
+    e = e[Symbol.proxy] ? e : ye(e);
     let n = function(...o) {
       return t(e, ...o);
     };
@@ -1251,10 +1251,10 @@ ${r}`), m;
         return R({ trial: () => t[e], whenError: () => t });
       case (!Number.isNaN(+e) && typeof +e == "number"):
         return t.collection?.[e] || void 0;
-      case Oe.hasOwnProperty(e):
-        return nt(Oe[e], r, true);
       case ge.hasOwnProperty(e):
-        return nt(ge[e], r);
+        return nt(ge[e], r, true);
+      case pe.hasOwnProperty(e):
+        return nt(pe[e], r);
       default:
         return Reflect.get(t, e);
     }
@@ -1298,7 +1298,7 @@ ${r}`), m;
   function yr(t, e, r, n) {
     return t = $(n || t.toLowerCase()), { get() {
       return (...o) => {
-        let i = e && r.virtual(D(z[t](...o))) || void 0, h2 = !c(i?.node, Comment, Text, void 0) ? ve(i) : "";
+        let i = e && r.virtual(D(z[t](...o))) || void 0, h2 = !c(i?.node, Comment, Text, void 0) ? Le(i) : "";
         return L.log(e ? `JQx: created (virtual) instance from [JQx].${t} ${h2}` : `JQx: ${t.toUpperCase()} is prohibited. Use [JQx].allowTag if necessary.`), i;
       };
     }, enumerable: false, configurable: true };
@@ -1325,7 +1325,7 @@ ${r}`), m;
     return function(e) {
       let { type: r, types: n, origin: o, selector: i, handler: a, handlers: h2, node: p2, name: E2, capture: f3, once: y, about: g2 } = e;
       a = h2 || a, r = n || r, i = o || i;
-      let S2 = Ae(r), m = E2;
+      let S2 = Fe(r), m = E2;
       a = c(a, Function) ? [a] : a;
       let u = { type: S2, selector: i || o, capture: f3, name: m, once: y, node: p2, about: g2 };
       switch (true) {
@@ -1358,7 +1358,7 @@ ${r}`), m;
   }
   function Lr(t) {
     let { factoryExtensions: e, instanceExtensions: r } = rt(t);
-    Oe = e, ge = r;
+    ge = e, pe = r;
     let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: h2, capturedHandling: p2, log: E2, warn: f3, error: y, handlerWrapper: g2 } = vr(t), S2 = Er(t), m = ur(t);
     return z.setError = (u) => (y(`JQx direct element creation error: [${u}] is not a valid tag`), t.br()), { log: E2, warn: f3, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: M, logger: L, proxyWrapper: G, text(u, l = false) {
       return l ? t.comment(u) : document.createTextNode(u);
@@ -1366,12 +1366,12 @@ ${r}`), m;
       return l.querySelector(u, l);
     }, nodes(u, l = document) {
       return [...l.querySelectorAll(u, l)];
-    }, clearAllTimers: we, get staticFn() {
+    }, clearAllTimers: ve, get staticFn() {
       return function(u, l, s) {
         return m(u, l, s);
       };
     }, get toBool() {
-      return Fe;
+      return Te;
     }, get getNamedListener() {
       return S2;
     }, get virtual() {
@@ -1425,15 +1425,15 @@ ${r}`), m;
             let f3 = p2.collection.filter((m) => m?.dataset?.jqxcreationerror);
             p2.collection = p2.collection.filter((m) => !m?.dataset?.jqxcreationerror);
             let g2 = p2.collection.map((m) => `${String(m.constructor).split(/function|\(/)[1].trim()}`).length > 1;
-            p2 = pe(p2);
+            p2 = ye(p2);
             let S2 = p2.collection.length > 0 ? Ke(p2) : "sanitized: no elements remaining";
             L.log(`JQx: created ${p2.isVirtual ? "(virtual)" : ""} instance from ${g2 ? "array of " : ""}HTML string${g2 ? "s" : ""} ${S2}`), p2.isVirtual || I(p2.collection, r, n);
           }
           break;
         default:
-          $e(e, r, p2);
+          Oe(e, r, p2);
       }
-      return pe(p2);
+      return ye(p2);
     });
   }
   var En = at;
