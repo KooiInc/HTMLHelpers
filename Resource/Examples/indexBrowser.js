@@ -242,10 +242,6 @@ function initStyling() {
   $.img({src: `https://sdn.nicon.nl/px0_${prefix}-HTMLHelpersDemo.png`});
   // style rules are stored in <head>style#JQxStylesheet
   $.editCssRules(
-    `:root {
-      --grey-default: rgba(112, 92, 92, 0.9);
-      --code-color: #555;
-    }`,
     `body {
       margin: 2rem;
       overflow-x: hidden;
@@ -294,16 +290,6 @@ function initStyling() {
         font-size: 1.2rem;
       }
     }`,
-    `code:not(.codeblock, .hljs) {
-      background-color: rgb(227, 230, 232);
-      color: var(--code-color);
-      padding: 1px 2px;
-      display: inline-block;
-      margin: 1px 0;
-      border-radius: 4px;
-      font-style: normal;
-      font-weight: normal;
-     }`,
     `code.codeblock {
       margin: 0.5rem 0px 0.5rem;
       color: var(--code-color);
