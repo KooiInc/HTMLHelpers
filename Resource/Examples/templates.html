@@ -24,7 +24,7 @@ const untilNextNewYear = now.differenceFrom($D([now.year + 1, 0 ,1, 0, 0, 0]));
 </template>
 
 <template id="splatEx">
-// imported/loaded splatModule
+// use imported/assigned splatModule
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
 // splatMe  <= ignores non existing tokens
