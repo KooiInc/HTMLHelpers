@@ -1650,12 +1650,7 @@ ${r}`), m;
   }
   function Pe2(e, r, n) {
     function t(a) {
-      switch (true) {
-        case a.day === r:
-          return a;
-        default:
-          return t(a.add(`${n} days`));
-      }
+      return true === (a.day === r) ? a : t(a.add(`${n} days`));
     }
     return t(e);
   }
