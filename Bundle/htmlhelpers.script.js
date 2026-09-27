@@ -22,7 +22,7 @@ var HTMLHelpers = (() => {
   // ../index.js
   var index_exports = {};
   __export(index_exports, {
-    $: () => En,
+    $: () => Ln,
     $D: () => f,
     logFactory: () => logFactory,
     regexhelper: () => REHelper_default,
@@ -32,114 +32,114 @@ var HTMLHelpers = (() => {
   // ../Resource/Externals/jqx.min.js
   var F = /* @__PURE__ */ Symbol.for("toa.symbols");
   Object[F] = Object.create(null, {});
-  var { IS: c, isOnly: Fr, maybe: R, $Wrap: Tr, isNothing: ft, addSymbolicExtensions: He, proxyWrapper: G } = dt({ useSymbolicExtensions: false });
-  function dt(t = {}) {
-    let { useSymbolicExtensions: e } = t, r = pt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: h2, addSymbolicExtensions: p2, maybe: E2, $Wrap: f3, detectableProxy: y } = mt(m, e), g2 = y;
+  var { IS: c, isOnly: $r, maybe: R, $Wrap: Or, isNothing: dt, addSymbolicExtensions: Ne, proxyWrapper: Y } = mt({ useSymbolicExtensions: false });
+  function mt(t = {}) {
+    let { useSymbolicExtensions: e } = t, r = yt(), { shouldbeIsSingleObject: n, ISOneOf: o, isExcept: i, verifyNothingness: a, determineType: S2, addSymbolicExtensions: p2, maybe: x2, $Wrap: f3, detectableProxy: h2 } = gt(l, e), g = h2;
     e && p2();
-    let S2 = Object[F];
-    return { IS: m, isOnly: u, maybe: E2, $Wrap: f3, isNothing: a, addSymbolicExtensions: p2, proxyWrapper: g2 };
-    function m(l, ...s) {
-      let d = Object.getOwnPropertySymbols(l || {})?.some((w) => w === S2.justME) && s.length > 0, b = l?.[S2.justME], x2 = d ? b : typeof l == "symbol" ? S2.isSymbol : l;
+    let y = Object[F];
+    return { IS: l, isOnly: d, maybe: x2, $Wrap: f3, isNothing: a, addSymbolicExtensions: p2, proxyWrapper: g };
+    function l(u, ...s) {
+      let m = Object.getOwnPropertySymbols(u || {})?.some((E2) => E2 === y.justME) && s.length > 0, b = u?.[y.justME], w = m ? b : typeof u == "symbol" ? y.isSymbol : u;
       switch (true) {
-        case d:
+        case m:
           return r(b, ...s);
-        case !!E2({ trial: (w) => "isTypes" in (s?.[0] ?? {}) }):
-          return n(l, s[0]);
+        case !!x2({ trial: (E2) => "isTypes" in (s?.[0] ?? {}) }):
+          return n(u, s[0]);
         default:
-          return s.length > 1 ? o(x2, ...s) : h2(l, ...s);
+          return s.length > 1 ? o(w, ...s) : S2(u, ...s);
       }
     }
-    function u(l, ...s) {
-      return m({ [S2.justME]: l }, ...s);
+    function d(u, ...s) {
+      return l({ [y.justME]: u }, ...s);
     }
   }
-  function mt(t, e) {
-    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: o, verifyNothingness: i, determineType: a, detectableProxy: h2 } = gt(t, y), { addSymbolicExtensions: p2 } = r(t, y, e), [E2, f3] = [n(), o(t, y)];
-    return Object.freeze({ shouldbeIsSingleObject: g2, ISOneOf: S2, isExcept: u, verifyNothingness: i, determineType: a, detectableProxy: h2, addSymbolicExtensions: p2, maybe: E2, $Wrap: f3 });
-    function y(l) {
-      return l?.[Object[F].proxy] || t(l);
+  function gt(t, e) {
+    let { SymbolAndCustomProxyFactory: r, maybeFactory: n, WrapAnyFactory: o, verifyNothingness: i, determineType: a, detectableProxy: S2 } = pt(t, h2), { addSymbolicExtensions: p2 } = r(t, h2, e), [x2, f3] = [n(), o(t, h2)];
+    return Object.freeze({ shouldbeIsSingleObject: g, ISOneOf: y, isExcept: d, verifyNothingness: i, determineType: a, detectableProxy: S2, addSymbolicExtensions: p2, maybe: x2, $Wrap: f3 });
+    function h2(u) {
+      return u?.[Object[F].proxy] || t(u);
     }
-    function g2(l, s) {
+    function g(u, s) {
       switch (true) {
         case "defaultValue" in s:
-          return m(l, s);
+          return l(u, s);
         case "notTypes" in s:
-          return u(l, s);
+          return d(u, s);
         default:
-          return t(l, ...[s.isTypes].flat());
+          return t(u, ...[s.isTypes].flat());
       }
     }
-    function S2(l, ...s) {
-      return s.some((d) => t(l, d));
+    function y(u, ...s) {
+      return s.some((m) => t(u, m));
     }
-    function m(l, { defaultValue: s, isTypes: d = [void 0], notTypes: b } = {}) {
-      return d = d?.constructor !== Array ? [d] : d, b = b && b?.constructor !== Array ? [b] : [], b.length < 1 ? t(l, ...d) ? l : s : u(l, { isTypes: d, notTypes: b }) ? l : s;
+    function l(u, { defaultValue: s, isTypes: m = [void 0], notTypes: b } = {}) {
+      return m = m?.constructor !== Array ? [m] : m, b = b && b?.constructor !== Array ? [b] : [], b.length < 1 ? t(u, ...m) ? u : s : d(u, { isTypes: m, notTypes: b }) ? u : s;
     }
-    function u(l, { isTypes: s = [void 0], notTypes: d = [void 0] } = {}) {
-      return s = s?.constructor !== Array ? [s] : s, d = d?.constructor !== Array ? [d] : d, t(l, ...s) && !t(l, ...d);
+    function d(u, { isTypes: s = [void 0], notTypes: m = [void 0] } = {}) {
+      return s = s?.constructor !== Array ? [s] : s, m = m?.constructor !== Array ? [m] : m, t(u, ...s) && !t(u, ...m);
     }
   }
-  function gt() {
+  function pt() {
     let t = Object[F], e = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxyFor", TARGET: "toa.target", JUSTME: "toa.justME" }, r = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy for" }, n = o();
-    return Object.freeze({ SymbolAndCustomProxyFactory: a, maybeFactory: u, WrapAnyFactory: m, verifyNothingness: l, determineType: E2, detectableProxy: n });
+    return Object.freeze({ SymbolAndCustomProxyFactory: a, maybeFactory: d, WrapAnyFactory: l, verifyNothingness: u, determineType: x2, detectableProxy: n });
     function o() {
-      let s = (x2) => ({ get(w, O3) {
-        return O3 === Object[F].proxy ? `Proxy for ${x2}` : O3 === Object[F].target ? w : Reflect.get(w, O3);
-      }, has(w, O3) {
-        return O3 === Object[F].proxy ? true : O3 in w;
+      let s = (w) => ({ get(E2, O3) {
+        return O3 === Object[F].proxy ? `Proxy for ${w}` : O3 === Object[F].target ? E2 : Reflect.get(E2, O3);
+      }, has(E2, O3) {
+        return O3 === Object[F].proxy ? true : O3 in E2;
       } });
-      function d(x2) {
-        let w = x2.name || x2.constructor.name;
-        return new Proxy(x2, s(w));
+      function m(w) {
+        let E2 = w.name || w.constructor.name;
+        return new Proxy(w, s(E2));
       }
-      function b(x2, w) {
-        return w = c(w, Object) ? w : {}, d(new Proxy(x2, w));
+      function b(w, E2) {
+        return E2 = c(E2, Object) ? E2 : {}, m(new Proxy(w, E2));
       }
-      return { wrap: d, create: b };
+      return { wrap: m, create: b };
     }
-    function i(s, d) {
+    function i(s, m) {
       t.is || (t.is = Symbol(e.IS), t.type = Symbol(e.TYPE), Object.defineProperties(Object.prototype, { [t.type]: { get() {
-        return d(this);
+        return m(this);
       }, enumerable: false, configurable: true }, [t.is]: { value: function(...b) {
         return s(this, ...b);
       }, enumerable: false, configurable: false } }), Object.defineProperties(Object, { [t.type]: { value(b) {
-        return d(b);
-      }, enumerable: false, configurable: false }, [t.is]: { value: function(b, ...x2) {
-        return s(b, ...x2);
+        return m(b);
+      }, enumerable: false, configurable: false }, [t.is]: { value: function(b, ...w) {
+        return s(b, ...w);
       }, enumerable: false, configurable: false } }));
     }
-    function a(s, d, b) {
-      return t.isSymbol || (t.isSymbol = Symbol(e.IS_SYMBOL), t.proxy = Symbol(e.PROXY), t.target = Symbol(e.TARGET), t.justME = Symbol(e.JUSTME)), { addSymbolicExtensions: () => i(s, d) };
+    function a(s, m, b) {
+      return t.isSymbol || (t.isSymbol = Symbol(e.IS_SYMBOL), t.proxy = Symbol(e.PROXY), t.target = Symbol(e.TARGET), t.justME = Symbol(e.JUSTME)), { addSymbolicExtensions: () => i(s, m) };
     }
-    function h2(s) {
-      return (ft(s, true) ? { name: "unknown" } : Object.getPrototypeOf(s)?.constructor).name;
+    function S2(s) {
+      return (dt(s, true) ? { name: "unknown" } : Object.getPrototypeOf(s)?.constructor).name;
     }
-    function p2(s, ...d) {
-      let b = d.length < 1, x2 = s == null;
-      return { noInput: x2, noShouldbe: b, compareTo: !b && d[0], inputCTOR: !x2 && (s?.constructor || Object.getPrototypeOf(s)?.constructor), isNaN: Number.isNaN(s) || R({ trial: (w) => String(s) === r.NAN }), isInfinity: R({ trial: (w) => String(s) }) === r.INFINITY, shouldBeFirstElementIsNothing: !b && l(d[0]) };
+    function p2(s, ...m) {
+      let b = m.length < 1, w = s == null;
+      return { noInput: w, noShouldbe: b, compareTo: !b && m[0], inputCTOR: !w && (s?.constructor || Object.getPrototypeOf(s)?.constructor), isNaN: Number.isNaN(s) || R({ trial: (E2) => String(s) === r.NAN }), isInfinity: R({ trial: (E2) => String(s) }) === r.INFINITY, shouldBeFirstElementIsNothing: !b && u(m[0]) };
     }
-    function E2(s, ...d) {
-      let { noInput: b, noShouldbe: x2, compareTo: w, inputCTOR: O3, isNaN: ct, isInfinity: lt, shouldBeFirstElementIsNothing: ut } = p2(s, ...d);
-      switch (d = d.length && d[0], true) {
-        case ut:
-          return String(s) === String(w);
-        case (s?.[Object[F].proxy] && x2):
+    function x2(s, ...m) {
+      let { noInput: b, noShouldbe: w, compareTo: E2, inputCTOR: O3, isNaN: lt, isInfinity: ut, shouldBeFirstElementIsNothing: ft } = p2(s, ...m);
+      switch (m = m.length && m[0], true) {
+        case ft:
+          return String(s) === String(E2);
+        case (s?.[Object[F].proxy] && w):
           return s[Object[F].proxy];
-        case (s?.[Object[F].proxy] && typeof d == "string"):
-          return s[Object[F].proxy].toLowerCase() === d.toLowerCase();
-        case ct:
-          return x2 ? r.NAN : String(w) === String(s);
+        case (s?.[Object[F].proxy] && typeof m == "string"):
+          return s[Object[F].proxy].toLowerCase() === m.toLowerCase();
         case lt:
-          return x2 ? r.INFINITY : String(w) === String(s);
+          return w ? r.NAN : String(E2) === String(s);
+        case ut:
+          return w ? r.INFINITY : String(E2) === String(s);
         case b:
-          return x2 ? String(s) : String(w) === String(s);
+          return w ? String(s) : String(E2) === String(s);
         case O3 === Boolean:
-          return x2 ? r.BOOLEAN : O3 === d;
+          return w ? r.BOOLEAN : O3 === m;
         default:
-          return y(s, d, x2, f3(s, O3));
+          return h2(s, m, w, f3(s, O3));
       }
     }
-    function f3(s, d) {
+    function f3(s, m) {
       switch (true) {
         case s === 0:
           return Number;
@@ -148,101 +148,101 @@ var HTMLHelpers = (() => {
         case !s:
           return { name: String(s) };
         default:
-          return d;
+          return m;
       }
     }
-    function y(s, d, b, x2) {
+    function h2(s, m, b, w) {
       switch (true) {
-        case (!b && d === s || s?.[Object[F].proxy] && d === Proxy):
+        case (!b && m === s || s?.[Object[F].proxy] && m === Proxy):
           return true;
-        case String(d) === r.NAN:
+        case String(m) === r.NAN:
           return String(s) === r.NAN;
-        case (s?.[Symbol.toStringTag] && typeof d == "string"):
-          return String(d) === s[Symbol.toStringTag];
+        case (s?.[Symbol.toStringTag] && typeof m == "string"):
+          return String(m) === s[Symbol.toStringTag];
         default:
-          return d ? S2(s, d, x2) : g2(s, x2);
+          return m ? y(s, m, w) : g(s, w);
       }
     }
-    function g2(s, d) {
-      return (s?.[Symbol.toStringTag] ?? s?.prototype?.[Symbol.toStringTag]) || d?.name || String(d);
+    function g(s, m) {
+      return (s?.[Symbol.toStringTag] ?? s?.prototype?.[Symbol.toStringTag]) || m?.name || String(m);
     }
-    function S2(s, d, b) {
-      return R({ trial: (x2) => s instanceof d }) || d === b || d === Object.getPrototypeOf(b) || `${d?.name}` === b?.name;
+    function y(s, m, b) {
+      return R({ trial: (w) => s instanceof m }) || m === b || m === Object.getPrototypeOf(b) || `${m?.name}` === b?.name;
     }
-    function m(s, d) {
+    function l(s, m) {
       return function(b) {
-        let x2 = { get value() {
+        let w = { get value() {
           return b;
-        }, is(...w) {
-          return s(b, ...w);
+        }, is(...E2) {
+          return s(b, ...E2);
         }, get type() {
-          return d(b);
+          return m(b);
         } };
-        return Object[Object[F].type] && Object.defineProperties(x2, { [Object[F].type]: { get() {
-          return d(b);
-        } }, [Object[F].is]: { value(...w) {
-          return s(b, ...w);
-        } } }), Object.freeze(x2);
+        return Object[Object[F].type] && Object.defineProperties(w, { [Object[F].type]: { get() {
+          return m(b);
+        } }, [Object[F].is]: { value(...E2) {
+          return s(b, ...E2);
+        } } }), Object.freeze(w);
       };
     }
-    function u() {
-      let s = (d) => {
+    function d() {
+      let s = (m) => {
       };
-      return function({ trial: d, whenError: b = s } = {}) {
+      return function({ trial: m, whenError: b = s } = {}) {
         try {
-          return d();
-        } catch (x2) {
-          return b(x2);
+          return m();
+        } catch (w) {
+          return b(w);
         }
       };
     }
-    function l(s, d = false) {
+    function u(s, m = false) {
       let b = s == null;
-      return b = d ? b || c(s, 1 / 0) || c(s, NaN) : b, b;
+      return b = m ? b || c(s, 1 / 0) || c(s, NaN) : b, b;
     }
   }
-  function pt() {
+  function yt() {
     let t = new Intl.Collator("en", { sensitivity: "base" }), e = (o) => typeof o?.constructor == "function" ? o?.name || o?.constructor?.name : typeof o == "string" ? o : typeof o, r = (o) => [null, void 0, 1 / 0, NaN].some((i) => i === o);
     function n(o, i) {
       if (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o)))) return false;
-      let [a, h2] = [e(o), e(i)];
-      return o?.[Object[F].proxy] === i || i === o?.name || t.compare(a, h2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${h2}]`) === 0;
+      let [a, S2] = [e(o), e(i)];
+      return o?.[Object[F].proxy] === i || i === o?.name || t.compare(a, S2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${S2}]`) === 0;
     }
     return function(i, ...a) {
       if (Array.isArray(a) && a.length > 1) {
-        for (let h2 of a) if (n(i, h2)) return true;
+        for (let S2 of a) if (n(i, S2)) return true;
         return false;
       }
       return n(i, a?.[0]);
     };
   }
-  var Me = ht();
-  var J = yt();
-  var k = bt();
-  function yt() {
-    return { html: Object.freeze("accept,action,align,alt,autocapitalize,autocomplete,autopictureinpicture,autoplay,background,bgcolor,border,capture,cellpadding,cellspacing,checked,cite,class,clear,contenteditable,color,cols,colspan,controls,controlslist,coords,crossorigin,datetime,decoding,default,dir,disabled,disablepictureinpicture,disableremoteplayback,download,draggable,enctype,enterkeyhint,face,for,headers,height,hidden,high,href,hreflang,id,inputmode,integrity,is,ismap,kind,label,lang,list,loading,loop,low,max,maxlength,media,method,min,minlength,multiple,muted,name,nonce,noshade,novalidate,nowrap,open,optimum,pattern,placeholder,playsinline,poster,preload,pubdate,radiogroup,readonly,rel,required,rev,reversed,role,rows,rowspan,spellcheck,scope,selected,shape,size,sizes,span,srclang,start,src,srcset,step,style,summary,tabindex,target,title,translate,type,usemap,valign,value,width,xmlns,slot".split(",")), svg: Object.freeze("accent-height,accumulate,additive,alignment-baseline,ascent,attributename,attributetype,azimuth,basefrequency,baseline-shift,begin,bias,by,class,clip,clippathunits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,cx,cy,d,dx,dy,diffuseconstant,direction,display,divisor,dur,edgemode,elevation,end,fill,fill-opacity,fill-rule,filter,filterunits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,fx,fy,g1,g2,glyph-name,glyphref,gradientunits,gradienttransform,height,href,id,image-rendering,in,in2,k,k1,k2,k3,k4,kerning,keypoints,keysplines,keytimes,lang,lengthadjust,letter-spacing,kernelmatrix,kernelunitlength,lighting-color,local,marker-end,marker-mid,marker-start,markerheight,markerunits,markerwidth,maskcontentunits,maskunits,max,mask,media,method,mode,min,name,numoctaves,offset,operator,opacity,order,orient,orientation,origin,overflow,paint-order,path,pathlength,patterncontentunits,patterntransform,patternunits,points,preservealpha,preserveaspectratio,primitiveunits,r,rx,ry,radius,refx,refy,repeatcount,repeatdur,restart,result,rotate,scale,seed,shape-rendering,specularconstant,specularexponent,spreadmethod,startoffset,stddeviation,stitchtiles,stop-color,stop-opacity,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke,stroke-width,style,surfacescale,systemlanguage,tabindex,targetx,targety,transform,text-anchor,text-decoration,text-rendering,textlength,type,u1,u2,unicode,values,viewbox,visibility,version,vert-adv-y,vert-origin-x,vert-origin-y,width,word-spacing,wrap,writing-mode,xchannelselector,ychannelselector,x,x1,x2,xmlns,y,y1,y2,z,zoomandpan".split(",")) };
-  }
+  var Me = St();
+  var D = bt();
+  var G = ht();
   function bt() {
-    return { a: true, area: true, audio: false, br: true, base: true, body: true, button: true, canvas: true, comment: true, dl: true, data: true, datalist: true, div: true, em: true, embed: false, fieldset: true, font: true, footer: true, form: false, hr: true, head: true, header: true, output: true, iframe: false, frameset: false, img: true, input: true, li: true, label: true, legend: true, link: true, map: true, mark: true, menu: true, media: true, meta: true, nav: true, meter: true, ol: true, object: false, optgroup: true, option: true, p: true, param: true, picture: true, pre: true, progress: false, quote: true, script: false, select: true, source: true, span: true, style: true, caption: true, td: true, col: true, table: true, tr: true, template: false, textarea: true, time: true, title: true, track: true, details: true, ul: true, video: true, del: true, ins: true, slot: true, blockquote: true, svg: true, dialog: true, summary: true, main: true, address: true, colgroup: true, tbody: true, tfoot: true, thead: true, th: true, dd: true, dt: true, figcaption: true, figure: true, i: true, b: true, code: true, h1: true, h2: true, h3: true, h4: true, abbr: true, bdo: true, dfn: true, kbd: true, q: true, rb: true, rp: true, rt: true, ruby: true, s: true, strike: true, samp: true, small: true, strong: true, sup: true, sub: true, u: true, var: true, wbr: true, nobr: true, tt: true, noscript: true };
+    return { html: Object.freeze("accept,action,align,alt,autocapitalize,autocomplete,autopictureinpicture,autoplay,background,bgcolor,border,capture,cellpadding,cellspacing,checked,cite,class,clear,contenteditable,color,cols,colspan,controls,controlslist,coords,crossorigin,datetime,decoding,default,dir,disabled,disablepictureinpicture,disableremoteplayback,download,draggable,enctype,enterkeyhint,face,for,headers,height,hidden,high,href,hreflang,id,inputmode,integrity,is,ismap,kind,label,lang,list,loading,loop,low,max,maxlength,media,method,min,minlength,multiple,muted,name,nonce,noshade,novalidate,nowrap,open,optimum,pattern,placeholder,playsinline,poster,preload,pubdate,radiogroup,readonly,rel,required,rev,reversed,role,rows,rowspan,spellcheck,scope,selected,shape,size,sizes,span,srclang,start,src,srcset,step,style,summary,tabindex,target,title,translate,type,usemap,valign,value,width,xmlns,slot".split(",").reduce((t, e) => ({ [e]: 1 }), {})), svg: Object.freeze("accent-height,accumulate,additive,alignment-baseline,ascent,attributename,attributetype,azimuth,basefrequency,baseline-shift,begin,bias,by,class,clip,clippathunits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,cx,cy,d,dx,dy,diffuseconstant,direction,display,divisor,dur,edgemode,elevation,end,fill,fill-opacity,fill-rule,filter,filterunits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,fx,fy,g1,g2,glyph-name,glyphref,gradientunits,gradienttransform,height,href,id,image-rendering,in,in2,k,k1,k2,k3,k4,kerning,keypoints,keysplines,keytimes,lang,lengthadjust,letter-spacing,kernelmatrix,kernelunitlength,lighting-color,local,marker-end,marker-mid,marker-start,markerheight,markerunits,markerwidth,maskcontentunits,maskunits,max,mask,media,method,mode,min,name,numoctaves,offset,operator,opacity,order,orient,orientation,origin,overflow,paint-order,path,pathlength,patterncontentunits,patterntransform,patternunits,points,preservealpha,preserveaspectratio,primitiveunits,r,rx,ry,radius,refx,refy,repeatcount,repeatdur,restart,result,rotate,scale,seed,shape-rendering,specularconstant,specularexponent,spreadmethod,startoffset,stddeviation,stitchtiles,stop-color,stop-opacity,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke,stroke-width,style,surfacescale,systemlanguage,tabindex,targetx,targety,transform,text-anchor,text-decoration,text-rendering,textlength,type,u1,u2,unicode,values,viewbox,visibility,version,vert-adv-y,vert-origin-x,vert-origin-y,width,word-spacing,wrap,writing-mode,xchannelselector,ychannelselector,x,x1,x2,xmlns,y,y1,y2,z,zoomandpan".split(",").reduce((t, e) => ({ [e]: 1 }), {})) };
   }
   function ht() {
+    return { a: true, area: true, audio: false, br: true, base: true, body: true, button: true, canvas: true, comment: true, dl: true, data: true, datalist: true, div: true, em: true, embed: false, fieldset: true, font: true, footer: true, form: false, hr: true, head: true, header: true, output: true, iframe: false, frameset: false, img: true, input: true, li: true, label: true, legend: true, link: true, map: true, mark: true, menu: true, media: true, meta: true, nav: true, meter: true, ol: true, object: false, optgroup: true, option: true, p: true, param: true, picture: true, pre: true, progress: false, quote: true, script: false, select: true, source: true, span: true, style: true, caption: true, td: true, col: true, table: true, tr: true, template: false, textarea: true, time: true, title: true, track: true, details: true, ul: true, video: true, del: true, ins: true, slot: true, blockquote: true, svg: true, dialog: true, summary: true, main: true, address: true, colgroup: true, tbody: true, tfoot: true, thead: true, th: true, dd: true, dt: true, figcaption: true, figure: true, i: true, b: true, code: true, h1: true, h2: true, h3: true, h4: true, abbr: true, bdo: true, dfn: true, kbd: true, q: true, rb: true, rp: true, rt: true, ruby: true, s: true, strike: true, samp: true, small: true, strong: true, sup: true, sub: true, u: true, use: false, var: true, wbr: true, nobr: true, tt: true, noscript: true };
+  }
+  function St() {
     return ["::backdrop{background-color:grey;opacity:0.2;}", `#jqxPopup{overflow:hidden;background-color:transparent;outline:none;border:none;inset:0;animation:fade-out 0.5s ease-out;&[open]{display:flex;align-items:center;justify-content:center;animation:fade-in 0.5s ease;}#jqxPopupContent{background-color:white;border:solid 1px #eee;box-shadow:1px 2px 8px #999;border-radius:4px;padding:12px;vertical-align:middle;max-height:40vh;max-width:50vw;overflow:auto;margin:0 auto;div:not(#closeHandleIcon){clear:both;}@media (width <= 640px){max-width:80vw;max-height:60vh;}#closeHandleIcon{cursor:pointer;width:24px;height:24px;display:inline;position:absolute;top:4px;right:4px;justify-content:right;background-image:url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20version%3D%221.1%22%20id%3D%22Layer_1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20128%20128%22%20style%3D%22enable-background%3Anew%200%200%20128%20128%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20x%3D%22-368%22%20y%3D%226%22%20style%3D%22display%3Anone%3Bfill%3A%23E0E0E0%3B%22%20width%3D%22866%22%20height%3D%221018%22%2F%3E%3Ccircle%20style%3D%22fill%3A%23FFFFFF%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Ccircle%20style%3D%22fill%3A%238CCFB9%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2239%22%2F%3E%3Ccircle%20style%3D%22fill%3Anone%3Bstroke%3A%23444B54%3Bstroke-width%3A6%3Bstroke-miterlimit%3A10%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Cpolyline%20style%3D%22fill%3Anone%3Bstroke%3A%23FFFFFF%3Bstroke-width%3A6%3Bstroke-linecap%3Around%3Bstroke-miterlimit%3A10%3B%22%20points%3D%2242%2C69%2055.55%2C81%20%20%2086%2C46%20%22%2F%3E%3C%2Fsvg%3E");@media (width <= 640px){background-image:none;position:relative;margin:-15px -15px 4px 0;float:right;vertical-align:middle;border:1px solid #AAA;padding:2px;border-radius:50%;width:12px;height:12px;font-size:12px;line-height:12px;font-weight:bold;text-align:center;&:after{content:'\\2714';color:green;}}}.warn{display:none;text-align:center;color:red;border-top:1px solid #999;margin-top:1em;padding-top:3px;animation:warn-fade-out 0.2s ease-out;}.warn.active{opacity:1;display:block;animation:warn-fade-in 0.2s ease-in;}}}`, "@keyframes fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1, 1);display:flex;}}", "@keyframes fade-out{0%{opacity:1;transform:scale(1, 1);display:flex;}100%{opacity:0;transform:scale(0, 0);display:none;}}", "@keyframes warn-fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1,1 );display:block;}}", "@keyframes warn-fade-out{0%{opacity:1;transform:scale(1, 1);display:block;}100%{opacity:0;transform:scale(0, 0);display:none;}}"];
   }
-  var Q = xt();
-  var St = Lt();
+  var Q = wt();
+  var xt = At();
   var Pe = { html: "innerHTML", text: "textContent", class: "className" };
-  function xt() {
+  function wt() {
     let t = new Intl.Collator("en", { sensitivity: "base" }), e = (o) => typeof o?.constructor == "function" ? o?.name || o?.constructor?.name : typeof o == "string" ? o : typeof o, r = (o) => [null, void 0, 1 / 0, NaN].some((i) => i === o);
     function n(o, i) {
       if (true === (i !== o && (r(o) || i === Number && (Number.isNaN(o) || !Number.isFinite(o))))) return false;
       {
-        let [a, h2] = [e(o), e(i)];
-        return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, h2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${h2}]`) === 0;
+        let [a, S2] = [e(o), e(i)];
+        return o?.[Symbol.proxy] === i || i === o?.name || t.compare(a, S2) === 0 || t.compare(o.constructor?.name, i?.name) === 0 || o.constructor?.name === i || a === i || t.compare(Object.prototype.toString.call(o), `[object ${S2}]`) === 0;
       }
     }
     return function(i, ...a) {
       if (Array.isArray(a) && a.length > 1) {
-        for (let h2 of a) if (n(i, h2)) return true;
+        for (let S2 of a) if (n(i, S2)) return true;
         return false;
       }
       return n(i, a?.[0]);
@@ -251,13 +251,13 @@ var HTMLHelpers = (() => {
   function Et([t, ...e]) {
     return `${t.toUpperCase()}${e.join("")}`;
   }
-  function wt(t) {
+  function vt(t) {
     return t.replace(/[A-Z]/g, (e) => `-${e.toLowerCase()}`).replace(/^-|-$/, "");
   }
-  function vt(t) {
+  function Lt(t) {
     return Q(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${Et(e)}` || e).join("") : t;
   }
-  function Lt() {
+  function At() {
     let t = (e) => {
     };
     return function({ trial: e, whenError: r = t } = {}) {
@@ -268,23 +268,23 @@ var HTMLHelpers = (() => {
       }
     };
   }
-  function At(t) {
+  function Ft(t) {
     return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(t)));
   }
-  function Ft(t) {
+  function Tt(t) {
     if (Object.keys(t).length < 1) return { assignable: {}, specials: [...Array(3)] };
-    let e = Tt(t);
+    let e = $t(t);
     return Object.keys(t).forEach((r) => {
       let n = r.toLowerCase();
       n in Pe && (t[Pe[n]] = t[r]) && delete t[r];
     }), { assignable: t, specials: e };
   }
-  function Tt(t) {
+  function $t(t) {
     if (t = Q(t, Object) && t || void 0, !t) return Array(3);
     let e = Object.entries(t.data ?? {}), r = Object.entries(t.attributes ?? {}), n = t.class?.split(/[ ,]/).map((o) => o.trim()).filter((o) => o.length > 1);
     return delete t.data, delete t.attributes, delete t.class, [e, r, n];
   }
-  function $t(t) {
+  function Ot(t) {
     return t?.constructor === Comment ? t?.textContent : String(t);
   }
   function ye(t) {
@@ -293,18 +293,18 @@ var HTMLHelpers = (() => {
   function je(t, e) {
     return !ye(e) && Q(t, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(t);
   }
-  function Ot(t) {
+  function Ct(t) {
     return t = t.toLowerCase(), typeof t == "string" && t.length > 0 && /^[a-z]/.test(t) && /^[a-z0-9-]+$/gi.test(t);
   }
-  function Ct(t, e, r) {
-    return Ot(t) && (t in e || !Q(r(t), HTMLUnknownElement));
+  function Ht(t, e, r) {
+    return Ct(t) && (t in e || !Q(r(t), HTMLUnknownElement));
   }
   var X = Object.create(null, {});
   var Z = Object.create(null, {});
   var Je = (t) => {
     console.error(`tinyDOM error: "${t}" is not a valid HTML tag`);
   };
-  var z = Nt();
+  var k = Nt();
   function Nt() {
     return Object.seal(new Proxy(X, Qe()));
   }
@@ -314,7 +314,7 @@ var HTMLHelpers = (() => {
       switch (true) {
         case r in t:
           return t[r];
-        case Ct(r, Z, K):
+        case Ht(r, Z, K):
           return Re({ tag: r, key: e });
         default:
           return Re({ tag: r, key: e, isError: true });
@@ -324,13 +324,13 @@ var HTMLHelpers = (() => {
     }, enumerable: false, configurable: false };
   }
   function Re({ tag: t, key: e, custom: r, debug: n = false, isError: o = false } = {}) {
-    let i = At(X);
+    let i = Ft(X);
     if (o) return Object.defineProperty(i, t, { get() {
       return (a) => Je(e) ?? "";
     } }), De(i, t);
     if (t.includes("-")) {
-      let [a, h2] = t.includes("-") ? [t, vt(t)] : [wt(t), t];
-      Z[a] = a, Z[h2] = a, r = h2;
+      let [a, S2] = t.includes("-") ? [t, Lt(t)] : [vt(t), t];
+      Z[a] = a, Z[S2] = a, r = S2;
     }
     return r && Object.defineProperty(i, r, { get() {
       return Ie(t);
@@ -341,143 +341,143 @@ var HTMLHelpers = (() => {
   function De(t, e) {
     return X = Object.seal(new Proxy(t, Qe())), X[e];
   }
-  function Ht(t, e, r) {
-    return e = e?.isJQx && e.node || (Q(e, Number) ? String(e) : e), St({ trial: (n) => je(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
+  function Mt(t, e, r) {
+    return e = e?.isJQx && e.node || (Q(e, Number) ? String(e) : e), xt({ trial: (n) => je(e) ? t.insertAdjacentHTML("beforeend", e) : t.append(e), whenError: (n) => console.info(`${r} not created, reason
 `, n) });
   }
-  function Mt(t, e, ...r) {
-    let n = Pt(e, t);
-    return r?.forEach((o) => Ht(n, o, t)), n;
+  function Pt(t, e, ...r) {
+    let n = Rt(e, t);
+    return r?.forEach((o) => Mt(n, o, t)), n;
   }
-  function Pt(t, e) {
-    switch (t = ye(e) ? $t(t) : t?.isJQx ? t.node : t, true) {
+  function Rt(t, e) {
+    switch (t = ye(e) ? Ot(t) : t?.isJQx ? t.node : t, true) {
       case Q(t, String):
         return K(e, je(t, e) ? { html: t } : { text: t });
       case t instanceof Node:
-        return Rt(e, t);
+        return Dt(e, t);
       default:
         return K(e, t);
     }
   }
-  function Rt(t, e) {
+  function Dt(t, e) {
     let r = K(t);
     return r.append(e), r;
   }
-  function Dt(t, e) {
+  function It(t, e) {
     let [r, n, o] = t;
     r?.length && r.forEach(([i, a]) => e.dataset[i] = a), n?.length && n.forEach(([i, a]) => e.setAttribute(i, a)), o?.forEach((i) => e.classList.add(i));
   }
   function K(t, e) {
     e = e || {};
-    let { assignable: r, specials: n } = Ft(e), o = Object.assign(ye(t) ? new Comment() : document.createElement(t), r);
-    return Dt(n, o), o;
+    let { assignable: r, specials: n } = Tt(e), o = Object.assign(ye(t) ? new Comment() : document.createElement(t), r);
+    return It(n, o), o;
   }
   function Ie(t) {
-    return t = Z[t] ?? t, (e, ...r) => Mt(t, e, ...r);
+    return t = Z[t] ?? t, (e, ...r) => Pt(t, e, ...r);
   }
-  var W = It;
-  function It({ styleSheet: t, createWithId: e } = {}) {
-    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: h2, currentSheetID: p2 } = jt({ styleSheet: t, createWithId: e });
-    function E2(m, u) {
-      if (m && u.removeProperties) {
-        Object.keys(u.removeProperties).forEach((l) => m.style.removeProperty(ke(l)));
+  var z = jt;
+  function jt({ styleSheet: t, createWithId: e } = {}) {
+    let { tryParseAtOrNestedRules: r, ruleExists: n, checkParams: o, sheet: i, removeRules: a, consider: S2, currentSheetID: p2 } = Jt({ styleSheet: t, createWithId: e });
+    function x2(l, d) {
+      if (l && d.removeProperties) {
+        Object.keys(d.removeProperties).forEach((u) => l.style.removeProperty(ke(u)));
         return;
       }
-      Object.entries(u).forEach(([l, s]) => {
-        l = ke(l.trim()), s = s.trim();
-        let d;
-        if (/!important/.test(s) && (s = s.slice(0, s.indexOf("!important")).trim(), d = "important"), !CSS.supports(l, s)) return console.error(`StylingFactory ${p2} error: '${l}' with value '${s}' not supported (yet)`);
-        ze(() => m.style.setProperty(l, s, d), `StylingFactory ${p2} (setRule4Selector) failed`);
+      Object.entries(d).forEach(([u, s]) => {
+        u = ke(u.trim()), s = s.trim();
+        let m;
+        if (/!important/.test(s) && (s = s.slice(0, s.indexOf("!important")).trim(), m = "important"), !CSS.supports(u, s)) return console.error(`StylingFactory ${p2} error: '${u}' with value '${s}' not supported (yet)`);
+        ze(() => l.style.setProperty(u, s, m), `StylingFactory ${p2} (setRule4Selector) failed`);
       });
     }
-    function f3(m, u, l = i) {
-      if (m = m?.trim?.(), !c(m, String) || !m.length || /[;,]$/g.test(m)) return console.error(`StylingFactory ${p2} (setRules): [${m || "[no selector given]"}] is not a valid selector`);
-      if (u.removeRule) return a(m);
-      let s = n(m, true), d = s || l.cssRules[l.insertRule(`${m} {}`, l.cssRules.length || 0)];
-      return h2(() => E2(d, u), m, s);
+    function f3(l, d, u = i) {
+      if (l = l?.trim?.(), !c(l, String) || !l.length || /[;,]$/g.test(l)) return console.error(`StylingFactory ${p2} (setRules): [${l || "[no selector given]"}] is not a valid selector`);
+      if (d.removeRule) return a(l);
+      let s = n(l, true), m = s || u.cssRules[u.insertRule(`${l} {}`, u.cssRules.length || 0)];
+      return S2(() => x2(m, d), l, s);
     }
-    function y(m) {
-      let u = m.trim().split(/{/, 2), l = u.shift().trim();
-      if (!c(l, String) || !l?.trim()?.length) return console.error(`StylingFactory ${p2} (doParse): no (valid) selector could be extracted from rule ${be(m)}`);
-      let s = Ut(u.shift());
-      return ze(() => f3(l, s), `StylingFactory ${p2} (setRules) failed`);
+    function h2(l) {
+      let d = l.trim().split(/{/, 2), u = d.shift().trim();
+      if (!c(u, String) || !u?.trim()?.length) return console.error(`StylingFactory ${p2} (doParse): no (valid) selector could be extracted from rule ${be(l)}`);
+      let s = _t(d.shift());
+      return ze(() => f3(u, s), `StylingFactory ${p2} (setRules) failed`);
     }
-    function g2(m) {
-      let u = r(m);
-      return u.done ? u.existing : y(m);
+    function g(l) {
+      let d = r(l);
+      return d.done ? d.existing : h2(l);
     }
-    function S2(m, u) {
-      return m.trim().startsWith("@media") ? g2(Jt(m, u)) : f3(m, u);
+    function y(l, d) {
+      return l.trim().startsWith("@media") ? g(Qt(l, d)) : f3(l, d);
     }
-    return function(m, u = {}) {
-      return o(m, u) && (Object.keys(u).length ? S2(m, u) : g2(m));
+    return function(l, d = {}) {
+      return o(l, d) && (Object.keys(d).length ? y(l, d) : g(l));
     };
   }
-  function jt({ styleSheet: t, createWithId: e }) {
+  function Jt({ styleSheet: t, createWithId: e }) {
     let r = "Note: The rule or some of its properties may not be supported by your browser (yet)", n = `for style#${e}`;
     t = e ? o(e) : t;
-    function o(g2) {
-      let S2 = document.querySelector(`#${g2}`)?.sheet;
-      if (S2) return S2;
-      let m = Object.assign(document.createElement("style"), { id: g2 });
-      return document.head.insertAdjacentElement("beforeend", m), m.sheet;
+    function o(g) {
+      let y = document.querySelector(`#${g}`)?.sheet;
+      if (y) return y;
+      let l = Object.assign(document.createElement("style"), { id: g });
+      return document.head.insertAdjacentElement("beforeend", l), l.sheet;
     }
-    function i(g2) {
-      return console.error(`StylingFactory ${n} [rule: ${g2}]
+    function i(g) {
+      return console.error(`StylingFactory ${n} [rule: ${g}]
     => @charset, @namespace and @import are not supported here`), { done: true };
     }
-    function a(g2, S2) {
-      return [...t.rules].find((m) => S2 ? We(m.selectorText || "", g2) : zt`${kt(g2)}${[..."gim"]}`.test(m.cssText));
+    function a(g, y) {
+      return [...t.rules].find((l) => y ? We(l.selectorText || "", g) : Wt`${zt(g)}${[..."gim"]}`.test(l.cssText));
     }
-    function h2(g2) {
-      return /^@charset|@import|namespace/i.test(g2.trim()) ? i(g2) : g2.match(/}/g)?.length > 1 ? { existing: f3(g2, 1), done: true } : { done: false };
+    function S2(g) {
+      return /^@charset|@import|namespace/i.test(g.trim()) ? i(g) : g.match(/}/g)?.length > 1 ? { existing: f3(g, 1), done: true } : { done: false };
     }
-    function p2(g2) {
-      let S2 = [...t.cssRules].reduce((u, l, s) => We(l.selectorText || "", g2) && u.concat(s) || u, []), m = S2.length;
-      return S2.forEach((u) => t.deleteRule(u)), m > 0 ? console.info(`\u2714 Removed ${m} instance${m > 1 ? "s" : ""} of selector ${g2} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${g2} does not exist in ${n.slice(4)}`);
+    function p2(g) {
+      let y = [...t.cssRules].reduce((d, u, s) => We(u.selectorText || "", g) && d.concat(s) || d, []), l = y.length;
+      return y.forEach((d) => t.deleteRule(d)), l > 0 ? console.info(`\u2714 Removed ${l} instance${l > 1 ? "s" : ""} of selector ${g} from ${n.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${g} does not exist in ${n.slice(4)}`);
     }
-    function E2(g2, S2) {
-      return g2 && c(g2, String) && g2.trim().length > 0 && c(S2, Object) || (console.error(`StylingFactory ${n} called with invalid parameters`), false);
+    function x2(g, y) {
+      return g && c(g, String) && g.trim().length > 0 && c(y, Object) || (console.error(`StylingFactory ${n} called with invalid parameters`), false);
     }
-    function f3(g2) {
-      g2 = g2.trim();
-      let S2 = g2.slice(0, g2.indexOf("{")).trim(), m = !!a(S2);
+    function f3(g) {
+      g = g.trim();
+      let y = g.slice(0, g.indexOf("{")).trim(), l = !!a(y);
       try {
-        return t.insertRule(`${g2}`, t.cssRules.length), m;
-      } catch (u) {
-        return console.error(`StylingFactory ${n} (tryParse) ${u.name} Error:
-${u.message}
-Rule: ${be(g2)}
-${r}`), m;
+        return t.insertRule(`${g}`, t.cssRules.length), l;
+      } catch (d) {
+        return console.error(`StylingFactory ${n} (tryParse) ${d.name} Error:
+${d.message}
+Rule: ${be(g)}
+${r}`), l;
       }
     }
-    function y(g2, S2, m) {
+    function h2(g, y, l) {
       try {
-        return g2(), m;
-      } catch (u) {
-        return console.error(`StylingFactory ${n} (tryAddOrModify) ${u.name} Error:
-${u.message}
-Rule: ${be(S2)}
-${r}`), m;
+        return g(), l;
+      } catch (d) {
+        return console.error(`StylingFactory ${n} (tryAddOrModify) ${d.name} Error:
+${d.message}
+Rule: ${be(y)}
+${r}`), l;
       }
     }
-    return { sheet: t, removeRules: p2, tryParseAtOrNestedRules: h2, ruleExists: a, checkParams: E2, tryParse: f3, consider: y, currentSheetID: n };
+    return { sheet: t, removeRules: p2, tryParseAtOrNestedRules: S2, ruleExists: a, checkParams: x2, tryParse: f3, consider: h2, currentSheetID: n };
   }
-  function Jt(t, e) {
-    return `${t.trim()} ${Object.entries(e).map(([r, n]) => `${r}: { ${Qt(n)}`)}`;
+  function Qt(t, e) {
+    return `${t.trim()} ${Object.entries(e).map(([r, n]) => `${r}: { ${kt(n)}`)}`;
   }
   function be(t) {
     let e = (t || "NO RULE").trim().slice(0, 50).replace(/\n/g, "\\n").replace(/\s{2,}/g, " ");
     return t.length > e.length ? `${e.trim()}...truncated` : e;
   }
-  function Qt(t) {
+  function kt(t) {
     return Object.entries(t).map(([e, r]) => `${e}: ${r.trim()}`).join(`;
 `);
   }
-  function kt(t) {
+  function zt(t) {
     return t.replace(/([*\[\]()-+{}.$?\\])/g, (e) => `\\${e}`);
   }
-  function zt(t, ...e) {
+  function Wt(t, ...e) {
     let r = e.length && Array.isArray(e.slice(-1)) ? e.pop().join("") : "";
     return new RegExp((e.length && t.raw.reduce((n, o, i) => n.concat(e[i - 1] || "").concat(o), "") || t.raw.join("")).split(`
 `).map((n) => n.replace(/\s|\/\/.*$/g, "").trim().replace(/(@s!)/g, " ")).join(""), r);
@@ -492,66 +492,66 @@ ${r}`), m;
       console.error(`${e || "an error occured"}: ${r.message}`);
     }
   }
-  function Wt(t) {
+  function Bt(t) {
     return t.replace(/\/\*.+?\*\//gm, "").replace(/[}{\r\n]/g, "").replace(/(data:.+?);/g, (e, r) => `${r}\\3b`).split(";").map((e) => e.trim()).join(`;
 `).replaceAll("\\3b", ";").split(`
 `);
   }
-  function Bt(t) {
+  function Ut(t) {
     return t.reduce((e, r) => {
       let [n, o] = [r.slice(0, r.indexOf(":")).trim(), r.slice(r.indexOf(":") + 1).trim().replace(/;$|;.+(?=\/*).+\/$/, "")];
       return n && o ? { ...e, [n]: o } : e;
     }, {});
   }
-  function Ut(t) {
-    return Bt(Wt(t));
+  function _t(t) {
+    return Ut(Bt(t));
   }
   function We(t, e) {
     return t?.replace("::", ":") === e?.replace("::", ":");
   }
   var he = false;
   var Vt = { on: () => he = true, off: () => he = false };
-  var N = { tagsRaw: k, allowUnknownHtmlTags: Vt, isAllowed(t) {
+  function Be(t, e) {
+    G[t] = e;
+  }
+  var H = { tagsRaw: G, allowUnknownHtmlTags: Vt, isAllowed(t) {
     if (he) return true;
     let e = c(t, String) ? t.toLowerCase() : t?.nodeName.toLowerCase() || "none";
-    return e === "#text" || !!k[e];
-  }, allowTag: (t) => k[t.toLowerCase()] = true, prohibitTag: (t) => k[t.toLowerCase()] = false };
-  var _t = true;
+    return e === "#text" || !!G[e];
+  }, allowTag: (t) => Be(t, true), prohibitTag: (t) => Be(t, false) };
+  var Yt = true;
   var q = { data: /data-[\-\w.\p{L}]/ui, validURL: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i, whiteSpace: /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g, notAllowedValues: /^javascript|injected|noreferrer|alert|DataURL/gi };
-  function Yt(t) {
-    if (_t && Object.keys(t.removed).length) {
+  function Gt(t) {
+    if (Yt && Object.keys(t.removed).length) {
       let e = Object.entries(t.removed).reduce((r, [n, o]) => [...r, `${M(n)} => ${o}`], []).join("\\000A");
-      L.error(`JQx: HTML creation error(s): ${e}`);
+      v.error(`JQx: HTML creation error(s): ${e}`);
     }
   }
-  function Gt(t) {
+  function Xt(t) {
     let e = t.nodeName.toLowerCase(), r = ["annotation-xml", "color-profile", "font-face", "font-face-src", "font-face-uri", "font-face-format", "font-face-name", "missing-glyph"];
-    return /-/.test(e) && !r.find((n) => n === e) || N.isAllowed(e);
+    return /-/.test(e) && !r.find((n) => n === e) || H.isAllowed(e);
   }
-  function D(t) {
+  function I(t) {
     let e = { rawHTML: t?.parentElement?.getHTML() ?? "no html", removed: {} };
     return c(t, HTMLElement) && [...t.childNodes].forEach((r) => {
-      if (r?.children?.length && D(r), r?.attributes) {
-        let o = c(r, SVGElement) ? J.svg : J.html;
+      if (r?.children?.length && I(r), r?.attributes) {
+        let o = c(r, SVGElement) ? D.svg : D.html;
         [...(r ?? { attributes: [] }).attributes].forEach((i) => {
-          let a = i.name.trim().toLowerCase(), h2 = i.value.trim().toLowerCase().replace(q.whiteSpace, ""), p2 = a === "href" ? !q.validURL.test(h2) : q.notAllowedValues.test(h2), E2 = a.startsWith("data") ? !q.data.test(a) : !!o[a];
-          if (p2 || E2) {
-            let f3 = ee(i.value || "none", 60);
+          let a = i.name.trim().toLowerCase(), S2 = i.value.trim().toLowerCase().replace(q.whiteSpace, ""), p2 = a === "href" ? !q.validURL.test(S2) : q.notAllowedValues.test(S2), x2 = a.startsWith("data") ? !q.data.test(a) : !!o[a];
+          if (p2 || x2) {
+            let f3 = Se(i.value || "none", 60);
             f3 += f3.length === 60 ? "..." : "", e.removed[`${i.name}`] = `attribute/property/value not allowed, removed. Value: ${f3}`, r.removeAttribute(i.name);
           }
         });
       }
-      if (!(Gt(r) || r.constructor === CharacterData || r.constructor === Comment)) {
-        let o = (r?.outerHTML || r?.textContent).trim(), i = ee(o, 60) ?? "EMPTY";
-        i += i.length === 60 ? "..." : "", e.removed[`<${r.nodeName?.toLowerCase()}>`] = `not allowed, not rendered. Value: ${i}`, r.remove();
-      }
-    }), Yt(e), t;
+      Xt(r) || r.constructor === CharacterData || r.constructor === Comment || (e.removed[`tag <${r.nodeName?.toLowerCase()}>`] = "not allowed, can and will not be rendered.", r.remove());
+    }), Gt(e), t;
   }
-  function Xt(t) {
+  function Zt(t) {
     let e = document.createElement("div");
-    return e.insertAdjacentHTML(T.end, t), e.childNodes.length ? D(e) : void 0;
+    return e.insertAdjacentHTML(T.end, t), e.childNodes.length ? I(e) : void 0;
   }
-  function Zt(t, e, r) {
+  function Kt(t, e, r) {
     switch (true) {
       case c(t, Comment):
         return e.insertAdjacentHTML(r, `<!--${t.data}-->`);
@@ -561,96 +561,96 @@ ${r}`), m;
         return;
     }
   }
-  function I(t = [], e = document.body, r = T.BeforeEnd) {
+  function j(t = [], e = document.body, r = T.BeforeEnd) {
     return r = r || T.BeforeEnd, e = e?.isJQx ? e.node : e || document.body, t.reduce((n, o) => {
-      let i = H(o) && Kt(o, e, r);
+      let i = N(o) && qt(o, e, r);
       return i ? [...n, i] : n;
     }, []);
   }
-  function Kt(t, e = document.body, r = T.BeforeEnd) {
-    return r = r || T.BeforeEnd, e = e?.isJQx ? e?.[0] : e, c(t, Comment, Text) ? Zt(t, e, r) : c(t, HTMLElement) ? e.insertAdjacentElement(r, t) : void 0;
+  function qt(t, e = document.body, r = T.BeforeEnd) {
+    return r = r || T.BeforeEnd, e = e?.isJQx ? e?.[0] : e, c(t, Comment, Text) ? Kt(t, e, r) : c(t, HTMLElement) ? e.insertAdjacentElement(r, t) : void 0;
   }
   function C(t) {
     if (c(t, Text, Comment)) return t;
     let e = t?.trim(), r = e?.split(/<text>|<\/text>/i) ?? [];
     if (r?.length && (r = r.length > 1 ? r.filter((o) => o.length).shift() : void 0), e.startsWith("<!--") && e.endsWith("-->")) return document.createComment(t.replace(/<!--|-->$/g, ""));
     if (r || c(e, String) && !/^<(.+)[^>]+>/m.test(e)) return document.createTextNode(r ?? e);
-    let n = Xt(t);
-    return n.childNodes.length < 1 ? C(`<span data-jqxcreationerror="1">${te(t, 60)}</span>`) : n.children[0];
+    let n = Zt(t);
+    return !n || n.childNodes.length < 1 ? C(`<span data-jqxcreationerror="1">${ee(t, 60)}</span>`) : n?.children[0] ?? document.createElement("span");
   }
-  function re(t) {
+  function te(t) {
     if (t.node("#jqxPopup")) return;
     t.logger.log("JQx: [JQx].Popup first call. Dialog element created."), t.dialog({ id: "jqxPopup" }, t.div({ id: "jqxPopupContent" })).render, t.editCssRules(...Me);
     let e = [], [r, n] = [t("#jqxPopupContent"), t.node("#jqxPopup")], o = {};
-    return t.handle({ type: "click, cancel", handlers: g2, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: i, remove: a, removeModal: y });
-    function i(u) {
-      if (n.open) return true === h2(u) ? void 0 : (a(), setTimeout(() => i(u), 200));
-      o = { ...u };
-      let { content: l } = o;
-      return t.IS(l, String, HTMLElement) || l?.isJQx ? p2() : true;
+    return t.handle({ type: "click, cancel", handlers: g, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: i, remove: a, removeModal: h2 });
+    function i(d) {
+      if (n.open) return true === S2(d) ? void 0 : (a(), setTimeout(() => i(d), 200));
+      o = { ...d };
+      let { content: u } = o;
+      return t.IS(u, String, HTMLElement) || u?.isJQx ? p2() : true;
     }
     function a() {
-      return o.modal ? m(o.warnMessage) : E2();
+      return o.modal ? l(o.warnMessage) : x2();
     }
-    function h2(u) {
-      for (let [l, s] of Object.entries(o)) if (s !== u[l]) return false;
+    function S2(d) {
+      for (let [u, s] of Object.entries(o)) if (s !== d[u]) return false;
       return true;
     }
     function p2() {
       r.clear();
-      let { content: u, modal: l, closeAfter: s } = o;
-      l = t.IS(l, Boolean) ? l : false;
-      let d = l ? "" : t.div({ id: "closeHandleIcon" });
-      r.append(d, t.IS(u, String) ? t.div(u) : u), n.showModal(), !l && t.IS(s, Number) && S2(a, s);
+      let { content: d, modal: u, closeAfter: s } = o;
+      u = t.IS(u, Boolean) ? u : false;
+      let m = u ? "" : t.div({ id: "closeHandleIcon" });
+      r.append(m, t.IS(d, String) ? t.div(d) : d), n.showModal(), !u && t.IS(s, Number) && y(a, s);
     }
-    function E2() {
+    function x2() {
       if (n.close(o.returnValue), f3(), t.IS(o.callback, Function)) return e.push(setTimeout(() => o.callback(o.returnValue), 200));
       o = {};
     }
     function f3() {
-      e.forEach((u) => clearTimeout(u)), e = [];
+      e.forEach((d) => clearTimeout(d)), e = [];
     }
-    function y({ callback: u, value: l } = {}) {
-      o.returnValue = l, o.modal = false, o.callback = u || o.callback, a();
+    function h2({ callback: d, value: u } = {}) {
+      o.returnValue = u, o.modal = false, o.callback = d || o.callback, a();
     }
-    function g2({ evt: u }) {
-      if (!(Object.keys(o).length < 1 || !n.open) && (u.type === "cancel" && o.modal && u.preventDefault(), u.target.closest("#closeHandleIcon") || !u.target.closest("#jqxPopupContent"))) return o.activeTimer && clearTimeout(o.activeTimer), a();
+    function g({ evt: d }) {
+      if (!(Object.keys(o).length < 1 || !n.open) && (d.type === "cancel" && o.modal && d.preventDefault(), d.target.closest("#closeHandleIcon") || !d.target.closest("#jqxPopupContent"))) return o.activeTimer && clearTimeout(o.activeTimer), a();
     }
-    function S2(u, l) {
-      t.IS(u, Function) && t.IS(l, Number) && l > 0 && (f3(), e.push(setTimeout(u, l * 1e3)));
+    function y(d, u) {
+      t.IS(d, Function) && t.IS(u, Number) && u > 0 && (f3(), e.push(setTimeout(d, u * 1e3)));
     }
-    function m(u) {
-      if (!t.IS(u, String, HTMLElement) && !u.isJQx) return;
-      let l = r.find$(".warn");
+    function l(d) {
+      if (!t.IS(d, String, HTMLElement) && !d.isJQx) return;
+      let u = r.find$(".warn");
       switch (true) {
-        case l.is.empty:
-          l = t.div({ class: "warn" }, u);
+        case u.is.empty:
+          u = t.div({ class: "warn" }, d);
         default:
-          r.append(l.addClass("active")), S2(() => r.find$(".warn").removeClass("active"), 2);
+          r.append(u.addClass("active")), y(() => r.find$(".warn").removeClass("active"), 2);
       }
     }
   }
-  function ne(t) {
+  function re(t) {
     let e = {}, r = "anonymous_";
     function n(f3) {
       if (f3) {
-        let { handler: y, capture: g2, type: S2 } = f3;
-        document.addEventListener(S2, y, { capture: g2 });
+        let { handler: h2, capture: g, type: y } = f3;
+        document.addEventListener(y, h2, { capture: g });
       }
     }
     function o(f3) {
       if (f3) {
-        let { type: y, handler: g2, capture: S2 } = f3;
-        document.removeEventListener(y, g2, { capture: S2 });
+        let { type: h2, handler: g, capture: y } = f3;
+        document.removeEventListener(h2, g, { capture: y });
       }
     }
-    function i(f3, y, g2, S2) {
-      return function(m) {
-        if (!A(y)) return f3({ evt: m });
-        let u = m.target.closest(y);
-        if (u) {
-          let l = t(u);
-          f3({ self: l, me: l, evt: m }), g2 && p2(m.type, S2);
+    function i(f3, h2, g, y) {
+      return function(l) {
+        if (!A(h2)) return f3({ evt: l });
+        let d = l.target.closest(h2);
+        if (d) {
+          let u = t(d);
+          f3({ self: u, me: u, evt: l }), g && p2(l.type, y);
         }
         return true;
       };
@@ -658,86 +658,87 @@ ${r}`), m;
     function a(f3) {
       return e[f3] = e[f3] || {}, e[f3];
     }
-    function h2(f3, y) {
-      return Object.entries(a(f3)).find(([g2]) => g2 === y);
+    function S2(f3, h2) {
+      return Object.entries(a(f3)).find(([g]) => g === h2);
     }
-    function p2(f3, y) {
-      let g2 = h2(f3, y);
-      g2 && (o(g2[1]), delete e[f3][y], delete oe[y], L.warn(`Removed listener [${y}] for event type [${f3}].`));
+    function p2(f3, h2) {
+      let g = S2(f3, h2);
+      g && (o(g[1]), delete e[f3][h2], delete ne[h2], v.warn(`Removed listener [${h2}] for event type [${f3}].`));
     }
-    function E2(f3) {
-      let { type: y, handler: g2, name: S2, capture: m, once: u, selector: l, node: s, about: d } = f3;
-      e[y] = e[y] || {};
-      let b = Se(S2 || g2.name), x2 = g2;
+    function x2(f3) {
+      let { type: h2, handler: g, name: y, capture: l, once: d, selector: u, node: s, about: m } = f3;
+      e[h2] = e[h2] || {};
+      let b = xe(y || g.name), w = g;
       if (s instanceof HTMLElement) {
-        let w = s.dataset.hid || b;
-        s.dataset.hid = w, l = `[data-hid=${w}]`;
+        let E2 = s.dataset.hid || b;
+        s.dataset.hid = E2, u = `[data-hid=${E2}]`;
       }
-      return true === !e[y][b] ? (L.log(`JQx: created listener for event type ${y}, with handler name ${b}`), e[y][b] = { name: b, handler: i(g2, l, u, b), capture: Be(y, m), once: !!u, type: y, initialHandler: x2, selector: !!l && l || false, about: !!d && d || false, unListen() {
-        p2(y, b);
-      } }, e[y][b]) : console.warn(`The listener [${b}] for [${y}] exists, it is not re-assigned.`);
+      return true === !e[h2][b] ? (v.log(`JQx: created listener for event type ${h2}, with handler name ${b}`), e[h2][b] = { name: b, handler: i(g, u, d, b), capture: Ue(h2, l), once: !!d, type: h2, initialHandler: w, selector: !!u && u || false, about: !!m && m || false, unListen() {
+        p2(h2, b);
+      } }, e[h2][b]) : console.warn(`The listener [${b}] for [${h2}] exists, it is not re-assigned.`);
     }
     return { remove(...f3) {
       return p2(...f3);
     }, listen: function(f3) {
-      let { type: y, handler: g2 } = f3;
-      if (!A(y) || !c(g2, Function)) return;
-      let S2 = E2(f3);
-      if (S2) return n(S2), { type: y, name: S2.name, unListen() {
-        p2(y, S2.name);
+      let { type: h2, handler: g } = f3;
+      if (!A(h2) || !c(g, Function)) return;
+      let y = x2(f3);
+      if (y) return n(y), { type: h2, name: y.name, unListen() {
+        p2(h2, y.name);
       } };
     }, get ListenerStore() {
       return Object.freeze({ ...e });
     } };
   }
-  He();
-  var L = tr();
-  var qt = ["load", "unload", "scroll", "focus", "blur", "DOMNodeRemovedFromDocument", "DOMNodeInsertedIntoDocument", "loadstart", "progress", "error", "abort", "load", "loadend", "pointerenter", "pointerleave", "readystatechange"];
+  Ne();
+  var v = rr();
+  var er = ["load", "unload", "scroll", "focus", "blur", "DOMNodeRemovedFromDocument", "DOMNodeInsertedIntoDocument", "loadstart", "progress", "error", "abort", "load", "loadend", "pointerenter", "pointerleave", "readystatechange"];
   var T = Object.freeze(new Proxy({ start: "afterbegin", afterbegin: "afterbegin", end: "beforeend", beforeend: "beforeend", before: "beforebegin", beforebegin: "beforebegin", after: "afterend", afterend: "afterend" }, { get(t, e) {
     return t[String(e).toLowerCase()] ?? t[e];
   } }));
-  var er = [...Array(26)].map((t, e) => String.fromCharCode(e + 65)).concat([...Array(26)].map((t, e) => String.fromCharCode(e + 97))).concat([...Array(10)].map((t, e) => `${e}`));
+  var tr = [...Array(26)].map((t, e) => String.fromCharCode(e + 65)).concat([...Array(26)].map((t, e) => String.fromCharCode(e + 97))).concat([...Array(10)].map((t, e) => `${e}`));
   var Ee = Object.freeze({ get(t, e) {
-    return t[V(e)] || t[e];
+    return t[U(e)] || t[e];
   }, enumerable: false, configurable: false });
-  var oe = {};
-  function we() {
+  var ne = {};
+  var nn = !!document.createElement("span").setHTML;
+  function ve() {
     let t = setTimeout(() => {
     });
     for (; t >= 0; ) clearTimeout(t--);
   }
-  function Se(t) {
-    return A(t) && !/^handler|handlers$/gi.test(t.trim()) ? t.trim() : Ue();
+  function xe(t) {
+    return A(t) && !/^handler|handlers$/gi.test(t.trim()) ? t.trim() : _e();
   }
-  function ve(t) {
+  function Le(t) {
     if (true === (!!t.node && !c(t, Text, Comment))) {
       let r = t.node.dataset ? Object.keys(t.node.dataset).map((i) => `[data-${i}]`) : [], o = [t.attr("id") && `#${t?.attr("id")}` || void 0, t.attr("class") && t?.attr("class").split(" ").map((i) => `.${i}`).join(", ") || void 0, r.length > 0 && r.join(", ") || void 0].filter((i) => !!i).join(", ") || [];
       return o.length ? `(${o})` : "";
     } else return "";
   }
-  function Ue(t) {
+  function _e(t) {
     let e = `anonymous_${Math.random().toString(36).slice(2)}`;
-    return oe[e] ? Ue() : (oe[e] = e, e);
+    return ne[e] ? _e() : (ne[e] = e, e);
   }
-  function Be(t, e) {
-    return !!qt.find((r) => r === t) || !!e;
+  function Ue(t, e) {
+    return !!er.find((r) => r === t) || !!e;
+  }
+  function se(t) {
+    return t = t?.toLowerCase() || "", t.startsWith("data") || D.html[t.toLowerCase()] === t || D.svg[t.toLowerCase()] === t;
   }
   function ae(t) {
-    return t.startsWith("data") || J.html.find((e) => t.toLowerCase() === e);
-  }
-  function ce(t) {
     return t && (t.textContent = "");
   }
-  function B(t, e = 0, r = true) {
-    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? B(t, e, r) : e;
+  function W(t, e = 0, r = true) {
+    return t = t?.parentElement, e += t ? t[r ? "scrollTop" : "scrollLeft"] : 0, t ? W(t, e, r) : e;
   }
   function A(t, e = 1) {
     return e = c(e, Number) && e || 1, c(t, String) && t.length >= e;
   }
-  function ee(t, e = 120) {
-    return te(t, e).replace(/&lt;/g, "<");
+  function Se(t, e = 120) {
+    return ee(t, e).replace(/&lt;/g, "<");
   }
-  function te(t, e = 120) {
+  function ee(t, e = 120) {
     return `${t}`.trim().slice(0, e).replace(/>\s+</g, "><").replace(/</g, "&lt;").replace(/\s{2,}/g, " ").replace(/\n/g, "\\n") + (t.length > e ? " &hellip;" : "").trim();
   }
   function M(t) {
@@ -746,10 +747,10 @@ ${r}`), m;
       return e.append(t), e.innerHTML;
     } else return t;
   }
-  function xe(t) {
+  function we(t) {
     return c(t, String) && Object.assign(document.createElement("textarea"), { innerHTML: t }).textContent || t;
   }
-  function tr() {
+  function rr() {
     let [t, e] = [false, true], r = [], n = { get on() {
       return t = true, n;
     }, get off() {
@@ -767,16 +768,16 @@ ${r}`), m;
     function i() {
       e = false;
     }
-    function a(...E2) {
-      return r.unshift(...E2.map((f3) => `${se()} \u2A3B ${xe(f3)}`)), console.error(r.slice(0, E2.length).join(`
+    function a(...x2) {
+      return r.unshift(...x2.map((f3) => `${ie()} \u2A3B ${we(f3)}`)), console.error(r.slice(0, x2.length).join(`
 `)), n;
     }
-    function h2(...E2) {
-      return r.unshift(...E2.map((f3) => `${se()} \u26A0 ${xe(f3)}`)), console.warn(r.slice(0, E2.length).join(`
+    function S2(...x2) {
+      return r.unshift(...x2.map((f3) => `${ie()} \u26A0 ${we(f3)}`)), console.warn(r.slice(0, x2.length).join(`
 `)), n;
     }
-    function p2(...E2) {
-      let f3 = E2.map((y) => `${se()} \u2714 ${xe(y)}`);
+    function p2(...x2) {
+      let f3 = x2.map((h2) => `${ie()} \u2714 ${we(h2)}`);
       switch (!e && r.unshift(...f3), t) {
         case true:
           console.log(f3.join(`
@@ -785,35 +786,35 @@ ${r}`), m;
           return n;
       }
     }
-    return Object.defineProperties(n, { log: { value: p2, enumerable: false }, error: { value: a, enumerable: false }, warn: { value: h2, enumerable: false } }), Object.freeze(n);
+    return Object.defineProperties(n, { log: { value: p2, enumerable: false }, error: { value: a, enumerable: false }, warn: { value: S2, enumerable: false } }), Object.freeze(n);
   }
-  function se() {
-    return ((t) => `[${ie(t.getHours())}:${ie(t.getMinutes())}:${ie(t.getSeconds())}.${ie(t.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
+  function ie() {
+    return ((t) => `[${oe(t.getHours())}:${oe(t.getMinutes())}:${oe(t.getSeconds())}.${oe(t.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
   }
-  function Le(t, e) {
+  function Ae(t, e) {
     if (t) for (let [r, n] of Object.entries(e)) {
-      if (r = $(r), r.startsWith("data")) return le(t, n);
-      c(n, String) && ae(r) && t.setAttribute(r, n.split(/[, ]/)?.join(" "));
+      if (r = $(r), r.startsWith("data")) return ce(t, n);
+      c(n, String) && se(r) && t.setAttribute(r, n.split(/[, ]/)?.join(" "));
     }
   }
-  function le(t, e) {
+  function ce(t, e) {
     if (t && c(e, Object)) for (let [r, n] of Object.entries(e)) t.setAttribute(`data-${$(r)}`, n);
   }
-  function ue(t) {
-    return t ? t.EL ? [t.EL] : c(t, NodeList) ? [...t] : H(t) ? [t] : Y(t) ? t : t.isJQx ? t.collection : void 0 : [];
+  function le(t) {
+    return t ? t.EL ? [t.EL] : c(t, NodeList) ? [...t] : N(t) ? [t] : V(t) ? t : t.isJQx ? t.collection : void 0 : [];
   }
-  function j(t, e, r = true, ...n) {
-    if (t.is.empty) return L.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), t;
+  function J(t, e, r = true, ...n) {
+    if (t.is.empty) return v.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), t;
     if (n = n.map((i) => i.isJQx ? i.node : c(i, String) ? e(i).node ?? i : i), n.find((i) => !c(i, String, Element))) {
       let i = r ? "after" : "before";
-      return L.log(`[JQx instance].[${i}(Me)]: invalid/-sufficient input.`), t;
+      return v.log(`[JQx instance].[${i}(Me)]: invalid/-sufficient input.`), t;
     }
     return t.node[r ? "after" : "before"](...n), t;
   }
-  function H(t) {
+  function N(t) {
     return c(t, Text, HTMLElement, Comment);
   }
-  function U(t, e) {
+  function B(t, e) {
     if (c(e, Object)) for (let [r, n] of Object.entries(e)) {
       let o;
       /!important/i.test(n) && (n = n.slice(0, n.indexOf("!")).trim(), o = "important"), t.style.setProperty($(r), n, o);
@@ -825,31 +826,31 @@ ${r}`), m;
   }
   function Ve(t) {
     if (!c(t, HTMLElement)) return;
-    let e = t.style, r = getComputedStyle(t), n = !![e.visibility, r.visibility].includes("hidden"), o = !![e.display, r.display].includes("none"), i = !!t.hidden, a = parseInt(r.height) < 1 || parseInt(r.width) < 1, h2 = t.offsetTop < 0 || t.offsetLeft + t.offsetWidth < 0 || t.offsetLeft > document.body.offsetWidth, p2 = +r.opacity == 0 || +(e.opacity || 1) == 0;
-    return !(i || h2 || p2 || o || n || a);
-  }
-  function _e(t) {
-    return t?.isConnected ? !![...document.querySelectorAll(":is(:read-write)")].find((e) => e === t) : false;
+    let e = t.style, r = getComputedStyle(t), n = !![e.visibility, r.visibility].includes("hidden"), o = !![e.display, r.display].includes("none"), i = !!t.hidden, a = parseInt(r.height) < 1 || parseInt(r.width) < 1, S2 = t.offsetTop < 0 || t.offsetLeft + t.offsetWidth < 0 || t.offsetLeft > document.body.offsetWidth, p2 = +r.opacity == 0 || +(e.opacity || 1) == 0;
+    return !(i || S2 || p2 || o || n || a);
   }
   function Ye(t) {
-    return t?.filter((e) => e).reduce((e, r) => e.concat(Te(r) ? `<!--${r.data}-->` : de(r) ? r.textContent : r.outerHTML), "");
+    return t?.isConnected ? !![...document.querySelectorAll(":is(:read-write)")].find((e) => e === t) : false;
   }
-  function ie(t, e = 2) {
+  function Ge(t) {
+    return t?.filter((e) => e).reduce((e, r) => e.concat($e(r) ? `<!--${r.data}-->` : fe(r) ? r.textContent : r.outerHTML), "");
+  }
+  function oe(t, e = 2) {
     return `${t}`.padStart(e, "0");
   }
-  function Ge(t, e = 0) {
+  function Xe(t, e = 0) {
     return [t, e] = [Math.floor(t), Math.ceil(e)], Math.floor([...crypto.getRandomValues(new Uint32Array(1))].shift() / 2 ** 32 * (t - e + 1) + e);
   }
-  function fe() {
-    return `_${rr(er).slice(0, 8).join("")}`;
+  function ue() {
+    return `_${nr(tr).slice(0, 8).join("")}`;
   }
-  function Ae(t) {
+  function Fe(t) {
     return t = c(t, String) && /,/.test(t) ? t.split(",").map((e) => e.trim().toLowerCase()).filter((e) => e.length > 0) : t, c(t, Array) ? t : c(t, String) && t?.trim().toLowerCase() || "";
   }
-  function Xe(t) {
+  function Ze(t) {
     return t?.isConnected ? !![...document.querySelectorAll(":is(:modal)")].find((e) => e === t) : false;
   }
-  function Fe(t, e) {
+  function Te(t, e) {
     switch (t = String(t).trim(), true) {
       case /^(0|false|f)$/i.test(t):
         return false;
@@ -859,68 +860,68 @@ ${r}`), m;
         return e;
     }
   }
-  function rr(t) {
+  function nr(t) {
     let e = t.length;
     for (; e--; ) {
-      let r = Ge(e);
+      let r = Xe(e);
       [t[e], t[r]] = [t[r], t[e]];
     }
     return t;
   }
-  function V(t) {
-    return c(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${nr(e)}` || e).join("") : t;
+  function U(t) {
+    return c(t, String) ? t.toLowerCase().split("-").map((e, r) => r && `${or(e)}` || e).join("") : t;
   }
   function $(t) {
     return t.replace(/[A-Z]/g, (e) => `-${e.toLowerCase()}`).replace(/^-|-$/, "");
   }
-  function nr([t, ...e]) {
+  function or([t, ...e]) {
     return `${t.toUpperCase()}${e.join("")}`;
   }
-  function de(t) {
+  function fe(t) {
     return c(t, Comment, Text);
   }
-  function Te(t) {
-    c(t, Comment);
+  function $e(t) {
+    return c(t, Comment);
   }
-  function Ze(t) {
+  function Ke(t) {
     return c(t, Text);
   }
   function _(t) {
     return c(t, String) && /^<|>$/.test(`${t}`.trim());
   }
-  function Y(t) {
-    return c(t, Array) && !t?.find((e) => !H(e));
+  function V(t) {
+    return c(t, Array) && !t?.find((e) => !N(e));
   }
-  function me(t) {
+  function de(t) {
     return c(t, Array) && !t?.find((e) => !_(e));
   }
-  function v(t, e) {
-    let r = t.collection.filter((n) => !de(n));
+  function L(t, e) {
+    let r = t.collection.filter((n) => !fe(n));
     for (let n = 0; n < r.length; n += 1) e(r[n], n);
     return t;
   }
-  function Ke(t) {
+  function qe(t) {
     return t.node ? c(t.node, Comment) ? `<!--${t.node.textContent}-->` : t.HTML.get(1).split(">")[0] + ">..." : "";
   }
-  function $e(t, e, r) {
+  function Oe(t, e, r) {
     let n = e !== document.body && c(t, String) && t.toLowerCase() !== "body" ? e : document;
     if (!(!c(t, String) || t.trim().length < 1)) try {
       r.collection = [...n.querySelectorAll(t)];
     } catch {
-      L.warn(`JQx: Invalid CSS querySelector. [${c(t, String) ? t : "Not a string!"}]`);
+      v.warn(`JQx: Invalid CSS querySelector. [${c(t, String) ? t : "Not a string!"}]`);
     }
   }
-  function qe() {
-    return { isCommentOrTextNode: de, isNode: H, isComment: Te, isText: Ze, isHtmlString: _, isArrayOfHtmlElements: Y, isArrayOfHtmlStrings: me, ElemArray2HtmlString: Ye, input2Collection: ue, setCollectionFromCssSelector: $e, cssRuleEdit: W({ createWithId: "JQxStylesheet" }) };
-  }
   function et() {
+    return { isCommentOrTextNode: fe, isNode: N, isComment: $e, isText: Ke, isHtmlString: _, isArrayOfHtmlElements: V, isArrayOfHtmlStrings: de, ElemArray2HtmlString: Ge, input2Collection: le, setCollectionFromCssSelector: Oe, cssRuleEdit: z({ createWithId: "JQxStylesheet" }) };
+  }
+  function tt() {
     let e = Object.freeze({ notInDOM: "n/a", writable: "n/a", modal: "n/a", empty: true, open: "n/a", visible: "n/a" });
     return (r) => {
       let n = r.node;
       return c(n, Node) ? Object.freeze({ get writable() {
-        return _e(n);
+        return Ye(n);
       }, get modal() {
-        return Xe(n);
+        return Ze(n);
       }, get inDOM() {
         return n.isConnected;
       }, get open() {
@@ -936,16 +937,16 @@ ${r}`), m;
       } }) : e;
     };
   }
-  function tt(t, e, r, n) {
+  function rt(t, e, r, n) {
     r && c(e, String) && (e = { [e]: r === "-" ? "" : r });
     let o;
-    e.className && (o = e.className, delete e.className), o = [...t.classList].find((a) => a.startsWith("JQxClass-") || o && a === o) || o || `JQxClass-${fe().slice(1)}`, n.editCssRule(`.${o}`, e), t.classList.add(o);
+    e.className && (o = e.className, delete e.className), o = [...t.classList].find((a) => a.startsWith("JQxClass-") || o && a === o) || o || `JQxClass-${ue().slice(1)}`, n.editCssRule(`.${o}`, e), t.classList.add(o);
   }
-  var or = et();
-  function rt(t) {
-    return { factoryExtensions: ir(t), instanceExtensions: sr(t) };
+  var ir = tt();
+  function nt(t) {
+    return { factoryExtensions: sr(t), instanceExtensions: ar(t) };
   }
-  function ir(t) {
+  function sr(t) {
     return { data(e) {
       return { get all() {
         return new Proxy(e[0]?.dataset ?? {}, Ee);
@@ -961,9 +962,9 @@ ${r}`), m;
         return e[0]?.removeAttribute(`data-${$(r)}`), e;
       } };
     }, dimensions(e) {
-      if (e.is.empty) return L.error("[JQx instance].dimensions called on empty instance"), { error: "[JQx instance].dimensions: NO ELEMENTS" };
+      if (e.is.empty) return v.error("[JQx instance].dimensions called on empty instance"), { error: "[JQx instance].dimensions: NO ELEMENTS" };
       let { node: r } = e, n = r.getBoundingClientRect().toJSON();
-      return n.scrollTopDistance = B(r, 0), n.scrollLeftDistance = B(r, 0, false), n;
+      return n.scrollTopDistance = W(r, 0), n.scrollLeftDistance = W(r, 0, false), n;
     }, node(e) {
       return e[0];
     }, HTML(e) {
@@ -983,7 +984,7 @@ ${r}`), m;
         return r = c(r, HTMLElement) ? t(r).HTML.get(1) : r.isJQx ? r.HTML.get(1) : r, e.HTML.set(r + e.HTML.get(), false, n);
       } };
     }, is(e) {
-      return or(e);
+      return ir(e);
     }, length(e) {
       return e.collection.length;
     }, outerHtml(e) {
@@ -1011,36 +1012,36 @@ ${r}`), m;
       } };
     } };
   }
-  function sr(t) {
+  function ar(t) {
     return { addClass(e, ...r) {
-      return v(e, (n) => n && r.forEach((o) => A(o) && n.classList.add(o)));
+      return L(e, (n) => n && r.forEach((o) => A(o) && n.classList.add(o)));
     }, after(e, ...r) {
-      return j(e, t, true, ...r);
+      return J(e, t, true, ...r);
     }, afterMe(e, ...r) {
-      return j(e, t, true, ...r);
+      return J(e, t, true, ...r);
     }, andThen(e, ...r) {
-      return j(e, t, true, ...r);
+      return J(e, t, true, ...r);
     }, append(e, ...r) {
       if (e.is.empty || r.length < 1) return e;
       let n = e.length === 1;
       for (let o of r) {
         if (!o.isJQx && A(o)) {
-          let i = o.trim(), h2 = !/^<(.+)[^>]+>$/m.test(i) ? t.text(o) : C(o);
-          v(e, (p2) => p2.append(n ? h2 : P(h2)));
+          let i = o.trim(), S2 = !/^<(.+)[^>]+>$/m.test(i) ? t.text(o) : C(o);
+          L(e, (p2) => p2.append(n ? S2 : P(S2)));
         }
-        H(o) && v(e, (i) => i.append(n ? o : P(o))), o.isJQx && !o.is.empty && v(e, (i) => o.collection.forEach((a) => i.append(n ? a : P(a))));
+        N(o) && L(e, (i) => i.append(n ? o : P(o))), o.isJQx && !o.is.empty && L(e, (i) => o.collection.forEach((a) => i.append(n ? a : P(a))));
       }
       return e;
     }, appendTo(e, r) {
       return r = typeof r == "string" ? t(r) : r, true === (!r?.isJQx && !c(r, HTMLElement) || r?.collection?.length < 1) ? (t.warn("[JQx instance].appendTo: invalid input"), e) : ((r.isJQx ? r : t(r)).append(e), e);
     }, attr(e, r, n) {
-      return !e.node || c(e.node, Text, Comment) ? e : !n && A(r) ? (r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r)) : (A(r) && n && (r = $(r), true === r.startsWith("data-") ? r = { data: { [r.replace("data-", "")]: n } } : r = { [r]: n }), c(r, Object) && !e.is.empty && Le(e.node, r), e);
+      return !e.node || c(e.node, Text, Comment) ? e : !n && A(r) ? (r = $(r), r === "class" ? [...e.node.classList].join(" ") : e.node.getAttribute(r)) : (A(r) && n && (r = $(r), true === r.startsWith("data-") ? r = { data: { [r.replace("data-", "")]: n } } : r = { [r]: n }), c(r, Object) && !e.is.empty && Ae(e.node, r), e);
     }, before(e, ...r) {
-      return j(e, t, false, ...r);
+      return J(e, t, false, ...r);
     }, beforeMe(e, ...r) {
-      j(e, t, false, ...r);
+      J(e, t, false, ...r);
     }, clear(e) {
-      return v(e, ce);
+      return L(e, ae);
     }, closest(e, r) {
       let n = A(r) ? e.node?.closest(r) : void 0;
       return n ? t(n) : e;
@@ -1048,9 +1049,9 @@ ${r}`), m;
       let { node: n } = e;
       return n && getComputedStyle(n)[r];
     }, css(e, r, n) {
-      return v(e, (o) => tt(o, r, n, t));
+      return L(e, (o) => rt(o, r, n, t));
     }, duplicate(e, r = false, n = document.body) {
-      if (true === e.is.empty) return L.error("Duplicating an empty JQx instance is not possible"), e;
+      if (true === e.is.empty) return v.error("Duplicating an empty JQx instance is not possible"), e;
       {
         let o = e.collection[0].cloneNode(true);
         return o.childNodes.forEach((i) => {
@@ -1058,9 +1059,9 @@ ${r}`), m;
         }), r ? t(o).toDOM(n) : t.virtual(o);
       }
     }, each(e, r) {
-      return v(e, r);
+      return L(e, r);
     }, empty(e) {
-      return v(e, ce);
+      return L(e, ae);
     }, find(e, r) {
       return e.collection.length > 0 ? [...e.first()?.querySelectorAll(r)] : [];
     }, find$(e, r) {
@@ -1074,7 +1075,7 @@ ${r}`), m;
     }, hasClass(e, ...r) {
       return e.is.empty || !e.node.classList.length ? false : r.find((n) => e.node.classList.contains(n)) && true || false;
     }, hide(e) {
-      return v(e, (r) => U(r, { display: "none !important" }));
+      return L(e, (r) => B(r, { display: "none !important" }));
     }, html(e, r, n) {
       switch (true) {
         case (e.is.empty && !A(r)):
@@ -1083,15 +1084,15 @@ ${r}`), m;
           return e.node?.getHTML() ?? "";
         default:
           let o = C(`<div>${r.isJQx ? r.HTML.get(true) : r}</div>`);
-          return v(e, (a) => (a.textContent = n ? a.textContent : "", a.insertAdjacentHTML(t.at.end, o.getHTML())));
+          return L(e, (a) => (a.textContent = n ? a.textContent : "", a.insertAdjacentHTML(t.at.end, o.getHTML())));
       }
     }, htmlFor(e, r, n = "", o = false) {
       if (e.is.empty || !A(r) || !A(n)) return e;
       let i = e.find$(r);
       if (i.length < 1) return e;
       let a = C(`<span>${n}</span>`);
-      return i.each((h2) => {
-        o || (h2.textContent = ""), h2.insertAdjacentHTML(t.at.end, a?.getHTML());
+      return i.each((S2) => {
+        o || (S2.textContent = ""), S2.insertAdjacentHTML(t.at.end, a?.getHTML());
       }), e;
     }, isEmpty(e) {
       return !e.node;
@@ -1108,9 +1109,9 @@ ${r}`), m;
         if (A(o)) {
           o = o.trim();
           let a = !/^<(.+)[^>]+>$/m.test(o) ? t.text(o) : C(o);
-          a = n ? a : P(a), v(e, (h2) => h2.prepend(a.cloneNode(true)));
+          a = n ? a : P(a), L(e, (S2) => S2.prepend(a.cloneNode(true)));
         }
-        H(o) && v(e, (i) => i.prepend(n ? o : P(o))), o.isJQx && !o.is.empty && (o.collection.length > 1 && o.collection.reverse(), v(e, (i) => v(o, (a) => i.prepend(n ? a : P(a)))), o.collection.reverse());
+        N(o) && L(e, (i) => i.prepend(n ? o : P(o))), o.isJQx && !o.is.empty && (o.collection.length > 1 && o.collection.reverse(), L(e, (i) => L(o, (a) => i.prepend(n ? a : P(a)))), o.collection.reverse());
       }
       return e;
     }, prependTo(e, r) {
@@ -1119,9 +1120,9 @@ ${r}`), m;
       if (c(r, String) && !n) return r.startsWith("data") ? e[0]?.dataset[r.slice(r.indexOf("-") + 1)] : e[0]?.[r];
       let o = c(r, Object) ? r : { [r]: n };
       for (let [i, a] of Object.entries(o)) {
-        if (i = i.trim(), a && !ae(i) || !a) return false;
+        if (i = i.trim(), a && !se(i) || !a) return false;
         if (i.toLowerCase() === "id") return e[0].id = a;
-        v(e, (p2) => {
+        L(e, (p2) => {
           if (i.startsWith("data")) return p2.dataset[i.slice(i.indexOf("-") + 1)] = a;
           p2[i] = a;
         });
@@ -1131,14 +1132,14 @@ ${r}`), m;
       let n = (i) => i.remove(), o = () => e.collection = e.collection.filter((i) => document.documentElement.contains(i));
       if (r) {
         let i = e.find$(r);
-        return i.is.empty || (v(i, n), o()), e;
+        return i.is.empty || (L(i, n), o()), e;
       }
-      return v(e, n), o(), e;
+      return L(e, n), o(), e;
     }, rmAttr(e, ...r) {
       for (let n of r) e.node.removeAttribute(n);
       return e;
     }, removeClass(e, ...r) {
-      return v(e, (n) => {
+      return L(e, (n) => {
         if (n) for (let o of r) n.classList.remove(o);
       });
     }, renderTo(e, r, n) {
@@ -1147,7 +1148,7 @@ ${r}`), m;
       let o = e.node;
       return !r || !c(n, HTMLElement) && !n?.isJQx ? (t.logger.error("JQx replace: invalid replacement value"), e) : ((n.isJQx || c(n, NodeList)) && (n = n[0]), o && r && (r = c(r, String) ? o.querySelectorAll(r) : r.isJQx ? r.collection : r, c(r, HTMLElement, NodeList, Array) && c(n, HTMLElement) && (c(r, HTMLElement) ? [r] : [...r]).forEach((i) => i.replaceWith(n.cloneNode(true)))), e);
     }, replaceClass(e, r, ...n) {
-      return v(e, (o) => {
+      return L(e, (o) => {
         o.classList.remove(r);
         for (let i of n) o.classList.add(i);
       });
@@ -1156,9 +1157,9 @@ ${r}`), m;
     }, replaceWith(e, r) {
       return r = c(r, Element) ? r : r.isJQx ? r[0] : void 0, r && (e[0].replaceWith(r), e = t.virtual(r)), e;
     }, setData(e, r) {
-      return v(e, (n) => le(n, r));
+      return L(e, (n) => ce(n, r));
     }, show(e) {
-      return v(e, (r) => U(r, { display: "revert-layer !important" }));
+      return L(e, (r) => B(r, { display: "revert-layer !important" }));
     }, single(e, r) {
       let n = e.collection.length > 0;
       switch (r = r ?? 0, true) {
@@ -1172,8 +1173,8 @@ ${r}`), m;
           return e;
       }
     }, style(e, r, n) {
-      return v(e, (i) => {
-        n && c(r, String) && (r = { [r]: n || "none" }), U(i, r);
+      return L(e, (i) => {
+        n && c(r, String) && (r = { [r]: n || "none" }), B(i, r);
       });
     }, text(e, r, n = false) {
       switch (true) {
@@ -1182,12 +1183,12 @@ ${r}`), m;
         case !c(r, String):
           return e.node.textContent;
         default:
-          return v(e, (o) => o.textContent = n ? o.textContent + r : r);
+          return L(e, (o) => o.textContent = n ? o.textContent + r : r);
       }
     }, toDOM(e, r = document.body, n = T.BeforeEnd) {
-      return e.isVirtual = false, I(e.collection, r, n), e;
+      return e.isVirtual = false, j(e.collection, r, n), e;
     }, toggleClass(e, r) {
-      return v(e, (n) => n.classList.toggle(r));
+      return L(e, (n) => n.classList.toggle(r));
     }, toNodeList(e) {
       return [...e.collection].map((r) => document.importNode(r, true));
     }, trigger(e, r, n, o) {
@@ -1205,16 +1206,16 @@ ${r}`), m;
       }
     } };
   }
-  var Oe;
+  var me;
   var ge;
-  var { isComment: un, isText: fn, isHtmlString: dn, isArrayOfHtmlElements: mn, isArrayOfHtmlStrings: gn, ElemArray2HtmlString: pn, cssRuleEdit: Ce, addFn: ar } = cr();
-  function cr() {
-    return { ...qe(), addFn: lr };
+  var { isComment: mn, isText: gn, isHtmlString: pn, isArrayOfHtmlElements: yn, isArrayOfHtmlStrings: bn, ElemArray2HtmlString: hn, cssRuleEdit: Ce, addFn: cr } = lr();
+  function lr() {
+    return { ...et(), addFn: ur };
   }
-  function lr(t, e) {
-    return t = t?.trim(), !A(t) || !c(e, Function) ? L.error("JQx.fn: method invalid parameter(s)") : (ge[t] = (r, ...n) => e(r, ...n), L.log(`JQx: added extension function [${t}]`));
+  function ur(t, e, r) {
+    return t = t?.trim(), !A(t) || !c(e, Function) ? v.error("JQx.fn: method invalid parameter(s)") : (!!r === true ? me[t] = (n) => e(n) : ge[t] = (n, ...o) => e(n, ...o), v.log(`JQx: added instance extension ${r ? "getter" : "function"} [${t}]`));
   }
-  function ur(t) {
+  function fr(t) {
     return function(e, r, n) {
       if (e = e?.trim(), !A(e) || !c(r, Function)) return t.error("JQx.staticFn: invalid parameter(s)");
       let o = n ? { get() {
@@ -1227,59 +1228,61 @@ ${r}`), m;
       } catch {
         return t.warn(`JQx.staticFn: extension [${e}] already exists`);
       }
-      return L.log(`JQx: added static extension function [${e}]`);
+      return v.log(`JQx: added static extension ${n ? "getter" : "function"} [${e}]`);
     };
   }
   function pe(t) {
-    return new Proxy(t, { get: (e, r) => dr(e, r, t) });
+    return new Proxy(t, { get: (e, r) => mr(e, r, t) });
   }
-  function nt(t, e, r = false) {
+  function ot(t, e, r = false) {
     e = e[Symbol.proxy] ? e : pe(e);
     let n = function(...o) {
       return t(e, ...o);
     };
     return r ? n() : n;
   }
-  function fr(t) {
+  function dr(t) {
     return `Proxy for JQx${t.collection.length < 1 ? " (empty)" : ""} instance`;
   }
-  function dr(t, e, r) {
+  function mr(t, e, r) {
     switch (true) {
       case e === Symbol.proxy:
-        return fr(r);
+        return dr(r);
       case typeof e == "symbol":
         return R({ trial: () => t[e], whenError: () => t });
       case (!Number.isNaN(+e) && typeof +e == "number"):
         return t.collection?.[e] || void 0;
-      case Oe.hasOwnProperty(e):
-        return nt(Oe[e], r, true);
+      case me.hasOwnProperty(e):
+        return ot(me[e], r, true);
       case ge.hasOwnProperty(e):
-        return nt(ge[e], r);
+        return ot(ge[e], r);
       default:
         return Reflect.get(t, e);
     }
   }
-  function st(t) {
-    let e = br(t);
-    for (let [r, n] of Object.entries(Object.getOwnPropertyDescriptors(e))) Object.defineProperty(t, r, n);
+  function at(t) {
+    let { factoryExtensions: e, instanceExtensions: r } = nt(t);
+    me = e, ge = r;
+    let n = hr(t);
+    for (let [o, i] of Object.entries(Object.getOwnPropertyDescriptors(n))) Object.defineProperty(t, o, i);
     return t;
   }
-  function mr(t) {
+  function gr(t) {
     return { allow(e) {
       let r = /-/.test(e), n = r && e;
-      e = r ? V(e) : e.toLowerCase(), N.allowTag(e), Object.defineProperties(t, Ne(e, true, t, n));
+      e = r ? U(e) : e.toLowerCase(), H.allowTag(e), Object.defineProperties(t, He(e, true, t, n));
     }, prohibit(e) {
-      e = e.toLowerCase(), N.prohibitTag(e), Object.defineProperties(t, Ne(e, false, t));
+      e = e.toLowerCase(), H.prohibitTag(e), Object.defineProperties(t, He(e, false, t));
     } };
   }
-  function ot(...t) {
+  function it(...t) {
     if (t.length === 1) {
       let e = String(t.shift().trim());
       t = e.startsWith("!") ? [e.slice(1, -1)] : e.split(",").map((r) => r.trim());
     }
     for (let e of t.map((r) => r.startsWith("!") ? r.slice(1, -1) : r)) Ce(e, { removeRule: 1 });
   }
-  function gr(t) {
+  function pr(t) {
     return function(e, r, n) {
       r = r?.isJQx ? r?.[0] : r, n = n && Object.values(T).find((i) => n === i);
       let o = t(e, document.createElement("br"));
@@ -1287,7 +1290,7 @@ ${r}`), m;
       return o;
     };
   }
-  function pr(...t) {
+  function yr(...t) {
     let e = {};
     for (let r of t) {
       let n = Object.getOwnPropertyDescriptors(r);
@@ -1295,49 +1298,50 @@ ${r}`), m;
     }
     return e;
   }
-  function yr(t, e, r, n) {
+  function br(t, e, r, n) {
     return t = $(n || t.toLowerCase()), { get() {
       return (...o) => {
-        let i = e && r.virtual(D(z[t](...o))) || void 0, h2 = !c(i?.node, Comment, Text, void 0) ? ve(i) : "";
-        return L.log(e ? `JQx: created (virtual) instance from [JQx].${t} ${h2}` : `JQx: ${t.toUpperCase()} is prohibited. Use [JQx].allowTag if necessary.`), i;
+        let i = e && r.virtual(I(k[t](...o))) || void 0, S2 = !c(i?.node, Comment, Text, void 0) ? Le(i) : "", p2 = e ? `JQx: created (virtual) instance from [JQx].${t} ${S2}` : `JQx: direct element creation error: <${t}> is not allowed. Use [JQx].allowTag if necessary.`;
+        return v[e ? "log" : "error"](p2), i;
       };
     }, enumerable: false, configurable: true };
   }
-  function Ne(t, e, r, n) {
+  function He(t, e, r, n) {
     t = t.toLowerCase();
-    let o = yr(t, e, r, n);
-    return n ? { [n]: o, [V(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
-  }
-  function br(t) {
-    return pr(Object.entries(N.tagsRaw).reduce(hr(t), {}), Lr(t));
+    let o = br(t, e, r, n);
+    return n ? { [n]: o, [U(n)]: o } : { [t]: o, [t.toUpperCase()]: o };
   }
   function hr(t) {
-    return function(e, [r, n]) {
-      return Object.defineProperties(e, Ne(r, n, t)), e;
-    };
+    let e = Object.entries(H.tagsRaw).reduce(Sr(t), {});
+    return yr(e, Ar(t));
   }
   function Sr(t) {
+    return function(e, [r, n]) {
+      return Object.defineProperties(e, He(r, n, t)), e;
+    };
+  }
+  function xr(t) {
     return function(e, r, ...n) {
       c(r, Function) && (n.push(r), r = void 0), t({ type: e, selector: r, handlers: n });
     };
   }
-  function xr(t) {
+  function wr(t) {
     return function(e) {
-      let { type: r, types: n, origin: o, selector: i, handler: a, handlers: h2, node: p2, name: E2, capture: f3, once: y, about: g2 } = e;
-      a = h2 || a, r = n || r, i = o || i;
-      let S2 = Ae(r), m = E2;
+      let { type: r, types: n, origin: o, selector: i, handler: a, handlers: S2, node: p2, name: x2, capture: f3, once: h2, about: g } = e;
+      a = S2 || a, r = n || r, i = o || i;
+      let y = Fe(r), l = x2;
       a = c(a, Function) ? [a] : a;
-      let u = { type: S2, selector: i || o, capture: f3, name: m, once: y, node: p2, about: g2 };
+      let d = { type: y, selector: i || o, capture: f3, name: l, once: h2, node: p2, about: g };
       switch (true) {
-        case (c(S2, Array) && S2.length > 0):
-          for (let l of S2) u.type = l, it(a, u, t);
+        case (c(y, Array) && y.length > 0):
+          for (let u of y) d.type = u, st(a, d, t);
           break;
         default:
-          return it(a, u, t);
+          return st(a, d, t);
       }
     };
   }
-  function it(t, e, r) {
+  function st(t, e, r) {
     for (let n of t) r.listen({ ...e, handler: n });
   }
   function Er(t) {
@@ -1345,189 +1349,195 @@ ${r}`), m;
       return r = A(r) && r, e = A(e) && e, r && e && t.listenerStore[e][r];
     };
   }
-  function wr(t) {
-    return t.activePopup || Object.defineProperty(t, "activePopup", { value: re(t), enumerable: false }), t.activePopup;
-  }
   function vr(t) {
-    let e = (f3, y) => Ce(f3, y), r = function(f3) {
-      return W({ createWithId: f3 || `jqx${fe()}` });
-    }, n = function(...f3) {
-      for (let y of f3) Ce(y);
-    }, o = mr(t), i = ne(t), a = xr(i);
-    return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: a, capturedHandling: a, log: (...f3) => L.on.log(...f3).off, warn: (...f3) => L.on.warn(...f3).off, error: (...f3) => L.on.error(...f3).off, handlerWrapper: i };
+    return t.activePopup || Object.defineProperty(t, "activePopup", { value: te(t), enumerable: false }), t.activePopup;
   }
   function Lr(t) {
-    let { factoryExtensions: e, instanceExtensions: r } = rt(t);
-    Oe = e, ge = r;
-    let { editCssRule: n, createStyle: o, editCssRules: i, allowProhibit: a, handle: h2, capturedHandling: p2, log: E2, warn: f3, error: y, handlerWrapper: g2 } = vr(t), S2 = Er(t), m = ur(t);
-    return z.setError = (u) => (y(`JQx direct element creation error: [${u}] is not a valid tag`), t.br()), { log: E2, warn: f3, error: y, editCssRules: i, createStyle: o, editStylesheet: o, editCssRule: n, escHtml: M, logger: L, proxyWrapper: G, text(u, l = false) {
-      return l ? t.comment(u) : document.createTextNode(u);
-    }, node(u, l = document) {
-      return l.querySelector(u, l);
-    }, nodes(u, l = document) {
-      return [...l.querySelectorAll(u, l)];
-    }, clearAllTimers: we, get staticFn() {
-      return function(u, l, s) {
-        return m(u, l, s);
+    let e = (f3, h2) => Ce(f3, h2), r = function(f3) {
+      return z({ createWithId: f3 || `jqx${ue()}` });
+    }, n = function(...f3) {
+      for (let h2 of f3) Ce(h2);
+    }, o = gr(t), i = re(t), a = wr(i);
+    return { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: a, capturedHandling: a, log: (...f3) => v.on.log(...f3).off, warn: (...f3) => v.on.warn(...f3).off, error: (...f3) => v.on.error(...f3).off, handlerWrapper: i };
+  }
+  function Ar(t) {
+    let { editCssRule: e, createStyle: r, editCssRules: n, allowProhibit: o, handle: i, capturedHandling: a, log: S2, warn: p2, error: x2, handlerWrapper: f3 } = Lr(t), h2 = Er(t), g = fr(t);
+    return k.setError = (y) => (x2(`JQx direct element creation error: [${y}] is not a valid tag`), t.br()), { log: S2, warn: p2, error: x2, editCssRules: n, createStyle: r, editStylesheet: r, editCssRule: e, escHtml: M, logger: v, proxyWrapper: Y, text(y, l = false) {
+      return l ? t.comment(y) : document.createTextNode(y);
+    }, node(y, l = document) {
+      return l.querySelector(y, l);
+    }, nodes(y, l = document) {
+      return [...l.querySelectorAll(y, l)];
+    }, clearAllTimers: ve, get staticFn() {
+      return function(y, l, d) {
+        return g(y, l, d);
       };
     }, get toBool() {
-      return Fe;
+      return Te;
     }, get getNamedListener() {
-      return S2;
+      return h2;
     }, get virtual() {
-      return gr(t);
+      return pr(t);
     }, get allowTag() {
-      return a.allow;
+      return o.allow;
     }, get prohibitTag() {
-      return a.prohibit;
+      return o.prohibit;
     }, get removeCssRule() {
-      return ot;
+      return it;
     }, get removeCssRules() {
-      return ot;
+      return it;
     }, get delegate() {
-      return Sr(p2);
+      return xr(a);
     }, get delegateCaptured() {
-      return p2;
+      return a;
     }, get handle() {
-      return p2;
+      return a;
     }, get listen() {
-      return g2.listen;
+      return f3.listen;
     }, get at() {
       return T;
     }, get setStyle() {
-      return n;
+      return e;
     }, get fn() {
-      return ar;
+      return cr;
     }, get lenient() {
-      return N.allowUnknownHtmlTags;
+      return H.allowUnknownHtmlTags;
     }, get IS() {
       return c;
     }, get Popup() {
-      return wr(t);
+      return vr(t);
     }, get listenerStore() {
-      return g2.ListenerStore;
+      return f3.ListenerStore;
     } };
   }
-  var at = Ar();
-  function Ar() {
-    return st(function(e, r, n = T.BeforeEnd) {
+  var ct = Tr();
+  function Fr() {
+    return at(function(e, r, n = T.BeforeEnd) {
       if (e?.isJQx) return e;
       let o = c(r, HTMLBRElement);
       r = (!o && r && r.isJQx ? r[0] : r) || document.body, n = n && Object.values(T).find((f3) => n === f3) ? n : void 0;
-      let i = _(e), h2 = !i && me(e) || i, p2 = { collection: ue(e) ?? [], isVirtual: o, isJQx: true }, E2 = Y(p2.collection);
+      let i = _(e), S2 = !i && de(e) || i, p2 = { collection: le(e) ?? [], isVirtual: o, isJQx: true }, x2 = V(p2.collection);
       switch (true) {
-        case (p2.collection.length && E2 && !o):
-          for (let f3 of p2.collection) r.contains(f3) || I([f3], r, n);
+        case (p2.collection.length && x2 && !o):
+          for (let f3 of p2.collection) r.contains(f3) || j([f3], r, n);
           break;
-        case h2:
+        case S2:
           for (let f3 of [e].flat()) p2.collection.push(C(f3));
           if (p2.collection.length > 0) {
-            let f3 = p2.collection.filter((m) => m?.dataset?.jqxcreationerror);
-            p2.collection = p2.collection.filter((m) => !m?.dataset?.jqxcreationerror);
-            let g2 = p2.collection.map((m) => `${String(m.constructor).split(/function|\(/)[1].trim()}`).length > 1;
+            let f3 = p2.collection.filter((l) => l?.dataset?.jqxcreationerror);
+            p2.collection = p2.collection.filter((l) => !l?.dataset?.jqxcreationerror);
+            let g = p2.collection.map((l) => `${String(l.constructor).split(/function|\(/)[1].trim()}`).length > 1;
             p2 = pe(p2);
-            let S2 = p2.collection.length > 0 ? Ke(p2) : "sanitized: no elements remaining";
-            L.log(`JQx: created ${p2.isVirtual ? "(virtual)" : ""} instance from ${g2 ? "array of " : ""}HTML string${g2 ? "s" : ""} ${S2}`), p2.isVirtual || I(p2.collection, r, n);
+            let y = p2.collection.length > 0 ? qe(p2) : "sanitized: no elements remaining";
+            v.log(`JQx: created ${p2.isVirtual ? "(virtual)" : ""} instance from ${g ? "array of " : ""}HTML string${g ? "s" : ""} ${y}`), p2.isVirtual || j(p2.collection, r, n);
           }
           break;
         default:
-          $e(e, r, p2);
+          Oe(e, r, p2);
       }
       return pe(p2);
     });
   }
-  var En = at;
+  function Tr() {
+    let t = (n) => function() {
+      return v.error(`JQx: "${n}" is not a valid tag or property`);
+    }, e = Fr(), r = { get(n, o) {
+      return Object.hasOwn(n, o) ? n[o] : (v.error(`JQx: "${String(o)}" is not a valid JQx property`), () => "\u2A3B JQx: nothing to do");
+    } };
+    return new Proxy(e, r);
+  }
+  var Ln = ct;
 
   // ../Resource/Externals/ticktock.min.js
-  var M2 = ke2();
-  function ke2() {
-    let [e, r, n, t] = ["2-digit", "numeric", "long", "short"], a = { fixed: { MM: { month: n }, M: { month: t }, m: { month: r }, mm: { month: e }, yyyy: { year: r }, yy: { year: e }, WD: { weekday: n }, wd: { weekday: t }, d: { day: r }, dd: { day: e }, h: { hour: r }, hh: { hour: e }, mi: { minute: r }, mmi: { minute: e }, s: { second: r }, ss: { second: e }, ms: { fractionalSecondDigits: 3 }, tz: { timeZoneName: "shortOffset" }, dl: { locale: "default" }, h12: { hour12: false }, yn: { yearName: "" }, ry: { relatedYear: true }, msp: { fractionalSecond: true } }, dynamic: { tzn: (l) => ({ timeZoneName: l.slice(4) }), hrc: (l) => ({ hourCycle: `h${l.slice(4)}` }), ds: (l) => ({ dateStyle: l.slice(3) }), ts: (l) => ({ timeStyle: l.slice(3) }), tz: (l) => ({ timeZone: l.slice(3) }), e: (l) => ({ era: l.slice(2) }), l: (l) => ({ locale: l.slice(2) }) } }, o = { ...a, retrieveDyn(l) {
-      let y = l?.slice(0, l.indexOf(":"));
-      return a.dynamic[y] && a.dynamic[y](l);
+  var Z2 = Ce2();
+  function Ce2() {
+    let [e, r, n, t] = ["2-digit", "numeric", "long", "short"], a = { fixed: { MM: { month: n }, M: { month: t }, m: { month: r }, mm: { month: e }, yyyy: { year: r }, yy: { year: e }, WD: { weekday: n }, wd: { weekday: t }, d: { day: r }, dd: { day: e }, h: { hour: r }, hh: { hour: e }, mi: { minute: r }, mmi: { minute: e }, s: { second: r }, ss: { second: e }, ms: { fractionalSecondDigits: 3 }, tz: { timeZoneName: "shortOffset" }, dl: { locale: "default" }, h12: { hour12: false }, yn: { yearName: "" }, ry: { relatedYear: true }, msp: { fractionalSecond: true } }, dynamic: { tzn: (c2) => ({ timeZoneName: c2.slice(4) }), hrc: (c2) => ({ hourCycle: `h${c2.slice(4)}` }), ds: (c2) => ({ dateStyle: c2.slice(3) }), ts: (c2) => ({ timeStyle: c2.slice(3) }), tz: (c2) => ({ timeZone: c2.slice(3) }), e: (c2) => ({ era: c2.slice(2) }), l: (c2) => ({ locale: c2.slice(2) }) } }, s = { ...a, retrieveDyn(c2) {
+      let h2 = c2?.slice(0, c2.indexOf(":"));
+      return a.dynamic[h2] && a.dynamic[h2](c2);
     }, get re() {
       return new RegExp(`\\b(${Object.keys(a.fixed).join("|")})\\b`, "g");
-    } }, s = (l = "dtf", y = 0) => {
-      let h2 = ` ${l.replace(/(?<=\{)(.+?)(?=})/g, (d) => `[${y++}]`).replace(/[{}]/g, "").trim()} `, D2 = l.match(/(?<=\{)(.+?)(?=})/g) || [];
+    } }, o = (c2 = "dtf", h2 = 0) => {
+      let d = ` ${c2.replace(/(?<=\{)(.+?)(?=})/g, (y) => `[${h2++}]`).replace(/[{}]/g, "").trim()} `, g = c2.match(/(?<=\{)(.+?)(?=})/g) || [];
       return { get texts() {
-        return D2;
-      }, formatString(d) {
-        h2 = d;
-      }, set formatStr(d) {
-        h2 = d;
+        return g;
+      }, formatString(y) {
+        d = y;
+      }, set formatStr(y) {
+        d = y;
       }, get formatStr() {
-        return h2;
+        return d;
       }, get units() {
-        return h2.match(o.re) || [];
-      }, finalize(d = "", Z2 = "", b = "", $2 = "") {
-        return h2.replace(/~([\d+]?)/g, "$1").replace(/dtf/, d).replace(/era/, b).replace(/dp\b|~dp\b/, Z2).replace(/yn\b/, $2).replace(/\[(\d+?)]/g, (w, Fe2) => D2[Fe2].trim()).trim();
+        return d.match(s.re) || [];
+      }, finalize(y = "", v3 = "", b = "", $2 = "") {
+        return d.replace(/~([\d+]?)/g, "$1").replace(/dtf/, y).replace(/era/, b).replace(/dp\b|~dp\b/, v3).replace(/yn\b/, $2).replace(/\[(\d+?)]/g, (w, Fe2) => g[Fe2].trim()).trim();
       } };
-    }, u = (l) => l.replace(/\s+/g, ""), c2 = (...l) => l?.reduce((y, h2) => ({ ...y, ...o.retrieveDyn(h2) || o.fixed[h2] }), o.fixed.dl), i = (l, y, h2) => {
-      let D2 = c2(...u(h2).split(",")), d = Intl.DateTimeFormat(D2.locale, D2).format(l);
-      return y.finalize(d);
-    }, m = (l, y, h2, D2) => l.toLocaleString(y, { timeZone: h2, month: D2 ? t : n }), T2 = (l, y, h2) => {
-      let D2 = c2(...y.units.concat(u(h2).split(",")).flat()), d = { ...o.fixed }, Z2 = ($2, w) => D2[$2] === "numeric" && w.startsWith("0") ? w.slice(1) : w, b = Intl.DateTimeFormat(D2.locale, D2).formatToParts(l).reduce(($2, w) => w.type === "literal" && /[ ,/-]/.test(w.value) ? $2 : { ...$2, [w.type]: Z2(w.type, w.value) }, {});
-      return d.ms = D2.fractionalSecondDigits ? d.msp : d.ms, d.yyyy = b.relatedYear ? d.ry : d.yyyy, y.formatStr = y.formatStr.replace(o.re, ($2) => /^(M|MM)$/.test($2) ? m(l, D2.locale, D2.timeZone, /^M$/.test($2)) : b[Object.keys(d[$2]).shift()] || $2), y.finalize(void 0, b.dayPeriod, b.era, b.yearName);
+    }, u = (c2) => c2.replace(/\s+/g, ""), l = (...c2) => c2?.reduce((h2, d) => ({ ...h2, ...s.retrieveDyn(d) || s.fixed[d] }), s.fixed.dl), i = (c2, h2, d) => {
+      let g = l(...u(d).split(",")), y = Intl.DateTimeFormat(g.locale, g).format(c2);
+      return h2.finalize(y);
+    }, m = (c2, h2, d, g) => c2.toLocaleString(h2, { timeZone: d, month: g ? t : n }), T2 = (c2, h2, d) => {
+      let g = l(...h2.units.concat(u(d).split(",")).flat()), y = { ...s.fixed }, v3 = ($2, w) => g[$2] === "numeric" && w.startsWith("0") ? w.slice(1) : w, b = Intl.DateTimeFormat(g.locale, g).formatToParts(c2).reduce(($2, w) => w.type === "literal" && /[ ,/-]/.test(w.value) ? $2 : { ...$2, [w.type]: v3(w.type, w.value) }, {});
+      return y.ms = g.fractionalSecondDigits ? y.msp : y.ms, y.yyyy = b.relatedYear ? y.ry : y.yyyy, h2.formatStr = h2.formatStr.replace(s.re, ($2) => /^(M|MM)$/.test($2) ? m(c2, g.locale, g.timeZone, /^M$/.test($2)) : b[Object.keys(y[$2]).shift()] || $2), h2.finalize(void 0, b.dayPeriod, b.era, b.yearName);
     };
-    return (l, y, h2 = "l:default") => /ds:|ts:/.test(h2) ? i(l, s(void 0), h2) : T2(l, s(y || void 0), h2);
+    return (c2, h2, d = "l:default") => /ds:|ts:/.test(d) ? i(c2, o(), d) : T2(c2, o(h2 || void 0), d);
   }
-  var le2 = Ce2;
-  function Ce2() {
+  var le2 = ke2;
+  function ke2() {
     let e = (t, a) => {
-      let o = isNaN(new Date(t)), s = isNaN(new Date(a));
-      if (s) {
-        let [u, c2, i] = Array(3).fill("end date not valid");
-        return { error: true, message: u, full: c2, clean: i };
-      }
+      let s = isNaN(new Date(t)), o = isNaN(new Date(a));
       if (o) {
-        let [u, c2, i] = Array(3).fill("start date not valid");
-        return { error: true, message: u, full: c2, clean: i };
+        let [u, l, i] = Array(3).fill("end date not valid");
+        return { error: true, message: u, full: l, clean: i };
       }
-      if (o && !s) {
-        let [u, c2, i] = Array(3).fill("start- and/or end date are not valid");
-        return { error: true, message: u, full: c2, clean: i };
+      if (s) {
+        let [u, l, i] = Array(3).fill("start date not valid");
+        return { error: true, message: u, full: l, clean: i };
+      }
+      if (s && !o) {
+        let [u, l, i] = Array(3).fill("start- and/or end date are not valid");
+        return { error: true, message: u, full: l, clean: i };
       }
       return { error: false };
     }, r = n();
-    return function({ start: t, end: a, diffs: o = {} } = {}) {
-      let s = e(t, a), u = a > t ? "+" : "-";
-      if (s.error) return s;
-      let c2 = Math.abs(t - a), i = new Date(c2), m = i.getUTCFullYear() - 1970, T2 = i.getUTCMonth(), l = i.getUTCDate() - 1, y = l % 7, h2 = Math.floor(l / 7), D2 = i.getUTCHours(), d = i.getUTCMinutes(), Z2 = i.getUTCSeconds(), b = i.getUTCMilliseconds(), $2 = Math.floor(c2 / 864e5);
-      o = { ...o, fromUTC: t, toUTC: a, sign: "", years: m, months: T2, days: l, hours: D2, minutes: d, seconds: Z2, milliseconds: b, diffInDays: $2 }, o.full = r({ values: o, full: true }), o.clean = r({ values: o }), o.equalDates = o.clean === "Dates are equal";
-      let w = D2 + d + Z2 > 0 ? "T" : "";
-      return o.clean !== "Dates are equal" && (o.sign = u, o.jsPeriod = `${u}P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${h2 > 0 ? `${h2}W` : ""}${y > 0 ? `${y}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`, o.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${l > 0 ? `${l}D` : ""}${w}${D2 > 0 ? `${D2}H` : ""}${d > 0 ? `${d}M` : ""}${Z2 > 0 ? `${Z2}S` : ""}`), o;
+    return function({ start: t, end: a, diffs: s = {} } = {}) {
+      let o = e(t, a), u = a > t ? "+" : "-";
+      if (o.error) return o;
+      let l = Math.abs(t - a), i = new Date(l), m = i.getUTCFullYear() - 1970, T2 = i.getUTCMonth(), c2 = i.getUTCDate() - 1, h2 = c2 % 7, d = Math.floor(c2 / 7), g = i.getUTCHours(), y = i.getUTCMinutes(), v3 = i.getUTCSeconds(), b = i.getUTCMilliseconds(), $2 = Math.floor(l / 864e5);
+      s = { ...s, fromUTC: t, toUTC: a, sign: "", years: m, months: T2, days: c2, hours: g, minutes: y, seconds: v3, milliseconds: b, diffInDays: $2 }, s.full = r({ values: s, full: true }), s.clean = r({ values: s }), s.equalDates = s.clean === "Dates are equal";
+      let w = g + y + v3 > 0 ? "T" : "";
+      return s.clean !== "Dates are equal" && (s.sign = u, s.jsPeriod = `${u}P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${d > 0 ? `${d}W` : ""}${h2 > 0 ? `${h2}D` : ""}${w}${g > 0 ? `${g}H` : ""}${y > 0 ? `${y}M` : ""}${v3 > 0 ? `${v3}S` : ""}`, s.ISOPeriod = `P${m > 0 ? `${m}Y` : ""}${T2 > 0 ? `${T2}M` : ""}${c2 > 0 ? `${c2}D` : ""}${w}${g > 0 ? `${g}H` : ""}${y > 0 ? `${y}M` : ""}${v3 > 0 ? `${v3}S` : ""}`), s;
     };
     function n() {
-      let t = (...i) => (m) => i.reduce((T2, l) => l(T2), m), a = (i, m) => i === 1 ? m.slice(0, -1) : m;
-      return t(({ values: i, full: m }) => [Object.entries(i).filter(([T2]) => /^(years|month|days|hours|minutes|seconds)/i.test(T2)), m], ([i, m]) => m ? i : i.filter(([, T2]) => m ? +T2 : T2 > 0), (i) => i.reduce((m, [T2, l]) => [...m, `${l} ${a(l, T2)}`], []), (i) => i.length < 1 ? "Dates are equal" : `${i.slice(0, -1).join(", ")}${i.length > 1 ? " and " : ""}${i.slice(-1).shift()}`);
+      let t = (...i) => (m) => i.reduce((T2, c2) => c2(T2), m), a = (i, m) => i === 1 ? m.slice(0, -1) : m;
+      return t(({ values: i, full: m }) => [Object.entries(i).filter(([T2]) => /^(years|month|days|hours|minutes|seconds)/i.test(T2)), m], ([i, m]) => m ? i : i.filter(([, T2]) => m ? +T2 : T2 > 0), (i) => i.reduce((m, [T2, c2]) => [...m, `${c2} ${a(c2, T2)}`], []), (i) => i.length < 1 ? "Dates are equal" : `${i.slice(0, -1).join(", ")}${i.length > 1 ? " and " : ""}${i.slice(-1).shift()}`);
     }
   }
   var ie2 = Ae2;
   function Ae2() {
-    let e = Object.entries({ year: "FullYear", month: "Month", date: "Date", day: "Date", hour: "Hours", minute: "Minutes", second: "Seconds", millisecond: "Milliseconds" }).reduce((t, [a, o]) => ({ ...t, [a]: o, [`${a}s`]: o }), {}), r = false, n = function(...t) {
+    let e = Object.entries({ year: "FullYear", month: "Month", date: "Date", day: "Date", hour: "Hours", minute: "Minutes", second: "Seconds", millisecond: "Milliseconds" }).reduce((t, [a, s]) => ({ ...t, [a]: s, [`${a}s`]: s }), {}), r = false, n = function(...t) {
       let a = t.length === 1;
-      return r = t[0].trim().startsWith("subtract,"), r && (t = a ? t[0].trim().replace(/^subtract,/i, "").split(",").map((o) => o.trim()) : t.filter((o) => !o.startsWith("subtract"))), a && !r && (t = t[0].split(",").map((o) => o.trim())), t.map(function(o) {
-        if (!o) return false;
-        let s = o.toLowerCase().split(/ {1,}/);
-        return s.length < 2 ? false : s.map((u) => {
+      return r = t[0].trim().startsWith("subtract,"), r && (t = a ? t[0].trim().replace(/^subtract,/i, "").split(",").map((s) => s.trim()) : t.filter((s) => !s.startsWith("subtract"))), a && !r && (t = t[0].split(",").map((s) => s.trim())), t.map(function(s) {
+        if (!s) return false;
+        let o = s.toLowerCase().split(/ {1,}/);
+        return o.length < 2 ? false : o.map((u) => {
           u = `${u}`.trim().replace(/[^a-z0-9-+]/g, "");
-          let c2 = parseInt(u, 10);
-          return Number.isNaN(c2) ? u : r ? -c2 : +c2;
+          let l = parseInt(u, 10);
+          return Number.isNaN(l) ? u : r ? -l : +l;
         });
-      }).filter((o) => o);
+      }).filter((s) => s);
     };
     return function(t, ...a) {
       if (a.length < 1) return t;
-      let o = n(...a);
-      return o.length && o.forEach(([s, u]) => {
-        u = u, u = e[u], s && u && t[`set${u}`](t[`get${u}`]() + s);
+      let s = n(...a);
+      return s.length && s.forEach(([o, u]) => {
+        u = u, u = e[u], o && u && t[`set${u}`](t[`get${u}`]() + o);
       }), t;
     };
   }
-  var ge2 = le2();
-  var ye2 = Ye2();
+  var de2 = le2();
+  var ge2 = Ye2();
   var N2 = ie2();
   var We2 = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-  var he2 = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  var ye2 = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   function q2(e, r = false) {
     let n = e.month + 1, t = e.month;
     if (e.month += r ? -1 : 1, !r && e.month >= n) for (; e.month > n; ) e.dateNr -= 1;
@@ -1535,55 +1545,54 @@ ${r}`), m;
     return e;
   }
   function H2(e, ...r) {
-    return N2(e, ...r), e;
+    return N2(e.value, ...r), e;
   }
-  function De2(e, r = false) {
-    let n = Q2(e.clone, { sunday: r }), t = [n];
-    return { weekStart: n.format("WD", "l:en-GB"), inputDate: e, dates: t.concat([...Array(6)].map((a, o) => n.clone.addDays(o + 1))) };
+  function he2(e, r = false) {
+    let n = R2(e.clone, { sunday: r }), t = [n];
+    return { weekStart: n.format("WD", "l:en-GB"), inputDate: e, dates: t.concat([...Array(6)].map((a, s) => n.clone.addDays(s + 1))) };
   }
-  function W2(e, { start: r, end: n, future: t, past: a, include: o = { start: false, end: false } } = {}) {
-    let s = e.clone.UTC;
-    return r = r?.value || r?.constructor === Date ? f(r?.value || r).UTC : f.now.UTC, n = n && n?.value || n?.constructor === Date ? f(n?.value || n).UTC : f.now.UTC, s.milliseconds = 0, r.milliseconds = 0, n.milliseconds = 0, t ? r > n : a ? r < n : (o.start ? +s >= +r : +s > +r) && (o.end ? +s <= +n : +s < +n);
+  function W2(e, { start: r, end: n, future: t, past: a, include: s = { start: false, end: false } } = {}) {
+    let o = e.UTC;
+    return r = r?.value || r?.constructor === Date ? f(r?.value || r).UTC : f.now.UTC, n = n && n?.value || n?.constructor === Date ? f(n?.value || n).UTC : f.now.UTC, o.milliseconds = 0, r.milliseconds = 0, n.milliseconds = 0, t ? r > n : a ? r < n : (s.start ? +o >= +r : +o > +r) && (s.end ? +o <= +n : +o < +n);
   }
   function _2(e, { zoneTime: r = false, formatStr: n, moreOptions: t } = {}) {
-    return t = r ? e.localeInfo.formatOptions + (t ? `,${t}` : "") : g.formatOptions + (t ? `,${t}` : ""), r ? (e.localeInfo || (e.localeInfo = g), M2(e, n, t)) : Ue2(e, n, t);
+    return t = r ? e.localeInfo.formatOptions + (t ? `,${t}` : "") : D2.formatOptions + (t ? `,${t}` : ""), r ? (e.localeInfo || (e.localeInfo = D2), Z2(e, n, t)) : Ue2(e, n, `l:${e.locale}`);
   }
   function Ue2(e, r, n) {
-    let t = e.clone.relocate(g);
-    return n = (n || "").startsWith("+") ? `${t.localeInfo.formatOptions},${n.slice(1)}` : n || t.localeInfo.formatOptions, M2(t, r, n);
+    return n = (n || "").startsWith("+") ? `${e.localeInfo.formatOptions},${n.slice(1)}` : n || e.localeInfo.formatOptions, Z2(e.value, r, n);
   }
-  function Te2(e, r) {
-    let n = ge2({ start: e, end: r || e });
+  function De2(e, r) {
+    let n = de2({ start: e, end: r || e });
     return parseInt(`${n.sign}${n.diffInDays}`);
   }
   function G2(e, r = false) {
-    let { locale: n, timeZone: t } = r ? e.localeInfo : g, a = se2(n, t), o = e.format("MM|WD", a).split("|");
-    return { locale: n, timeZone: t, monthName: o[0], dayName: o[1], dayNames: ae2(n), monthNames: Y2(n) };
+    let { locale: n, timeZone: t } = r ? e.localeInfo : D2, a = se2(n, t), s = e.format("MM|WD", a).split("|");
+    return { locale: n, timeZone: t, monthName: s[0], dayName: s[1], dayNames: ae2(n), monthNames: Y2(n) };
   }
   function B2(e, r = false) {
-    let [n, t, a, o] = U2(e, r), u = { values4Timezone: r ? g.timeZone : e.timeZone, hours: n, minutes: t, seconds: a, milliseconds: o };
+    let [n, t, a, s] = U2(e, r), u = { values4Timezone: r ? D2.timeZone : e.timeZone, hours: n, minutes: t, seconds: a, milliseconds: s };
     return Object.freeze(u);
   }
   function U2(e, r = false) {
-    let t = `l:en-CA,${r ? `tz:${g.timeZone}` : `tz:${e.timeZone}`},hrc:23,ts:medium`;
+    let t = `l:en-CA,${r ? `tz:${D2.timeZone}` : `tz:${e.timeZone}`},hrc:23,ts:medium`;
     return e.format("", t).split(/:/).map(Number).concat(e.getMilliseconds());
   }
-  function J2(e, r) {
-    let n = r ? `tz:${g.timeZone}` : `,tz:${e.timeZone}`, [t, a, o] = e.format("yyyy-mm-dd", n).split(/-/).map(Number);
+  function K2(e, r) {
+    let n = r ? `tz:${D2.timeZone}` : `,tz:${e.timeZone}`, [t, a, s] = e.format("yyyy-mm-dd", n).split(/-/).map(Number);
     a -= 1;
-    let s = r ? g.timeZone : e.timeZone;
-    return Object.freeze({ values4Timezone: s, year: t, month: a, date: o });
+    let o = r ? D2.timeZone : e.timeZone;
+    return Object.freeze({ values4Timezone: o, year: t, month: a, date: s });
   }
-  function K2(e, r = true) {
+  function Q2(e, r = true) {
     if (r) return [e.getFullYear(), e.getMonth(), e.getDate()];
     let n = e.format("yyyy-m-d", e.localeInfo.formatOptions).split(/-/).map(Number);
     return n[1] -= 1, n;
   }
   function Le2(e) {
     let r = new Intl.Locale(e.locale), n = r.weekInfo ? r.weekInfo.firstDay : r.getWeekInfo ? r.getWeekInfo().firstDay : 1;
-    return n = n === 7 ? 0 : n, he2[n];
+    return n = n === 7 ? 0 : n, ye2[n];
   }
-  function Q2(e, { sunday: r = false } = {}) {
+  function R2(e, { sunday: r = false } = {}) {
     let n = r ? "sunday" : Le2(e);
     return x(e, { day: n, preserveTodayWhenEqual: true });
   }
@@ -1591,44 +1600,41 @@ ${r}`), m;
     let n = e.toString().match(/GMT([+-])\d+/)?.[0]?.slice(3) ?? "+0000", t = r.toString().match(/GMT([+-])\d+/)?.[0]?.slice(3) ?? "+0000";
     return n = A2(n.slice(0, 3) + ":" + n.slice(-2), true), t = A2(t.slice(0, 3) + ":" + t.slice(-2), true), [-n[0] + t[0], -n[1] + t[1]].map((a) => n[0] < 0 ? -a : a);
   }
-  function R2({ start: e, end: r } = {}) {
-    r || (r = e.clone), r?.clone || (r = f(r, { timeZone: e.timeZone })), e = f(fe2(e, e.timeZone), { timeZone: e.timeZone }), r = f(fe2(r, r.timeZone), { timeZone: r.timeZone });
-    let n = ge2({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = xe2(r, e), a = n.sign.startsWith("-") ? "ahead of" : "behind", [o, s] = t.map((i) => Math.abs(i)), [u, c2] = [`${o} ${C2(o, "hour")}`, `${s} ${C2(s, "minute")}`];
-    return n.timeZonesOffsetDifference = n.sign.length < 1 || o + s === 0 ? `Offsets of ${e.timeZone} and ${r.timeZone} are equal` : `${e.timeZone} is ${u}${s > 0 ? ` and ${c2}` : ""} ${a} ${r.timeZone}`, n;
+  function J2({ start: e, end: r } = {}) {
+    r = r || e.clone, r?.clone || (r = f(r, { timeZone: e.timeZone })), e = f(me2(e, e.timeZone), { timeZone: e.timeZone }), r = f(me2(r, r.timeZone), { timeZone: r.timeZone });
+    let n = de2({ start: e, end: r, diffs: { timeZoneStart: e.timeZone, timeZoneEnd: r.timeZone } }), t = xe2(r, e), a = t[0] > 0 ? "ahead of" : "behind", [s, o] = t.map((i) => Math.abs(i)), [u, l] = [`${s} ${k2(s, "hour")}`, `${o} ${k2(o, "minute")}`];
+    return n.timeZonesOffsetDifference = n.sign.length < 1 || s + o === 0 ? `Offsets of ${e.timeZone} and ${r.timeZone} are equal` : `${e.timeZone} is ${u}${o > 0 ? ` and ${l}` : ""} ${a} ${r.timeZone}`, n;
   }
   function X2(e, r) {
-    r = String(r).toLowerCase() === "utc" || r.timeZone === "UTC" ? e.clone.relocate({ timeZone: "UTC" }) : f(e.value, { timeZone: r.timeZone || g.timeZone });
-    let t = R2({ start: e.clone, end: r }), o = `${t.sign}${ce2(t.hours)}:${ce2(t.minutes)}`;
-    return { fromTZ: e.timeZone, toTZ: r.timeZone, offset: o, offsetText: `${r.timeZone} ${je2(o)} ${e.timeZone}` };
+    r = String(r).toLowerCase() === "utc" || r.timeZone === "UTC" ? e.clone.relocate({ timeZone: "UTC" }) : f(e.value, { timeZone: r.timeZone || D2.timeZone });
+    let t = J2({ start: e.clone, end: r }), s = `${t.sign}${ce2(t.hours)}:${ce2(t.minutes)}`;
+    return { fromTZ: e.timeZone, toTZ: r.timeZone, offset: s, offsetText: `${r.timeZone} ${je2(s)} ${e.timeZone}` };
   }
   function ce2(e, r = 2) {
     return `${e}`.padStart(r, "0");
   }
-  function C2(e, r) {
+  function k2(e, r) {
     return `${r}${e > 1 || e === 0 ? "s" : ""}`;
   }
   function je2(e) {
     if (/00:00/.test(e)) return "no time diffence to";
-    let r = e.slice(1).split(":").map(Number), [n, t] = r, a = C2(n, "hour"), o = C2(t, "minute"), s = e.startsWith("+");
-    return t > 0 ? `${n} ${a} and ${t} ${o} ${s ? "ahead of" : "behind"}` : `${n} ${a} ${s ? "ahead of" : "behind"}`;
+    let r = e.slice(1).split(":").map(Number), [n, t] = r, a = k2(n, "hour"), s = k2(t, "minute"), o = e.startsWith("+");
+    return t > 0 ? `${n} ${a} and ${t} ${s} ${o ? "ahead of" : "behind"}` : `${n} ${a} ${o ? "ahead of" : "behind"}`;
   }
-  function me2(e, r, n) {
-    return e.clone.format(r, n || e.localeInfo.formatOptions);
-  }
-  function pe2(e, { withFormat: r, withFormatOptions: n, local: t = false } = {}) {
-    if (r) return t ? me2(e, r, $D.localeInformation.formatOptions) : me2(e, r, n);
-    let a = e.clone.relocate({ locale: "en" }), o = t ? g.formatOptions : a.localeInfo.formatOptions, u = `wd M dd yyyy hh:mmi:ss ${a.format("tz", o + ",tzn:longOffset").replace(":", "")} (tz)`;
-    return a.format(u, o + ",tzn:long, hrc:23");
+  function Te2(e, { withFormat: r, withFormatOptions: n, local: t = false } = {}) {
+    if (r) return t ? Z2(e.value, r, $D.localeInformation.formatOptions) : Z2(e.value, r, n);
+    let a = t ? D2.formatOptions : p({ l: "en-EN", tz: e.timeZone }).formatOptions, o = `wd M dd yyyy hh:mmi:ss ${Z2(e.value, "tz", (a + ",tzn:longOffset").replace(":", ""))} (tz)`;
+    return Z2(e.value, o, a);
   }
   function ee2(e, r = false) {
-    let n = Intl.DateTimeFormat("en", { timeZone: r ? e.timeZone : g.timeZone, weekday: "short" });
-    return ye2(n.format(e));
+    let n = Intl.DateTimeFormat("en", { timeZone: r ? e.timeZone : D2.timeZone, weekday: "short" });
+    return ge2(n.format(e));
   }
-  function $e2(e) {
-    let r = g, n = e.localeInfo, t = e.clone.relocate({ locale: r.locale, timeZone: r.timeZone }), a = e.offsetFrom(t), o = t.offsetFrom(e), s = r, u = n, c2 = e.format("hh:mmi:ss dp", `hrc:12,tz:${e.timeZone}`), i = t.format("hh:mmi:ss dp", `hrc:12,tz:${t.timeZone}`), m = { note: "'user' are values for your locale/timeZone, 'remote' (if applicable) idem for the instance", locales: { user: { locale: s.locale, timeZone: s.timeZone } }, dateTime: { user: { ...e.dateTime, monthName: t.monthName, weekdayNr: t.day, weekdayName: t.dayName, dayPeriodTime: i, hasDST: t.hasDST, DSTActive: t.DSTActive, offsetFromRemote: a.offset, string: t.toString() } }, offset: { fromUTC: e.UTC.offsetFrom(e).offsetText } };
-    return n.timeZone !== r.timeZone && (m.locales.remote = { locale: u.locale, timeZone: u.timeZone }, m.dateTime.remote = { ...e.zoneDateTime, monthName: e.zoneNames.monthName, weekdayNr: ee2(e, true), weekdayName: e.zoneNames.dayName, dayPeriodTime: c2, hasDST: e.hasDST, DSTActive: e.DSTActive, offsetFromUser: o.offset, string: e.toString() }, m.offset.fromUserTime = o.offsetText), m;
+  function pe2(e) {
+    let r = D2, n = e.localeInfo, t = e.clone.relocate({ locale: r.locale, timeZone: r.timeZone }), a = e.offsetFrom(t), s = t.offsetFrom(e), o = r, u = n, l = e.format("hh:mmi:ss dp", `hrc:12,tz:${e.timeZone}`), i = t.format("hh:mmi:ss dp", `hrc:12,tz:${t.timeZone}`), m = { note: "'user' are values for your locale/timeZone, 'remote' (if applicable) idem for the instance", locales: { user: { locale: o.locale, timeZone: o.timeZone } }, dateTime: { user: { ...e.dateTime, monthName: t.monthName, weekdayNr: t.day, weekdayName: t.dayName, dayPeriodTime: i, hasDST: t.hasDST, DSTActive: t.DSTActive, offsetFromRemote: a.offset, string: t.toString() } }, offset: { fromUTC: e.UTC.offsetFrom(e).offsetText } };
+    return n.timeZone !== r.timeZone && (m.locales.remote = { locale: u.locale, timeZone: u.timeZone }, m.dateTime.remote = { ...e.zoneDateTime, monthName: e.zoneNames.monthName, weekdayNr: ee2(e, true), weekdayName: e.zoneNames.dayName, dayPeriodTime: l, hasDST: e.hasDST, DSTActive: e.DSTActive, offsetFromUser: s.offset, string: e.toString() }, m.offset.fromUserTime = s.offsetText), m;
   }
-  function O(e, r = true) {
+  function z2(e, r = true) {
     if (r) return [e.getFullYear(), e.getMonth(), e.getDate(), e.getHours(), e.getMinutes(), e.getSeconds(), e.getMilliseconds()];
     let n = e.format("yyyy-m-d-hh-mmi-ss", `${e.localeInfo.formatOptions},hrc23:true`).split(/-/).map(Number).concat(e.getMilliseconds());
     return n[1] -= 1, n;
@@ -1643,10 +1649,10 @@ ${r}`), m;
   }
   function x(e, { day: r, next: n = false, preserveTodayWhenEqual: t = false } = {}) {
     r = r?.toLowerCase() || "-";
-    let a = ye2(r);
+    let a = ge2(r);
     if (a < 0) return console.error(`[TickTock instance].next/previous invalid day value ${r}`), e.clone;
-    let o = n ? 1 : -1, s = f(new Date(...e.dateTimeValues), e.localeInfo);
-    return t && a === s.day ? s : Pe2(s.addDays(n ? 1 : -1), a, o);
+    let s = n ? 1 : -1, o = f(new Date(...e.dateTimeValues), e.localeInfo);
+    return t && a === o.day ? o : Pe2(o.addDays(n ? 1 : -1), a, s);
   }
   function Pe2(e, r, n) {
     function t(a) {
@@ -1658,56 +1664,56 @@ ${r}`), m;
     let { locale: t, timeZone: a } = e.localeInfo;
     return r ? new Date(e).toLocaleDateString(t, { timeZone: a }) : n ? new Date(e).toLocaleTimeString(t, { timeZone: a }) : new Date(e).toLocaleString(t, { timeZone: a });
   }
-  function fe2(e, r) {
+  function me2(e, r) {
     let n = { timeZone: r, hourCycle: "h23" };
     return new Date(new Date(e).toLocaleString("en", n));
   }
-  function v2(e, { year: r, month: n, date: t } = {}) {
+  function I2(e, { year: r, month: n, date: t } = {}) {
     return S(r) && e.setFullYear(parseInt(r)), S(t) && e.setDate(parseInt(t)), S(n) && e.setMonth(parseInt(n)), e;
   }
-  function I2(e, { hours: r, minutes: n, seconds: t, milliseconds: a } = {}) {
+  function M2(e, { hours: r, minutes: n, seconds: t, milliseconds: a } = {}) {
     return S(r) && e.setHours(parseInt(r)), S(n) && e.setMinutes(parseInt(n)), S(t) && e.setSeconds(parseInt(t)), S(a) && e.setMilliseconds(parseInt(a)), e;
   }
-  function we2(e) {
+  function $e2(e) {
     return e?.constructor === Date || e?.value;
   }
   function re2(e, r) {
-    return we2(r) ? f(r?.value || r, e.localeInfo) : f.from(...e.dateTimeValues).relocate(e.localeInfo);
+    return $e2(r) ? f(r?.value || r, e.localeInfo) : f.from(...e.dateTimeValues).relocate(e.localeInfo);
   }
   function Ye2() {
     return function(e) {
       e = `${e}`.toLowerCase();
       let r = We2.indexOf(e);
-      return r < 0 ? he2.indexOf(e) : r;
+      return r < 0 ? ye2.indexOf(e) : r;
     };
   }
   function A2(e) {
     let r = e.slice(1).split(/[-:]/).map(Number), n = e.startsWith("-");
     return r = r.map((t) => n ? -t : t), r;
   }
-  function Se2(e) {
+  function we2(e) {
     return e.time = { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }, e;
   }
-  function de2(e, r) {
+  function fe2(e, r) {
     return Intl.DateTimeFormat("en-CA", { timeZone: r, timeZoneName: "long" }).format(e).split(/,/)[1].trim();
   }
   function j2(e, r) {
-    r = r || e?.timeZone || g.timeZone, e = e?.value ? e : e?.constructor === Date ? f(e, { timeZone: r }) : f({ timeZone: r });
-    let n = e.year || e.getFullYear(), t = de2(new Date(n, 0, 1), r), a = de2(new Date(n, 5, 1), r);
+    r = r || e?.timeZone || D2.timeZone, e = e?.value ? e : e?.constructor === Date ? f(e, { timeZone: r }) : f({ timeZone: r });
+    let n = e.year || e.getFullYear(), t = fe2(new Date(n, 0, 1), r), a = fe2(new Date(n, 5, 1), r);
     return t !== a;
   }
   function P2(e, r) {
-    return r = r || e?.timeZone || g.timeZone, e = e?.hasDST ? e : e?.constructor === Date ? f(e, { timeZone: r }) : f({ timeZone: r }), e.hasDST ? !/standard/i.test(e.toString()) : false;
+    return r = r || e?.timeZone || D2.timeZone, e = e?.hasDST ? e : e?.constructor === Date ? f(e, { timeZone: r }) : f({ timeZone: r }), e.hasDST ? !/standard/i.test(e.toString()) : false;
   }
-  function Ze2(e, { locale: r, timeZone: n, l: t, tz: a } = {}) {
+  function Se2(e, { locale: r, timeZone: n, l: t, tz: a } = {}) {
     return e.localeInfo = p({ locale: t || r || e.l || e.locale, timeZone: a || n || e.tz || e.timeZone }), e;
   }
-  function be2(e, r) {
-    return we2(r) && (e = f(r.value || r, r.localeInfo || e.localeInfo)), e;
+  function ve2(e, r) {
+    return $e2(r) && (e = f(r.value || r, r.localeInfo || e.localeInfo)), e;
   }
-  function k2(e, r) {
+  function C2(e, r) {
     let n = oe2(new Date(e, 11, r || 31));
-    return n === 1 ? k2(e, (r || 31) - 1) : n;
+    return n === 1 ? C2(e, (r || 31) - 1) : n;
   }
   function ne2(e, r) {
     let n = e.month;
@@ -1732,74 +1738,75 @@ ${r}`), m;
   }
   var E = Ee2;
   function Ee2({ localeInfo: e, customMethods: r, dateValue: n } = {}) {
+    n = n || /* @__PURE__ */ new Date();
     let t, a = { add(...o) {
       return H2(t, ...o);
-    }, between({ start: o, end: s, include: u } = {}) {
-      return W2(t, { start: o, end: s, include: u });
+    }, between({ start: o, end: u, include: l } = {}) {
+      return W2(t, { start: o, end: u, include: l });
     }, cloneWith(o) {
       return re2(t, o);
     }, daysUntil(o) {
-      return Te2(t, o);
+      return De2(t, o);
     }, differenceTo(o) {
-      return R2({ start: t, end: o });
+      return J2({ start: t, end: o });
     }, differenceUntil(o) {
       return t.differenceTo(o).clean;
-    }, firstWeekday({ sunday: o = false, midnight: s = false } = {}) {
-      return Q2(t, { sunday: o, midnight: s });
-    }, format(o, s) {
-      return _2(t, { formatStr: o, moreOptions: s });
+    }, firstWeekday({ sunday: o = false, midnight: u = false } = {}) {
+      return R2(t, { sunday: o, midnight: u });
+    }, format(o, u) {
+      return _2(t, { formatStr: o, moreOptions: u });
     }, fullMonth(o) {
       return L2(t, o);
     }, fullWeek(o = false) {
-      return De2(t, !!o);
+      return he2(t, !!o);
     }, isFuture(o) {
       return W2(t, { start: t, end: o, future: true });
     }, isPast(o) {
       return W2(t, { start: t, end: o, past: true });
-    }, next(o, s) {
-      return x(t, { day: o, next: true, preserveTodayWhenEqual: !!s });
+    }, next(o, u) {
+      return x(t, { day: o, next: true, preserveTodayWhenEqual: !!u });
     }, offsetFrom(o) {
       return X2(t, o);
-    }, previous(o, s) {
-      return x(t, { day: o, next: false, preserveTodayWhenEqual: !!s });
-    }, relocate({ locale: o, timeZone: s, l: u, tz: c2 } = {}) {
-      return Ze2(t, { locale: o, timeZone: s, l: u, tz: c2 });
+    }, previous(o, u) {
+      return x(t, { day: o, next: false, preserveTodayWhenEqual: !!u });
+    }, relocate({ locale: o, timeZone: u, l, tz: i } = {}) {
+      return Se2(t, { locale: o, timeZone: u, l, tz: i });
     }, revalue(o) {
-      return t = be2(t, o), t;
-    }, setDateValues({ year: o, month: s, date: u } = {}) {
-      return v2(t, { year: o, month: s, date: u });
-    }, setTimeValues({ hours: o, minutes: s, seconds: u, milliseconds: c2 } = {}) {
-      return I2(t, { hours: o, minutes: s, seconds: u, milliseconds: c2 });
+      return t = ve2(t, o), t;
+    }, setDateValues({ year: o, month: u, date: l } = {}) {
+      return I2(t, { year: o, month: u, date: l });
+    }, setTimeValues({ hours: o, minutes: u, seconds: l, milliseconds: i } = {}) {
+      return M2(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
     }, subtract(...o) {
       return H2(t, "subtract," + o.join(","));
     }, toArray(o = false) {
-      return O(t, o);
-    }, toString({ template: o, formatOptions: s, local: u } = {}) {
-      return pe2(t, { withFormat: o, withFormatOptions: s, local: u });
+      return z2(t, o);
+    }, toString({ template: o, formatOptions: u, local: l } = {}) {
+      return Te2(t, { withFormat: o, withFormatOptions: u, local: l });
     }, values(o = false) {
       return o ? t.dateTime : t.zoneDateTime;
-    }, zoneFormat(o, s) {
-      return _2(t, { zoneTime: true, formatStr: o, moreOptions: s });
-    }, set date({ year: o, month: s, date: u }) {
-      v2(t, { year: o, month: s, date: u });
+    }, zoneFormat(o, u) {
+      return _2(t, { zoneTime: true, formatStr: o, moreOptions: u });
+    }, set date({ year: o, month: u, date: l }) {
+      I2(t, { year: o, month: u, date: l });
     }, set dateNr(o) {
-      v2(t, { date: o });
+      I2(t, { date: o });
     }, set hours(o) {
-      I2(t, { hours: o });
-    }, set localeInfo({ locale: o, timeZone: s, l: u, tz: c2 }) {
-      e = z2({ locale: o, timeZone: s, l: u, tz: c2 });
+      M2(t, { hours: o });
+    }, set localeInfo({ locale: o, timeZone: u, l, tz: i }) {
+      e = O({ locale: o, timeZone: u, l, tz: i });
     }, set milliseconds(o) {
-      I2(t, { milliseconds: `${o}` });
+      M2(t, { milliseconds: `${o}` });
     }, set minutes(o) {
-      I2(t, { minutes: o });
+      M2(t, { minutes: o });
     }, set month(o) {
-      v2(t, { month: o });
+      I2(t, { month: o });
     }, set seconds(o) {
-      I2(t, { seconds: o });
-    }, set time({ hours: o, minutes: s, seconds: u, milliseconds: c2 }) {
-      I2(t, { hours: o, minutes: s, seconds: u, milliseconds: c2 });
+      M2(t, { seconds: o });
+    }, set time({ hours: o, minutes: u, seconds: l, milliseconds: i }) {
+      M2(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
     }, set year(o) {
-      v2(t, { year: o });
+      I2(t, { year: o });
     }, get age() {
       return t.differenceTo(/* @__PURE__ */ new Date()).years;
     }, get ageFull() {
@@ -1807,15 +1814,15 @@ ${r}`), m;
     }, get clone() {
       return re2(t);
     }, get date() {
-      return J2(t, true);
+      return K2(t, true);
     }, get dateNr() {
       return t.date.date;
     }, get dateTime() {
       return { ...t.date, ...t.time };
     }, get dateTimeValues() {
-      return O(t, true);
+      return z2(t, true);
     }, get dateValues() {
-      return K2(t, true);
+      return Q2(t, true);
     }, get day() {
       return t.getDay();
     }, get dayName() {
@@ -1829,7 +1836,7 @@ ${r}`), m;
     }, get hours() {
       return t.time.hours;
     }, get info() {
-      return $e2(t);
+      return pe2(t);
     }, get isLeapYear() {
       return new Date(t.getFullYear(), 2, 0).getDate() === 29;
     }, get ISO() {
@@ -1839,7 +1846,7 @@ ${r}`), m;
     }, get localDate() {
       return F2(t, { dateOnly: true });
     }, get locale() {
-      return (e || z2()).locale;
+      return (e || O()).locale;
     }, get localeInfo() {
       return e;
     }, get localeString() {
@@ -1861,7 +1868,7 @@ ${r}`), m;
     }, get quarterNr() {
       return ne2(t, true);
     }, get removeTime() {
-      return Se2(t);
+      return we2(t);
     }, get seconds() {
       return t.time.seconds;
     }, get time() {
@@ -1869,11 +1876,11 @@ ${r}`), m;
     }, get timeValues() {
       return U2(t, true);
     }, get timeZone() {
-      return (e || z2()).timeZone;
+      return (e || O()).timeZone;
     }, get unixEpochTimestamp() {
       return Math.floor(+t / 1e3);
     }, get userLocaleInfo() {
-      return g;
+      return D2;
     }, get UTC() {
       return t.clone.relocate({ locale: t.locale, timeZone: "UTC" });
     }, get UTCOffset() {
@@ -1883,19 +1890,19 @@ ${r}`), m;
     }, get weeknr() {
       return oe2(t);
     }, get weeksInYear() {
-      return k2(t.year, 31);
+      return C2(t.year, 31);
     }, get year() {
       return t.date.year;
     }, get zoneDate() {
-      return J2(t, false);
+      return K2(t, false);
     }, get zoneDateNr() {
       return t.zoneDate.date;
     }, get zoneDateTime() {
       return { ...t.zoneDate, ...t.zoneTime };
     }, get zoneDateTimeValues() {
-      return O(t, false);
+      return z2(t, false);
     }, get zoneDateValues() {
-      return K2(t, false);
+      return Q2(t, false);
     }, get zoneDay() {
       return ee2(t, true);
     }, get zoneDayname() {
@@ -1921,40 +1928,40 @@ ${r}`), m;
     }, get zoneValues() {
       return t.zoneDateTime;
     }, get zoneArray() {
-      return O(t, false);
+      return z2(t, false);
     } };
-    return !e && !n ? a : (a.localeInfo = e || z2(), t = new Proxy(n, Ve2(a)), Object.entries(Object.getOwnPropertyDescriptors(ue2(t, r))).forEach(([o, s]) => Object.defineProperty(a, o, s)), Object.freeze(t));
+    return a.localeInfo = e || O(), t = new Proxy(n, s(a)), Object.entries(Object.getOwnPropertyDescriptors(ue2(t, r))).forEach(([o, u]) => Object.defineProperty(a, o, u)), Object.freeze(t);
+    function s() {
+      return { get(o, u) {
+        return true === (u !== "toString" && u in o) ? String(u).startsWith("set") ? (...l) => t.revalue(o[u](...l)) : o[u].bind(o) : Reflect.get(a, u);
+      }, set(o, u, l) {
+        return u in a && Reflect.set(a, u, l);
+      } };
+    }
   }
-  function Ve2(e) {
-    return { get(r, n) {
-      return n !== "toString" && n in r ? r[n].bind(r) : Reflect.get(e, n);
-    }, set(r, n, t) {
-      return n in e && Reflect.set(e, n, t);
-    } };
-  }
-  var g = Me2(Intl.DateTimeFormat().resolvedOptions());
-  var qe2 = Object.getOwnPropertyNames(Date.prototype).filter((e) => e.startsWith("set")).reduce((e, r) => [...e, { native: r, syn: "change" + r.slice(3) }], []);
+  var D2 = Ne2(Intl.DateTimeFormat().resolvedOptions());
+  var it2 = Object.getOwnPropertyNames(Date.prototype).filter((e) => e.startsWith("set")).reduce((e, r) => [...e, { native: r, syn: "change" + r.slice(3) }], []);
   function ae2(e = "en-GB") {
     return e = p({ locale: e }).locale, { long: [...Array(7).keys()].map((r) => new Date(Date.UTC(1970, 0, 4 + r)).toLocaleDateString(e, { timeZone: "Etc/UTC", weekday: "long" })), short: [...Array(7).keys()].map((r) => new Date(Date.UTC(1970, 0, 4 + r)).toLocaleDateString(e, { timeZone: "Etc/UTC", weekday: "short" })) };
   }
   function Y2(e = "en") {
     return e = p({ locale: e }).locale, { long: [...Array(12).keys()].map((r) => new Date(Date.UTC(1970, r, 1)).toLocaleDateString(e, { timeZone: "Etc/UTC", month: "long" })), short: [...Array(12).keys()].map((r) => new Date(Date.UTC(1970, r, 1)).toLocaleDateString(e, { timeZone: "Etc/UTC", month: "short" })) };
   }
-  function He2({ year: e, locale: r } = {}) {
+  function Ve2({ year: e, locale: r } = {}) {
     e = S(e) ? parseInt(e) : (/* @__PURE__ */ new Date()).getFullYear();
     let n = { year: e, calendar: {} }, t = Y2().long.map((a) => a.toLowerCase());
     for (let a = 0; a < 12; a += 1) {
-      let o = f.from(e, a, 1);
-      n.calendar[t[a]] = L2(o, r);
+      let s = f.from(e, a, 1);
+      n.calendar[t[a]] = L2(s, r);
     }
     return n;
   }
-  function _e2({ year: e, monthNr: r, locale: n = "en-CA" } = {}) {
+  function qe2({ year: e, monthNr: r, locale: n = "en-CA" } = {}) {
     e = S(r) && parseInt(e) || -1, r = S(r) && parseInt(r) || (/* @__PURE__ */ new Date()).getFullYear();
     let t = r >= 1 && r <= 12;
     return n = p({ locale: n }).locale, r = t ? r - 1 : void 0, t ? f.from(e, r, 1).relocate({ locale: n }).fullMonth(n) : "MonthNr should be a specific number (1 = january - 12 = december)";
   }
-  function Me2(e) {
+  function Ne2(e) {
     let r = se2(e.locale, e.timeZone), n = new Intl.Locale(e.locale);
     return e.weekInfo = n.getWeekInfo ? n.getWeekInfo() : null, Object.defineProperty(e, "formatOptions", { value: r, enumerable: false });
   }
@@ -1962,36 +1969,36 @@ ${r}`), m;
     return [`${e && !(Array.isArray(e) && e.length < 1) ? `l:${e}` : ""}`, `${r ? `tz:${r}` : ""}`].filter((n) => n).join(",");
   }
   function p({ locale: e, timeZone: r, l: n, tz: t } = {}) {
-    return r = r || t, e = e || n, e = Ie2({ trial: function() {
-      return Intl.DateTimeFormat(e, { timeZone: g.timeZone }).resolvedOptions().locale;
+    return r = r || t, e = e || n, e = be2({ trial: function() {
+      return Intl.DateTimeFormat(e, { timeZone: D2.timeZone }).resolvedOptions().locale;
     }, onError: function() {
-      return console.warn(`Intl locale "${e}" best fit impossible, using "${g.locale}"`), g.locale;
-    } }), r = Ie2({ trial: function() {
+      return console.warn(`Intl locale "${e}" best fit impossible, using "${D2.locale}"`), D2.locale;
+    } }), r = be2({ trial: function() {
       return Intl.DateTimeFormat(e, { timeZone: r }).resolvedOptions().timeZone;
     }, onError: function() {
-      return console.warn(`timeZone "${r}" not valid. Using "${g.timeZone}"`), g.timeZone;
-    } }), Me2(Intl.DateTimeFormat(e, { timeZone: r }).resolvedOptions());
+      return console.warn(`timeZone "${r}" not valid. Using "${D2.timeZone}"`), D2.timeZone;
+    } }), Ne2(Intl.DateTimeFormat(e, { timeZone: r }).resolvedOptions());
   }
-  function z2({ locale: e, timeZone: r, l: n, tz: t } = {}) {
+  function O({ locale: e, timeZone: r, l: n, tz: t } = {}) {
     return p({ locale: e, timeZone: r, l: n, tz: t }, true);
   }
-  function Ne2(e) {
+  function Ze2(e) {
     return !Number.isNaN(+e) && e?.constructor === Date ? e : /* @__PURE__ */ new Date();
   }
-  function ve2(e) {
+  function Me2(e) {
     let r = /* @__PURE__ */ new Date();
     switch (true) {
       case (typeof e == "string" || typeof e == "number"):
-        return Ne2(new Date(e));
+        return Ze2(new Date(e));
       case (Array.isArray(e) && e.map(Number).length === e.length):
         return e.length === 1 ? new Date(e[0], 0, 1) : new Date(...e);
       case e?.constructor === Date:
-        return Ne2(e);
+        return Ze2(e);
       default:
         return r;
     }
   }
-  function Ie2({ trial: e, onError: r = () => {
+  function be2({ trial: e, onError: r = () => {
   } } = {}) {
     if (e?.constructor === Function) try {
       return e();
@@ -1999,9 +2006,11 @@ ${r}`), m;
       return r?.constructor === Function ? r(n) : void 0;
     }
   }
-  function Ge2({ timeZoneDate: e, timeZoneID: r, userTimeZoneID: n } = {}) {
-    let t = { timeZone: p({ timeZone: r }).timeZone }, a = { timeZone: p({ timeZone: n || "" }).timeZone }, o = f(e, t), s = f(e, a), u = s.differenceTo(o), c2 = o.offsetFrom(s).offset, [i, m] = A2(c2, true), T2 = s.clone.add(`${i} hours, ${m} minutes`), y = u.equalDates ? "No difference" : `Time offset ${c2}: ${a.timeZone} is ${u.clean} ${i < 0 ? "behind" : "ahead of"} ${t.timeZone}`;
-    return { remoteTimezone: t.timeZone, userTimezone: a.timeZone, timeDifference: y, result: { [t.timeZone.replace(/\//, "_")]: f(e).toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }), [a.timeZone.replace(/\//, "_")]: T2.toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }) } };
+  function He2({ timeZoneDate: e, timeZoneID: r, userTimeZoneID: n } = {}) {
+    let t = { timeZone: p({ timeZone: n }).timeZone }, a = { timeZone: p({ timeZone: r || "" }).timeZone };
+    e = e || /* @__PURE__ */ new Date();
+    let s = f(e, t), o = f(e, a), u = o.differenceTo(s), l = s.offsetFrom(o).offset, [i, m] = A2(l, true), T2 = o.clone.add(`${i} hours, ${m} minutes`), h2 = u.equalDates ? "No difference" : `Time offset ${l}: ${a.timeZone} is ${u.clean} ${i < 0 ? "behind" : "ahead of"} ${t.timeZone}`, d = s.DSTActive, g = o.DSTActive;
+    return { remoteTimezone: `${a.timeZone} ${d ? "(DST active)" : ""}`, userTimezone: `${t.timeZone} ${g ? "(DST active)" : ""}`, timeDifference: h2, result: { [t.timeZone.replace(/\//, "_")]: f(e).toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }), [a.timeZone.replace(/\//, "_")]: T2.toString({ template: "yyyy/mm/dd hh:mmi:ss", formatOptions: "hrc:23" }) } };
   }
   function S(e) {
     return !Number.isNaN(parseInt(e));
@@ -2009,15 +2018,15 @@ ${r}`), m;
   function V2(e, r, n) {
     return e?.constructor === Number ? N2(r, `${e} ${n}`) : r;
   }
-  function Be2(e) {
-    let r = { addYears(n = 1) {
-      return V2(n, e, "years");
-    }, addMonths(n = 1) {
-      return V2(n, e, "months");
-    }, addWeeks(n = 1) {
-      return n = n?.constructor === Number ? n * 7 : 1, V2(n, e, "days");
-    }, addDays(n = 1) {
-      return V2(n, e, "days");
+  function _e2(e) {
+    return { addYears(r = 1) {
+      return V2(r, e, "years");
+    }, addMonths(r = 1) {
+      return V2(r, e, "months");
+    }, addWeeks(r = 1) {
+      return r = r?.constructor === Number ? r * 7 : 1, V2(r, e, "days");
+    }, addDays(r = 1) {
+      return V2(r, e, "days");
     }, get nextYear() {
       return N2(e, "1 year");
     }, get nextWeek() {
@@ -2035,67 +2044,69 @@ ${r}`), m;
     }, get yesterday() {
       return N2(e, "-1 day");
     } };
-    for (let n of qe2) r[n.syn] = function(...t) {
-      return e[n.native](...t), e;
-    };
-    return r;
   }
   function ue2(e, r) {
-    let n = Be2(e);
+    let n = _e2(e);
     for (let [t, a] of Object.entries(r || {})) {
-      let o = a.enumerable, s = a.isGetter ? { get() {
+      let s = a.enumerable, o = a.isGetter ? { get() {
         return a.method(e);
-      }, enumerable: o } : { value(...u) {
+      }, enumerable: s } : { value(...u) {
         return a.method(e, ...u);
-      }, enumerable: o };
-      Object.defineProperty(n, t, s);
+      }, enumerable: s };
+      Object.defineProperty(n, t, o);
     }
     return n;
   }
-  function ze2(e, r) {
-    return Object.defineProperties(e, { now: { get() {
+  function Ie2(e, r) {
+    let n = 0;
+    return Object.defineProperties(e, { iCount: { value: { get value() {
+      return n;
+    }, increment() {
+      n += 1;
+    } } }, now: { get() {
       return e(/* @__PURE__ */ new Date());
     } }, localeInformation: { get() {
       return p();
-    } }, localWeekdaynames: { value(n) {
-      return ae2(n);
-    } }, localMonthnames: { value(n) {
-      return Y2(n);
-    } }, daysInMonth: { value(n, t = false) {
-      return n = S(n) ? parseInt(n) : 0, n >= 1 && n <= 12 ? new Date(t ? 2e3 : 2005, n, 0).getDate() : `${n} should be a Number between (1 (january) - 12 (december))`;
-    } }, yearCalendar: { value: He2 }, monthCalendar: { value: _e2 }, from: { value(...n) {
-      return e(n);
-    } }, fromUxTS: { value(n, t) {
-      n = S(n) ? parseInt(n) * 1e3 : void 0;
-      let a = n ? new Date(n) : /* @__PURE__ */ new Date();
-      return f(a, t || g);
-    } }, hasDST: { value({ date: n, timeZone: t } = {}) {
-      return j2(n, t);
-    } }, DSTActive: { value({ date: n, timeZone: t } = {}) {
-      return P2(n, t);
-    } }, values: { value({ date: n, timeZone: t } = {}) {
-      n = n || n?.value || /* @__PURE__ */ new Date();
-      let a = M2(n, "yyyy-m-d-h-mi-s", p({ timeZone: t }).formatOptions.concat(",hrc:23")).split("-").map(Number).concat(n.getMilliseconds());
-      return a[1] -= 1, a;
-    } }, format: { value({ date: n, template: t, timeZone: a, locale: o, opts: s } = {}) {
-      n = n || n?.value || /* @__PURE__ */ new Date(), t = t?.constructor === String ? t : "yyyy/mm/dd hh:mmi:ss dp";
-      let u = p({ timeZone: a, locale: o }).formatOptions;
-      return u += s ? `,${s}` : "", M2(n, t, u);
-    } }, addCustom: { value({ name: n, method: t, enumerable: a = false, isGetter: o = false } = {}) {
-      n?.constructor === String && t?.constructor === Function && t.length > 0 && (r[n] = { method: t, enumerable: a, isGetter: o });
-    } }, validateLocaleInformation: { value: p }, timeAcrossZones: { value: Ge2 }, weeksInYear: { value(n) {
-      return k2(n, 31);
+    } }, localWeekdaynames: { value(t) {
+      return ae2(t);
+    } }, localMonthnames: { value(t) {
+      return Y2(t);
+    } }, daysInMonth: { value(t, a = false) {
+      return t = S(t) ? parseInt(t) : 0, t >= 1 && t <= 12 ? new Date(a ? 2e3 : 2005, t, 0).getDate() : `${t} should be a Number between (1 (january) - 12 (december))`;
+    } }, yearCalendar: { value: Ve2 }, monthCalendar: { value: qe2 }, from: { value(...t) {
+      return e(t);
+    } }, fromUxTS: { value(t, a) {
+      t = S(t) ? parseInt(t) * 1e3 : void 0;
+      let s = t ? new Date(t) : /* @__PURE__ */ new Date();
+      return f(s, a || D2);
+    } }, hasDST: { value({ date: t, timeZone: a } = {}) {
+      return j2(t, a);
+    } }, DSTActive: { value({ date: t, timeZone: a } = {}) {
+      return P2(t, a);
+    } }, values: { value({ date: t, timeZone: a } = {}) {
+      t = t || t?.value || /* @__PURE__ */ new Date();
+      let s = Z2(t, "yyyy-m-d-h-mi-s", p({ timeZone: a }).formatOptions.concat(",hrc:23")).split("-").map(Number).concat(t.getMilliseconds());
+      return s[1] -= 1, s;
+    } }, format: { value({ date: t, template: a, timeZone: s, locale: o, opts: u } = {}) {
+      t = t || t?.value || /* @__PURE__ */ new Date(), a = a?.constructor === String ? a : "yyyy/mm/dd hh:mmi:ss dp";
+      let l = p({ timeZone: s, locale: o }).formatOptions;
+      return l += u ? `,${u}` : "", Z2(t, a, l);
+    } }, addCustom: { value({ name: t, method: a, enumerable: s = false, isGetter: o = false } = {}) {
+      t?.constructor === String && a?.constructor === Function && a.length > 0 && (r[t] = { method: a, enumerable: s, isGetter: o });
+    } }, validateLocaleInformation: { value: p }, timeAcrossZones: { value: He2 }, weeksInYear: { value(t) {
+      return C2(t, 31);
     } }, keys: { get() {
-      let n = Object.fromEntries(Object.entries(r).filter(([a, o]) => o.enumerable === true));
-      return [...Object.keys(E()), ...Object.keys(ue2()), ...Object.keys(n)].sort((a, o) => a.localeCompare(o));
+      let t = Object.fromEntries(Object.entries(r).filter(([s, o]) => o.enumerable === true));
+      return [...Object.keys(E()), ...Object.keys(ue2()), ...Object.keys(t)].sort((s, o) => s.localeCompare(o));
     } } }), e;
   }
   var Oe2 = {};
-  var f = ze2(Je2, Oe2);
-  function Je2(e, r) {
-    if (e?.localeInfo) return e.clone;
+  var ze2 = Ie2(Ge2, Oe2);
+  var f = ze2;
+  function Ge2(e, r) {
+    e = e?.value?.getMilliseconds ? e.value : e;
     let n = e?.locale || e?.timeZone || e?.tz || e?.l;
-    return E({ localeInfo: p(n ? e : r), dateValue: new Date(n ? Date.now() : ve2(e)), customMethods: Oe2 });
+    return ze2.iCount.increment(), E({ localeInfo: p(n ? e : r), dateValue: new Date(n ? Date.now() : Me2(e)), customMethods: Oe2 });
   }
 
   // ../Resource/Externals/REHelper.js
@@ -2107,7 +2118,7 @@ ${r}`), m;
     );
   }
   function createRegExpStringFromInput(regExStr, ...cleanedArgs) {
-    return !hasLength(cleanedArgs) ? regExStr.raw.join(``) : regExStr.raw.reduce((a, v4, i) => a.concat(cleanedArgs[i - 1] || ``).concat(v4), ``);
+    return !hasLength(cleanedArgs) ? regExStr.raw.join(``) : regExStr.raw.reduce((a, v3, i) => a.concat(cleanedArgs[i - 1] || ``).concat(v3), ``);
   }
   function maybeFlags(...args) {
     const flags = cleanupFlags(getFlags(args.at(-1)));
@@ -2200,7 +2211,7 @@ ${r}`), m;
   var h = f2({ defaultReplacer: "" });
   function f2(i = {}) {
     let { defaultReplacer: n, useSymbolicExtensions: a } = i;
-    return n = l(n) ? String(n) : void 0, typeof a == "boolean" && a && v3(), function(e, ...t) {
+    return n = l(n) ? String(n) : void 0, typeof a == "boolean" && a && v2(), function(e, ...t) {
       return j3(e, m(t));
     };
     function p2(e, t) {
@@ -2225,11 +2236,11 @@ ${r}`), m;
         o.forEach((c2, u) => (t[u] ??= {}, t[u][r] = c2));
       }), t;
     }
-    function g2(e) {
+    function g(e) {
       return e.length === 1 && Object.values(e[0]).every(Array.isArray);
     }
     function m(e) {
-      return g2(e) ? d(e[0]) : e;
+      return g(e) ? d(e[0]) : e;
     }
     function l(e) {
       return typeof e == "string" || typeof e == "number";
@@ -2242,7 +2253,7 @@ ${r}`), m;
       return typeof n != "string" ? r : r.replace(/\{.+}/gmi, n ?? "");
     }
   }
-  function v3() {
+  function v2() {
     return String.prototype[/* @__PURE__ */ Symbol.for("interpolate")] || Object.defineProperties(String.prototype, { [/* @__PURE__ */ Symbol.for("interpolate")]: { value(...i) {
       return O2(this, ...i);
     } }, [/* @__PURE__ */ Symbol.for("interpolate$")]: { value(...i) {
@@ -2253,7 +2264,7 @@ ${r}`), m;
   // ../index.js
   setDefaultStyling();
   fixSBLinks2TopProblem();
-  var splatModule = { interpolate: O2, interpolateClear: h, addSymbolicStringExtensions: v3 };
+  var splatModule = { interpolate: O2, interpolateClear: h, addSymbolicStringExtensions: v2 };
   function fixSBLinks2TopProblem() {
     /stackblitz/i.test(location.href) && console.info(`\u2714 Stackblitz rewrites links to _top. The 'stackblitzhelpers' module fixed it.`);
     document.addEventListener(`click`, (evt) => {
@@ -2267,23 +2278,23 @@ ${r}`), m;
     });
   }
   function logFactory(formatJSON = true) {
-    const logContainer = En(`<ul id="log2screen">`).first();
+    const logContainer = Ln(`<ul id="log2screen">`).first();
     const [logLamda, logTopLambda] = [logItem(), logItem(true)];
     return {
       log: (...txt) => txt.forEach(logLamda),
       logTop: (...txt) => txt.forEach(logTopLambda)
     };
     function logItem(top2 = false) {
-      const where2PutIt = top2 ? En.at.start : En.at.end;
+      const where2PutIt = top2 ? Ln.at.start : Ln.at.end;
       return (content) => {
         if (content?.isJQx) {
-          const item2 = En.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
+          const item2 = Ln.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
           return item2.renderTo(logContainer, where2PutIt);
         }
-        content = !En.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
+        content = !Ln.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
         const isHead = content.startsWith(`!!`);
         content = isHead ? content.slice(2) : content;
-        const item = En.li(content).addClass(isHead ? `head` : ``);
+        const item = Ln.li(content).addClass(isHead ? `head` : ``);
         item.renderTo(logContainer, where2PutIt);
       };
     }
@@ -2296,7 +2307,7 @@ ${r}`), m;
     }
   }
   function setDefaultStyling() {
-    En.editCssRules(`:root{--grey-default:rgba(112,92,92,0.9);--code-color:#555;}`, `li::marker{vertical-align:top;}`, `code:not(.hljs,.codeblock){background-color:rgb(227, 230, 232);color:var(--code-color);padding:1px 2px;display:inline-block;margin:1px 0px;border-radius:4px;font-style:normal;font-weight:normal;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
+    Ln.editCssRules(`:root{--grey-default:rgba(112,92,92,0.9);--code-color:#555;}`, `li::marker{vertical-align:top;}`, `code:not(.hljs,.codeblock){background-color:rgb(227, 230, 232);color:var(--code-color);padding:1px 2px;display:inline-block;margin:1px 0px;border-radius:4px;font-style:normal;font-weight:normal;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
   }
   return __toCommonJS(index_exports);
 })();
