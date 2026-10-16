@@ -15,12 +15,13 @@ const moduleOrBrowserLink = $.a({
   href: "./indexBrowser.html",
   html: "Examples <i>browser</i> version"
 });
+const usedCodeFile = `./index.js`;
 // ---
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
 $.fn(`asHead`, me => me.data.set({header: "true"}));
-const usedCodeFile = `./index.js`;
+
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
 
