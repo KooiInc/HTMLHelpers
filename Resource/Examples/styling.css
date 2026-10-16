@@ -1,0 +1,181 @@
+body {
+  :root { --grey-default: rgba(112,92,92,0.9); --code-color: #555; }
+  margin: 2rem;
+  overflow-x: hidden;
+  font: 14px/17px monospace, Arial, sans-serif;
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    inset: 0;
+    position: absolute;
+
+    ul#log2screen {
+      li:not(.head) {
+        color: #c54343;
+        font-family: georgia, serif;
+        font-style: italic;
+        line-height: 1.3em;
+
+        code {
+          font-style: inherit;
+          color: inherit;
+        }
+
+        ul {
+          li { color: revert; }
+        }
+      }
+      max-width: 40vw;
+      margin: 4rem auto;
+
+      @media(width <= 1600px) {
+        max-width: 60vw;
+      }
+    }
+
+    div.spacer {
+      height: 2rem;
+    }
+
+    p.spacer {
+      height: 1rem;
+    }
+
+    details {
+      summary {
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+    }
+
+    code.codeblock {
+      margin: 0.5rem 0 0.5rem;
+      color: var(--code-color);
+      border-radius: 4px;
+      box-shadow: 1px 2px 8px #777;
+      width: 100%;
+    }
+
+    pre.codebox {
+      max-height: 40vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 1px 2px 8px #777;
+    }
+
+    .note {color: red; }
+
+    h2 {font-size: 1.1rem; line-height: 1.4rem}
+    .mainHeader {
+      margin: 1rem 0 1rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--grey-default);
+      border-top: 1px solid var(--grey-default);
+      padding: 0.5rem 0 0.7rem 0;
+    }
+
+    li.head {
+      color: #777 !important;
+      div.normal {
+        font-weight: normal;
+        margin: 0.3rem 0;
+
+        ul li {
+          color: revert !important;
+          font-family: revert !important;
+        }
+      }
+
+      span.normal {
+        font-weight: normal;
+        color: #000;
+      }
+
+      div.moreSpace {
+        margin-bottom: 1em;
+      }
+
+      div[data-head] { margin: 0; }
+    }
+
+    li.head h2 {
+      line-height: 1.7rem;
+      font-size: 1.1rem;
+
+      code {
+        font: revert;
+      }
+    }
+
+    li.head p {
+      margin: 0;
+    }
+
+    #log2screen li div.normal li {
+      list-style: none;
+      margin-left: -3em;
+    }
+
+    a {
+      background-color: #FFF !important;
+
+      &[target]:before {
+        color: rgba(0, 0, 238, 0.7);
+        vertical-align: baseline;
+        font-weight: bold;
+        font-family: system-ui;
+        font-size: 1em;
+        display: inline-block;
+        margin-right: 3px;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &[target]:hover::after {
+        content: 'Opens in new tab/window';
+        font-size: 0.7rem;
+        position: absolute;
+        z-index: 2;
+        display: inline-block;
+        padding: 3px 6px;
+        border: 1px solid #777;
+        box-shadow: 1px 1px 5px #777;
+        margin: 1rem 0 0 -1rem;
+        background-color: #FFF;
+        font-weight: normal;
+        color: #444;
+      }
+
+      &[target="_top"]:hover::after {
+        content: 'Opens in this tab';
+      }
+    }
+
+    button {
+      &[data-should] {
+        margin-top: 0.3rem;
+      }
+      &[data-should]:before {
+        content: attr(data-should);
+      }
+    }
+
+    #showNwYear i {
+      color: #b34b44;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 5px;
+      background-color: #FFFFAA;
+
+      &:before {
+        content: 'Sure. Until next new year\1F389 lasts: ';
+        margin-bottom: -1em;
+      }
+   }
+  }
+}
