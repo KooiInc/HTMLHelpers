@@ -8,6 +8,14 @@ import {
 } from "../../Bundle/htmlhelpers.min.js";
 window.$ = $;
 $.allowTags(`meta`, `template`, `link`);
+$.allowAttributes(`target`);
+const moduleOrBrowserLink = $.a({
+  class: "ExternalLink arrow",
+  target: "_top",
+  href: "./indexBrowser.html",
+  html: "Examples <i>browser</i> version"
+});
+// ---
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
@@ -15,15 +23,9 @@ $.fn(`asHead`, me => me.data.set({header: "true"}));
 const usedCodeFile = `./index.js`;
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
-const moduleOrBrowserLink = $.a({
-  class: "ExternalLink arrow",
-  target: "_top",
-  href: "./indexBrowser.html",
-  html: " examples <i>browser</i> version"
-});
 
-// set page styling
-initStyling();
+// initialize
+init();
 
 // wrap logging within a container element
 $.div({class: "container"}).append($(`#log2screen`)).render;
@@ -40,21 +42,21 @@ const later = $D({locale: "nl", timeZone: "Europe/Amsterdam"})
   .toString({template: "WD dd MM yyyy hh:mmi:ss (tz)"});
 
 log(
-   // styling
-   $.h3(`Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
-   $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))).asHead(),
-   
-   // regex
-   $.h3("Is ",
-     $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
-     " (exposed as <code>createRE</code>) available?"),
-   codeBlocks.createReEx,
-   $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`).asHead(),
+  // styling
+  $.h3(`Did the custom styling (`, $.code(`$.editCssRules`), `) work?`),
+  $.div(`Sure: `, $.code(`Code style`), ` works ...`, $.i($.b({class: "note"}, ` note style too`))).asHead(),
+  
+  // regex
+  $.h3("Is ",
+    $.a({href: `https://kooiinc.codeberg.page/RegExHelper/Demo/`, target: `_blank`, text: `regexhelper`}),
+    " (exposed as <code>createRE</code>) available?"),
+  codeBlocks.createReEx,
+  $.div($.span(`Sure: `), $.b( `myRE =&gt;`), ` <code>${myRE}</code>`).asHead(),
   
   // splat examples
   $.h3(`Can we use `,
-      $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
-      ` (splat-es)?`,
+    $.a({href: `https://kooiinc.codeberg.page/splatES/Demo/`, target: `_blank`, text: `splat`}),
+    ` (splat-es)?`,
     $.div({class: `normal`},
       `<b class="note">Note</b>: <code>splat-es</code> includes a
       symbolic String prototype extension called <code>Symbol.for("interpolate")</code>.`)
@@ -73,7 +75,7 @@ log(
     $.div({class: "normal"}, `<b>helloWorld5</b> => ${
       "Hello {wrld}"[splatMe$]({wrld: `world; `}, {world: "<i>universe</i>"})}`)
   ).asHead(),
-
+  
   // ticktock availability
   $.h3(`Is `,
     $.a({href: `https://kooiinc.github.io/ticktock.js/Demo/`, target: `_blank`, text: `ticktock-es`}),
@@ -147,14 +149,14 @@ logTop(
     `)`
   ).asHead(),
   $.h1({class: "mainHeader"}, `Examples/tests HTMLHelpers`).asHead(),
-    $.div(
-      {data: {header: 1}, class: "normal"},
-      $.a({
-        class: "ExternalLink arrow",
-        target: "_blank",
-        href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
-        text: " JQx ($) full documentation"
-      })
+  $.div(
+    {data: {header: 1}, class: "normal"},
+    $.a({
+      class: "ExternalLink arrow",
+      target: "_blank",
+      href: "https://kooiinc.codeberg.page/JQx/Resource/Docs/",
+      text: "JQx ($) full documentation"
+    })
   ),
   $.div(
     {data: {header: 1}, class: "normal"},
@@ -162,14 +164,14 @@ logTop(
       class: "ExternalLink arrow",
       target: "_top",
       href: "https://codeberg.org/KooiInc/HtmlHelpers",
-      text: " Codeberg repository"
+      text: "Codeberg repository"
     }),
     ` | `,
     $.a({
       class: "ExternalLink arrow",
       target: "_top",
       href: "https://github.com/KooiInc/HTMLHelpers",
-      text: " (synced) Github repository"
+      text: "(synced) Github repository"
     }),
     ` | `, moduleOrBrowserLink,
   ),
@@ -187,7 +189,7 @@ function countDownUntil(displayElement, until) {
       .clear()
       .html(`<i>${$D.now.differenceTo(until).full}</i>`);
   }
-
+  
   function run(stop = false) {
     switch (true) {
       case stop: clearAllTimers(); return stop;
@@ -223,171 +225,21 @@ async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
   const blocks = $.div(templates.split(`<body>`)[1].split(`</body>`)[0]);
   
   blocks.node.querySelectorAll(`template`)
-   .forEach(t => {
-     let content = t.content;
-     codeBlocks[t.id] =
-      t.dataset.isHtml
-      ? $.virtual(t.innerHTML)
-      : $.pre(
-         {data: {header: 1}, class: `codebox`},
-        $.code($.escHtml(content.textContent.trim())) );
-   });
+    .forEach(t => {
+      let content = t.content;
+      codeBlocks[t.id] =
+        t.dataset.isHtml
+          ? $.virtual(t.innerHTML)
+          : $.pre(
+            {data: {header: 1}, class: `codebox`},
+            $.code($.escHtml(content.textContent.trim())) );
+    });
   codeBlocks.pageCode = await codeElem(usedCodeFile);
   return codeBlocks;
 }
 
-// page styling (using $.editCssRules)
-function initStyling() {
+function init() {
   const prefix = /codeberg/i.test(location.href) ? `CB` : `GH`;
   $.link({href: `./codebergicon.ico`, rel: `icon`, type: `image/x-icon`}).appendTo($(`head`));
   $.img({src: `https://sdn.nicon.nl/px0_${prefix}-HTMLHelpersDemo.png`});
-  // style rules are stored in <head>style#JQxStylesheet
-  $.editCssRules(
-    `body {
-      margin: 2rem;
-      overflow-x: hidden;
-      font: 14px/17px monospace, Arial, sans-serif;
-    }`,
-    `.container {
-      width: 100vw;
-      height: 100vh;
-      margin: 0;
-      inset: 0;
-      position: absolute;
-
-      ul#log2screen {
-        li:not(.head) {
-          color: #c54343;
-          font-family: georgia, serif;
-          font-style: italic;
-          line-height: 1.3em;
-          
-          code {
-            font-style: inherit;
-            color: inherit;
-          }
-          
-          ul {
-            li { color: revert; }
-          }
-        }
-        max-width: 40vw;
-        margin: 4rem auto;
-
-        @media(width <= 1600px) {
-          max-width: 60vw;
-        }
-      }
-    }`,
-    `div.spacer {
-      height: 2rem;
-    }`,
-    `p.spacer {
-      height: 1rem;
-    }`,
-    `details {
-      summary {
-        cursor: pointer;
-        font-size: 1.2rem;
-      }
-    }`,
-    `code.codeblock {
-      margin: 0.5rem 0px 0.5rem;
-      color: var(--code-color);
-      border-radius: 4px;
-      box-shadow: 1px 2px 8px #777;
-      width: 100%;
-     }`,
-    `pre.codebox {
-      max-height: 40vh;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 1px 2px 8px #777;
-    }`,
-    `.note {color: red; }`,
-    `h2 {font-size: 1.1rem; line-height: 1.4rem}`,
-    `.mainHeader {
-      margin: 1rem 0 1rem 0;
-      text-align: center;
-      border-bottom: 1px solid var(--grey-default);
-      border-top: 1px solid var(--grey-default);
-      padding: 0.5rem 0 0.7rem 0;
-    }`,
-    `li.head {
-      color: #777 !important;
-      div.normal {
-        font-weight: normal;
-        margin: 0.3rem 0;
- 
-        ul li {
-          color: revert !important;
-          font-family: revert !important;
-        }
-      }
-      span.normal {
-        font-weight: normal;
-        color: #000;
-      }
-      div.moreSpace {
-        margin-bottom: 1em;
-      }
-      div[data-head] { margin: 0; }
-    }`,
-    `li.head h2 {
-      lineHeight: 1.7rem;
-      font-size: 1.1rem;
-      code {
-        font: revert;
-      }
-    }`,
-    `li.head p {
-      margin: 0;
-    }`,
-    `#log2screen li div.normal li {
-      list-style: none;
-      margin-left: -3em;
-    }`,
-    `a {
-      background-color: #FFF !important;
-      &:hover {
-        text-decoration: none;
-      }
-      &[target]:hover::after {
-        content: 'Opens in new tab/window';
-        fontSize: 0.7rem;
-        position: absolute;
-        zIndex: 2;
-        display: inline-block;
-        padding: 3px 6px;
-        border: 1px solid #777;
-        box-shadow: 1px 1px 5px #777;
-        margin: 1rem 0 0 -1rem;
-        background-color: #FFF;
-        font-weight: normal;
-        color: #444;
-      }
-      
-      &[target="_top"]:hover::after {
-        content: 'Opens in this tab';
-      }
-    }`,
-    `#showNwYear i {
-      color: #b34b44;
-      font-weight: bold;
-      margin-top: 1rem;
-      display: inline-block;
-      padding: 5px;
-      background-color: #FFFFAA;
-    }`,
-    `#showNwYear:before {
-      content: 'Sure. Until next new year\\1F389 lasts: ';
-      margin-bottom: -1em;
-    }`,
-    `[data-should] {
-      margin-top: 0.3rem;
-    }`,
-    `[data-should]:before {
-      content: attr(data-should);
-    }`,
-  );
 }
