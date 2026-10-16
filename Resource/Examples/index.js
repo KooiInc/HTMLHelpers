@@ -7,10 +7,11 @@ import {
   splatModule,
 } from "../../Bundle/htmlhelpers.min.js";
 window.$ = $;
+$.allowTags(`meta`, `template`, `link`);
 const {interpolate: splat, addSymbolicStringExtensions} = splatModule;
 const { log, logTop } = logFactory(); // initialize logging (to screen)
 const {DIV, button: $BUTTON} = $;     // html elements can be created with a function
-$.fn(`asHead`, me => me.data.set({header: 1}));
+$.fn(`asHead`, me => me.data.set({header: "true"}));
 const usedCodeFile = `./index.js`;
 const codeBlocks = await retrieveCodeBlocksFromHTMLTemplatesFile(`./templates.html`);
 const [splatMe, splatMe$] = addSymbolicStringExtensions();
@@ -29,7 +30,8 @@ $.div({class: "container"}).append($(`#log2screen`)).render;
 
 // myRE assignment
 const myRE = createRE`
-    ^[\p{L}]              //=> always start with a letter    [\p{L}_\.#\-\d+~=!]+  //=> followed by letters including _ . # - 0-9 ~ = or !
+    ^[\p{L}]              //=> always start with a letter
+    [\p{L}_\.#\-\d+~=!]+  //=> followed by letters including _ . # - 0-9 ~ = or !
     ${[...'gui']}         //=> flags ([g]lobal, case [i]nsensitive, [u]nicode)`;
 
 // ticktock assignment
@@ -125,7 +127,7 @@ bttnDiv.first$(`button`).trigger("click");
 // add links and used code
 log(
   $.h3(`Modules included in the stackblitzhelpers module`),
-  codeBlocks.links.asHead(),
+  codeBlocks.mylinks.asHead(),
   $.details({data: {header: 1}},
     $.summary($.b(`Code used to create this page`)),
     codeBlocks.pageCode),
@@ -173,6 +175,8 @@ logTop(
   ),
 );
 
+setTimeout(() => $.prohibitTag(`meta`, `template`, `link`), 2000);
+
 // count down factory
 function countDownUntil(displayElement, until) {
   let to;
@@ -214,11 +218,9 @@ async function codeElem(codeFile) {
 
 // retrieve code-/html blocks
 async function retrieveCodeBlocksFromHTMLTemplatesFile(templatesFile) {
-  $.allowTag(`template`);
   const codeBlocks = {};
-  const templates = await fetch(templatesFile)
-    .then(r => r.text());
-  const blocks = $.div(templates);
+  const templates = await fetch(templatesFile).then(r => r.text());
+  const blocks = $.div(templates.split(`<body>`)[1].split(`</body>`)[0]);
   
   blocks.node.querySelectorAll(`template`)
    .forEach(t => {
