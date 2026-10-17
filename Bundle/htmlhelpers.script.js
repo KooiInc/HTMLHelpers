@@ -22,7 +22,7 @@ var HTMLHelpers = (() => {
   // ../index.js
   var index_exports = {};
   __export(index_exports, {
-    $: () => Na,
+    $: () => va,
     $D: () => f,
     logFactory: () => logFactory,
     regexhelper: () => REHelper_default,
@@ -32,220 +32,220 @@ var HTMLHelpers = (() => {
   // ../Resource/Externals/jqx.min.js
   var Q = /* @__PURE__ */ Symbol.for("toa.symbols");
   Object[Q] = Object.create(null, {});
-  var { IS: p, isOnly: Ms, maybe: Lt, $Wrap: Ps, isNothing: Wo, addSymbolicExtensions: ur, proxyWrapper: he } = Jo({ useSymbolicExtensions: false });
-  function Jo(e = {}) {
-    let { useSymbolicExtensions: t } = e, n = Yo(), { shouldbeIsSingleObject: r, ISOneOf: i, isExcept: a, verifyNothingness: l, determineType: w, addSymbolicExtensions: S2, maybe: x2, $Wrap: g, detectableProxy: b } = Qo(y, t), T = b;
-    t && S2();
-    let _2 = Object[Q];
-    return { IS: y, isOnly: E2, maybe: x2, $Wrap: g, isNothing: l, addSymbolicExtensions: S2, proxyWrapper: T };
-    function y(m, ...c) {
-      let h2 = Object.getOwnPropertySymbols(m || {})?.some((D2) => D2 === _2.justME) && c.length > 0, A2 = m?.[_2.justME], N2 = h2 ? A2 : typeof m == "symbol" ? _2.isSymbol : m;
+  var { IS: p, isOnly: Fs, maybe: Lt, $Wrap: Hs, isNothing: Qo, addSymbolicExtensions: dr, proxyWrapper: ye } = Go({ useSymbolicExtensions: false });
+  function Go(e = {}) {
+    let { useSymbolicExtensions: t } = e, n = Xo(), { shouldbeIsSingleObject: r, ISOneOf: i, isExcept: a, verifyNothingness: c, determineType: x2, addSymbolicExtensions: _2, maybe: w, $Wrap: g, detectableProxy: b } = Yo(y, t), T = b;
+    t && _2();
+    let A2 = Object[Q];
+    return { IS: y, isOnly: S2, maybe: w, $Wrap: g, isNothing: c, addSymbolicExtensions: _2, proxyWrapper: T };
+    function y(m, ...l) {
+      let h2 = Object.getOwnPropertySymbols(m || {})?.some((D2) => D2 === A2.justME) && l.length > 0, E2 = m?.[A2.justME], N2 = h2 ? E2 : typeof m == "symbol" ? A2.isSymbol : m;
       switch (true) {
         case h2:
-          return n(A2, ...c);
-        case !!x2({ trial: (D2) => "isTypes" in (c?.[0] ?? {}) }):
-          return r(m, c[0]);
+          return n(E2, ...l);
+        case !!w({ trial: (D2) => "isTypes" in (l?.[0] ?? {}) }):
+          return r(m, l[0]);
         default:
-          return c.length > 1 ? i(N2, ...c) : w(m, ...c);
+          return l.length > 1 ? i(N2, ...l) : x2(m, ...l);
       }
     }
-    function E2(m, ...c) {
-      return y({ [_2.justME]: m }, ...c);
+    function S2(m, ...l) {
+      return y({ [A2.justME]: m }, ...l);
     }
   }
-  function Qo(e, t) {
-    let { SymbolAndCustomProxyFactory: n, maybeFactory: r, WrapAnyFactory: i, verifyNothingness: a, determineType: l, detectableProxy: w } = Go(e, b), { addSymbolicExtensions: S2 } = n(e, b, t), [x2, g] = [r(), i(e, b)];
-    return Object.freeze({ shouldbeIsSingleObject: T, ISOneOf: _2, isExcept: E2, verifyNothingness: a, determineType: l, detectableProxy: w, addSymbolicExtensions: S2, maybe: x2, $Wrap: g });
+  function Yo(e, t) {
+    let { SymbolAndCustomProxyFactory: n, maybeFactory: r, WrapAnyFactory: i, verifyNothingness: a, determineType: c, detectableProxy: x2 } = Vo(e, b), { addSymbolicExtensions: _2 } = n(e, b, t), [w, g] = [r(), i(e, b)];
+    return Object.freeze({ shouldbeIsSingleObject: T, ISOneOf: A2, isExcept: S2, verifyNothingness: a, determineType: c, detectableProxy: x2, addSymbolicExtensions: _2, maybe: w, $Wrap: g });
     function b(m) {
       return m?.[Object[Q].proxy] || e(m);
     }
-    function T(m, c) {
+    function T(m, l) {
       switch (true) {
-        case "defaultValue" in c:
-          return y(m, c);
-        case "notTypes" in c:
-          return E2(m, c);
+        case "defaultValue" in l:
+          return y(m, l);
+        case "notTypes" in l:
+          return S2(m, l);
         default:
-          return e(m, ...[c.isTypes].flat());
+          return e(m, ...[l.isTypes].flat());
       }
     }
-    function _2(m, ...c) {
-      return c.some((h2) => e(m, h2));
+    function A2(m, ...l) {
+      return l.some((h2) => e(m, h2));
     }
-    function y(m, { defaultValue: c, isTypes: h2 = [void 0], notTypes: A2 } = {}) {
-      return h2 = h2?.constructor !== Array ? [h2] : h2, A2 = A2 && A2?.constructor !== Array ? [A2] : [], A2.length < 1 ? e(m, ...h2) ? m : c : E2(m, { isTypes: h2, notTypes: A2 }) ? m : c;
+    function y(m, { defaultValue: l, isTypes: h2 = [void 0], notTypes: E2 } = {}) {
+      return h2 = h2?.constructor !== Array ? [h2] : h2, E2 = E2 && E2?.constructor !== Array ? [E2] : [], E2.length < 1 ? e(m, ...h2) ? m : l : S2(m, { isTypes: h2, notTypes: E2 }) ? m : l;
     }
-    function E2(m, { isTypes: c = [void 0], notTypes: h2 = [void 0] } = {}) {
-      return c = c?.constructor !== Array ? [c] : c, h2 = h2?.constructor !== Array ? [h2] : h2, e(m, ...c) && !e(m, ...h2);
+    function S2(m, { isTypes: l = [void 0], notTypes: h2 = [void 0] } = {}) {
+      return l = l?.constructor !== Array ? [l] : l, h2 = h2?.constructor !== Array ? [h2] : h2, e(m, ...l) && !e(m, ...h2);
     }
   }
-  function Go() {
+  function Vo() {
     let e = Object[Q], t = { IS: "toa.is", TYPE: "toa.type", IS_SYMBOL: "toa.isASymbol", PROXY: "toa.proxyFor", TARGET: "toa.target", JUSTME: "toa.justME" }, n = { NAN: "NaN", INFINITY: "Infinity", BOOLEAN: "Boolean", OBJECT: "Object", PROXY_PREFIX: "Proxy for" }, r = i();
-    return Object.freeze({ SymbolAndCustomProxyFactory: l, maybeFactory: E2, WrapAnyFactory: y, verifyNothingness: m, determineType: x2, detectableProxy: r });
+    return Object.freeze({ SymbolAndCustomProxyFactory: c, maybeFactory: S2, WrapAnyFactory: y, verifyNothingness: m, determineType: w, detectableProxy: r });
     function i() {
-      let c = (N2) => ({ get(D2, G2) {
+      let l = (N2) => ({ get(D2, G2) {
         return G2 === Object[Q].proxy ? `Proxy for ${N2}` : G2 === Object[Q].target ? D2 : Reflect.get(D2, G2);
       }, has(D2, G2) {
         return G2 === Object[Q].proxy ? true : G2 in D2;
       } });
       function h2(N2) {
         let D2 = N2.name || N2.constructor.name;
-        return new Proxy(N2, c(D2));
+        return new Proxy(N2, l(D2));
       }
-      function A2(N2, D2) {
+      function E2(N2, D2) {
         return D2 = p(D2, Object) ? D2 : {}, h2(new Proxy(N2, D2));
       }
-      return { wrap: h2, create: A2 };
+      return { wrap: h2, create: E2 };
     }
-    function a(c, h2) {
+    function a(l, h2) {
       e.is || (e.is = Symbol(t.IS), e.type = Symbol(t.TYPE), Object.defineProperties(Object.prototype, { [e.type]: { get() {
         return h2(this);
-      }, enumerable: false, configurable: true }, [e.is]: { value: function(...A2) {
-        return c(this, ...A2);
-      }, enumerable: false, configurable: false } }), Object.defineProperties(Object, { [e.type]: { value(A2) {
-        return h2(A2);
-      }, enumerable: false, configurable: false }, [e.is]: { value: function(A2, ...N2) {
-        return c(A2, ...N2);
+      }, enumerable: false, configurable: true }, [e.is]: { value: function(...E2) {
+        return l(this, ...E2);
+      }, enumerable: false, configurable: false } }), Object.defineProperties(Object, { [e.type]: { value(E2) {
+        return h2(E2);
+      }, enumerable: false, configurable: false }, [e.is]: { value: function(E2, ...N2) {
+        return l(E2, ...N2);
       }, enumerable: false, configurable: false } }));
     }
-    function l(c, h2, A2) {
-      return e.isSymbol || (e.isSymbol = Symbol(t.IS_SYMBOL), e.proxy = Symbol(t.PROXY), e.target = Symbol(t.TARGET), e.justME = Symbol(t.JUSTME)), { addSymbolicExtensions: () => a(c, h2) };
+    function c(l, h2, E2) {
+      return e.isSymbol || (e.isSymbol = Symbol(t.IS_SYMBOL), e.proxy = Symbol(t.PROXY), e.target = Symbol(t.TARGET), e.justME = Symbol(t.JUSTME)), { addSymbolicExtensions: () => a(l, h2) };
     }
-    function w(c) {
-      return (Wo(c, true) ? { name: "unknown" } : Object.getPrototypeOf(c)?.constructor).name;
+    function x2(l) {
+      return (Qo(l, true) ? { name: "unknown" } : Object.getPrototypeOf(l)?.constructor).name;
     }
-    function S2(c, ...h2) {
-      let A2 = h2.length < 1, N2 = c == null;
-      return { noInput: N2, noShouldbe: A2, compareTo: !A2 && h2[0], inputCTOR: !N2 && (c?.constructor || Object.getPrototypeOf(c)?.constructor), isNaN: Number.isNaN(c) || Lt({ trial: (D2) => String(c) === n.NAN }), isInfinity: Lt({ trial: (D2) => String(c) }) === n.INFINITY, shouldBeFirstElementIsNothing: !A2 && m(h2[0]) };
+    function _2(l, ...h2) {
+      let E2 = h2.length < 1, N2 = l == null;
+      return { noInput: N2, noShouldbe: E2, compareTo: !E2 && h2[0], inputCTOR: !N2 && (l?.constructor || Object.getPrototypeOf(l)?.constructor), isNaN: Number.isNaN(l) || Lt({ trial: (D2) => String(l) === n.NAN }), isInfinity: Lt({ trial: (D2) => String(l) }) === n.INFINITY, shouldBeFirstElementIsNothing: !E2 && m(h2[0]) };
     }
-    function x2(c, ...h2) {
-      let { noInput: A2, noShouldbe: N2, compareTo: D2, inputCTOR: G2, isNaN: X2, isInfinity: Et, shouldBeFirstElementIsNothing: ie2 } = S2(c, ...h2);
+    function w(l, ...h2) {
+      let { noInput: E2, noShouldbe: N2, compareTo: D2, inputCTOR: G2, isNaN: X2, isInfinity: Et, shouldBeFirstElementIsNothing: se2 } = _2(l, ...h2);
       switch (h2 = h2.length && h2[0], true) {
-        case ie2:
-          return String(c) === String(D2);
-        case (c?.[Object[Q].proxy] && N2):
-          return c[Object[Q].proxy];
-        case (c?.[Object[Q].proxy] && typeof h2 == "string"):
-          return c[Object[Q].proxy].toLowerCase() === h2.toLowerCase();
+        case se2:
+          return String(l) === String(D2);
+        case (l?.[Object[Q].proxy] && N2):
+          return l[Object[Q].proxy];
+        case (l?.[Object[Q].proxy] && typeof h2 == "string"):
+          return l[Object[Q].proxy].toLowerCase() === h2.toLowerCase();
         case X2:
-          return N2 ? n.NAN : String(D2) === String(c);
+          return N2 ? n.NAN : String(D2) === String(l);
         case Et:
-          return N2 ? n.INFINITY : String(D2) === String(c);
-        case A2:
-          return N2 ? String(c) : String(D2) === String(c);
+          return N2 ? n.INFINITY : String(D2) === String(l);
+        case E2:
+          return N2 ? String(l) : String(D2) === String(l);
         case G2 === Boolean:
           return N2 ? n.BOOLEAN : G2 === h2;
         default:
-          return b(c, h2, N2, g(c, G2));
+          return b(l, h2, N2, g(l, G2));
       }
     }
-    function g(c, h2) {
+    function g(l, h2) {
       switch (true) {
-        case c === 0:
+        case l === 0:
           return Number;
-        case c === "":
+        case l === "":
           return String;
-        case !c:
-          return { name: String(c) };
+        case !l:
+          return { name: String(l) };
         default:
           return h2;
       }
     }
-    function b(c, h2, A2, N2) {
+    function b(l, h2, E2, N2) {
       switch (true) {
-        case (!A2 && h2 === c || c?.[Object[Q].proxy] && h2 === Proxy):
+        case (!E2 && h2 === l || l?.[Object[Q].proxy] && h2 === Proxy):
           return true;
         case String(h2) === n.NAN:
-          return String(c) === n.NAN;
-        case (c?.[Symbol.toStringTag] && typeof h2 == "string"):
-          return String(h2) === c[Symbol.toStringTag];
+          return String(l) === n.NAN;
+        case (l?.[Symbol.toStringTag] && typeof h2 == "string"):
+          return String(h2) === l[Symbol.toStringTag];
         default:
-          return h2 ? _2(c, h2, N2) : T(c, N2);
+          return h2 ? A2(l, h2, N2) : T(l, N2);
       }
     }
-    function T(c, h2) {
-      return (c?.[Symbol.toStringTag] ?? c?.prototype?.[Symbol.toStringTag]) || h2?.name || String(h2);
+    function T(l, h2) {
+      return (l?.[Symbol.toStringTag] ?? l?.prototype?.[Symbol.toStringTag]) || h2?.name || String(h2);
     }
-    function _2(c, h2, A2) {
-      return Lt({ trial: (N2) => c instanceof h2 }) || h2 === A2 || h2 === Object.getPrototypeOf(A2) || `${h2?.name}` === A2?.name;
+    function A2(l, h2, E2) {
+      return Lt({ trial: (N2) => l instanceof h2 }) || h2 === E2 || h2 === Object.getPrototypeOf(E2) || `${h2?.name}` === E2?.name;
     }
-    function y(c, h2) {
-      return function(A2) {
+    function y(l, h2) {
+      return function(E2) {
         let N2 = { get value() {
-          return A2;
+          return E2;
         }, is(...D2) {
-          return c(A2, ...D2);
+          return l(E2, ...D2);
         }, get type() {
-          return h2(A2);
+          return h2(E2);
         } };
         return Object[Object[Q].type] && Object.defineProperties(N2, { [Object[Q].type]: { get() {
-          return h2(A2);
+          return h2(E2);
         } }, [Object[Q].is]: { value(...D2) {
-          return c(A2, ...D2);
+          return l(E2, ...D2);
         } } }), Object.freeze(N2);
       };
     }
-    function E2() {
-      let c = (h2) => {
+    function S2() {
+      let l = (h2) => {
       };
-      return function({ trial: h2, whenError: A2 = c } = {}) {
+      return function({ trial: h2, whenError: E2 = l } = {}) {
         try {
           return h2();
         } catch (N2) {
-          return A2(N2);
+          return E2(N2);
         }
       };
     }
-    function m(c, h2 = false) {
-      let A2 = c == null;
-      return A2 = h2 ? A2 || p(c, 1 / 0) || p(c, NaN) : A2, A2;
+    function m(l, h2 = false) {
+      let E2 = l == null;
+      return E2 = h2 ? E2 || p(l, 1 / 0) || p(l, NaN) : E2, E2;
     }
   }
-  function Yo() {
+  function Xo() {
     let e = new Intl.Collator("en", { sensitivity: "base" }), t = (i) => typeof i?.constructor == "function" ? i?.name || i?.constructor?.name : typeof i == "string" ? i : typeof i, n = (i) => [null, void 0, 1 / 0, NaN].some((a) => a === i);
     function r(i, a) {
       if (a !== i && (n(i) || a === Number && (Number.isNaN(i) || !Number.isFinite(i)))) return false;
-      let [l, w] = [t(i), t(a)];
-      return i?.[Object[Q].proxy] === a || a === i?.name || e.compare(l, w) === 0 || e.compare(i.constructor?.name, a?.name) === 0 || i.constructor?.name === a || l === a || e.compare(Object.prototype.toString.call(i), `[object ${w}]`) === 0;
+      let [c, x2] = [t(i), t(a)];
+      return i?.[Object[Q].proxy] === a || a === i?.name || e.compare(c, x2) === 0 || e.compare(i.constructor?.name, a?.name) === 0 || i.constructor?.name === a || c === a || e.compare(Object.prototype.toString.call(i), `[object ${x2}]`) === 0;
     }
-    return function(a, ...l) {
-      if (Array.isArray(l) && l.length > 1) {
-        for (let w of l) if (r(a, w)) return true;
+    return function(a, ...c) {
+      if (Array.isArray(c) && c.length > 1) {
+        for (let x2 of c) if (r(a, x2)) return true;
         return false;
       }
-      return r(a, l?.[0]);
+      return r(a, c?.[0]);
     };
   }
-  var zt = Xo();
-  var Vo = ti();
-  var fr = { html: "innerHTML", text: "textContent", class: "className" };
-  function Xo() {
+  var Ut = Ko();
+  var Zo = ni();
+  var mr = { html: "innerHTML", text: "textContent", class: "className" };
+  function Ko() {
     let e = new Intl.Collator("en", { sensitivity: "base" }), t = (i) => typeof i?.constructor == "function" ? i?.name || i?.constructor?.name : typeof i == "string" ? i : typeof i, n = (i) => [null, void 0, 1 / 0, NaN].some((a) => a === i);
     function r(i, a) {
       if (true === (a !== i && (n(i) || a === Number && (Number.isNaN(i) || !Number.isFinite(i))))) return false;
       {
-        let [l, w] = [t(i), t(a)];
-        return i?.[Symbol.proxy] === a || a === i?.name || e.compare(l, w) === 0 || e.compare(i.constructor?.name, a?.name) === 0 || i.constructor?.name === a || l === a || e.compare(Object.prototype.toString.call(i), `[object ${w}]`) === 0;
+        let [c, x2] = [t(i), t(a)];
+        return i?.[Symbol.proxy] === a || a === i?.name || e.compare(c, x2) === 0 || e.compare(i.constructor?.name, a?.name) === 0 || i.constructor?.name === a || c === a || e.compare(Object.prototype.toString.call(i), `[object ${x2}]`) === 0;
       }
     }
-    return function(a, ...l) {
-      if (Array.isArray(l) && l.length > 1) {
-        for (let w of l) if (r(a, w)) return true;
+    return function(a, ...c) {
+      if (Array.isArray(c) && c.length > 1) {
+        for (let x2 of c) if (r(a, x2)) return true;
         return false;
       }
-      return r(a, l?.[0]);
+      return r(a, c?.[0]);
     };
   }
-  function Zo([e, ...t]) {
+  function qo([e, ...t]) {
     return `${e.toUpperCase()}${t.join("")}`;
   }
-  function Ko(e) {
+  function ti(e) {
     return e.replace(/[A-Z]/g, (t) => `-${t.toLowerCase()}`).replace(/^-|-$/, "");
   }
-  function qo(e) {
-    return zt(e, String) ? e.toLowerCase().split("-").map((t, n) => n && `${Zo(t)}` || t).join("") : e;
+  function ei(e) {
+    return Ut(e, String) ? e.toLowerCase().split("-").map((t, n) => n && `${qo(t)}` || t).join("") : e;
   }
-  function ti() {
+  function ni() {
     let e = (t) => {
     };
     return function({ trial: t, whenError: n = e } = {}) {
@@ -256,157 +256,157 @@ var HTMLHelpers = (() => {
       }
     };
   }
-  function ei(e) {
+  function ri(e) {
     return Object.fromEntries(Object.entries(Object.getOwnPropertyDescriptors(e)));
   }
-  function ni(e) {
+  function oi(e) {
     if (Object.keys(e).length < 1) return { assignable: {}, specials: [...Array(3)] };
-    let t = ri(e);
+    let t = ii(e);
     return Object.keys(e).forEach((n) => {
       let r = n.toLowerCase();
-      r in fr && (e[fr[r]] = e[n]) && delete e[n];
+      r in mr && (e[mr[r]] = e[n]) && delete e[n];
     }), { assignable: e, specials: t };
   }
-  function ri(e) {
-    if (e = zt(e, Object) && e || void 0, !e) return Array(3);
+  function ii(e) {
+    if (e = Ut(e, Object) && e || void 0, !e) return Array(3);
     let t = Object.entries(e.data ?? {}), n = Object.entries(e.attributes ?? {}), r = e.class?.split(/[ ,]/).map((i) => i.trim()).filter((i) => i.length > 1);
     return delete e.data, delete e.attributes, delete e.class, [t, n, r];
   }
-  function oi(e) {
+  function si(e) {
     return e?.constructor === Comment ? e?.textContent : String(e);
   }
-  function ln(e) {
+  function dn(e) {
     return /comment/i.test(e);
   }
-  function gr(e, t) {
-    return !ln(t) && zt(e, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(e);
+  function yr(e, t) {
+    return !dn(t) && Ut(e, String) && /<.*>|&[#|0-9a-z]+[^;];/i.test(e);
   }
-  function ii(e) {
+  function ai(e) {
     return e = e.toLowerCase(), typeof e == "string" && e.length > 0 && /^[a-z]/.test(e) && /^[a-z0-9-]+$/gi.test(e);
   }
-  function si(e, t, n) {
-    return ii(e) && (e in t || !zt(n(e), HTMLUnknownElement));
+  function ci(e, t, n) {
+    return ai(e) && (e in t || !Ut(n(e), HTMLUnknownElement));
   }
-  var ye = Object.create(null, {});
   var be = Object.create(null, {});
-  var hr = (e) => {
+  var Te = Object.create(null, {});
+  var br = (e) => {
     console.error(`tinyDOM error: "${e}" is not a valid HTML tag`);
   };
-  var ut = ai();
-  function ai() {
-    return Object.seal(new Proxy(ye, yr()));
+  var ut = li();
+  function li() {
+    return Object.seal(new Proxy(be, Tr()));
   }
-  function yr() {
+  function Tr() {
     return { get(e, t) {
       let n = String(t);
       switch (true) {
         case n in e:
           return e[n];
-        case si(n, be, Te):
-          return dr({ tag: n, key: t });
+        case ci(n, Te, Se):
+          return pr({ tag: n, key: t });
         default:
-          return dr({ tag: n, key: t, isError: true });
+          return pr({ tag: n, key: t, isError: true });
       }
     }, set(e, t, n) {
-      return t === "setError" && typeof n == "function" && (hr = n), true;
+      return t === "setError" && typeof n == "function" && (br = n), true;
     }, enumerable: false, configurable: false };
   }
-  function dr({ tag: e, key: t, custom: n, debug: r = false, isError: i = false } = {}) {
-    let a = ei(ye);
+  function pr({ tag: e, key: t, custom: n, debug: r = false, isError: i = false } = {}) {
+    let a = ri(be);
     if (i) return Object.defineProperty(a, e, { get() {
-      return (l) => hr(t) ?? "";
-    } }), mr(a, e);
+      return (c) => br(t) ?? "";
+    } }), gr(a, e);
     if (e.includes("-")) {
-      let [l, w] = e.includes("-") ? [e, qo(e)] : [Ko(e), e];
-      be[l] = l, be[w] = l, n = w;
+      let [c, x2] = e.includes("-") ? [e, ei(e)] : [ti(e), e];
+      Te[c] = c, Te[x2] = c, n = x2;
     }
     return n && Object.defineProperty(a, n, { get() {
-      return pr(e);
+      return hr(e);
     } }), Object.defineProperty(a, e, { get() {
-      return pr(e);
-    } }), mr(a, e);
+      return hr(e);
+    } }), gr(a, e);
   }
-  function mr(e, t) {
-    return ye = Object.seal(new Proxy(e, yr())), ye[t];
+  function gr(e, t) {
+    return be = Object.seal(new Proxy(e, Tr())), be[t];
   }
-  function ci(e, t, n) {
-    return t = t?.isJQx && t.node || (zt(t, Number) ? String(t) : t), Vo({ trial: (r) => gr(t) ? e.insertAdjacentHTML("beforeend", t) : e.append(t), whenError: (r) => console.info(`${n} not created, reason
+  function ui(e, t, n) {
+    return t = t?.isJQx && t.node || (Ut(t, Number) ? String(t) : t), Zo({ trial: (r) => yr(t) ? e.insertAdjacentHTML("beforeend", t) : e.append(t), whenError: (r) => console.info(`${n} not created, reason
 `, r) });
   }
-  function li(e, t, ...n) {
-    let r = ui(t, e);
-    return n?.forEach((i) => ci(r, i, e)), r;
-  }
-  function ui(e, t) {
-    switch (e = ln(t) ? oi(e) : e?.isJQx ? e.node : e, true) {
-      case zt(e, String):
-        return Te(t, gr(e, t) ? { html: e } : { text: e });
-      case e instanceof Node:
-        return fi(t, e);
-      default:
-        return Te(t, e);
-    }
-  }
-  function fi(e, t) {
-    let n = Te(e);
-    return n.append(t), n;
+  function fi(e, t, ...n) {
+    let r = di(t, e);
+    return n?.forEach((i) => ui(r, i, e)), r;
   }
   function di(e, t) {
+    switch (e = dn(t) ? si(e) : e?.isJQx ? e.node : e, true) {
+      case Ut(e, String):
+        return Se(t, yr(e, t) ? { html: e } : { text: e });
+      case e instanceof Node:
+        return mi(t, e);
+      default:
+        return Se(t, e);
+    }
+  }
+  function mi(e, t) {
+    let n = Se(e);
+    return n.append(t), n;
+  }
+  function pi(e, t) {
     let [n, r, i] = e;
-    n?.length && n.forEach(([a, l]) => t.dataset[a] = l), r?.length && r.forEach(([a, l]) => t.setAttribute(a, l)), i?.forEach((a) => t.classList.add(a));
+    n?.length && n.forEach(([a, c]) => t.dataset[a] = c), r?.length && r.forEach(([a, c]) => t.setAttribute(a, c)), i?.forEach((a) => t.classList.add(a));
   }
-  function Te(e, t) {
+  function Se(e, t) {
     t = t || {};
-    let { assignable: n, specials: r } = ni(t), i = Object.assign(ln(e) ? new Comment() : document.createElement(e), n);
-    return di(r, i), i;
+    let { assignable: n, specials: r } = oi(t), i = Object.assign(dn(e) ? new Comment() : document.createElement(e), n);
+    return pi(r, i), i;
   }
-  function pr(e) {
-    return e = be[e] ?? e, (t, ...n) => li(e, t, ...n);
+  function hr(e) {
+    return e = Te[e] ?? e, (t, ...n) => fi(e, t, ...n);
   }
-  var Yt = mi;
-  function mi({ styleSheet: e, createWithId: t } = {}) {
-    let { tryParseAtOrNestedRules: n, ruleExists: r, checkParams: i, sheet: a, removeRules: l, consider: w, currentSheetID: S2 } = pi({ styleSheet: e, createWithId: t });
-    function x2(y, E2) {
-      if (y && E2.removeProperties) {
-        Object.keys(E2.removeProperties).forEach((m) => y.style.removeProperty(br(m)));
+  var Vt = gi;
+  function gi({ styleSheet: e, createWithId: t } = {}) {
+    let { tryParseAtOrNestedRules: n, ruleExists: r, checkParams: i, sheet: a, removeRules: c, consider: x2, currentSheetID: _2 } = hi({ styleSheet: e, createWithId: t });
+    function w(y, S2) {
+      if (y && S2.removeProperties) {
+        Object.keys(S2.removeProperties).forEach((m) => y.style.removeProperty(Sr(m)));
         return;
       }
-      Object.entries(E2).forEach(([m, c]) => {
-        m = br(m.trim()), c = c.trim();
+      Object.entries(S2).forEach(([m, l]) => {
+        m = Sr(m.trim()), l = l.trim();
         let h2;
-        if (/!important/.test(c) && (c = c.slice(0, c.indexOf("!important")).trim(), h2 = "important"), !CSS.supports(m, c)) return console.error(`StylingFactory ${S2} error: '${m}' with value '${c}' not supported (yet)`);
-        Tr(() => y.style.setProperty(m, c, h2), `StylingFactory ${S2} (setRule4Selector) failed`);
+        if (/!important/.test(l) && (l = l.slice(0, l.indexOf("!important")).trim(), h2 = "important"), !CSS.supports(m, l)) return console.error(`StylingFactory ${_2} error: '${m}' with value '${l}' not supported (yet)`);
+        Er(() => y.style.setProperty(m, l, h2), `StylingFactory ${_2} (setRule4Selector) failed`);
       });
     }
-    function g(y, E2, m = a) {
-      if (y = y?.trim?.(), !p(y, String) || !y.length || /[;,]$/g.test(y)) return console.error(`StylingFactory ${S2} (setRules): [${y || "[no selector given]"}] is not a valid selector`);
-      if (E2.removeRule) return l(y);
-      let c = r(y, true), h2 = c || m.cssRules[m.insertRule(`${y} {}`, m.cssRules.length || 0)];
-      return w(() => x2(h2, E2), y, c);
+    function g(y, S2, m = a) {
+      if (y = y?.trim?.(), !p(y, String) || !y.length || /[;,]$/g.test(y)) return console.error(`StylingFactory ${_2} (setRules): [${y || "[no selector given]"}] is not a valid selector`);
+      if (S2.removeRule) return c(y);
+      let l = r(y, true), h2 = l || m.cssRules[m.insertRule(`${y} {}`, m.cssRules.length || 0)];
+      return x2(() => w(h2, S2), y, l);
     }
     function b(y) {
-      let E2 = y.trim().split(/{/, 2), m = E2.shift().trim();
-      if (!p(m, String) || !m?.trim()?.length) return console.error(`StylingFactory ${S2} (doParse): no (valid) selector could be extracted from rule ${un(y)}`);
-      let c = Ei(E2.shift());
-      return Tr(() => g(m, c), `StylingFactory ${S2} (setRules) failed`);
+      let S2 = y.trim().split(/{/, 2), m = S2.shift().trim();
+      if (!p(m, String) || !m?.trim()?.length) return console.error(`StylingFactory ${_2} (doParse): no (valid) selector could be extracted from rule ${mn(y)}`);
+      let l = _i(S2.shift());
+      return Er(() => g(m, l), `StylingFactory ${_2} (setRules) failed`);
     }
     function T(y) {
-      let E2 = n(y);
-      return E2.done ? E2.existing : b(y);
+      let S2 = n(y);
+      return S2.done ? S2.existing : b(y);
     }
-    function _2(y, E2) {
-      return y.trim().startsWith("@media") ? T(gi(y, E2)) : g(y, E2);
+    function A2(y, S2) {
+      return y.trim().startsWith("@media") ? T(yi(y, S2)) : g(y, S2);
     }
-    return function(y, E2 = {}) {
-      return i(y, E2) && (Object.keys(E2).length ? _2(y, E2) : T(y));
+    return function(y, S2 = {}) {
+      return i(y, S2) && (Object.keys(S2).length ? A2(y, S2) : T(y));
     };
   }
-  function pi({ styleSheet: e, createWithId: t }) {
+  function hi({ styleSheet: e, createWithId: t }) {
     let n = "Note: The rule or some of its properties may not be supported by your browser (yet)", r = `for style#${t}`;
     e = t ? i(t) : e;
     function i(T) {
-      let _2 = document.querySelector(`#${T}`)?.sheet;
-      if (_2) return _2;
+      let A2 = document.querySelector(`#${T}`)?.sheet;
+      if (A2) return A2;
       let y = Object.assign(document.createElement("style"), { id: T });
       return document.head.insertAdjacentElement("beforeend", y), y.sheet;
     }
@@ -414,147 +414,147 @@ var HTMLHelpers = (() => {
       return console.error(`StylingFactory ${r} [rule: ${T}]
     => @charset, @namespace and @import are not supported here`), { done: true };
     }
-    function l(T, _2) {
-      return [...e.rules].find((y) => _2 ? Sr(y.selectorText || "", T) : bi`${yi(T)}${[..."gim"]}`.test(y.cssText));
+    function c(T, A2) {
+      return [...e.rules].find((y) => A2 ? Ar(y.selectorText || "", T) : Si`${Ti(T)}${[..."gim"]}`.test(y.cssText));
     }
-    function w(T) {
+    function x2(T) {
       return /^@charset|@import|namespace/i.test(T.trim()) ? a(T) : T.match(/}/g)?.length > 1 ? { existing: g(T, 1), done: true } : { done: false };
     }
-    function S2(T) {
-      let _2 = [...e.cssRules].reduce((E2, m, c) => Sr(m.selectorText || "", T) && E2.concat(c) || E2, []), y = _2.length;
-      return _2.forEach((E2) => e.deleteRule(E2)), y > 0 ? console.info(`\u2714 Removed ${y} instance${y > 1 ? "s" : ""} of selector ${T} from ${r.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${T} does not exist in ${r.slice(4)}`);
+    function _2(T) {
+      let A2 = [...e.cssRules].reduce((S2, m, l) => Ar(m.selectorText || "", T) && S2.concat(l) || S2, []), y = A2.length;
+      return A2.forEach((S2) => e.deleteRule(S2)), y > 0 ? console.info(`\u2714 Removed ${y} instance${y > 1 ? "s" : ""} of selector ${T} from ${r.slice(4)}`) : console.info(`\u2714 Remove rule: selector ${T} does not exist in ${r.slice(4)}`);
     }
-    function x2(T, _2) {
-      return T && p(T, String) && T.trim().length > 0 && p(_2, Object) || (console.error(`StylingFactory ${r} called with invalid parameters`), false);
+    function w(T, A2) {
+      return T && p(T, String) && T.trim().length > 0 && p(A2, Object) || (console.error(`StylingFactory ${r} called with invalid parameters`), false);
     }
     function g(T) {
       T = T.trim();
-      let _2 = T.slice(0, T.indexOf("{")).trim(), y = !!l(_2);
+      let A2 = T.slice(0, T.indexOf("{")).trim(), y = !!c(A2);
       try {
         return e.insertRule(`${T}`, e.cssRules.length), y;
-      } catch (E2) {
-        return console.error(`StylingFactory ${r} (tryParse) ${E2.name} Error:
-${E2.message}
-Rule: ${un(T)}
+      } catch (S2) {
+        return console.error(`StylingFactory ${r} (tryParse) ${S2.name} Error:
+${S2.message}
+Rule: ${mn(T)}
 ${n}`), y;
       }
     }
-    function b(T, _2, y) {
+    function b(T, A2, y) {
       try {
         return T(), y;
-      } catch (E2) {
-        return console.error(`StylingFactory ${r} (tryAddOrModify) ${E2.name} Error:
-${E2.message}
-Rule: ${un(_2)}
+      } catch (S2) {
+        return console.error(`StylingFactory ${r} (tryAddOrModify) ${S2.name} Error:
+${S2.message}
+Rule: ${mn(A2)}
 ${n}`), y;
       }
     }
-    return { sheet: e, removeRules: S2, tryParseAtOrNestedRules: w, ruleExists: l, checkParams: x2, tryParse: g, consider: b, currentSheetID: r };
+    return { sheet: e, removeRules: _2, tryParseAtOrNestedRules: x2, ruleExists: c, checkParams: w, tryParse: g, consider: b, currentSheetID: r };
   }
-  function gi(e, t) {
-    return `${e.trim()} ${Object.entries(t).map(([n, r]) => `${n}: { ${hi(r)}`)}`;
+  function yi(e, t) {
+    return `${e.trim()} ${Object.entries(t).map(([n, r]) => `${n}: { ${bi(r)}`)}`;
   }
-  function un(e) {
+  function mn(e) {
     let t = (e || "NO RULE").trim().slice(0, 50).replace(/\n/g, "\\n").replace(/\s{2,}/g, " ");
     return e.length > t.length ? `${t.trim()}...truncated` : t;
   }
-  function hi(e) {
+  function bi(e) {
     return Object.entries(e).map(([t, n]) => `${t}: ${n.trim()}`).join(`;
 `);
   }
-  function yi(e) {
+  function Ti(e) {
     return e.replace(/([*\[\]()-+{}.$?\\])/g, (t) => `\\${t}`);
   }
-  function bi(e, ...t) {
+  function Si(e, ...t) {
     let n = t.length && Array.isArray(t.slice(-1)) ? t.pop().join("") : "";
     return new RegExp((t.length && e.raw.reduce((r, i, a) => r.concat(t[a - 1] || "").concat(i), "") || e.raw.join("")).split(`
 `).map((r) => r.replace(/\s|\/\/.*$/g, "").trim().replace(/(@s!)/g, " ")).join(""), n);
   }
-  function br(e) {
+  function Sr(e) {
     return e.replace(/[A-Z]/g, (t) => `-${t.toLowerCase()}`).replace(/[^--]^-|-$/, "");
   }
-  function Tr(e, t) {
+  function Er(e, t) {
     try {
       return e();
     } catch (n) {
       console.error(`${t || "an error occured"}: ${n.message}`);
     }
   }
-  function Ti(e) {
+  function Ei(e) {
     return e.replace(/\/\*.+?\*\//gm, "").replace(/[}{\r\n]/g, "").replace(/(data:.+?);/g, (t, n) => `${n}\\3b`).split(";").map((t) => t.trim()).join(`;
 `).replaceAll("\\3b", ";").split(`
 `);
   }
-  function Si(e) {
+  function Ai(e) {
     return e.reduce((t, n) => {
       let [r, i] = [n.slice(0, n.indexOf(":")).trim(), n.slice(n.indexOf(":") + 1).trim().replace(/;$|;.+(?=\/*).+\/$/, "")];
       return r && i ? { ...t, [r]: i } : t;
     }, {});
   }
-  function Ei(e) {
-    return Si(Ti(e));
+  function _i(e) {
+    return Ai(Ei(e));
   }
-  function Sr(e, t) {
+  function Ar(e, t) {
     return e?.replace("::", ":") === t?.replace("::", ":");
   }
-  function Ai(e, t) {
+  function wi(e, t) {
     this.v = e, this.k = t;
   }
-  function Er(e, t) {
+  function _r(e, t) {
     (t == null || t > e.length) && (t = e.length);
     for (var n = 0, r = Array(t); n < t; n++) r[n] = e[n];
     return r;
   }
-  function _i(e) {
+  function xi(e) {
     if (Array.isArray(e)) return e;
   }
-  function wi(e, t) {
+  function Oi(e, t) {
     var n = e == null ? null : typeof Symbol < "u" && e[Symbol.iterator] || e["@@iterator"];
     if (n != null) {
-      var r, i, a, l, w = [], S2 = true, x2 = false;
+      var r, i, a, c, x2 = [], _2 = true, w = false;
       try {
         if (a = (n = n.call(e)).next, t === 0) {
           if (Object(n) !== n) return;
-          S2 = false;
-        } else for (; !(S2 = (r = a.call(n)).done) && (w.push(r.value), w.length !== t); S2 = true) ;
+          _2 = false;
+        } else for (; !(_2 = (r = a.call(n)).done) && (x2.push(r.value), x2.length !== t); _2 = true) ;
       } catch (g) {
-        x2 = true, i = g;
+        w = true, i = g;
       } finally {
         try {
-          if (!S2 && n.return != null && (l = n.return(), Object(l) !== l)) return;
+          if (!_2 && n.return != null && (c = n.return(), Object(c) !== c)) return;
         } finally {
-          if (x2) throw i;
+          if (w) throw i;
         }
       }
-      return w;
+      return x2;
     }
   }
-  function xi() {
+  function Li() {
     throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
   }
-  function Oi(e, t) {
-    return _i(e) || wi(e, t) || Li(e, t) || xi();
+  function Ni(e, t) {
+    return xi(e) || Oi(e, t) || Ri(e, t) || Li();
   }
-  function Li(e, t) {
+  function Ri(e, t) {
     if (e) {
-      if (typeof e == "string") return Er(e, t);
+      if (typeof e == "string") return _r(e, t);
       var n = {}.toString.call(e).slice(8, -1);
-      return n === "Object" && e.constructor && (n = e.constructor.name), n === "Map" || n === "Set" ? Array.from(e) : n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? Er(e, t) : void 0;
+      return n === "Object" && e.constructor && (n = e.constructor.name), n === "Map" || n === "Set" ? Array.from(e) : n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? _r(e, t) : void 0;
     }
   }
-  function Se(e) {
+  function Ee(e) {
     var t, n;
-    function r(a, l) {
+    function r(a, c) {
       try {
-        var w = e[a](l), S2 = w.value, x2 = S2 instanceof Ai;
-        Promise.resolve(x2 ? S2.v : S2).then(function(g) {
-          if (x2) {
-            var b = a === "return" && S2.k ? a : "next";
-            if (!S2.k || g.done) return r(b, g);
+        var x2 = e[a](c), _2 = x2.value, w = _2 instanceof wi;
+        Promise.resolve(w ? _2.v : _2).then(function(g) {
+          if (w) {
+            var b = a === "return" && _2.k ? a : "next";
+            if (!_2.k || g.done) return r(b, g);
             g = e[b](g).value;
           }
-          i(!!w.done, g);
+          i(!!x2.done, g);
         }, function(g) {
           r("throw", g);
         });
@@ -562,301 +562,301 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         i(2, g);
       }
     }
-    function i(a, l) {
-      a === 2 ? t.reject(l) : t.resolve({ value: l, done: a }), (t = t.next) ? r(t.key, t.arg) : n = null;
+    function i(a, c) {
+      a === 2 ? t.reject(c) : t.resolve({ value: c, done: a }), (t = t.next) ? r(t.key, t.arg) : n = null;
     }
-    this._invoke = function(a, l) {
-      return new Promise(function(w, S2) {
-        var x2 = { key: a, arg: l, resolve: w, reject: S2, next: null };
-        n ? n = n.next = x2 : (t = n = x2, r(a, l));
+    this._invoke = function(a, c) {
+      return new Promise(function(x2, _2) {
+        var w = { key: a, arg: c, resolve: x2, reject: _2, next: null };
+        n ? n = n.next = w : (t = n = w, r(a, c));
       });
     }, typeof e.return != "function" && (this.return = void 0);
   }
-  Se.prototype[typeof Symbol == "function" && Symbol.asyncIterator || "@@asyncIterator"] = function() {
+  Ee.prototype[typeof Symbol == "function" && Symbol.asyncIterator || "@@asyncIterator"] = function() {
     return this;
-  }, Se.prototype.next = function(e) {
+  }, Ee.prototype.next = function(e) {
     return this._invoke("next", e);
-  }, Se.prototype.throw = function(e) {
+  }, Ee.prototype.throw = function(e) {
     return this._invoke("throw", e);
-  }, Se.prototype.return = function(e) {
+  }, Ee.prototype.return = function(e) {
     return this._invoke("return", e);
   };
-  var Fr = Object.entries;
-  var Ar = Object.setPrototypeOf;
-  var Ni = Object.isFrozen;
-  var Hr = Object.getPrototypeOf;
-  var $r = Object.getOwnPropertyDescriptor;
+  var $r = Object.entries;
+  var wr = Object.setPrototypeOf;
+  var Di = Object.isFrozen;
+  var zr = Object.getPrototypeOf;
+  var Ur = Object.getOwnPropertyDescriptor;
   var j = Object.freeze;
   var W = Object.seal;
-  var Ut = Object.create;
-  var zr = typeof Reflect < "u" && Reflect;
-  var Sn = zr.apply;
-  var En = zr.construct;
+  var kt = Object.create;
+  var kr = typeof Reflect < "u" && Reflect;
+  var _n = kr.apply;
+  var wn = kr.construct;
   j || (j = function(t) {
     return t;
   });
   W || (W = function(t) {
     return t;
   });
-  Sn || (Sn = function(t, n) {
+  _n || (_n = function(t, n) {
     for (var r = arguments.length, i = new Array(r > 2 ? r - 2 : 0), a = 2; a < r; a++) i[a - 2] = arguments[a];
     return t.apply(n, i);
   });
-  En || (En = function(t) {
+  wn || (wn = function(t) {
     for (var n = arguments.length, r = new Array(n > 1 ? n - 1 : 0), i = 1; i < n; i++) r[i - 1] = arguments[i];
     return new t(...r);
   });
-  var ft = H(Array.prototype.forEach);
+  var ft = F(Array.prototype.forEach);
   Array.prototype.indexOf;
-  var Ri = H(Array.prototype.lastIndexOf);
-  var _r = H(Array.prototype.pop);
-  var Vt = H(Array.prototype.push);
-  var Di = H(Array.prototype.slice);
-  var vi = H(Array.prototype.splice);
-  var kt = Array.isArray;
-  var fn = Ur(Set);
-  var dn = H(Set.prototype.add);
-  var Xt = H(Set.prototype.has);
-  var Nt = H(String.prototype.toLowerCase);
-  var mn = H(String.prototype.toString);
-  var wr = H(String.prototype.match);
-  var Zt = H(String.prototype.replace);
-  var xr = H(String.prototype.indexOf);
-  var Ci = H(String.prototype.trim);
-  var Ii = H(Number.prototype.toString);
-  var Mi = H(Boolean.prototype.toString);
-  var Or = typeof BigInt > "u" ? null : H(BigInt.prototype.toString);
-  var Lr = typeof Symbol > "u" ? null : H(Symbol.prototype.toString);
-  var tt = H(Object.prototype.hasOwnProperty);
-  var Kt = H(Object.prototype.toString);
-  var B = H(RegExp.prototype.test);
-  var dt = Ur(TypeError);
-  function H(e) {
+  var vi = F(Array.prototype.lastIndexOf);
+  var xr = F(Array.prototype.pop);
+  var Xt = F(Array.prototype.push);
+  var Ci = F(Array.prototype.slice);
+  var Pi = F(Array.prototype.splice);
+  var jt = Array.isArray;
+  var pn = jr(Set);
+  var gn = F(Set.prototype.add);
+  var Zt = F(Set.prototype.has);
+  var Nt = F(String.prototype.toLowerCase);
+  var hn = F(String.prototype.toString);
+  var Or = F(String.prototype.match);
+  var Kt = F(String.prototype.replace);
+  var Lr = F(String.prototype.indexOf);
+  var Ii = F(String.prototype.trim);
+  var Mi = F(Number.prototype.toString);
+  var Fi = F(Boolean.prototype.toString);
+  var Nr = typeof BigInt > "u" ? null : F(BigInt.prototype.toString);
+  var Rr = typeof Symbol > "u" ? null : F(Symbol.prototype.toString);
+  var tt = F(Object.prototype.hasOwnProperty);
+  var qt = F(Object.prototype.toString);
+  var B = F(RegExp.prototype.test);
+  var dt = jr(TypeError);
+  function F(e) {
     return function(t) {
       t instanceof RegExp && (t.lastIndex = 0);
       for (var n = arguments.length, r = new Array(n > 1 ? n - 1 : 0), i = 1; i < n; i++) r[i - 1] = arguments[i];
-      return Sn(e, t, r);
+      return _n(e, t, r);
     };
   }
-  function Ur(e) {
+  function jr(e) {
     return function() {
       for (var t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
-      return En(e, n);
+      return wn(e, n);
     };
   }
   function v(e, t) {
     let n = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : Nt;
-    if (Ar && Ar(e, null), !kt(t)) return e;
+    if (wr && wr(e, null), !jt(t)) return e;
     let r = t.length;
     for (; r--; ) {
       let i = t[r];
       if (typeof i == "string") {
         let a = n(i);
-        a !== i && (Ni(t) || (t[r] = a), i = a);
+        a !== i && (Di(t) || (t[r] = a), i = a);
       }
       e[i] = true;
     }
     return e;
   }
-  function Pi(e) {
+  function Hi(e) {
     for (let t = 0; t < e.length; t++) tt(e, t) || (e[t] = null);
     return e;
   }
   function et(e) {
-    let t = Ut(null);
-    for (let r of Fr(e)) {
-      var n = Oi(r, 2);
+    let t = kt(null);
+    for (let r of $r(e)) {
+      var n = Ni(r, 2);
       let i = n[0], a = n[1];
-      tt(e, i) && (kt(a) ? t[i] = Pi(a) : a && typeof a == "object" && a.constructor === Object ? t[i] = et(a) : t[i] = a);
+      tt(e, i) && (jt(a) ? t[i] = Hi(a) : a && typeof a == "object" && a.constructor === Object ? t[i] = et(a) : t[i] = a);
     }
     return t;
   }
-  function Fi(e) {
+  function $i(e) {
     switch (typeof e) {
       case "string":
         return e;
       case "number":
-        return Ii(e);
-      case "boolean":
         return Mi(e);
+      case "boolean":
+        return Fi(e);
       case "bigint":
-        return Or ? Or(e) : "0";
+        return Nr ? Nr(e) : "0";
       case "symbol":
-        return Lr ? Lr(e) : "Symbol()";
+        return Rr ? Rr(e) : "Symbol()";
       case "undefined":
-        return Kt(e);
+        return qt(e);
       case "function":
       case "object": {
-        if (e === null) return Kt(e);
+        if (e === null) return qt(e);
         let t = e, n = nt(t, "toString");
         if (typeof n == "function") {
           let r = n(t);
-          return typeof r == "string" ? r : Kt(r);
+          return typeof r == "string" ? r : qt(r);
         }
-        return Kt(e);
+        return qt(e);
       }
       default:
-        return Kt(e);
+        return qt(e);
     }
   }
   function nt(e, t) {
     for (; e !== null; ) {
-      let r = $r(e, t);
+      let r = Ur(e, t);
       if (r) {
-        if (r.get) return H(r.get);
-        if (typeof r.value == "function") return H(r.value);
+        if (r.get) return F(r.get);
+        if (typeof r.value == "function") return F(r.value);
       }
-      e = Hr(e);
+      e = zr(e);
     }
     function n() {
       return null;
     }
     return n;
   }
-  function Hi(e, t) {
+  function zi(e, t) {
     for (; e !== null; ) {
-      let n = $r(e, t);
-      if (n) return n.get ? H(n.get) : null;
-      e = Hr(e);
+      let n = Ur(e, t);
+      if (n) return n.get ? F(n.get) : null;
+      e = zr(e);
     }
     return null;
   }
-  function $i(e) {
+  function Ui(e) {
     try {
       return B(e, ""), true;
     } catch {
       return false;
     }
   }
-  var Nr = j(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
-  var pn = j(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
-  var gn = j(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
-  var zi = j(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
-  var hn = j(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
-  var Ui = j(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
-  var Rr = j(["#text"]);
-  var Dr = j(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
-  var yn = j(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
-  var vr = j(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
-  var Ee = j(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
-  var ki = W(/{{[\w\W]*|^[\w\W]*}}/g);
-  var ji = W(/<%[\w\W]*|^[\w\W]*%>/g);
-  var Bi = W(/\${[\w\W]*/g);
-  var Wi = W(/^data-[\-\w.\u00B7-\uFFFF]+$/);
-  var Ji = W(/^aria-[\-\w]+$/);
-  var Cr = W(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
-  var Qi = W(/^(?:\w+script|data):/i);
-  var Gi = W(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
-  var Yi = W(/^html$/i);
-  var Vi = W(/^[a-z][.\w]*(-[.\w]+)+$/i);
-  var bn = W(/<[/\w!]/g);
-  var Ir = W(/<[/\w]/g);
-  var Xi = W(/<\/no(script|embed|frames)/i);
-  var Mr = W(/\/>/i);
+  var Dr = j(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
+  var yn = j(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
+  var bn = j(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
+  var ki = j(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
+  var Tn = j(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
+  var ji = j(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
+  var vr = j(["#text"]);
+  var Cr = j(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
+  var Sn = j(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
+  var Pr = j(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
+  var Ae = j(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
+  var Bi = W(/{{[\w\W]*|^[\w\W]*}}/g);
+  var Wi = W(/<%[\w\W]*|^[\w\W]*%>/g);
+  var Ji = W(/\${[\w\W]*/g);
+  var Qi = W(/^data-[\-\w.\u00B7-\uFFFF]+$/);
+  var Gi = W(/^aria-[\-\w]+$/);
+  var Ir = W(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
+  var Yi = W(/^(?:\w+script|data):/i);
+  var Vi = W(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
+  var Xi = W(/^html$/i);
+  var Zi = W(/^[a-z][.\w]*(-[.\w]+)+$/i);
+  var En = W(/<[/\w!]/g);
+  var Mr = W(/<[/\w]/g);
+  var Ki = W(/<\/no(script|embed|frames)/i);
+  var Fr = W(/\/>/i);
   var U = { element: 1, attribute: 2, text: 3, cdataSection: 4, entityReference: 5, entityNode: 6, processingInstruction: 7, comment: 8, document: 9, documentType: 10, documentFragment: 11, notation: 12 };
-  var Zi = j(v({}, ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"]));
-  var Ki = function() {
+  var qi = j(v({}, ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"]));
+  var ts = function() {
     return typeof window > "u" ? null : window;
   };
-  var qi = function(t, n) {
+  var es = function(t, n) {
     if (typeof t != "object" || typeof t.createPolicy != "function") return null;
     let r = null, i = "data-tt-policy-suffix";
     n && n.hasAttribute(i) && (r = n.getAttribute(i));
     let a = "dompurify" + (r ? "#" + r : "");
     try {
-      return t.createPolicy(a, { createHTML(l) {
-        return l;
-      }, createScriptURL(l) {
-        return l;
+      return t.createPolicy(a, { createHTML(c) {
+        return c;
+      }, createScriptURL(c) {
+        return c;
       } });
     } catch {
       return console.warn("TrustedTypes policy " + a + " could not be created."), null;
     }
   };
-  var Pr = function() {
+  var Hr = function() {
     return { afterSanitizeAttributes: [], afterSanitizeElements: [], afterSanitizeShadowDOM: [], beforeSanitizeAttributes: [], beforeSanitizeElements: [], beforeSanitizeShadowDOM: [], uponSanitizeAttribute: [], uponSanitizeElement: [], uponSanitizeShadowNode: [] };
   };
   var bt = function(t, n, r, i) {
-    return tt(t, n) && kt(t[n]) ? v(i.base ? et(i.base) : {}, t[n], i.transform) : r;
+    return tt(t, n) && jt(t[n]) ? v(i.base ? et(i.base) : {}, t[n], i.transform) : r;
   };
-  var Tn = function(t, n, r) {
+  var An = function(t, n, r) {
     let i = tt(t, n) ? t[n] : void 0;
     return i && typeof i == "object" ? et(i) : r();
   };
-  function kr() {
-    let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : Ki(), t = (d) => kr(d);
+  function Br() {
+    let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : ts(), t = (d) => Br(d);
     if (t.version = "3.4.17", t.removed = [], !e || !e.document || e.document.nodeType !== U.document || !e.Element) return t.isSupported = false, t;
     let n = e.document, r = n, i = r.currentScript;
     e.DocumentFragment;
-    let a = e.HTMLTemplateElement, l = e.Node, w = e.Element, S2 = e.NodeFilter;
+    let a = e.HTMLTemplateElement, c = e.Node, x2 = e.Element, _2 = e.NodeFilter;
     e.NamedNodeMap === void 0 && (e.NamedNodeMap || e.MozNamedAttrMap), e.HTMLFormElement;
-    let x2 = e.DOMParser, g = e.trustedTypes, b = w.prototype, T = nt(b, "cloneNode"), _2 = nt(b, "remove"), y = nt(b, "removeAttributeNode"), E2 = nt(b, "nextSibling"), m = nt(b, "childNodes"), c = nt(b, "parentNode"), h2 = nt(b, "shadowRoot"), A2 = nt(b, "attributes"), N2 = l && l.prototype ? nt(l.prototype, "nodeType") : null, D2 = l && l.prototype ? nt(l.prototype, "nodeName") : null, G2 = l && l.prototype ? nt(l.prototype, "ownerDocument") : null, X2 = function(o) {
+    let w = e.DOMParser, g = e.trustedTypes, b = x2.prototype, T = nt(b, "cloneNode"), A2 = nt(b, "remove"), y = nt(b, "removeAttributeNode"), S2 = nt(b, "nextSibling"), m = nt(b, "childNodes"), l = nt(b, "parentNode"), h2 = nt(b, "shadowRoot"), E2 = nt(b, "attributes"), N2 = c && c.prototype ? nt(c.prototype, "nodeType") : null, D2 = c && c.prototype ? nt(c.prototype, "nodeName") : null, G2 = c && c.prototype ? nt(c.prototype, "ownerDocument") : null, X2 = function(o) {
       return N2 ? N2(o) : o.nodeType;
     }, Et = function(o) {
       return D2 ? D2(o) : o.nodeName;
-    }, ie2 = Hi(b, "namespaceURI"), He2 = function(o) {
-      return ie2 ? ie2(o) : o.namespaceURI;
+    }, se2 = zi(b, "namespaceURI"), Ue2 = function(o) {
+      return se2 ? se2(o) : o.namespaceURI;
     };
     if (typeof a == "function") {
       let d = n.createElement("template");
       d.content && d.content.ownerDocument && (n = d.content.ownerDocument);
     }
-    let Z2, At = "", $e2, Cn = false, Bt = 0, In = function() {
-      if (Bt > 0) throw dt('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
-    }, vt = function(o) {
-      In(), Bt++;
+    let Z2, At = "", ke2, In = false, Wt = 0, Mn = function() {
+      if (Wt > 0) throw dt('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
+    }, Ct = function(o) {
+      Mn(), Wt++;
       try {
         return Z2.createHTML(o);
       } finally {
-        Bt--;
+        Wt--;
       }
-    }, fo = function(o) {
-      In(), Bt++;
+    }, po = function(o) {
+      Mn(), Wt++;
       try {
         return Z2.createScriptURL(o);
       } finally {
-        Bt--;
+        Wt--;
       }
-    }, mo = function() {
-      return Cn || ($e2 = qi(g, i), Cn = true), $e2;
-    }, se2 = n, ze2 = se2.implementation, Mn = se2.createNodeIterator, po = se2.createDocumentFragment, go = se2.getElementsByTagName, ho = r.importNode, I2 = Pr();
-    t.isSupported = typeof Fr == "function" && typeof c == "function" && ze2 && ze2.createHTMLDocument !== void 0;
-    let yo = ki, bo = ji, To = Bi, So = Wi, Eo = Ji, Ao = Qi, Pn = Gi, _o = Vi, Fn = Cr, P2 = null, Ue2 = v({}, [...Nr, ...pn, ...gn, ...hn, ...Rr]), F2 = null, ke2 = v({}, [...Dr, ...yn, ...vr, ...Ee]), it2 = Object.seal(Ut(null, { tagNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, allowCustomizedBuiltInElements: { writable: true, configurable: false, enumerable: true, value: false } })), Wt = null, Hn = null, gt = Object.seal(Ut(null, { tagCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeCheck: { writable: true, configurable: false, enumerable: true, value: null } })), $n = true, je2 = true, zn = false, Be = true, lt = false, _t = true, wt = false, We2 = false, ae2 = null, ce2 = null, Je = false, Ct = false, le2 = false, ue2 = false, Un = true, kn = false, jn = "user-content-", Qe = true, Ge2 = false, xt = null, It = {}, Ot = null, Bn = v({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "selectedcontent", "style", "svg", "template", "thead", "title", "video", "xmp"]), Wn = null, Jn = v({}, ["audio", "video", "img", "source", "image", "track"]), Qn = null, Gn = v({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), fe2 = "http://www.w3.org/1998/Math/MathML", de2 = "http://www.w3.org/2000/svg", st = "http://www.w3.org/1999/xhtml", Mt = st, Ye2 = false, Ve2 = null, wo = v({}, [fe2, de2, st], mn), Yn = j(["mi", "mo", "mn", "ms", "mtext"]), Xe = v({}, Yn), Vn = j(["annotation-xml"]), Ze2 = v({}, Vn), xo = v({}, ["title", "style", "font", "a", "script"]), Jt = null, Oo = ["application/xhtml+xml", "text/html"], Lo = "text/html", z2 = null, Pt = null, No = n.createElement("form"), Xn = function(o) {
+    }, go = function() {
+      return In || (ke2 = es(g, i), In = true), ke2;
+    }, ae2 = n, je2 = ae2.implementation, Fn = ae2.createNodeIterator, ho = ae2.createDocumentFragment, yo = ae2.getElementsByTagName, bo = r.importNode, P2 = Hr();
+    t.isSupported = typeof $r == "function" && typeof l == "function" && je2 && je2.createHTMLDocument !== void 0;
+    let To = Bi, So = Wi, Eo = Ji, Ao = Qi, _o = Gi, wo = Yi, Hn = Vi, xo = Zi, $n = Ir, I2 = null, Be = v({}, [...Dr, ...yn, ...bn, ...Tn, ...vr]), M2 = null, We2 = v({}, [...Cr, ...Sn, ...Pr, ...Ae]), it2 = Object.seal(kt(null, { tagNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, allowCustomizedBuiltInElements: { writable: true, configurable: false, enumerable: true, value: false } })), Jt = null, zn = null, gt = Object.seal(kt(null, { tagCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeCheck: { writable: true, configurable: false, enumerable: true, value: null } })), Un = true, Je = true, kn = false, Qe = true, lt = false, _t = true, wt = false, Ge2 = false, ce2 = null, le2 = null, Ye2 = false, Pt = false, ue2 = false, fe2 = false, jn = true, Bn = false, Wn = "user-content-", Ve2 = true, Xe = false, xt = null, It = {}, Ot = null, Jn = v({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "selectedcontent", "style", "svg", "template", "thead", "title", "video", "xmp"]), Qn = null, Gn = v({}, ["audio", "video", "img", "source", "image", "track"]), Yn = null, Vn = v({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), de2 = "http://www.w3.org/1998/Math/MathML", me2 = "http://www.w3.org/2000/svg", st = "http://www.w3.org/1999/xhtml", Mt = st, Ze2 = false, Ke = null, Oo = v({}, [de2, me2, st], hn), Xn = j(["mi", "mo", "mn", "ms", "mtext"]), qe2 = v({}, Xn), Zn = j(["annotation-xml"]), tn = v({}, Zn), Lo = v({}, ["title", "style", "font", "a", "script"]), Qt = null, No = ["application/xhtml+xml", "text/html"], Ro = "text/html", z2 = null, Ft = null, Do = n.createElement("form"), Kn = function(o) {
       return o instanceof RegExp || o instanceof Function;
-    }, Ke = function() {
+    }, en = function() {
       let o = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      if (Pt && Pt === o) return;
-      (!o || typeof o != "object") && (o = {}), o = et(o), Jt = Oo.indexOf(o.PARSER_MEDIA_TYPE) === -1 ? Lo : o.PARSER_MEDIA_TYPE, z2 = Jt === "application/xhtml+xml" ? mn : Nt, P2 = bt(o, "ALLOWED_TAGS", Ue2, { transform: z2 }), F2 = bt(o, "ALLOWED_ATTR", ke2, { transform: z2 }), Ve2 = bt(o, "ALLOWED_NAMESPACES", wo, { transform: mn }), Qn = bt(o, "ADD_URI_SAFE_ATTR", Gn, { transform: z2, base: Gn }), Wn = bt(o, "ADD_DATA_URI_TAGS", Jn, { transform: z2, base: Jn }), Ot = bt(o, "FORBID_CONTENTS", Bn, { transform: z2 }), Wt = bt(o, "FORBID_TAGS", et({}), { transform: z2 }), Hn = bt(o, "FORBID_ATTR", et({}), { transform: z2 }), It = tt(o, "USE_PROFILES") ? o.USE_PROFILES && typeof o.USE_PROFILES == "object" ? et(o.USE_PROFILES) : o.USE_PROFILES : false, $n = o.ALLOW_ARIA_ATTR !== false, je2 = o.ALLOW_DATA_ATTR !== false, zn = o.ALLOW_UNKNOWN_PROTOCOLS || false, Be = o.ALLOW_SELF_CLOSE_IN_ATTR !== false, lt = o.SAFE_FOR_TEMPLATES || false, _t = o.SAFE_FOR_XML !== false, wt = o.WHOLE_DOCUMENT || false, Ct = o.RETURN_DOM || false, le2 = o.RETURN_DOM_FRAGMENT || false, ue2 = o.RETURN_TRUSTED_TYPE || false, Je = o.FORCE_BODY || false, Un = o.SANITIZE_DOM !== false, kn = o.SANITIZE_NAMED_PROPS || false, Qe = o.KEEP_CONTENT !== false, Ge2 = o.IN_PLACE || false, Fn = $i(o.ALLOWED_URI_REGEXP) ? o.ALLOWED_URI_REGEXP : Cr, Mt = typeof o.NAMESPACE == "string" ? o.NAMESPACE : st, Xe = Tn(o, "MATHML_TEXT_INTEGRATION_POINTS", () => v({}, Yn)), Ze2 = Tn(o, "HTML_INTEGRATION_POINTS", () => v({}, Vn));
-      let s = Tn(o, "CUSTOM_ELEMENT_HANDLING", () => Ut(null));
-      if (it2 = Ut(null), tt(s, "tagNameCheck") && Xn(s.tagNameCheck) && (it2.tagNameCheck = s.tagNameCheck), tt(s, "attributeNameCheck") && Xn(s.attributeNameCheck) && (it2.attributeNameCheck = s.attributeNameCheck), tt(s, "allowCustomizedBuiltInElements") && typeof s.allowCustomizedBuiltInElements == "boolean" && (it2.allowCustomizedBuiltInElements = s.allowCustomizedBuiltInElements), W(it2), lt && (je2 = false), le2 && (Ct = true), It && (P2 = v({}, Rr), F2 = Ut(null), It.html === true && (v(P2, Nr), v(F2, Dr)), It.svg === true && (v(P2, pn), v(F2, yn), v(F2, Ee)), It.svgFilters === true && (v(P2, gn), v(F2, yn), v(F2, Ee)), It.mathMl === true && (v(P2, hn), v(F2, vr), v(F2, Ee))), gt.tagCheck = null, gt.attributeCheck = null, tt(o, "ADD_TAGS") && (typeof o.ADD_TAGS == "function" ? gt.tagCheck = o.ADD_TAGS : kt(o.ADD_TAGS) && (P2 === Ue2 && (P2 = et(P2)), v(P2, o.ADD_TAGS, z2))), tt(o, "ADD_ATTR") && (typeof o.ADD_ATTR == "function" ? gt.attributeCheck = o.ADD_ATTR : kt(o.ADD_ATTR) && (F2 === ke2 && (F2 = et(F2)), v(F2, o.ADD_ATTR, z2))), tt(o, "ADD_FORBID_CONTENTS") && kt(o.ADD_FORBID_CONTENTS) && (Ot === Bn && (Ot = et(Ot)), v(Ot, o.ADD_FORBID_CONTENTS, z2)), Qe && (P2["#text"] = true), wt && v(P2, ["html", "head", "body"]), P2.table && (v(P2, ["tbody"]), delete Wt.tbody), o.TRUSTED_TYPES_POLICY) {
+      if (Ft && Ft === o) return;
+      (!o || typeof o != "object") && (o = {}), o = et(o), Qt = No.indexOf(o.PARSER_MEDIA_TYPE) === -1 ? Ro : o.PARSER_MEDIA_TYPE, z2 = Qt === "application/xhtml+xml" ? hn : Nt, I2 = bt(o, "ALLOWED_TAGS", Be, { transform: z2 }), M2 = bt(o, "ALLOWED_ATTR", We2, { transform: z2 }), Ke = bt(o, "ALLOWED_NAMESPACES", Oo, { transform: hn }), Yn = bt(o, "ADD_URI_SAFE_ATTR", Vn, { transform: z2, base: Vn }), Qn = bt(o, "ADD_DATA_URI_TAGS", Gn, { transform: z2, base: Gn }), Ot = bt(o, "FORBID_CONTENTS", Jn, { transform: z2 }), Jt = bt(o, "FORBID_TAGS", et({}), { transform: z2 }), zn = bt(o, "FORBID_ATTR", et({}), { transform: z2 }), It = tt(o, "USE_PROFILES") ? o.USE_PROFILES && typeof o.USE_PROFILES == "object" ? et(o.USE_PROFILES) : o.USE_PROFILES : false, Un = o.ALLOW_ARIA_ATTR !== false, Je = o.ALLOW_DATA_ATTR !== false, kn = o.ALLOW_UNKNOWN_PROTOCOLS || false, Qe = o.ALLOW_SELF_CLOSE_IN_ATTR !== false, lt = o.SAFE_FOR_TEMPLATES || false, _t = o.SAFE_FOR_XML !== false, wt = o.WHOLE_DOCUMENT || false, Pt = o.RETURN_DOM || false, ue2 = o.RETURN_DOM_FRAGMENT || false, fe2 = o.RETURN_TRUSTED_TYPE || false, Ye2 = o.FORCE_BODY || false, jn = o.SANITIZE_DOM !== false, Bn = o.SANITIZE_NAMED_PROPS || false, Ve2 = o.KEEP_CONTENT !== false, Xe = o.IN_PLACE || false, $n = Ui(o.ALLOWED_URI_REGEXP) ? o.ALLOWED_URI_REGEXP : Ir, Mt = typeof o.NAMESPACE == "string" ? o.NAMESPACE : st, qe2 = An(o, "MATHML_TEXT_INTEGRATION_POINTS", () => v({}, Xn)), tn = An(o, "HTML_INTEGRATION_POINTS", () => v({}, Zn));
+      let s = An(o, "CUSTOM_ELEMENT_HANDLING", () => kt(null));
+      if (it2 = kt(null), tt(s, "tagNameCheck") && Kn(s.tagNameCheck) && (it2.tagNameCheck = s.tagNameCheck), tt(s, "attributeNameCheck") && Kn(s.attributeNameCheck) && (it2.attributeNameCheck = s.attributeNameCheck), tt(s, "allowCustomizedBuiltInElements") && typeof s.allowCustomizedBuiltInElements == "boolean" && (it2.allowCustomizedBuiltInElements = s.allowCustomizedBuiltInElements), W(it2), lt && (Je = false), ue2 && (Pt = true), It && (I2 = v({}, vr), M2 = kt(null), It.html === true && (v(I2, Dr), v(M2, Cr)), It.svg === true && (v(I2, yn), v(M2, Sn), v(M2, Ae)), It.svgFilters === true && (v(I2, bn), v(M2, Sn), v(M2, Ae)), It.mathMl === true && (v(I2, Tn), v(M2, Pr), v(M2, Ae))), gt.tagCheck = null, gt.attributeCheck = null, tt(o, "ADD_TAGS") && (typeof o.ADD_TAGS == "function" ? gt.tagCheck = o.ADD_TAGS : jt(o.ADD_TAGS) && (I2 === Be && (I2 = et(I2)), v(I2, o.ADD_TAGS, z2))), tt(o, "ADD_ATTR") && (typeof o.ADD_ATTR == "function" ? gt.attributeCheck = o.ADD_ATTR : jt(o.ADD_ATTR) && (M2 === We2 && (M2 = et(M2)), v(M2, o.ADD_ATTR, z2))), tt(o, "ADD_FORBID_CONTENTS") && jt(o.ADD_FORBID_CONTENTS) && (Ot === Jn && (Ot = et(Ot)), v(Ot, o.ADD_FORBID_CONTENTS, z2)), Ve2 && (I2["#text"] = true), wt && v(I2, ["html", "head", "body"]), I2.table && (v(I2, ["tbody"]), delete Jt.tbody), o.TRUSTED_TYPES_POLICY) {
         if (typeof o.TRUSTED_TYPES_POLICY.createHTML != "function") throw dt('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
         if (typeof o.TRUSTED_TYPES_POLICY.createScriptURL != "function") throw dt('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
         let u = Z2;
         Z2 = o.TRUSTED_TYPES_POLICY;
         try {
-          At = vt("");
+          At = Ct("");
         } catch (f3) {
           throw Z2 = u, f3;
         }
-      } else o.TRUSTED_TYPES_POLICY === null ? (Z2 = void 0, At = "") : (Z2 === void 0 && (Z2 = mo()), Z2 && typeof At == "string" && (At = vt("")));
-      j && j(o), Pt = o;
-    }, Zn = v({}, [...pn, ...gn, ...zi]), Kn = v({}, [...hn, ...Ui]), Ro = function(o, s, u) {
-      return s.namespaceURI === st ? o === "svg" : s.namespaceURI === fe2 ? o === "svg" && (u === "annotation-xml" || Xe[u]) : !!Zn[o];
-    }, Do = function(o, s, u) {
-      return s.namespaceURI === st ? o === "math" : s.namespaceURI === de2 ? o === "math" && Ze2[u] : !!Kn[o];
-    }, vo = function(o, s, u) {
-      return s.namespaceURI === de2 && !Ze2[u] || s.namespaceURI === fe2 && !Xe[u] ? false : !Kn[o] && (xo[o] || !Zn[o]);
-    }, Co = function(o) {
-      let s = He2(o), u = Nt(Et(o)), f3 = c(o), O3, L2;
-      return f3 && X2(f3) === U.element ? (O3 = { namespaceURI: He2(f3) }, L2 = Nt(Et(f3))) : (O3 = { namespaceURI: Mt }, L2 = "template"), Ve2[s] ? s === de2 ? Ro(u, O3, L2) : s === fe2 ? Do(u, O3, L2) : s === st ? vo(u, O3, L2) : !!(Jt === "application/xhtml+xml" && Ve2[s]) : false;
+      } else o.TRUSTED_TYPES_POLICY === null ? (Z2 = void 0, At = "") : (Z2 === void 0 && (Z2 = go()), Z2 && typeof At == "string" && (At = Ct("")));
+      j && j(o), Ft = o;
+    }, qn = v({}, [...yn, ...bn, ...ki]), tr = v({}, [...Tn, ...ji]), vo = function(o, s, u) {
+      return s.namespaceURI === st ? o === "svg" : s.namespaceURI === de2 ? o === "svg" && (u === "annotation-xml" || qe2[u]) : !!qn[o];
+    }, Co = function(o, s, u) {
+      return s.namespaceURI === st ? o === "math" : s.namespaceURI === me2 ? o === "math" && tn[u] : !!tr[o];
+    }, Po = function(o, s, u) {
+      return s.namespaceURI === me2 && !tn[u] || s.namespaceURI === de2 && !qe2[u] ? false : !tr[o] && (Lo[o] || !qn[o]);
+    }, Io = function(o) {
+      let s = Ue2(o), u = Nt(Et(o)), f3 = l(o), O3, L2;
+      return f3 && X2(f3) === U.element ? (O3 = { namespaceURI: Ue2(f3) }, L2 = Nt(Et(f3))) : (O3 = { namespaceURI: Mt }, L2 = "template"), Ke[s] ? s === me2 ? vo(u, O3, L2) : s === de2 ? Co(u, O3, L2) : s === st ? Po(u, O3, L2) : !!(Qt === "application/xhtml+xml" && Ke[s]) : false;
     }, ht = function(o) {
-      Vt(t.removed, { element: o });
+      Xt(t.removed, { element: o });
       try {
-        c(o).removeChild(o);
+        l(o).removeChild(o);
       } catch {
-        if (_2(o), !c(o)) throw dt("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
+        if (A2(o), !l(o)) throw dt("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
       }
-    }, qn = function(o, s, u) {
+    }, er = function(o, s, u) {
       try {
         y(o, s);
       } catch {
@@ -865,27 +865,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         } catch {
         }
       }
-    }, qe2 = function(o) {
-      en(o);
+    }, nn = function(o) {
+      on(o);
       let s = m(o);
-      s && ft(Di(s), (f3) => {
+      s && ft(Ci(s), (f3) => {
         try {
-          _2(f3);
+          A2(f3);
         } catch {
         }
       });
-      let u = X2(o) === U.element ? A2(o) : null;
+      let u = X2(o) === U.element ? E2(o) : null;
       if (u) for (let f3 = u.length - 1; f3 >= 0; --f3) {
         let O3 = u[f3], L2 = O3 && O3.name;
-        typeof L2 == "string" && qn(o, O3, L2);
+        typeof L2 == "string" && er(o, O3, L2);
       }
-    }, Ft = function(o, s, u) {
+    }, Ht = function(o, s, u) {
       if (!u) try {
         u = s.getAttributeNode(o);
       } catch {
         u = null;
       }
-      Vt(t.removed, { attribute: u || null, from: s });
+      Xt(t.removed, { attribute: u || null, from: s });
       try {
         u ? y(s, u) : s.removeAttribute(o);
       } catch {
@@ -894,7 +894,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         } catch {
         }
       }
-      if (o === "is") if (Ct || le2) try {
+      if (o === "is") if (Pt || ue2) try {
         ht(s);
       } catch {
       }
@@ -902,13 +902,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         s.setAttribute(o, "");
       } catch {
       }
-    }, tr = function(o) {
-      let s = A2(o);
+    }, nr = function(o) {
+      let s = E2(o);
       if (s) for (let u = s.length - 1; u >= 0; --u) {
         let f3 = s[u], O3 = f3 && f3.name;
-        typeof O3 != "string" || F2[z2(O3)] || qn(o, f3, O3);
+        typeof O3 != "string" || M2[z2(O3)] || er(o, f3, O3);
       }
-    }, tn = function(o, s) {
+    }, rn = function(o, s) {
       let u = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false, f3 = [o];
       for (; f3.length > 0; ) {
         let O3 = f3.pop();
@@ -920,54 +920,54 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         let L2 = m(O3);
         if (L2) for (let R2 = L2.length - 1; R2 >= 0; --R2) f3.push(L2[R2]);
       }
-    }, en = function(o) {
-      tn(o, (s) => {
-        X2(s) === U.element && tr(s);
+    }, on = function(o) {
+      rn(o, (s) => {
+        X2(s) === U.element && nr(s);
       });
-    }, nn = function(o) {
+    }, sn = function(o) {
       let s = [];
-      return tn(o, (u) => {
+      return rn(o, (u) => {
         s.push(u);
       }, true), s;
-    }, Io = function(o, s) {
-      let u = fn();
-      ft(nn(o), (f3) => {
-        X2(f3) === U.element && dn(u, f3);
+    }, Mo = function(o, s) {
+      let u = pn();
+      ft(sn(o), (f3) => {
+        X2(f3) === U.element && gn(u, f3);
       }), ft(s, (f3) => {
-        X2(f3) === U.element && !Xt(u, f3) && tr(f3);
+        X2(f3) === U.element && !Zt(u, f3) && nr(f3);
       });
-    }, er = function(o, s) {
+    }, rr = function(o, s) {
       let u = false;
       return ft(t.removed, (f3) => {
-        f3.element && (u = u || f3.element === o, en(f3.element));
-      }), Io(o, s), u;
-    }, Mo = 8, Po = function(o, s) {
-      let u = xt, f3 = null, O3 = () => (f3 || (f3 = fn(), ft(s, (L2) => {
-        dn(f3, L2);
+        f3.element && (u = u || f3.element === o, on(f3.element));
+      }), Mo(o, s), u;
+    }, Fo = 8, Ho = function(o, s) {
+      let u = xt, f3 = null, O3 = () => (f3 || (f3 = pn(), ft(s, (L2) => {
+        gn(f3, L2);
       })), f3);
       for (let L2 = 0; ; L2++) {
-        let R2 = nn(o), k2 = [o], at = false;
+        let R2 = sn(o), k2 = [o], at = false;
         if (ft(R2, (Y2) => {
-          X2(Y2) === U.documentFragment ? Vt(k2, Y2) : !at && !Xt(u, Y2) && (at = Xt(O3(), Y2));
+          X2(Y2) === U.documentFragment ? Xt(k2, Y2) : !at && !Zt(u, Y2) && (at = Zt(O3(), Y2));
         }), !at) return;
-        if (L2 >= Mo) throw dt("the tree kept changing during in-place sanitization; refusing to return it");
+        if (L2 >= Fo) throw dt("the tree kept changing during in-place sanitization; refusing to return it");
         ft(k2, (Y2, K2) => {
-          Fo(Y2, K2 > 0, o, O3());
+          $o(Y2, K2 > 0, o, O3());
         });
       }
-    }, Fo = function(o, s, u, f3) {
-      let O3 = rn(o), L2;
-      for (; L2 = O3.nextNode(); ) !Xt(f3, L2) || Xt(xt, L2) || (s && rt(I2.uponSanitizeShadowNode, L2, null), sn(L2, u), an(L2, u), yt(L2.content) && Gt(L2.content));
-    }, Ho = function(o) {
-      xt && dn(xt, o);
-    }, nr = function(o, s) {
+    }, $o = function(o, s, u, f3) {
+      let O3 = an(o), L2;
+      for (; L2 = O3.nextNode(); ) !Zt(f3, L2) || Zt(xt, L2) || (s && rt(P2.uponSanitizeShadowNode, L2, null), ln(L2, u), un(L2, u), yt(L2.content) && Yt(L2.content));
+    }, zo = function(o) {
+      xt && gn(xt, o);
+    }, or = function(o, s) {
       return _t ? o === "patchsrc" ? true : o === "for" && s !== "label" && s !== "output" : false;
-    }, $o = function(o) {
-      _t && tn(o, (s) => {
+    }, Uo = function(o) {
+      _t && rn(o, (s) => {
         let u = X2(s);
-        if (u === U.processingInstruction || u === U.comment && B(Ir, s.data)) {
+        if (u === U.processingInstruction || u === U.comment && B(Mr, s.data)) {
           try {
-            _2(s);
+            A2(s);
           } catch {
           }
           return false;
@@ -975,53 +975,53 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (u === U.element) {
           let f3 = s, O3 = z2(Et(s));
           try {
-            f3.hasAttribute && f3.hasAttribute("patchsrc") && f3.removeAttribute("patchsrc"), f3.hasAttribute && f3.hasAttribute("for") && nr("for", O3) && f3.removeAttribute("for");
+            f3.hasAttribute && f3.hasAttribute("patchsrc") && f3.removeAttribute("patchsrc"), f3.hasAttribute && f3.hasAttribute("for") && or("for", O3) && f3.removeAttribute("for");
           } catch {
           }
         }
         return true;
       });
-    }, rr = function(o) {
+    }, ir = function(o) {
       let s = null, u = null;
-      if (Je) o = "<remove></remove>" + o;
+      if (Ye2) o = "<remove></remove>" + o;
       else {
-        let L2 = wr(o, /^[\r\n\t ]+/);
+        let L2 = Or(o, /^[\r\n\t ]+/);
         u = L2 && L2[0];
       }
-      Jt === "application/xhtml+xml" && Mt === st && (o = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + o + "</body></html>");
-      let f3 = Z2 ? vt(o) : o;
+      Qt === "application/xhtml+xml" && Mt === st && (o = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + o + "</body></html>");
+      let f3 = Z2 ? Ct(o) : o;
       if (Mt === st) try {
-        s = new x2().parseFromString(f3, Jt);
+        s = new w().parseFromString(f3, Qt);
       } catch {
       }
       if (!s || !s.documentElement) {
-        s = ze2.createDocument(Mt, "template", null);
+        s = je2.createDocument(Mt, "template", null);
         try {
-          s.documentElement.innerHTML = Ye2 ? At : f3;
+          s.documentElement.innerHTML = Ze2 ? At : f3;
         } catch {
         }
       }
       let O3 = s.body || s.documentElement;
-      return o && u && O3.insertBefore(n.createTextNode(u), O3.childNodes[0] || null), Mt === st ? go.call(s, wt ? "html" : "body")[0] : wt ? s.documentElement : O3;
-    }, rn = function(o) {
+      return o && u && O3.insertBefore(n.createTextNode(u), O3.childNodes[0] || null), Mt === st ? yo.call(s, wt ? "html" : "body")[0] : wt ? s.documentElement : O3;
+    }, an = function(o) {
       let s = G2 ? G2(o) : o.ownerDocument;
-      return Mn.call(s || o, o, S2.SHOW_ELEMENT | S2.SHOW_COMMENT | S2.SHOW_TEXT | S2.SHOW_PROCESSING_INSTRUCTION | S2.SHOW_CDATA_SECTION, null);
-    }, me2 = function(o) {
-      return o = Zt(o, yo, " "), o = Zt(o, bo, " "), o = Zt(o, To, " "), o;
-    }, on = function(o) {
+      return Fn.call(s || o, o, _2.SHOW_ELEMENT | _2.SHOW_COMMENT | _2.SHOW_TEXT | _2.SHOW_PROCESSING_INSTRUCTION | _2.SHOW_CDATA_SECTION, null);
+    }, pe2 = function(o) {
+      return o = Kt(o, To, " "), o = Kt(o, So, " "), o = Kt(o, Eo, " "), o;
+    }, cn = function(o) {
       var s;
-      or(o);
+      sr(o);
       let u = (s = o.querySelectorAll) === null || s === void 0 ? void 0 : s.call(o, "template");
       u && ft(u, (f3) => {
-        yt(f3.content) && on(f3.content);
+        yt(f3.content) && cn(f3.content);
       });
-    }, or = function(o) {
+    }, sr = function(o) {
       o.normalize();
-      let s = G2 ? G2(o) : o.ownerDocument, u = Mn.call(s || o, o, S2.SHOW_TEXT | S2.SHOW_COMMENT | S2.SHOW_CDATA_SECTION | S2.SHOW_PROCESSING_INSTRUCTION, null), f3 = u.nextNode();
-      for (; f3; ) f3.data = me2(f3.data), f3 = u.nextNode();
-    }, pe2 = function(o) {
+      let s = G2 ? G2(o) : o.ownerDocument, u = Fn.call(s || o, o, _2.SHOW_TEXT | _2.SHOW_COMMENT | _2.SHOW_CDATA_SECTION | _2.SHOW_PROCESSING_INSTRUCTION, null), f3 = u.nextNode();
+      for (; f3; ) f3.data = pe2(f3.data), f3 = u.nextNode();
+    }, ge2 = function(o) {
       let s = D2 ? D2(o) : null;
-      return typeof s != "string" || z2(s) !== "form" ? false : typeof o.nodeName != "string" || typeof o.textContent != "string" || typeof o.removeChild != "function" || o.attributes !== A2(o) || typeof o.removeAttribute != "function" || typeof o.removeAttributeNode != "function" || typeof o.getAttributeNode != "function" || typeof o.setAttribute != "function" || typeof o.namespaceURI != "string" || typeof o.insertBefore != "function" || typeof o.hasChildNodes != "function" || o.nodeType !== N2(o) || o.childNodes !== m(o);
+      return typeof s != "string" || z2(s) !== "form" ? false : typeof o.nodeName != "string" || typeof o.textContent != "string" || typeof o.removeChild != "function" || o.attributes !== E2(o) || typeof o.removeAttribute != "function" || typeof o.removeAttributeNode != "function" || typeof o.getAttributeNode != "function" || typeof o.setAttribute != "function" || typeof o.namespaceURI != "string" || typeof o.insertBefore != "function" || typeof o.hasChildNodes != "function" || o.nodeType !== N2(o) || o.childNodes !== m(o);
     }, yt = function(o) {
       if (!N2 || typeof o != "object" || o === null) return false;
       try {
@@ -1029,7 +1029,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       } catch {
         return false;
       }
-    }, Qt = function(o) {
+    }, Gt = function(o) {
       if (!N2 || typeof o != "object" || o === null) return false;
       try {
         return typeof N2(o) == "number";
@@ -1039,115 +1039,115 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     };
     function rt(d, o, s) {
       d.length !== 0 && ft(d, (u) => {
-        u.call(t, o, s, Pt);
+        u.call(t, o, s, Ft);
       });
     }
-    let zo = function(o, s) {
-      return !!(_t && o.hasChildNodes() && !Qt(o.firstElementChild) && B(bn, o.textContent) && B(bn, o.innerHTML) || _t && Zi[s] && X2(o) === U.element && He2(o) === st && (Qt(o.firstElementChild) || typeof o.textContent == "string" && B(bn, o.textContent)) || o.nodeType === U.processingInstruction || _t && o.nodeType === U.comment && B(Ir, o.data));
-    }, ge2 = function(o, s) {
+    let ko = function(o, s) {
+      return !!(_t && o.hasChildNodes() && !Gt(o.firstElementChild) && B(En, o.textContent) && B(En, o.innerHTML) || _t && qi[s] && X2(o) === U.element && Ue2(o) === st && (Gt(o.firstElementChild) || typeof o.textContent == "string" && B(En, o.textContent)) || o.nodeType === U.processingInstruction || _t && o.nodeType === U.comment && B(Mr, o.data));
+    }, he2 = function(o, s) {
       if (o instanceof RegExp) return B(o, s);
       if (o instanceof Function) {
         for (var u = arguments.length, f3 = new Array(u > 2 ? u - 2 : 0), O3 = 2; O3 < u; O3++) f3[O3 - 2] = arguments[O3];
         return !!o(s, ...f3);
       }
       return false;
-    }, Uo = function(o, s, u) {
-      if (!Wt[s] && ar(s) && ge2(it2.tagNameCheck, s)) return false;
-      if (Qe && !Ot[s] && !Ot[Nt(s)]) {
-        let f3 = c(o), O3 = m(o);
+    }, jo = function(o, s, u) {
+      if (!Jt[s] && lr(s) && he2(it2.tagNameCheck, s)) return false;
+      if (Ve2 && !Ot[s] && !Ot[Nt(s)]) {
+        let f3 = l(o), O3 = m(o);
         if (O3 && f3) {
           let L2 = O3.length;
           for (let R2 = L2 - 1; R2 >= 0; --R2) {
             let k2 = o === u ? T(O3[R2], true) : O3[R2];
-            f3.insertBefore(k2, E2(o));
+            f3.insertBefore(k2, S2(o));
           }
         }
       }
       return ht(o), true;
-    }, ir = function(o, s, u, f3) {
+    }, ar = function(o, s, u, f3) {
       return o.length === 0 ? s : s === u || s === f3 ? et(s) : s;
-    }, Ht = function(o, s) {
-      return o === s || c(o) !== null ? false : (Ge2 && en(o), true);
-    }, sn = function(o, s) {
-      if (Ho(o), rt(I2.beforeSanitizeElements, o, null), Ht(o, s)) return true;
-      if (pe2(o)) return ht(o), true;
+    }, $t = function(o, s) {
+      return o === s || l(o) !== null ? false : (Xe && on(o), true);
+    }, ln = function(o, s) {
+      if (zo(o), rt(P2.beforeSanitizeElements, o, null), $t(o, s)) return true;
+      if (ge2(o)) return ht(o), true;
       let u = z2(Et(o));
-      if (P2 = ir(I2.uponSanitizeElement, P2, Ue2, ae2), rt(I2.uponSanitizeElement, o, { tagName: u, allowedTags: P2 }), Ht(o, s)) return true;
-      if (zo(o, u)) return ht(o), true;
-      if (Wt[u] || !(gt.tagCheck instanceof Function && gt.tagCheck(u)) && !P2[u]) {
-        let f3 = Uo(o, u, s);
-        return f3 === false && (rt(I2.afterSanitizeElements, o, null), Ht(o, s)) ? true : f3;
+      if (I2 = ar(P2.uponSanitizeElement, I2, Be, ce2), rt(P2.uponSanitizeElement, o, { tagName: u, allowedTags: I2 }), $t(o, s)) return true;
+      if (ko(o, u)) return ht(o), true;
+      if (Jt[u] || !(gt.tagCheck instanceof Function && gt.tagCheck(u)) && !I2[u]) {
+        let f3 = jo(o, u, s);
+        return f3 === false && (rt(P2.afterSanitizeElements, o, null), $t(o, s)) ? true : f3;
       }
-      if (X2(o) === U.element && !Co(o) || (u === "noscript" || u === "noembed" || u === "noframes") && B(Xi, o.innerHTML)) return ht(o), true;
+      if (X2(o) === U.element && !Io(o) || (u === "noscript" || u === "noembed" || u === "noframes") && B(Ki, o.innerHTML)) return ht(o), true;
       if (lt && o.nodeType === U.text) {
-        let f3 = me2(o.textContent);
-        o.textContent !== f3 && (Vt(t.removed, { element: o.cloneNode() }), o.textContent = f3);
+        let f3 = pe2(o.textContent);
+        o.textContent !== f3 && (Xt(t.removed, { element: o.cloneNode() }), o.textContent = f3);
       }
-      return rt(I2.afterSanitizeElements, o, null), Ht(o, s);
-    }, sr = function(o, s, u) {
-      if (Hn[s] || nr(s, o) || Un && (s === "id" || s === "name") && (u in n || u in No)) return false;
-      let f3 = F2[s] || gt.attributeCheck instanceof Function && gt.attributeCheck(s, o);
-      return je2 && B(So, s) || $n && B(Eo, s) ? true : f3 ? Qn[s] || B(Fn, Zt(u, Pn, "")) || (s === "src" || s === "xlink:href" || s === "href") && o !== "script" && xr(u, "data:") === 0 && Wn[o] || zn && !B(Ao, Zt(u, Pn, "")) ? true : !u : ar(o) && ge2(it2.tagNameCheck, o) && ge2(it2.attributeNameCheck, s, o) || s === "is" && it2.allowCustomizedBuiltInElements && ge2(it2.tagNameCheck, u);
-    }, ko = v({}, ["annotation-xml", "color-profile", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "missing-glyph"]), ar = function(o) {
-      return !ko[Nt(o)] && B(_o, o);
-    }, jo = function(o, s, u, f3) {
+      return rt(P2.afterSanitizeElements, o, null), $t(o, s);
+    }, cr = function(o, s, u) {
+      if (zn[s] || or(s, o) || jn && (s === "id" || s === "name") && (u in n || u in Do)) return false;
+      let f3 = M2[s] || gt.attributeCheck instanceof Function && gt.attributeCheck(s, o);
+      return Je && B(Ao, s) || Un && B(_o, s) ? true : f3 ? Yn[s] || B($n, Kt(u, Hn, "")) || (s === "src" || s === "xlink:href" || s === "href") && o !== "script" && Lr(u, "data:") === 0 && Qn[o] || kn && !B(wo, Kt(u, Hn, "")) ? true : !u : lr(o) && he2(it2.tagNameCheck, o) && he2(it2.attributeNameCheck, s, o) || s === "is" && it2.allowCustomizedBuiltInElements && he2(it2.tagNameCheck, u);
+    }, Bo = v({}, ["annotation-xml", "color-profile", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "missing-glyph"]), lr = function(o) {
+      return !Bo[Nt(o)] && B(xo, o);
+    }, Wo = function(o, s, u, f3) {
       if (Z2 && typeof g == "object" && typeof g.getAttributeType == "function" && !u) switch (g.getAttributeType(o, s)) {
         case "TrustedHTML":
-          return vt(f3);
+          return Ct(f3);
         case "TrustedScriptURL":
-          return fo(f3);
+          return po(f3);
       }
       return f3;
-    }, Bo = function(o, s, u, f3) {
+    }, Jo = function(o, s, u, f3) {
       try {
-        return u ? o.setAttributeNS(u, s, f3) : o.setAttribute(s, f3), pe2(o) ? (ht(o), false) : true;
+        return u ? o.setAttributeNS(u, s, f3) : o.setAttribute(s, f3), ge2(o) ? (ht(o), false) : true;
       } catch {
-        return Ft(s, o), false;
+        return Ht(s, o), false;
       }
-    }, cr = function(o, s) {
-      return _t && B(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, s) ? true : Nt(o) === "attributename" && wr(s, "href") !== null;
-    }, an = function(o, s) {
-      if (rt(I2.beforeSanitizeAttributes, o, null), Ht(o, s)) return;
+    }, ur = function(o, s) {
+      return _t && B(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, s) ? true : Nt(o) === "attributename" && Or(s, "href") !== null;
+    }, un = function(o, s) {
+      if (rt(P2.beforeSanitizeAttributes, o, null), $t(o, s)) return;
       let u = o.attributes;
-      if (!u || pe2(o)) return;
-      F2 = ir(I2.uponSanitizeAttribute, F2, ke2, ce2);
-      let f3 = { attrName: "", attrValue: "", keepAttr: true, allowedAttributes: F2, forceKeepAttr: void 0 }, O3 = u.length, L2 = z2(o.nodeName);
+      if (!u || ge2(o)) return;
+      M2 = ar(P2.uponSanitizeAttribute, M2, We2, le2);
+      let f3 = { attrName: "", attrValue: "", keepAttr: true, allowedAttributes: M2, forceKeepAttr: void 0 }, O3 = u.length, L2 = z2(o.nodeName);
       for (; O3--; ) {
-        let R2 = u[O3], k2 = R2.name, at = R2.namespaceURI, Y2 = R2.value, K2 = z2(k2), $t = Y2, q2 = k2 === "value" ? $t : Ci($t), lr = false;
-        if (f3.attrName = K2, f3.attrValue = q2, f3.keepAttr = true, f3.forceKeepAttr = void 0, rt(I2.uponSanitizeAttribute, o, f3), q2 = f3.attrValue, kn && (K2 === "id" || K2 === "name") && xr(q2, jn) !== 0 && (Ft(k2, o, R2), q2 = jn + q2, lr = true), cr(k2, q2)) {
-          Ft(k2, o, R2);
+        let R2 = u[O3], k2 = R2.name, at = R2.namespaceURI, Y2 = R2.value, K2 = z2(k2), zt = Y2, q2 = k2 === "value" ? zt : Ii(zt), fr = false;
+        if (f3.attrName = K2, f3.attrValue = q2, f3.keepAttr = true, f3.forceKeepAttr = void 0, rt(P2.uponSanitizeAttribute, o, f3), q2 = f3.attrValue, Bn && (K2 === "id" || K2 === "name") && Lr(q2, Wn) !== 0 && (Ht(k2, o, R2), q2 = Wn + q2, fr = true), ur(k2, q2)) {
+          Ht(k2, o, R2);
           continue;
         }
         if (!f3.forceKeepAttr) {
           if (!f3.keepAttr) {
-            Ft(k2, o, R2);
+            Ht(k2, o, R2);
             continue;
           }
-          if (!Be && B(Mr, q2)) {
-            Ft(k2, o, R2);
+          if (!Qe && B(Fr, q2)) {
+            Ht(k2, o, R2);
             continue;
           }
-          if (lt && (q2 = me2(q2)), !sr(L2, K2, q2)) {
-            Ft(k2, o, R2);
+          if (lt && (q2 = pe2(q2)), !cr(L2, K2, q2)) {
+            Ht(k2, o, R2);
             continue;
           }
-          q2 = jo(L2, K2, at, q2), q2 !== $t && Bo(o, k2, at, q2) && lr && _r(t.removed);
+          q2 = Wo(L2, K2, at, q2), q2 !== zt && Jo(o, k2, at, q2) && fr && xr(t.removed);
         }
       }
-      rt(I2.afterSanitizeAttributes, o, null), Ht(o, s);
-    }, Gt = function(o) {
-      let s = null, u = rn(o);
-      for (rt(I2.beforeSanitizeShadowDOM, o, null); s = u.nextNode(); ) if (rt(I2.uponSanitizeShadowNode, s, null), sn(s, o), an(s, o), yt(s.content) && Gt(s.content), X2(s) === U.element) {
+      rt(P2.afterSanitizeAttributes, o, null), $t(o, s);
+    }, Yt = function(o) {
+      let s = null, u = an(o);
+      for (rt(P2.beforeSanitizeShadowDOM, o, null); s = u.nextNode(); ) if (rt(P2.uponSanitizeShadowNode, s, null), ln(s, o), un(s, o), yt(s.content) && Yt(s.content), X2(s) === U.element) {
         let f3 = h2(s);
-        yt(f3) && (cn(f3), Gt(f3));
+        yt(f3) && (fn(f3), Yt(f3));
       }
-      lt && or(o), rt(I2.afterSanitizeShadowDOM, o, null);
-    }, cn = function(o) {
+      lt && sr(o), rt(P2.afterSanitizeShadowDOM, o, null);
+    }, fn = function(o) {
       let s = [{ node: o, shadow: null }];
       for (; s.length > 0; ) {
         let u = s.pop();
         if (u.shadow) {
-          Gt(u.shadow);
+          Yt(u.shadow);
           continue;
         }
         let f3 = u.node, O3 = X2(f3) === U.element, L2 = m(f3);
@@ -1167,77 +1167,77 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     };
     return t.sanitize = function(d) {
       let o = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, s = null, u = null, f3 = null, O3 = null;
-      if (Ye2 = !d, Ye2 && (d = "<!-->"), typeof d != "string" && !Qt(d) && (d = Fi(d), typeof d != "string")) throw dt("dirty is not a string, aborting");
+      if (Ze2 = !d, Ze2 && (d = "<!-->"), typeof d != "string" && !Gt(d) && (d = $i(d), typeof d != "string")) throw dt("dirty is not a string, aborting");
       if (!t.isSupported) return d;
-      We2 ? (P2 = ae2, F2 = ce2) : Ke(o), (I2.uponSanitizeElement.length > 0 || I2.uponSanitizeAttribute.length > 0) && (P2 = et(P2)), I2.uponSanitizeAttribute.length > 0 && (F2 = et(F2)), t.removed = [];
-      let L2 = Ge2 && typeof d != "string" && Qt(d), R2 = [], k2 = xt;
+      Ge2 ? (I2 = ce2, M2 = le2) : en(o), (P2.uponSanitizeElement.length > 0 || P2.uponSanitizeAttribute.length > 0) && (I2 = et(I2)), P2.uponSanitizeAttribute.length > 0 && (M2 = et(M2)), t.removed = [];
+      let L2 = Xe && typeof d != "string" && Gt(d), R2 = [], k2 = xt;
       if (L2) {
-        $o(d);
+        Uo(d);
         let K2 = Et(d);
         if (typeof K2 == "string") {
-          let $t = z2(K2);
-          if (!P2[$t] || Wt[$t]) throw qe2(d), dt("root node is forbidden and cannot be sanitized in-place");
+          let zt = z2(K2);
+          if (!I2[zt] || Jt[zt]) throw nn(d), dt("root node is forbidden and cannot be sanitized in-place");
         }
-        if (pe2(d)) throw qe2(d), dt("root node is clobbered and cannot be sanitized in-place");
-        R2 = nn(d), xt = fn();
-      } else if (Qt(d)) s = rr("<!---->"), u = s.ownerDocument.importNode(d, true), u.nodeType === U.element && u.nodeName === "BODY" || u.nodeName === "HTML" ? s = u : s.appendChild(u), cn(s);
+        if (ge2(d)) throw nn(d), dt("root node is clobbered and cannot be sanitized in-place");
+        R2 = sn(d), xt = pn();
+      } else if (Gt(d)) s = ir("<!---->"), u = s.ownerDocument.importNode(d, true), u.nodeType === U.element && u.nodeName === "BODY" || u.nodeName === "HTML" ? s = u : s.appendChild(u), fn(s);
       else {
-        if (!Ct && !lt && !wt && d.indexOf("<") === -1) return Z2 && ue2 ? vt(d) : d;
-        if (s = rr(d), !s) return Ct ? null : ue2 ? At : "";
+        if (!Pt && !lt && !wt && d.indexOf("<") === -1) return Z2 && fe2 ? Ct(d) : d;
+        if (s = ir(d), !s) return Pt ? null : fe2 ? At : "";
       }
-      s && Je && ht(s.firstChild);
+      s && Ye2 && ht(s.firstChild);
       let at = L2 ? d : s;
       try {
-        L2 && cn(d);
-        let K2 = rn(at);
-        for (; f3 = K2.nextNode(); ) sn(f3, at), an(f3, at), yt(f3.content) && Gt(f3.content);
-        L2 && Po(d, R2);
+        L2 && fn(d);
+        let K2 = an(at);
+        for (; f3 = K2.nextNode(); ) ln(f3, at), un(f3, at), yt(f3.content) && Yt(f3.content);
+        L2 && Ho(d, R2);
       } catch (K2) {
-        throw L2 && (qe2(d), er(d, R2)), K2;
+        throw L2 && (nn(d), rr(d, R2)), K2;
       } finally {
         xt = k2;
       }
       if (L2) {
-        if (er(d, R2)) throw dt("a node selected for removal could not be safely returned; refusing to sanitize in place");
-        return lt && on(d), d;
+        if (rr(d, R2)) throw dt("a node selected for removal could not be safely returned; refusing to sanitize in place");
+        return lt && cn(d), d;
       }
-      if (Ct) {
-        if (lt && on(s), le2) for (O3 = po.call(s.ownerDocument); s.firstChild; ) O3.appendChild(s.firstChild);
+      if (Pt) {
+        if (lt && cn(s), ue2) for (O3 = ho.call(s.ownerDocument); s.firstChild; ) O3.appendChild(s.firstChild);
         else O3 = s;
-        return (F2.shadowroot || F2.shadowrootmode) && (O3 = ho.call(r, O3, true)), O3;
+        return (M2.shadowroot || M2.shadowrootmode) && (O3 = bo.call(r, O3, true)), O3;
       }
       let Y2 = wt ? s.outerHTML : s.innerHTML;
-      return wt && P2["!doctype"] && s.ownerDocument && s.ownerDocument.doctype && s.ownerDocument.doctype.name && B(Yi, s.ownerDocument.doctype.name) && (Y2 = "<!DOCTYPE " + s.ownerDocument.doctype.name + `>
-` + Y2), lt && (Y2 = me2(Y2)), Z2 && ue2 ? vt(Y2) : Y2;
+      return wt && I2["!doctype"] && s.ownerDocument && s.ownerDocument.doctype && s.ownerDocument.doctype.name && B(Xi, s.ownerDocument.doctype.name) && (Y2 = "<!DOCTYPE " + s.ownerDocument.doctype.name + `>
+` + Y2), lt && (Y2 = pe2(Y2)), Z2 && fe2 ? Ct(Y2) : Y2;
     }, t.setConfig = function() {
       let d = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      Ke(d), We2 = true, ae2 = P2, ce2 = F2;
+      en(d), Ge2 = true, ce2 = I2, le2 = M2;
     }, t.clearConfig = function() {
-      Pt = null, We2 = false, ae2 = null, ce2 = null, Z2 = $e2, At = "";
+      Ft = null, Ge2 = false, ce2 = null, le2 = null, Z2 = ke2, At = "";
     }, t.isValidAttribute = function(d, o, s) {
-      Pt || Ke({});
+      Ft || en({});
       let u = z2(d), f3 = z2(o);
-      return typeof s == "string" && (cr(o, s) || !Be && B(Mr, s)) ? false : sr(u, f3, s);
+      return typeof s == "string" && (ur(o, s) || !Qe && B(Fr, s)) ? false : cr(u, f3, s);
     }, t.addHook = function(d, o) {
-      typeof o == "function" && tt(I2, d) && Vt(I2[d], o);
+      typeof o == "function" && tt(P2, d) && Xt(P2[d], o);
     }, t.removeHook = function(d, o) {
-      if (tt(I2, d)) {
+      if (tt(P2, d)) {
         if (o !== void 0) {
-          let s = Ri(I2[d], o);
-          return s === -1 ? void 0 : vi(I2[d], s, 1)[0];
+          let s = vi(P2[d], o);
+          return s === -1 ? void 0 : Pi(P2[d], s, 1)[0];
         }
-        return _r(I2[d]);
+        return xr(P2[d]);
       }
     }, t.removeHooks = function(d) {
-      tt(I2, d) && (I2[d] = []);
+      tt(P2, d) && (P2[d] = []);
     }, t.removeAllHooks = function() {
-      I2 = Pr();
+      P2 = Hr();
     }, t;
   }
-  var Ae = kr();
-  var Tt = ts();
-  function ts() {
-    let e = { USE_PROFILES: { html: true, svg: true }, IN_PLACE: true, KEEP_CONTENT: true, ADD_TAGS: [], FORBID_TAGS: [], FORBID_ATTR: [], ADD_ATTR: [], FORCE_BODY: false }, t = false;
+  var _e = Br();
+  var Tt = ns();
+  function ns() {
+    let e = { USE_PROFILES: { html: true, svg: true, svgFilters: true }, IN_PLACE: true, KEEP_CONTENT: true, ADD_TAGS: [], FORBID_TAGS: [], FORBID_ATTR: [], ADD_ATTR: [], FORCE_BODY: false, SANITIZE_DOM: true }, t = false;
     return { get current() {
       return e;
     }, get notInPlaceConfig() {
@@ -1256,40 +1256,40 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       n(r, "FORBID_ATTR", "ADD_ATTR");
     } };
     function n(r, i, a) {
-      e[i].push(r), e[i] = [...new Set(e[i])], e[a].includes(r) && e[a].splice(e[a].findIndex((l) => l === r), 1);
+      e[i].push(r), e[i] = [...new Set(e[i])], e[a].includes(r) && e[a].splice(e[a].findIndex((c) => c === r), 1);
     }
   }
-  function jr(e, t) {
-    let n = t || typeof e == "string" ? Tt.notInPlaceConfig : Tt.current, r = Ae.sanitize(e, n);
-    return Ae.removed.length > 0 && ns(Ae.removed, e), r;
+  function Wr(e, t) {
+    let n = t || typeof e == "string" ? Tt.notInPlaceConfig : Tt.current, r = _e.sanitize(e, n);
+    return _e.removed.length > 0 && os(_e.removed, e), r;
   }
   function J(e) {
     try {
-      return jr(e);
+      return Wr(e);
     } catch {
-      return C.log("JQX: sanitition NOT in place"), jr(e, true);
-    }
-  }
-  function es(e) {
-    if (typeof e == "string") return e;
-    if (e.outerHTML) {
-      let t = e.outerHTML;
-      return Tt.forDebug ? e.outerHTML : qt(e.outerHTML.replace(/\n/g, "").replace(/ {2,}/g, " "), { at: 45, wordBoundary: true });
-    }
-    return e.nodeName;
-  }
-  function ns(e, t) {
-    t = es(t);
-    for (let [, n] of Object.entries(e)) {
-      let r, i = "JQx: sanitized input => " + Object.entries(n).reduce((a, [l, w]) => a + `, ${l} ${w.nodeName} ${/from/i.test(l) ? `(${t.trim()})` : ""}`, "").slice(2).replace(/ , /g, ", ");
-      C.error(i);
+      return C.log("JQX: sanitition NOT in place"), Wr(e, true);
     }
   }
   function rs(e) {
+    if (typeof e == "string") return e;
+    if (e.outerHTML) {
+      let t = e.outerHTML;
+      return Tt.forDebug ? e.outerHTML : te(e.outerHTML.replace(/\n/g, "").replace(/ {2,}/g, " "), { at: 45, wordBoundary: true });
+    }
+    return e.nodeName;
+  }
+  function os(e, t) {
+    t = rs(t);
+    for (let [, n] of Object.entries(e)) {
+      let r, i = "JQx: sanitized input => " + Object.entries(n).reduce((a, [c, x2]) => a + `, ${c} ${x2.nodeName} ${/from/i.test(c) ? `(${t.trim()})` : ""}`, "").slice(2).replace(/ , /g, ", ");
+      C.error(i);
+    }
+  }
+  function is(e) {
     let t = document.createElement("div");
     return t.insertAdjacentHTML(V.end, e), t.childNodes.length ? J(t) : void 0;
   }
-  function os(e, t, n) {
+  function ss(e, t, n) {
     switch (true) {
       case p(e, Comment):
         return t.insertAdjacentHTML(n, `<!--${e.data}-->`);
@@ -1301,205 +1301,205 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function Rt(e = [], t = document.body, n = V.BeforeEnd) {
     return n = n || V.BeforeEnd, t = t?.isJQx ? t.node : t || document.body, e.reduce((r, i) => {
-      let a = mt(i) && is(i, t, n);
+      let a = mt(i) && as(i, t, n);
       return a ? [...r, a] : r;
     }, []);
   }
-  function is(e, t = document.body, n = V.BeforeEnd) {
-    return n = n || V.BeforeEnd, t = t?.isJQx ? t?.[0] : t, p(e, Comment, Text) ? os(e, t, n) : p(e, HTMLElement) ? t.insertAdjacentElement(n, e) : void 0;
+  function as(e, t = document.body, n = V.BeforeEnd) {
+    return n = n || V.BeforeEnd, t = t?.isJQx ? t?.[0] : t, p(e, Comment, Text) ? ss(e, t, n) : p(e, HTMLElement) ? t.insertAdjacentElement(n, e) : void 0;
   }
   function ct(e) {
     if (p(e, Text, Comment)) return e;
     let t = e?.trim(), n = t?.split(/<text>|<\/text>/i) ?? [];
     if (n?.length && (n = n.length > 1 ? n.filter((i) => i.length).shift() : void 0), t.startsWith("<!--") && t.endsWith("-->")) return document.createComment(e.replace(/<!--|-->$/g, ""));
     if (n || p(t, String) && !/^<(.+)[^>]+>/m.test(t)) return document.createTextNode(n ?? t);
-    let r = rs(e);
-    return !r || r.childNodes.length < 1 ? ct(`<span data-jqxcreationerror="1">${Br(e, 60)}</span>`) : r?.children[0] ?? document.createElement("span");
+    let r = is(e);
+    return !r || r.childNodes.length < 1 ? ct(`<span data-jqxcreationerror="1">${Jr(e, 60)}</span>`) : r?.children[0] ?? document.createElement("span");
   }
-  var Wr = ss();
-  function ss() {
+  var Qr = cs();
+  function cs() {
     return ["::backdrop{background-color:grey;opacity:0.2;}", `#jqxPopup{overflow:hidden;background-color:transparent;outline:none;border:none;inset:0;animation:fade-out 0.5s ease-out;&[open]{display:flex;align-items:center;justify-content:center;animation:fade-in 0.5s ease;}#jqxPopupContent{background-color:white;border:solid 1px #eee;box-shadow:1px 2px 8px #999;border-radius:4px;padding:12px;vertical-align:middle;max-height:40vh;max-width:50vw;overflow:auto;margin:0 auto;div:not(#closeHandleIcon){clear:both;}@media (width <= 640px){max-width:80vw;max-height:60vh;}#closeHandleIcon{cursor:pointer;width:24px;height:24px;display:inline;position:absolute;top:4px;right:4px;justify-content:right;background-image:url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20version%3D%221.1%22%20id%3D%22Layer_1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20128%20128%22%20style%3D%22enable-background%3Anew%200%200%20128%20128%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20x%3D%22-368%22%20y%3D%226%22%20style%3D%22display%3Anone%3Bfill%3A%23E0E0E0%3B%22%20width%3D%22866%22%20height%3D%221018%22%2F%3E%3Ccircle%20style%3D%22fill%3A%23FFFFFF%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Ccircle%20style%3D%22fill%3A%238CCFB9%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2239%22%2F%3E%3Ccircle%20style%3D%22fill%3Anone%3Bstroke%3A%23444B54%3Bstroke-width%3A6%3Bstroke-miterlimit%3A10%3B%22%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2248%22%2F%3E%3Cpolyline%20style%3D%22fill%3Anone%3Bstroke%3A%23FFFFFF%3Bstroke-width%3A6%3Bstroke-linecap%3Around%3Bstroke-miterlimit%3A10%3B%22%20points%3D%2242%2C69%2055.55%2C81%20%20%2086%2C46%20%22%2F%3E%3C%2Fsvg%3E");@media (width <= 640px){background-image:none;position:relative;margin:-15px -15px 4px 0;float:right;vertical-align:middle;border:1px solid #AAA;padding:2px;border-radius:50%;width:12px;height:12px;font-size:12px;line-height:12px;font-weight:bold;text-align:center;&:after{content:'\\2714';color:green;}}}.warn{display:none;text-align:center;color:red;border-top:1px solid #999;margin-top:1em;padding-top:3px;animation:warn-fade-out 0.2s ease-out;}.warn.active{opacity:1;display:block;animation:warn-fade-in 0.2s ease-in;}}}`, "@keyframes fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1, 1);display:flex;}}", "@keyframes fade-out{0%{opacity:1;transform:scale(1, 1);display:flex;}100%{opacity:0;transform:scale(0, 0);display:none;}}", "@keyframes warn-fade-in{0%{opacity:0;transform:scale(0, 0);display:none;}100%{opacity:1;transform:scale(1,1 );display:block;}}", "@keyframes warn-fade-out{0%{opacity:1;transform:scale(1, 1);display:block;}100%{opacity:0;transform:scale(0, 0);display:none;}}"];
   }
-  function _e(e) {
+  function we(e) {
     if (e.node("#jqxPopup")) return;
-    e.logger.log("JQx: [JQx].Popup first call. Dialog element created."), e('<dialog id="jqxPopup"><div id="jqxPopupContent"></div></dialog>'), e.editCssRules(...Wr);
+    e.logger.log("JQx: [JQx].Popup first call. Dialog element created."), e('<dialog id="jqxPopup"><div id="jqxPopupContent"></div></dialog>'), e.editCssRules(...Qr);
     let t = [], [n, r] = [e("#jqxPopupContent"), e.node("#jqxPopup")], i = {};
-    return e.handle({ type: "click, cancel", handlers: T, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: a, remove: l, removeModal: b });
+    return e.handle({ type: "click, cancel", handlers: T, name: "genericPopupCloseHandler", capture: true, about: "A generic handler for JQx popups" }), Object.freeze({ show: a, remove: c, removeModal: b });
     function a(m) {
-      if (r.open) return true === w(m) ? void 0 : (l(), setTimeout(() => a(m), 200));
+      if (r.open) return true === x2(m) ? void 0 : (c(), setTimeout(() => a(m), 200));
       i = { ...m };
-      let { content: c } = i;
-      return e.IS(c, String, HTMLElement) || c?.isJQx ? S2() : true;
+      let { content: l } = i;
+      return e.IS(l, String, HTMLElement) || l?.isJQx ? _2() : true;
     }
-    function l() {
-      return i.modal ? E2(i.warnMessage) : x2();
+    function c() {
+      return i.modal ? S2(i.warnMessage) : w();
     }
-    function w(m) {
-      for (let [c, h2] of Object.entries(i)) if (h2 !== m[c]) return false;
+    function x2(m) {
+      for (let [l, h2] of Object.entries(i)) if (h2 !== m[l]) return false;
       return true;
     }
-    function S2() {
+    function _2() {
       n.clear();
-      let { content: m, modal: c, closeAfter: h2 } = i;
-      c = e.IS(c, Boolean) ? c : false;
-      let A2 = c ? "" : e('<div id="closeHandleIcon">');
-      n.append(A2, e.IS(m, String) ? e(`<div>${m}</div>`) : m), r.showModal(), !c && e.IS(h2, Number) && _2(l, h2);
+      let { content: m, modal: l, closeAfter: h2 } = i;
+      l = e.IS(l, Boolean) ? l : false;
+      let E2 = l ? "" : e('<div id="closeHandleIcon">');
+      n.append(E2, e.IS(m, String) ? e(`<div>${m}</div>`) : m), r.showModal(), !l && e.IS(h2, Number) && A2(c, h2);
     }
-    function x2() {
+    function w() {
       if (r.close(i.returnValue), g(), e.IS(i.callback, Function)) return t.push(setTimeout(() => i.callback(i.returnValue), 200));
       i = {};
     }
     function g() {
       t.forEach((m) => clearTimeout(m)), t = [];
     }
-    function b({ callback: m, value: c } = {}) {
-      i.returnValue = c, i.modal = false, i.callback = m || i.callback, l();
+    function b({ callback: m, value: l } = {}) {
+      i.returnValue = l, i.modal = false, i.callback = m || i.callback, c();
     }
     function T({ evt: m }) {
-      if (!(Object.keys(i).length < 1 || !r.open) && (m.type === "cancel" && i.modal && m.preventDefault(), m.target.closest("#closeHandleIcon") || !m.target.closest("#jqxPopupContent"))) return i.activeTimer && clearTimeout(i.activeTimer), l();
+      if (!(Object.keys(i).length < 1 || !r.open) && (m.type === "cancel" && i.modal && m.preventDefault(), m.target.closest("#closeHandleIcon") || !m.target.closest("#jqxPopupContent"))) return i.activeTimer && clearTimeout(i.activeTimer), c();
     }
-    function _2(m, c) {
-      e.IS(m, Function) && e.IS(c, Number) && c > 0 && (g(), t.push(setTimeout(m, c * 1e3)));
+    function A2(m, l) {
+      e.IS(m, Function) && e.IS(l, Number) && l > 0 && (g(), t.push(setTimeout(m, l * 1e3)));
     }
     function y(m) {
       return (m.node ?? m).outerHTML ?? m;
     }
-    function E2(m) {
+    function S2(m) {
       if (!e.IS(m, String, HTMLElement) && !m.isJQx) return;
       m = y(m);
-      let c = n.find$(".warn");
+      let l = n.find$(".warn");
       switch (true) {
-        case c.is.empty:
-          c = e(`<div class="warn">${m}</div>`);
+        case l.is.empty:
+          l = e(`<div class="warn">${m}</div>`);
         default:
-          n.append(c.addClass("active")), _2(() => n.find$(".warn").removeClass("active"), 2);
+          n.append(l.addClass("active")), A2(() => n.find$(".warn").removeClass("active"), 2);
       }
     }
   }
-  function we(e) {
+  function xe(e) {
     let t = {}, n = "anonymous_";
     function r(g) {
       if (g) {
-        let { handler: b, capture: T, type: _2 } = g;
-        document.addEventListener(_2, b, { capture: T });
+        let { handler: b, capture: T, type: A2 } = g;
+        document.addEventListener(A2, b, { capture: T });
       }
     }
     function i(g) {
       if (g) {
-        let { type: b, handler: T, capture: _2 } = g;
-        document.removeEventListener(b, T, { capture: _2 });
+        let { type: b, handler: T, capture: A2 } = g;
+        document.removeEventListener(b, T, { capture: A2 });
       }
     }
-    function a(g, b, T, _2) {
+    function a(g, b, T, A2) {
       return function(y) {
         if (!$(b)) return g({ evt: y });
-        let E2 = y.target.closest(b);
-        if (E2) {
-          let m = e(E2);
-          g({ self: m, me: m, evt: y }), T && S2(y.type, _2);
+        let S2 = y.target.closest(b);
+        if (S2) {
+          let m = e(S2);
+          g({ self: m, me: m, evt: y }), T && _2(y.type, A2);
         }
         return true;
       };
     }
-    function l(g) {
+    function c(g) {
       return t[g] = t[g] || {}, t[g];
     }
-    function w(g, b) {
-      return Object.entries(l(g)).find(([T]) => T === b);
+    function x2(g, b) {
+      return Object.entries(c(g)).find(([T]) => T === b);
     }
-    function S2(g, b) {
-      let T = w(g, b);
-      T && (i(T[1]), delete t[g][b], delete xe[b], C.warn(`Removed listener [${b}] for event type [${g}].`));
+    function _2(g, b) {
+      let T = x2(g, b);
+      T && (i(T[1]), delete t[g][b], delete Oe[b], C.warn(`Removed listener [${b}] for event type [${g}].`));
     }
-    function x2(g) {
-      let { type: b, handler: T, name: _2, capture: y, once: E2, selector: m, node: c, about: h2 } = g;
+    function w(g) {
+      let { type: b, handler: T, name: A2, capture: y, once: S2, selector: m, node: l, about: h2 } = g;
       t[b] = t[b] || {};
-      let A2 = An(_2 || T.name), N2 = T;
-      if (c instanceof HTMLElement) {
-        let D2 = c.dataset.hid || A2;
-        c.dataset.hid = D2, m = `[data-hid=${D2}]`;
+      let E2 = xn(A2 || T.name), N2 = T;
+      if (l instanceof HTMLElement) {
+        let D2 = l.dataset.hid || E2;
+        l.dataset.hid = D2, m = `[data-hid=${D2}]`;
       }
-      return true === !t[b][A2] ? (C.log(`JQx: created listener for event type ${b}, with handler name ${A2}`), t[b][A2] = { name: A2, handler: a(T, m, E2, A2), capture: Jr(b, y), once: !!E2, type: b, initialHandler: N2, selector: !!m && m || false, about: !!h2 && h2 || false, unListen() {
-        S2(b, A2);
-      } }, t[b][A2]) : console.warn(`The listener [${A2}] for [${b}] exists, it is not re-assigned.`);
+      return true === !t[b][E2] ? (C.log(`JQx: created listener for event type ${b}, with handler name ${E2}`), t[b][E2] = { name: E2, handler: a(T, m, S2, E2), capture: Gr(b, y), once: !!S2, type: b, initialHandler: N2, selector: !!m && m || false, about: !!h2 && h2 || false, unListen() {
+        _2(b, E2);
+      } }, t[b][E2]) : console.warn(`The listener [${E2}] for [${b}] exists, it is not re-assigned.`);
     }
     return { remove(...g) {
-      return S2(...g);
+      return _2(...g);
     }, listen: function(g) {
       let { type: b, handler: T } = g;
       if (!$(b) || !p(T, Function)) return;
-      let _2 = x2(g);
-      if (_2) return r(_2), { type: b, name: _2.name, unListen() {
-        S2(b, _2.name);
+      let A2 = w(g);
+      if (A2) return r(A2), { type: b, name: A2.name, unListen() {
+        _2(b, A2.name);
       } };
     }, get ListenerStore() {
       return Object.freeze({ ...t });
     } };
   }
-  function Qr(e, t) {
+  function Yr(e, t) {
     return t ? Tt.addTag(e) : Tt.removeTag(e);
   }
-  function Gr(e, t) {
+  function Vr(e, t) {
     return t ? Tt.addAttribute(e) : Tt.removeAttribute(e);
   }
   var ot = { allowTag(e) {
-    Qr(e, true);
+    Yr(e, true);
   }, prohibitTag(e) {
-    Qr(e, false);
+    Yr(e, false);
   }, allowAttributes(e) {
-    Gr(e, true);
+    Vr(e, true);
   }, prohibitAttributes(e) {
-    Gr(e, false);
+    Vr(e, false);
   } };
-  ur();
-  var C = ls();
-  var as = ["load", "unload", "scroll", "focus", "blur", "DOMNodeRemovedFromDocument", "DOMNodeInsertedIntoDocument", "loadstart", "progress", "error", "abort", "load", "loadend", "pointerenter", "pointerleave", "readystatechange"];
+  dr();
+  var C = fs();
+  var ls = ["load", "unload", "scroll", "focus", "blur", "DOMNodeRemovedFromDocument", "DOMNodeInsertedIntoDocument", "loadstart", "progress", "error", "abort", "load", "loadend", "pointerenter", "pointerleave", "readystatechange"];
   var V = Object.freeze(new Proxy({ start: "afterbegin", afterbegin: "afterbegin", end: "beforeend", beforeend: "beforeend", before: "beforebegin", beforebegin: "beforebegin", after: "afterend", afterend: "afterend" }, { get(e, t) {
     return e[String(t).toLowerCase()] ?? e[t];
   } }));
-  var cs = [...Array(26)].map((e, t) => String.fromCharCode(t + 65)).concat([...Array(26)].map((e, t) => String.fromCharCode(t + 97))).concat([...Array(10)].map((e, t) => `${t}`));
-  var wn = Object.freeze({ get(e, t) {
-    return e[ne(t)] || e[t];
+  var us = [...Array(26)].map((e, t) => String.fromCharCode(t + 65)).concat([...Array(26)].map((e, t) => String.fromCharCode(t + 97))).concat([...Array(10)].map((e, t) => `${t}`));
+  var Ln = Object.freeze({ get(e, t) {
+    return e[vt(t)] || e[t];
   }, enumerable: false, configurable: false });
-  var xe = {};
-  var aa = !!document.createElement("span").setHTML;
-  function xn() {
+  var Oe = {};
+  var la = !!document.createElement("span").setHTML;
+  function Nn() {
     let e = setTimeout(() => {
     });
     for (; e >= 0; ) clearTimeout(e--);
   }
-  function An(e) {
-    return $(e) && !/^handler|handlers$/gi.test(e.trim()) ? e.trim() : Yr();
+  function xn(e) {
+    return $(e) && !/^handler|handlers$/gi.test(e.trim()) ? e.trim() : Xr();
   }
-  function Yr(e) {
+  function Xr(e) {
     let t = `anonymous_${Math.random().toString(36).slice(2)}`;
-    return xe[t] ? Yr() : (xe[t] = t, t);
+    return Oe[t] ? Xr() : (Oe[t] = t, t);
   }
-  function Jr(e, t) {
-    return !!as.find((n) => n === e) || !!t;
+  function Gr(e, t) {
+    return !!ls.find((n) => n === e) || !!t;
   }
-  function Ne(e) {
+  function Re(e) {
     return e && (e.textContent = "");
   }
-  function te(e, t = 0, n = true) {
-    return e = e?.parentElement, t += e ? e[n ? "scrollTop" : "scrollLeft"] : 0, e ? te(e, t, n) : t;
+  function ne(e, t = 0, n = true) {
+    return e = e?.parentElement, t += e ? e[n ? "scrollTop" : "scrollLeft"] : 0, e ? ne(e, t, n) : t;
   }
   function $(e, t = 1) {
     return t = p(t, Number) && t || 1, p(e, String) && e.length >= t;
   }
-  function Br(e, t = 120) {
+  function Jr(e, t = 120) {
     return `${e}`.trim().slice(0, t).replace(/>\s+</g, "><").replace(/</g, "&lt;").replace(/\s{2,}/g, " ").replace(/\n/g, "\\n") + (e.length > t ? " &hellip;" : "").trim();
   }
-  function jt(e) {
+  function Bt(e) {
     if (true === p(e, String)) {
       let t = document.createElement("div");
       return t.append(e), t.innerHTML;
     } else return e;
   }
-  function _n(e) {
+  function On(e) {
     return p(e, String) && Object.assign(document.createElement("textarea"), { innerHTML: e }).textContent || e;
   }
-  function ls() {
+  function fs() {
     let [e, t] = [false, true], n = [], r = { get on() {
       return e = true, r;
     }, get off() {
@@ -1517,16 +1517,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function a() {
       t = false;
     }
-    function l(...x2) {
-      return n.unshift(...x2.map((g) => `${Le()} \u2A3B ${_n(g)}`)), console.error(n.slice(0, x2.length).join(`
+    function c(...w) {
+      return n.unshift(...w.map((g) => `${Ne()} \u2A3B ${On(g)}`)), console.error(n.slice(0, w.length).join(`
 `)), r;
     }
-    function w(...x2) {
-      return n.unshift(...x2.map((g) => `${Le()} \u26A0 ${_n(g)}`)), console.warn(n.slice(0, x2.length).join(`
+    function x2(...w) {
+      return n.unshift(...w.map((g) => `${Ne()} \u26A0 ${On(g)}`)), console.warn(n.slice(0, w.length).join(`
 `)), r;
     }
-    function S2(...x2) {
-      let g = x2.map((b) => `${Le()} \u2714 ${_n(b)}`);
+    function _2(...w) {
+      let g = w.map((b) => `${Ne()} \u2714 ${On(b)}`);
       switch (!t && n.unshift(...g), e) {
         case true:
           console.log(g.join(`
@@ -1535,33 +1535,57 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return r;
       }
     }
-    return Object.defineProperties(r, { log: { value: S2, enumerable: false }, error: { value: l, enumerable: false }, warn: { value: w, enumerable: false } }), Object.freeze(r);
+    return Object.defineProperties(r, { log: { value: _2, enumerable: false }, error: { value: c, enumerable: false }, warn: { value: x2, enumerable: false } }), Object.freeze(r);
   }
-  function Le() {
-    return ((e) => `[${Oe(e.getHours())}:${Oe(e.getMinutes())}:${Oe(e.getSeconds())}.${Oe(e.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
+  function Ne() {
+    return ((e) => `[${Le(e.getHours())}:${Le(e.getMinutes())}:${Le(e.getSeconds())}.${Le(e.getMilliseconds(), 3)}]`)(/* @__PURE__ */ new Date());
   }
-  function On(e, t) {
+  function ee(e, t) {
     if (e) for (let [n, r] of Object.entries(t)) {
-      if (n = pt(n), n.startsWith("data")) return Re(e, r);
+      if (n = pt(n.trim()), n.startsWith("data")) return Ce(e, r);
+      if (De(e, n)) return ve(e, t);
       p(r, String) && (e.setAttribute(n, r.split(/[, ]/)?.join(" ")), J(e));
     }
   }
-  function Re(e, t) {
+  function De(e, t) {
+    let n = e.cloneNode();
+    return n[t] = 42, !!n.getAttribute(t);
+  }
+  function ve(e, t) {
+    for (let [n, r] of Object.entries(t)) switch (n = n.trim(), true) {
+      case n.startsWith("on"):
+        C.error(`JQx: [instance].prop => '${n}' not allowed`);
+        break;
+      case n.startsWith("data-"):
+        ee(e, { data: { [n.replace(/^data-/, "")]: r } });
+        break;
+      case (/data/i.test(n) && p(r, Object)):
+        ee(e, { data: { ...r } });
+        break;
+      case typeof r == "function":
+        C.error(`JQx: [instance].prop => '${n}' function values not allowed`);
+        break;
+      default:
+        e[n] = r;
+    }
+    J(e);
+  }
+  function Ce(e, t) {
     if (e && p(t, Object)) {
-      for (let [n, r] of Object.entries(t)) e.setAttribute(`data-${pt(n)}`, r);
+      for (let [n, r] of Object.entries(t)) n = n.replace(/[^a-zA-Z0-9-_]/g, ""), e.setAttribute(`data-${pt(n)}`, r);
       J(e);
     }
   }
-  function De(e) {
-    return e ? e.EL ? [e.EL] : p(e, NodeList) ? [...e] : mt(e) ? [e] : oe(e) ? e : e.isJQx ? e.collection : void 0 : [];
+  function Pe(e) {
+    return e ? e.EL ? [e.EL] : p(e, NodeList) ? [...e] : mt(e) ? [e] : ie(e) ? e : e.isJQx ? e.collection : void 0 : [];
   }
-  function us(e) {
+  function ds(e) {
     return [...e.matchAll(/\p{Pe}|\p{Z}/gu)].at(-1)?.index ?? e.length;
   }
-  function qt(e, { at: t, html: n = false, wordBoundary: r = false } = {}) {
+  function te(e, { at: t, html: n = false, wordBoundary: r = false } = {}) {
     if (n = n?.constructor === Boolean && n || false, r = r?.constructor === Boolean && r || false, e.length <= t) return e;
-    let i = e.slice(0, t - 1), a = n ? "&hellip;" : "...", l = r ? us(i) : i.length;
-    return (r ? i.slice(0, l + 1).trim() : i) + a;
+    let i = e.slice(0, t - 1), a = n ? "&hellip;" : "...", c = r ? ds(i) : i.length;
+    return (r ? i.slice(0, c + 1).trim() : i) + a;
   }
   function Dt(e, t, n = true, ...r) {
     if (e.is.empty) return C.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), e;
@@ -1574,7 +1598,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function mt(e) {
     return p(e, Text, HTMLElement, Comment);
   }
-  function ee(e, t) {
+  function re(e, t) {
     if (p(t, Object)) for (let [n, r] of Object.entries(t)) {
       let i;
       /!important/i.test(r) && (r = r.slice(0, r.indexOf("!")).trim(), i = "important"), e.style.setProperty(pt(n), r, i);
@@ -1584,33 +1608,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     let t = e.cloneNode(true);
     return t.removeAttribute && t.removeAttribute("id"), e.isConnected ? e.remove() : e = null, t;
   }
-  function Vr(e) {
+  function Zr(e) {
     if (!p(e, HTMLElement)) return;
-    let t = e.style, n = getComputedStyle(e), r = !![t.visibility, n.visibility].includes("hidden"), i = !![t.display, n.display].includes("none"), a = !!e.hidden, l = parseInt(n.height) < 1 || parseInt(n.width) < 1, w = e.offsetTop < 0 || e.offsetLeft + e.offsetWidth < 0 || e.offsetLeft > document.body.offsetWidth, S2 = +n.opacity == 0 || +(t.opacity || 1) == 0;
-    return !(a || w || S2 || i || r || l);
+    let t = e.style, n = getComputedStyle(e), r = !![t.visibility, n.visibility].includes("hidden"), i = !![t.display, n.display].includes("none"), a = !!e.hidden, c = parseInt(n.height) < 1 || parseInt(n.width) < 1, x2 = e.offsetTop < 0 || e.offsetLeft + e.offsetWidth < 0 || e.offsetLeft > document.body.offsetWidth, _2 = +n.opacity == 0 || +(t.opacity || 1) == 0;
+    return !(a || x2 || _2 || i || r || c);
   }
-  function Xr(e) {
+  function Kr(e) {
     return e?.isConnected ? !![...document.querySelectorAll(":is(:read-write)")].find((t) => t === e) : false;
   }
-  function Zr(e) {
-    return e?.filter((t) => t).reduce((t, n) => t.concat(Rn(n) ? `<!--${n.data}-->` : Ce(n) ? n.textContent : n.outerHTML), "");
+  function qr(e) {
+    return e?.filter((t) => t).reduce((t, n) => t.concat(vn(n) ? `<!--${n.data}-->` : Me(n) ? n.textContent : n.outerHTML), "");
   }
-  function Oe(e, t = 2) {
+  function Le(e, t = 2) {
     return `${e}`.padStart(t, "0");
   }
-  function Kr(e, t = 0) {
+  function to(e, t = 0) {
     return [e, t] = [Math.floor(e), Math.ceil(t)], Math.floor([...crypto.getRandomValues(new Uint32Array(1))].shift() / 2 ** 32 * (e - t + 1) + t);
   }
-  function ve() {
-    return `_${fs(cs).slice(0, 8).join("")}`;
+  function Ie() {
+    return `_${ms(us).slice(0, 8).join("")}`;
   }
-  function Ln(e) {
+  function Rn(e) {
     return e = p(e, String) && /,/.test(e) ? e.split(",").map((t) => t.trim().toLowerCase()).filter((t) => t.length > 0) : e, p(e, Array) ? e : p(e, String) && e?.trim().toLowerCase() || "";
   }
-  function qr(e) {
+  function eo(e) {
     return e?.isConnected ? !![...document.querySelectorAll(":is(:modal)")].find((t) => t === e) : false;
   }
-  function Nn(e, t) {
+  function Dn(e, t) {
     switch (e = String(e).trim(), true) {
       case /^(0|false|f)$/i.test(e):
         return false;
@@ -1620,54 +1644,54 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return t;
     }
   }
-  function fs(e) {
+  function ms(e) {
     let t = e.length;
     for (; t--; ) {
-      let n = Kr(t);
+      let n = to(t);
       [e[t], e[n]] = [e[n], e[t]];
     }
     return e;
   }
-  function ne(e) {
-    return p(e, String) ? e.toLowerCase().split("-").map((t, n) => n && `${ds(t)}` || t).join("") : e;
+  function vt(e) {
+    return p(e, String) ? e.toLowerCase().split("-").map((t, n) => n && `${ps(t)}` || t).join("") : e;
   }
   function pt(e) {
     return e.replace(/[A-Z]/g, (t) => `-${t.toLowerCase()}`).replace(/^-|-$/, "");
   }
-  function ds([e, ...t]) {
+  function ps([e, ...t]) {
     return `${e.toUpperCase()}${t.join("")}`;
   }
-  function Ce(e) {
+  function Me(e) {
     return p(e, Comment, Text);
   }
-  function Rn(e) {
+  function vn(e) {
     return p(e, Comment);
   }
-  function to(e) {
+  function no(e) {
     return p(e, Text);
   }
-  function re(e) {
+  function oe(e) {
     return p(e, String) && /^<|>$/.test(`${e}`.trim());
   }
-  function oe(e) {
+  function ie(e) {
     return p(e, Array) && !e?.find((t) => !mt(t));
   }
-  function Ie(e) {
-    return p(e, Array) && !e?.find((t) => !re(t));
+  function Fe(e) {
+    return p(e, Array) && !e?.find((t) => !oe(t));
   }
-  function M(e, t) {
-    let n = e.collection.filter((r) => !Ce(r));
+  function H(e, t) {
+    let n = e.collection.filter((r) => !Me(r));
     for (let r = 0; r < n.length; r += 1) t(n[r], r);
     return e;
   }
-  function eo(e) {
+  function ro(e) {
     if (e.node) {
       let t = p(e.node, Comment) ? `<!--${e.node.textContent}-->` : e.HTML.get(1).split(">")[0];
       return t.length > 45 ? `${t.slice(0, 35)} ...` : `${t}>`;
     }
     return "";
   }
-  function Dn(e, t, n) {
+  function Cn(e, t, n) {
     let r = t !== document.body && p(e, String) && e.toLowerCase() !== "body" ? t : document;
     if (!(!p(e, String) || e.trim().length < 1)) try {
       n.collection = [...r.querySelectorAll(e)];
@@ -1675,23 +1699,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       C.warn(`JQx: Invalid CSS querySelector. [${p(e, String) ? e : "Not a string!"}]`);
     }
   }
-  function no() {
-    return { isCommentOrTextNode: Ce, isNode: mt, isComment: Rn, isText: to, isHtmlString: re, isArrayOfHtmlElements: oe, isArrayOfHtmlStrings: Ie, ElemArray2HtmlString: Zr, input2Collection: De, setCollectionFromCssSelector: Dn, cssRuleEdit: Yt({ createWithId: "JQxStylesheet" }) };
+  function oo() {
+    return { isCommentOrTextNode: Me, isNode: mt, isComment: vn, isText: no, isHtmlString: oe, isArrayOfHtmlElements: ie, isArrayOfHtmlStrings: Fe, ElemArray2HtmlString: qr, input2Collection: Pe, setCollectionFromCssSelector: Cn, cssRuleEdit: Vt({ createWithId: "JQxStylesheet" }) };
   }
-  function ro() {
+  function io() {
     let t = Object.freeze({ notInDOM: "n/a", writable: "n/a", modal: "n/a", empty: true, open: "n/a", visible: "n/a" });
     return (n) => {
       let r = n.node;
       return p(r, Node) ? Object.freeze({ get writable() {
-        return Xr(r);
+        return Kr(r);
       }, get modal() {
-        return qr(r);
+        return eo(r);
       }, get inDOM() {
         return r.isConnected;
       }, get open() {
         return r.open ?? false;
       }, get visible() {
-        return Vr(r);
+        return Zr(r);
       }, get disabled() {
         return r.hasAttribute("readonly") || r.hasAttribute("disabled");
       }, get empty() {
@@ -1701,19 +1725,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       } }) : t;
     };
   }
-  function oo(e, t, n, r) {
+  function so(e, t, n, r) {
     J(e), n && p(t, String) && (t = { [t]: n === "-" ? "" : n });
     let i;
-    t.className && (i = t.className, delete t.className), i = [...e.classList].find((l) => l.startsWith("JQxClass-") || i && l === i) || i || `JQxClass-${ve().slice(1)}`, r.editCssRule(`.${i}`, t), e.classList.add(i);
+    t.className && (i = t.className, delete t.className), i = [...e.classList].find((c) => c.startsWith("JQxClass-") || i && c === i) || i || `JQxClass-${Ie().slice(1)}`, r.editCssRule(`.${i}`, t), e.classList.add(i);
   }
-  var ms = ro();
-  function io(e) {
-    return { factoryExtensions: ps(e), instanceExtensions: gs(e) };
+  var gs = io();
+  function ao(e) {
+    return { factoryExtensions: hs(e), instanceExtensions: ys(e) };
   }
-  function ps(e) {
+  function hs(e) {
     return { data(t) {
       return { get all() {
-        return new Proxy(t[0]?.dataset ?? {}, wn);
+        return new Proxy(t[0]?.dataset ?? {}, Ln);
       }, set(n = {}) {
         if (!t.is.empty && p(n, Object)) for (let [r, i] of Object.entries(n)) t.setData({ [r]: i });
         return t;
@@ -1728,17 +1752,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, dimensions(t) {
       if (t.is.empty) return C.error("[JQx instance].dimensions called on empty instance"), { error: "[JQx instance].dimensions: NO ELEMENTS" };
       let { node: n } = t, r = n.getBoundingClientRect().toJSON();
-      return r.scrollTopDistance = te(n, 0), r.scrollLeftDistance = te(n, 0, false), r;
+      return r.scrollTopDistance = ne(n, 0), r.scrollLeftDistance = ne(n, 0, false), r;
     }, node(t) {
       return t[0];
     }, HTML(t) {
       return { get(n, r) {
         let i = n ? t.outerHtml : t.html();
-        return r ? jt(i ?? "") : i;
+        return r ? Bt(i ?? "") : i;
       }, set(n, r = false, i = false) {
         n = n.isJQx ? n.HTML.get(1) : n;
         let a = p(n, String);
-        return n = a && i ? jt(n) : n, a && (n || "").trim().length && t.html(n, r), t;
+        return n = a && i ? Bt(n) : n, a && (n || "").trim().length && t.html(n, r), t;
       }, replace(n, r = false) {
         return t.HTML.set(n, false, r);
       }, append(n, r = false) {
@@ -1747,7 +1771,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return n = p(n, HTMLElement) ? e(n).HTML.get(1) : n.isJQx ? n.HTML.get(1) : n, t.HTML.set(n + t.HTML.get(), false, r);
       } };
     }, is(t) {
-      return ms(t);
+      return gs(t);
     }, length(t) {
       return t.collection.length;
     }, outerHtml(t) {
@@ -1770,14 +1794,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return t.Style.byRule({ rules: n });
       }, byRule({ classes2Apply: n = [], rules: r = [] } = {}) {
         let a = p(r, String) && !n.length ? r.split("{")[0].trim() : "";
-        if (r = r && p(r, String) ? [r] : r, n = n && p(n, String) ? [n] : n, (r?.length || n?.length) && (r?.length && e.editCssRules(...r), n)) for (let l of n) t.addClass(l);
+        if (r = r && p(r, String) ? [r] : r, n = n && p(n, String) ? [n] : n, (r?.length || n?.length) && (r?.length && e.editCssRules(...r), n)) for (let c of n) t.addClass(c);
         return a?.startsWith(".") && t.addClass(a.slice(1)), a?.startsWith("#") && !t.attr("id") && t.prop({ id: a.slice(1) }), t;
       } };
     } };
   }
-  function gs(e) {
+  function ys(e) {
     return { addClass(t, ...n) {
-      return M(t, (r) => r && n.forEach((i) => $(i) && r.classList.add(i)));
+      return H(t, (r) => r && n.forEach((i) => $(i) && r.classList.add(i)));
     }, after(t, ...n) {
       return Dt(t, e, true, ...n);
     }, afterMe(t, ...n) {
@@ -1789,22 +1813,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       let r = t.length === 1;
       for (let i of n) {
         if (!i.isJQx && $(i)) {
-          let a = i.trim(), w = !/^<(.+)[^>]+>$/m.test(a) ? e.text(i) : ct(i);
-          M(t, (S2) => S2.append(r ? w : St(w)));
+          let a = i.trim(), x2 = !/^<(.+)[^>]+>$/m.test(a) ? e.text(i) : ct(i);
+          H(t, (_2) => _2.append(r ? x2 : St(x2)));
         }
-        mt(i) && (J(i), M(t, (a) => a.append(r ? i : St(i)))), i.isJQx && !i.is.empty && M(t, (a) => i.collection.forEach((l) => a.append(r ? l : St(l))));
+        mt(i) && (J(i), H(t, (a) => a.append(r ? i : St(i)))), i.isJQx && !i.is.empty && H(t, (a) => i.collection.forEach((c) => a.append(r ? c : St(c))));
       }
       return t;
     }, appendTo(t, n) {
       return n = typeof n == "string" ? e(n) : n, true === (!n?.isJQx && !p(n, HTMLElement) || n?.collection?.length < 1) ? (e.warn("[JQx instance].appendTo: invalid input"), t) : ((n.isJQx ? n : e(n)).append(t), t);
     }, attr(t, n, r) {
-      return !t.node || p(t.node, Text, Comment) ? t : !r && $(n) ? (n = pt(n), n === "class" ? [...t.node.classList].join(" ") : t.node.getAttribute(n)) : ($(n) && r && (n = pt(n), true === n.startsWith("data-") ? n = { data: { [n.replace("data-", "")]: r } } : n = { [n]: r }), p(n, Object) && !t.is.empty && On(t.node, n), t);
+      if (!t.node || p(t.node, Text, Comment)) return t;
+      if (!r && $(n)) return n = pt(n), n === "class" ? [...t.node.classList].join(" ") : t.node.getAttribute(n);
+      if ($(n) && r && (n = pt(n), true === n.startsWith("data-") ? n = { data: { [n.replace("data-", "")]: r } } : n = { [n]: r }), p(n, Object) && !t.is.empty) {
+        let i = Object.keys(n).find((a) => a.trim().startsWith("on"));
+        i && (C.error(`JQx: [instance].attr => '${i}' not allowed.`), n[i] = null), ee(t.node, n);
+      }
+      return t;
     }, before(t, ...n) {
       return Dt(t, e, false, ...n);
     }, beforeMe(t, ...n) {
       Dt(t, e, false, ...n);
     }, clear(t) {
-      return M(t, Ne);
+      return H(t, Re);
     }, closest(t, n) {
       let r = $(n) ? t.node?.closest(n) : void 0;
       return r ? e(r) : t;
@@ -1812,7 +1842,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       let { node: r } = t;
       return r && getComputedStyle(r)[n];
     }, css(t, n, r) {
-      return M(t, (i) => oo(i, n, r, e));
+      return H(t, (i) => so(i, n, r, e));
     }, duplicate(t, n = false, r = document.body) {
       if (true === t.is.empty) return C.error("Duplicating an empty JQx instance is not possible"), t;
       {
@@ -1822,9 +1852,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }), n ? e(i).toDOM(r) : e.virtual(i);
       }
     }, each(t, n) {
-      return M(t, n);
+      return H(t, n);
     }, empty(t) {
-      return M(t, Ne);
+      return H(t, Re);
     }, find(t, n) {
       return t.collection.length > 0 ? [...t.first()?.querySelectorAll(n)] : [];
     }, find$(t, n) {
@@ -1838,7 +1868,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, hasClass(t, ...n) {
       return t.is.empty || !t.node.classList.length ? false : n.find((r) => t.node.classList.contains(r)) && true || false;
     }, hide(t) {
-      return M(t, (n) => ee(n, { display: "none !important" }));
+      return H(t, (n) => re(n, { display: "none !important" }));
     }, html(t, n, r) {
       switch (true) {
         case (t.is.empty && !$(n)):
@@ -1847,15 +1877,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return t.node?.getHTML() ?? "";
         default:
           let i = ct(`<div>${n.isJQx ? n.HTML.get(true) : n}</div>`);
-          return M(t, (l) => (l.textContent = r ? l.textContent : "", l.insertAdjacentHTML(e.at.end, i.getHTML())));
+          return H(t, (c) => (c.textContent = r ? c.textContent : "", c.insertAdjacentHTML(e.at.end, i.getHTML())));
       }
     }, htmlFor(t, n, r = "", i = false) {
       if (t.is.empty || !$(n) || !$(r)) return t;
       let a = t.find$(n);
       if (a.length < 1) return t;
-      let l = ct(`<span>${r}</span>`);
-      return a.each((w) => {
-        i || (w.textContent = ""), w.insertAdjacentHTML(e.at.end, l?.getHTML());
+      let c = ct(`<span>${r}</span>`);
+      return a.each((x2) => {
+        i || (x2.textContent = ""), x2.insertAdjacentHTML(e.at.end, c?.getHTML());
       }), t;
     }, isEmpty(t) {
       return !t.node;
@@ -1871,37 +1901,34 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       for (let i of n) {
         if ($(i)) {
           i = i.trim();
-          let l = !/^<(.+)[^>]+>$/m.test(i) ? e.text(i) : ct(i);
-          l = r ? l : St(l), M(t, (w) => w.prepend(l.cloneNode(true)));
+          let c = !/^<(.+)[^>]+>$/m.test(i) ? e.text(i) : ct(i);
+          c = r ? c : St(c), H(t, (x2) => x2.prepend(c.cloneNode(true)));
         }
-        mt(i) && M(t, (a) => a.prepend(r ? i : St(i))), i.isJQx && !i.is.empty && (i.collection.length > 1 && i.collection.reverse(), M(t, (a) => M(i, (l) => a.prepend(r ? l : St(l)))), i.collection.reverse());
+        mt(i) && H(t, (a) => a.prepend(r ? i : St(i))), i.isJQx && !i.is.empty && (i.collection.length > 1 && i.collection.reverse(), H(t, (a) => H(i, (c) => a.prepend(r ? c : St(c)))), i.collection.reverse());
       }
       return t;
     }, prependTo(t, n) {
       return n = typeof n == "string" ? e(n) : n, true === (!n?.isJQx && !p(n, HTMLElement) || n?.collection?.length < 1) ? (e.warn("[JQx instance].appendTo: invalid input"), t) : ((n.isJQx ? n : e(n)).prepend(t), t);
     }, prop(t, n, r) {
-      if (p(n, String) && !r) return n.startsWith("data") ? t[0]?.dataset[n.slice(n.indexOf("-") + 1)] : t[0]?.[n];
-      let i = p(n, Object) ? n : { [n]: r };
-      for (let [a, l] of Object.entries(i)) {
-        if (a = a.trim(), a.toLowerCase() === "id") return t[0].id = l;
-        M(t, (S2) => {
-          if (a.startsWith("data")) return S2.dataset[a.slice(a.indexOf("-") + 1)] = l;
-          S2[a] = l, J(S2);
-        });
+      let i = t.node;
+      if (p(n, String) && !r && !t.is.empty) {
+        let c = n.trim();
+        return true === /^data/i.test(c) ? (c = c.replace(/data-/, ""), c = /(-\w)/.test(c) ? vt(c) : c, i.dataset[c]) : De(i, c) ? i.getAttribute(c) : i[c];
       }
-      return t;
+      let a = p(n, Object) ? n : { [n]: r };
+      return ve(t.node, n), t;
     }, remove(t, n) {
       let r = (a) => a.remove(), i = () => t.collection = t.collection.filter((a) => document.documentElement.contains(a));
       if (n) {
         let a = t.find$(n);
-        return a.is.empty || (M(a, r), i()), t;
+        return a.is.empty || (H(a, r), i()), t;
       }
-      return M(t, r), i(), t;
+      return H(t, r), i(), t;
     }, rmAttr(t, ...n) {
       for (let r of n) t.node.removeAttribute(r);
       return t;
     }, removeClass(t, ...n) {
-      return M(t, (r) => {
+      return H(t, (r) => {
         if (r) for (let i of n) r.classList.remove(i);
       });
     }, renderTo(t, n, r) {
@@ -1910,7 +1937,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       let i = t.node;
       return !n || !p(r, HTMLElement) && !r?.isJQx ? (e.logger.error("JQx replace: invalid replacement value"), t) : ((r.isJQx || p(r, NodeList)) && (r = r[0]), i && n && (n = p(n, String) ? i.querySelectorAll(n) : n.isJQx ? n.collection : n, p(n, HTMLElement, NodeList, Array) && p(r, HTMLElement) && (J(r), (p(n, HTMLElement) ? [n] : [...n]).forEach((a) => a.replaceWith(r.cloneNode(true))))), t);
     }, replaceClass(t, n, ...r) {
-      return M(t, (i) => {
+      return H(t, (i) => {
         i.classList.remove(n);
         for (let a of r) i.classList.add(a);
       });
@@ -1919,9 +1946,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, replaceWith(t, n) {
       return n = p(n, Element) ? n : n.isJQx ? n[0] : void 0, n && (t[0].replaceWith(n), t = e.virtual(n)), t;
     }, setData(t, n) {
-      return M(t, (r) => Re(r, n));
+      return H(t, (r) => Ce(r, n));
     }, show(t) {
-      return M(t, (n) => ee(n, { display: "revert-layer !important" }));
+      return H(t, (n) => re(n, { display: "revert-layer !important" }));
     }, single(t, n) {
       let r = t.collection.length > 0;
       switch (n = n ?? 0, true) {
@@ -1935,8 +1962,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return t;
       }
     }, style(t, n, r) {
-      return M(t, (a) => {
-        r && p(n, String) && (n = { [n]: r || "none" }), J(a), ee(a, n);
+      return H(t, (a) => {
+        r && p(n, String) && (n = { [n]: r || "none" }), J(a), re(a, n);
       });
     }, text(t, n, r = false) {
       switch (true) {
@@ -1945,18 +1972,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         case !p(n, String):
           return t.node.textContent;
         default:
-          return M(t, (i) => i.textContent = r ? i.textContent + n : n);
+          return H(t, (i) => i.textContent = r ? i.textContent + n : n);
       }
     }, toDOM(t, n = document.body, r = V.BeforeEnd) {
       return t.isVirtual = false, Rt(t.collection, n, r), t;
     }, toggleClass(t, n) {
-      return M(t, (r) => r.classList.toggle(n));
+      return H(t, (r) => r.classList.toggle(n));
     }, toNodeList(t) {
       return [...t.collection].map((n) => document.importNode(n, true));
     }, trigger(t, n, r, i) {
       r = p(r, Function) ? r : Event, i = p(i, Object) ? { ...i, bubbles: i.bubbles ?? true } : { bubbles: true };
       let a = new r(n, i);
-      return t.is.empty || t.each((l) => l.dispatchEvent(a)), t;
+      return t.is.empty || t.each((c) => c.dispatchEvent(a)), t;
     }, val(t, n) {
       switch (true) {
         case (t.is.empty || !p(t.node, HTMLInputElement, HTMLSelectElement, HTMLTextAreaElement)):
@@ -1968,16 +1995,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     } };
   }
-  var Me;
-  var Pe;
-  var { isComment: ya, isText: ba, isHtmlString: Ta, isArrayOfHtmlElements: Sa, isArrayOfHtmlStrings: Ea, ElemArray2HtmlString: Aa, cssRuleEdit: vn, addFn: hs } = ys();
-  function ys() {
-    return { ...no(), addFn: bs };
+  var He;
+  var $e;
+  var { isComment: Sa, isText: Ea, isHtmlString: Aa, isArrayOfHtmlElements: _a, isArrayOfHtmlStrings: wa, ElemArray2HtmlString: xa, cssRuleEdit: Pn, addFn: bs } = Ts();
+  function Ts() {
+    return { ...oo(), addFn: Ss };
   }
-  function bs(e, t, n) {
-    return e = e?.trim(), !$(e) || !p(t, Function) ? C.error("JQx.fn: method invalid parameter(s)") : (!!n === true ? Me[e] = (r) => t(r) : Pe[e] = (r, ...i) => t(r, ...i), C.log(`JQx: added instance extension ${n ? "getter" : "function"} [${e}]`));
+  function Ss(e, t, n) {
+    return e = e?.trim(), !$(e) || !p(t, Function) ? C.error("JQx.fn: method invalid parameter(s)") : (!!n === true ? He[e] = (r) => t(r) : $e[e] = (r, ...i) => t(r, ...i), C.log(`JQx: added instance extension ${n ? "getter" : "function"} [${e}]`));
   }
-  function Ts(e) {
+  function Es(e) {
     return function(t, n, r) {
       if (t = t?.trim(), !$(t) || !p(n, Function)) return e.error("JQx.staticFn: invalid parameter(s)");
       let i = r ? { get() {
@@ -1993,55 +2020,55 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return C.log(`JQx: added static extension ${r ? "getter" : "function"} [${t}]`);
     };
   }
-  function Fe(e) {
-    return new Proxy(e, { get: (t, n) => Es(t, n, e) });
+  function ze(e) {
+    return new Proxy(e, { get: (t, n) => _s(t, n, e) });
   }
-  function so(e, t, n = false) {
-    t = t[Symbol.proxy] ? t : Fe(t);
+  function co(e, t, n = false) {
+    t = t[Symbol.proxy] ? t : ze(t);
     let r = function(...i) {
       return e(t, ...i);
     };
     return n ? r() : r;
   }
-  function Ss(e) {
+  function As(e) {
     return `Proxy for JQx${e.collection.length < 1 ? " (empty)" : ""} instance`;
   }
-  function Es(e, t, n) {
+  function _s(e, t, n) {
     switch (true) {
       case t === Symbol.proxy:
-        return Ss(n);
+        return As(n);
       case typeof t == "symbol":
         return Lt({ trial: () => e[t], whenError: () => e });
       case (!Number.isNaN(+t) && typeof +t == "number"):
         return e.collection?.[t] || void 0;
-      case Me.hasOwnProperty(t):
-        return so(Me[t], n, true);
-      case Pe.hasOwnProperty(t):
-        return so(Pe[t], n);
+      case He.hasOwnProperty(t):
+        return co(He[t], n, true);
+      case $e.hasOwnProperty(t):
+        return co($e[t], n);
       default:
         return Reflect.get(e, t);
     }
   }
-  function lo(e) {
-    let { factoryExtensions: t, instanceExtensions: n } = io(e);
-    Me = t, Pe = n;
-    for (let [r, i] of Object.entries(Object.getOwnPropertyDescriptors(Ds(e)))) Object.defineProperty(e, r, i);
+  function fo(e) {
+    let { factoryExtensions: t, instanceExtensions: n } = ao(e);
+    He = t, $e = n;
+    for (let [r, i] of Object.entries(Object.getOwnPropertyDescriptors(Cs(e)))) Object.defineProperty(e, r, i);
     return e;
   }
-  function As(e) {
+  function ws(e) {
     return { allowTags(t) {
       let n = /-/.test(t);
       if (ot.allowTag(t), n) {
         let r = t;
-        ut[r], t = n ? ne(t) : t.toLowerCase(), ot.allowTag(t), ot.allowTag(r);
+        ut[r], t = n ? vt(t) : t.toLowerCase(), ot.allowTag(t), ot.allowTag(r);
       }
     }, prohibitTags(t) {
       let n = /-/.test(t);
-      ot.prohibitTag(t), n && ot.prohibitTag(ne(t));
+      ot.prohibitTag(t), n && ot.prohibitTag(vt(t));
     } };
   }
-  function _s(e) {
-    let t = As(e);
+  function xs(e) {
+    let t = ws(e);
     return { allowTags: function(...n) {
       for (let r of n) t.allowTags(r);
       setTimeout((r) => C.log(`JQx: tags allowed => ${n.join(", ")}`));
@@ -2056,14 +2083,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       setTimeout((r) => C.log(`JQx: attributes prohibited => ${n.join(", ")}`));
     } };
   }
-  function ao(...e) {
+  function lo(...e) {
     if (e.length === 1) {
       let t = String(e.shift().trim());
       e = t.startsWith("!") ? [t.slice(1, -1)] : t.split(",").map((n) => n.trim());
     }
-    for (let t of e.map((n) => n.startsWith("!") ? n.slice(1, -1) : n)) vn(t, { removeRule: 1 });
+    for (let t of e.map((n) => n.startsWith("!") ? n.slice(1, -1) : n)) Pn(t, { removeRule: 1 });
   }
-  function ws(e) {
+  function Os(e) {
     return function(t, n, r) {
       n = n?.isJQx ? n?.[0] : n, r = r && Object.values(V).find((a) => r === a);
       let i = e(t, document.createElement("br"));
@@ -2071,66 +2098,66 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return i;
     };
   }
-  function xs(e) {
+  function Ls(e) {
     return function(t, n, ...r) {
       p(n, Function) && (r.push(n), n = void 0), e({ type: t, selector: n, handlers: r });
     };
   }
-  function Os(e) {
+  function Ns(e) {
     return function(t) {
-      let { type: n, types: r, origin: i, selector: a, handler: l, handlers: w, node: S2, name: x2, capture: g, once: b, about: T } = t;
-      l = w || l, n = r || n, a = i || a;
-      let _2 = Ln(n), y = x2;
-      l = p(l, Function) ? [l] : l;
-      let E2 = { type: _2, selector: a || i, capture: g, name: y, once: b, node: S2, about: T };
+      let { type: n, types: r, origin: i, selector: a, handler: c, handlers: x2, node: _2, name: w, capture: g, once: b, about: T } = t;
+      c = x2 || c, n = r || n, a = i || a;
+      let A2 = Rn(n), y = w;
+      c = p(c, Function) ? [c] : c;
+      let S2 = { type: A2, selector: a || i, capture: g, name: y, once: b, node: _2, about: T };
       switch (true) {
-        case (p(_2, Array) && _2.length > 0):
-          for (let m of _2) E2.type = m, co(l, E2, e);
+        case (p(A2, Array) && A2.length > 0):
+          for (let m of A2) S2.type = m, uo(c, S2, e);
           break;
         default:
-          return co(l, E2, e);
+          return uo(c, S2, e);
       }
     };
   }
-  function co(e, t, n) {
+  function uo(e, t, n) {
     for (let r of e) n.listen({ ...t, handler: r });
   }
-  function Ls(e) {
+  function Rs(e) {
     return function(t, n) {
       return n = $(n) && n, t = $(t) && t, n && t && e.listenerStore[t][n];
     };
   }
-  function Ns(e) {
-    return e.activePopup || Object.defineProperty(e, "activePopup", { value: _e(e), enumerable: false }), e.activePopup;
-  }
-  function Rs(e) {
-    let t = (g, b) => vn(g, b), n = function(g) {
-      return Yt({ createWithId: g || `jqx${ve()}` });
-    }, r = function(...g) {
-      for (let b of g) vn(b);
-    }, i = _s(e), a = we(e), l = Os(a);
-    return { editCssRule: t, createStyle: n, editCssRules: r, allowProhibit: i, handle: l, capturedHandling: l, log: (...g) => C.on.log(...g).off, warn: (...g) => C.on.warn(...g).off, error: (...g) => C.on.error(...g).off, handlerWrapper: a };
-  }
   function Ds(e) {
-    let { editCssRule: t, createStyle: n, editCssRules: r, allowProhibit: i, handle: a, capturedHandling: l, log: w, warn: S2, error: x2, handlerWrapper: g } = Rs(e), b = Ls(e), T = Ts(e);
-    return { log: w, warn: S2, error: x2, editCssRules: r, createStyle: n, editStylesheet: n, editCssRule: t, escHtml: jt, logger: C, proxyWrapper: he, text(_2, y = false) {
-      return y ? e(`<!--${_2}-->`) : document.createTextNode(_2);
-    }, node(_2, y = document) {
-      return y.querySelector(_2, y);
-    }, nodes(_2, y = document) {
-      return [...y.querySelectorAll(_2, y)];
-    }, clearAllTimers: xn, get HTMLSanitizer() {
+    return e.activePopup || Object.defineProperty(e, "activePopup", { value: we(e), enumerable: false }), e.activePopup;
+  }
+  function vs(e) {
+    let t = (g, b) => Pn(g, b), n = function(g) {
+      return Vt({ createWithId: g || `jqx${Ie()}` });
+    }, r = function(...g) {
+      for (let b of g) Pn(b);
+    }, i = xs(e), a = xe(e), c = Ns(a);
+    return { editCssRule: t, createStyle: n, editCssRules: r, allowProhibit: i, handle: c, capturedHandling: c, log: (...g) => C.on.log(...g).off, warn: (...g) => C.on.warn(...g).off, error: (...g) => C.on.error(...g).off, handlerWrapper: a };
+  }
+  function Cs(e) {
+    let { editCssRule: t, createStyle: n, editCssRules: r, allowProhibit: i, handle: a, capturedHandling: c, log: x2, warn: _2, error: w, handlerWrapper: g } = vs(e), b = Rs(e), T = Es(e);
+    return { log: x2, warn: _2, error: w, editCssRules: r, createStyle: n, editStylesheet: n, editCssRule: t, escHtml: Bt, logger: C, proxyWrapper: ye, text(A2, y = false) {
+      return y ? e(`<!--${A2}-->`) : document.createTextNode(A2);
+    }, node(A2, y = document) {
+      return y.querySelector(A2, y);
+    }, nodes(A2, y = document) {
+      return [...y.querySelectorAll(A2, y)];
+    }, clearAllTimers: Nn, get HTMLSanitizer() {
       return J;
     }, get staticFn() {
-      return function(_2, y, E2) {
-        return T(_2, y, E2);
+      return function(A2, y, S2) {
+        return T(A2, y, S2);
       };
     }, get toBool() {
-      return Nn;
+      return Dn;
     }, get getNamedListener() {
       return b;
     }, get virtual() {
-      return ws(e);
+      return Os(e);
     }, get allowTag() {
       return i.allowTags;
     }, get allowTags() {
@@ -2144,15 +2171,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, get prohibitAttributes() {
       return i.prohibitAttributes;
     }, get removeCssRule() {
-      return ao;
+      return lo;
     }, get removeCssRules() {
-      return ao;
+      return lo;
     }, get delegate() {
-      return xs(l);
+      return Ls(c);
     }, get delegateCaptured() {
-      return l;
+      return c;
     }, get handle() {
-      return l;
+      return c;
     }, get listen() {
       return g.listen;
     }, get at() {
@@ -2160,58 +2187,58 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, get setStyle() {
       return t;
     }, get fn() {
-      return hs;
+      return bs;
     }, get lenient() {
       return ot.allowUnknownHtmlTags;
     }, get IS() {
       return p;
     }, get Popup() {
-      return Ns(e);
+      return Ds(e);
     }, get listenerStore() {
       return g.ListenerStore;
     } };
   }
-  var uo = Is();
-  function vs() {
-    let t = lo(function(n, r, i = V.BeforeEnd) {
+  var mo = Ms();
+  function Ps() {
+    let t = fo(function(n, r, i = V.BeforeEnd) {
       let a = p(r, HTMLBRElement) || r === true;
       r = (!a && r && r.isJQx ? r[0] : r) || document.body, i = i && Object.values(V).find((b) => i === b) ? i : void 0;
-      let l = re(n), S2 = !l && Ie(n) || l, x2 = { collection: De(n) ?? [], isVirtual: a, isJQx: true }, g = oe(x2.collection);
+      let c = oe(n), _2 = !c && Fe(n) || c, w = { collection: Pe(n) ?? [], isVirtual: a, isJQx: true }, g = ie(w.collection);
       switch (true) {
-        case (x2.collection.length && g && !a):
-          for (let b of x2.collection) r.contains(b) || Rt([b], r, i);
+        case (w.collection.length && g && !a):
+          for (let b of w.collection) r.contains(b) || Rt([b], r, i);
           break;
-        case S2:
-          for (let b of [n].flat()) x2.collection.push(ct(b));
-          if (x2.collection.length > 0) {
-            let b = x2.collection.filter((E2) => E2?.dataset?.jqxcreationerror);
-            x2.collection = x2.collection.filter((E2) => !E2?.dataset?.jqxcreationerror);
-            let _2 = x2.collection.map((E2) => `${String(E2.constructor).split(/function|\(/)[1].trim()}`).length > 1;
-            x2 = Fe(x2);
-            let y = x2.collection.length > 0 ? eo(x2) : "sanitized: no elements remaining";
-            C.log(`JQx: created ${x2.isVirtual ? "(virtual)" : ""} instance from ${y}`), x2.isVirtual || Rt(x2.collection, r, i);
+        case _2:
+          for (let b of [n].flat()) w.collection.push(ct(b));
+          if (w.collection.length > 0) {
+            let b = w.collection.filter((S2) => S2?.dataset?.jqxcreationerror);
+            w.collection = w.collection.filter((S2) => !S2?.dataset?.jqxcreationerror);
+            let A2 = w.collection.map((S2) => `${String(S2.constructor).split(/function|\(/)[1].trim()}`).length > 1;
+            w = ze(w);
+            let y = w.collection.length > 0 ? ro(w) : "sanitized: no elements remaining";
+            C.log(`JQx: created ${w.isVirtual ? "(virtual)" : ""} instance from ${y}`), w.isVirtual || Rt(w.collection, r, i);
           }
           break;
         default:
-          Dn(n, r, x2);
+          Cn(n, r, w);
       }
-      return Fe(x2);
+      return ze(w);
     });
     return ut.setError = (n) => {
     }, t;
   }
-  function Cs(e, t) {
+  function Is(e, t) {
     return function(...n) {
       let r = t(J(ut.div(ut[e](...n)).firstChild), true), i = r.outerHtml;
-      return i && C.log(`JQx: created instance from ${qt(i.replace(/\n/g, ""), { at: 55, wordBoundary: true })}`), r;
+      return i && C.log(`JQx: created instance from ${te(i.replace(/\n/g, ""), { at: 55, wordBoundary: true })}`), r;
     };
   }
-  function Is() {
-    let e = vs(), t = { get(n, r) {
+  function Ms() {
+    let e = Ps(), t = { get(n, r) {
       let i = !!ut[r]();
       switch (true) {
         case i:
-          return Cs(r, e);
+          return Is(r, e);
         case Object.hasOwn(n, r):
           return n[r];
         default:
@@ -2220,7 +2247,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } };
     return new Proxy(e, t);
   }
-  var Na = uo;
+  var va = mo;
 
   // ../Resource/Externals/ticktock.min.js
   var Z = Ce2();
@@ -2285,7 +2312,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return t(({ values: i, full: m }) => [Object.entries(i).filter(([T]) => /^(years|month|days|hours|minutes|seconds)/i.test(T)), m], ([i, m]) => m ? i : i.filter(([, T]) => m ? +T : T > 0), (i) => i.reduce((m, [T, c]) => [...m, `${c} ${a(c, T)}`], []), (i) => i.length < 1 ? "Dates are equal" : `${i.slice(0, -1).join(", ")}${i.length > 1 ? " and " : ""}${i.slice(-1).shift()}`);
     }
   }
-  var ie = Ae2;
+  var ie2 = Ae2;
   function Ae2() {
     let e = Object.entries({ year: "FullYear", month: "Month", date: "Date", day: "Date", hour: "Hours", minute: "Minutes", second: "Seconds", millisecond: "Milliseconds" }).reduce((t, [a, s]) => ({ ...t, [a]: s, [`${a}s`]: s }), {}), r = false, n = function(...t) {
       let a = t.length === 1;
@@ -2309,7 +2336,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   var de = le();
   var ge = Ye();
-  var N = ie();
+  var N = ie2();
   var We = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   var ye2 = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   function q(e, r = false) {
@@ -2321,7 +2348,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function H2(e, ...r) {
     return N(e.value, ...r), e;
   }
-  function he2(e, r = false) {
+  function he(e, r = false) {
     let n = R(e.clone, { sunday: r }), t = [n];
     return { weekStart: n.format("WD", "l:en-GB"), inputDate: e, dates: t.concat([...Array(6)].map((a, s) => n.clone.addDays(s + 1))) };
   }
@@ -2434,7 +2461,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     return t(e);
   }
-  function F(e, { dateOnly: r = false, timeOnly: n = false } = {}) {
+  function F2(e, { dateOnly: r = false, timeOnly: n = false } = {}) {
     let { locale: t, timeZone: a } = e.localeInfo;
     return r ? new Date(e).toLocaleDateString(t, { timeZone: a }) : n ? new Date(e).toLocaleTimeString(t, { timeZone: a }) : new Date(e).toLocaleString(t, { timeZone: a });
   }
@@ -2445,14 +2472,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function I(e, { year: r, month: n, date: t } = {}) {
     return S(r) && e.setFullYear(parseInt(r)), S(t) && e.setDate(parseInt(t)), S(n) && e.setMonth(parseInt(n)), e;
   }
-  function M2(e, { hours: r, minutes: n, seconds: t, milliseconds: a } = {}) {
+  function M(e, { hours: r, minutes: n, seconds: t, milliseconds: a } = {}) {
     return S(r) && e.setHours(parseInt(r)), S(n) && e.setMinutes(parseInt(n)), S(t) && e.setSeconds(parseInt(t)), S(a) && e.setMilliseconds(parseInt(a)), e;
   }
-  function $e(e) {
+  function $e2(e) {
     return e?.constructor === Date || e?.value;
   }
   function re2(e, r) {
-    return $e(r) ? f(r?.value || r, e.localeInfo) : f.from(...e.dateTimeValues).relocate(e.localeInfo);
+    return $e2(r) ? f(r?.value || r, e.localeInfo) : f.from(...e.dateTimeValues).relocate(e.localeInfo);
   }
   function Ye() {
     return function(e) {
@@ -2483,7 +2510,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     return e.localeInfo = p2({ locale: t || r || e.l || e.locale, timeZone: a || n || e.tz || e.timeZone }), e;
   }
   function ve2(e, r) {
-    return $e(r) && (e = f(r.value || r, r.localeInfo || e.localeInfo)), e;
+    return $e2(r) && (e = f(r.value || r, r.localeInfo || e.localeInfo)), e;
   }
   function C2(e, r) {
     let n = oe2(new Date(e, 11, r || 31));
@@ -2532,7 +2559,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, fullMonth(o) {
       return L(t, o);
     }, fullWeek(o = false) {
-      return he2(t, !!o);
+      return he(t, !!o);
     }, isFuture(o) {
       return W2(t, { start: t, end: o, future: true });
     }, isPast(o) {
@@ -2549,7 +2576,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, setDateValues({ year: o, month: u, date: l } = {}) {
       return I(t, { year: o, month: u, date: l });
     }, setTimeValues({ hours: o, minutes: u, seconds: l, milliseconds: i } = {}) {
-      return M2(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
+      return M(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
     }, subtract(...o) {
       return H2(t, "subtract," + o.join(","));
     }, toArray(o = false) {
@@ -2565,19 +2592,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, set dateNr(o) {
       I(t, { date: o });
     }, set hours(o) {
-      M2(t, { hours: o });
+      M(t, { hours: o });
     }, set localeInfo({ locale: o, timeZone: u, l, tz: i }) {
       e = O({ locale: o, timeZone: u, l, tz: i });
     }, set milliseconds(o) {
-      M2(t, { milliseconds: `${o}` });
+      M(t, { milliseconds: `${o}` });
     }, set minutes(o) {
-      M2(t, { minutes: o });
+      M(t, { minutes: o });
     }, set month(o) {
       I(t, { month: o });
     }, set seconds(o) {
-      M2(t, { seconds: o });
+      M(t, { seconds: o });
     }, set time({ hours: o, minutes: u, seconds: l, milliseconds: i }) {
-      M2(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
+      M(t, { hours: o, minutes: u, seconds: l, milliseconds: i });
     }, set year(o) {
       I(t, { year: o });
     }, get age() {
@@ -2615,17 +2642,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, get ISO() {
       return t.toISOString();
     }, get local() {
-      return F(t);
+      return F2(t);
     }, get localDate() {
-      return F(t, { dateOnly: true });
+      return F2(t, { dateOnly: true });
     }, get locale() {
       return (e || O()).locale;
     }, get localeInfo() {
       return e;
     }, get localeString() {
-      return F(t);
+      return F2(t);
     }, get localTime() {
-      return F(t, { timeOnly: true });
+      return F2(t, { timeOnly: true });
     }, get milliseconds() {
       return t.getMilliseconds();
     }, get minutes() {
@@ -2779,7 +2806,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return r?.constructor === Function ? r(n) : void 0;
     }
   }
-  function He({ timeZoneDate: e, timeZoneID: r, userTimeZoneID: n } = {}) {
+  function He2({ timeZoneDate: e, timeZoneID: r, userTimeZoneID: n } = {}) {
     let t = { timeZone: p2({ timeZone: n }).timeZone }, a = { timeZone: p2({ timeZone: r || "" }).timeZone };
     e = e || /* @__PURE__ */ new Date();
     let s = f(e, t), o = f(e, a), u = o.differenceTo(s), l = s.offsetFrom(o).offset, [i, m] = A(l, true), T = o.clone.add(`${i} hours, ${m} minutes`), h2 = u.equalDates ? "No difference" : `Time offset ${l}: ${a.timeZone} is ${u.clean} ${i < 0 ? "behind" : "ahead of"} ${t.timeZone}`, d = s.DSTActive, g = o.DSTActive;
@@ -2866,7 +2893,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return l += u ? `,${u}` : "", Z(t, a, l);
     } }, addCustom: { value({ name: t, method: a, enumerable: s = false, isGetter: o = false } = {}) {
       t?.constructor === String && a?.constructor === Function && a.length > 0 && (r[t] = { method: a, enumerable: s, isGetter: o });
-    } }, validateLocaleInformation: { value: p2 }, timeAcrossZones: { value: He }, weeksInYear: { value(t) {
+    } }, validateLocaleInformation: { value: p2 }, timeAcrossZones: { value: He2 }, weeksInYear: { value(t) {
       return C2(t, 31);
     } }, keys: { get() {
       let t = Object.fromEntries(Object.entries(r).filter(([s, o]) => o.enumerable === true));
@@ -2874,12 +2901,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     } } }), e;
   }
   var Oe2 = {};
-  var ze = Ie2(Ge, Oe2);
-  var f = ze;
+  var ze2 = Ie2(Ge, Oe2);
+  var f = ze2;
   function Ge(e, r) {
     e = e?.value?.getMilliseconds ? e.value : e;
     let n = e?.locale || e?.timeZone || e?.tz || e?.l;
-    return ze.iCount.increment(), E({ localeInfo: p2(n ? e : r), dateValue: new Date(n ? Date.now() : Me2(e)), customMethods: Oe2 });
+    return ze2.iCount.increment(), E({ localeInfo: p2(n ? e : r), dateValue: new Date(n ? Date.now() : Me2(e)), customMethods: Oe2 });
   }
 
   // ../Resource/Externals/REHelper.js
@@ -3051,23 +3078,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     });
   }
   function logFactory(formatJSON = true) {
-    const logContainer = Na(`<ul id="log2screen">`).first();
+    const logContainer = va(`<ul id="log2screen">`).first();
     const [logLamda, logTopLambda] = [logItem(), logItem(true)];
     return {
       log: (...txt) => txt.forEach(logLamda),
       logTop: (...txt) => txt.forEach(logTopLambda)
     };
     function logItem(top2 = false) {
-      const where2PutIt = top2 ? Na.at.start : Na.at.end;
+      const where2PutIt = top2 ? va.at.start : va.at.end;
       return (content) => {
         if (content?.isJQx) {
-          const item2 = Na.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
+          const item2 = va.li().append(content).addClass(!!content.data.get(`header`) ? `head` : ``);
           return item2.renderTo(logContainer, where2PutIt);
         }
-        content = !Na.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
+        content = !va.IS(content, String, Number, Symbol) ? tryJSON(content, formatJSON) : String(content);
         const isHead = content.startsWith(`!!`);
         content = isHead ? content.slice(2) : content;
-        const item = Na.li(content).addClass(isHead ? `head` : ``);
+        const item = va.li(content).addClass(isHead ? `head` : ``);
         item.renderTo(logContainer, where2PutIt);
       };
     }
@@ -3080,7 +3107,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
   }
   function setDefaultStyling() {
-    Na.editCssRules(`:root{--grey-default:rgba(112,92,92,0.9);--code-color:#555;}`, `li::marker{vertical-align:top;}`, `code:not(.hljs,.codeblock){background-color:rgb(227, 230, 232);color:var(--code-color);padding:1px 2px;display:inline-block;margin:1px 0px;border-radius:4px;font-style:normal;font-weight:normal;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
+    va.editCssRules(`:root{--grey-default:rgba(112,92,92,0.9);--code-color:#555;}`, `li::marker{vertical-align:top;}`, `code:not(.hljs,.codeblock){background-color:rgb(227, 230, 232);color:var(--code-color);padding:1px 2px;display:inline-block;margin:1px 0px;border-radius:4px;font-style:normal;font-weight:normal;}`, `code.codeblock{display:block;padding:6px;border:1px solid #999;margin:0.5rem 0;background-color:#eee;white-space:pre-wrap;}`, `h3{marginTop:1.5rem;}`, `.thickBorder{border:5px solid green;borderWidth:5px;padding:0.5rem;display:inline-block;}`, `a.ExternalLink{text-decoration:none;color:rgb(0,0,238);background-color:#EEE;padding:3px;font-weight:bold;}`, `.cmmt{color:#888;}`, `.hidden{display:none;}`, `.attention{color:red; font-size:1.2em; font-weight:bold;}`, `#log2screen li{listStyle:'\\2713';paddingLeft:6px;margin:0.5rem 0 0 -1.2rem;font-family:monospace}`, `#log2screen li.head{list-style-type:none;font-weight:bold;margin-top:0.8rem;margin-bottom:-0.2rem;font-family:revert;}`, `.err{fontStyle:italic; color:red; }`, `a{text-decoration:none; font-weight:bold;}`, `a:hover{text-decoration:underline;}`, `a[target]:before,a.internalLink:before,a.externalLink:before{color:rgba(0,0,238,0.7);font-size:1.1rem;padding-right:2px;vertical-align:baseline;}`, `a[target="_blank"]:before,a.externalLink:before{content:'\\2197';}`, `a[data-top]:before,a.internalLink:before,a[target="_top"]:before{content:'\\21BA';}`);
   }
   return __toCommonJS(index_exports);
 })();
