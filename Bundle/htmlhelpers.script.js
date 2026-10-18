@@ -586,16 +586,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   var Di = Object.isFrozen;
   var zr = Object.getPrototypeOf;
   var Ur = Object.getOwnPropertyDescriptor;
-  var j = Object.freeze;
-  var W = Object.seal;
+  var B = Object.freeze;
+  var J = Object.seal;
   var kt = Object.create;
   var kr = typeof Reflect < "u" && Reflect;
   var _n = kr.apply;
   var wn = kr.construct;
-  j || (j = function(t) {
+  B || (B = function(t) {
     return t;
   });
-  W || (W = function(t) {
+  J || (J = function(t) {
     return t;
   });
   _n || (_n = function(t, n) {
@@ -629,7 +629,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   var Rr = typeof Symbol > "u" ? null : F(Symbol.prototype.toString);
   var tt = F(Object.prototype.hasOwnProperty);
   var qt = F(Object.prototype.toString);
-  var B = F(RegExp.prototype.test);
+  var W = F(RegExp.prototype.test);
   var dt = jr(TypeError);
   function F(e) {
     return function(t) {
@@ -723,38 +723,38 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function Ui(e) {
     try {
-      return B(e, ""), true;
+      return W(e, ""), true;
     } catch {
       return false;
     }
   }
-  var Dr = j(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
-  var yn = j(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
-  var bn = j(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
-  var ki = j(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
-  var Tn = j(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
-  var ji = j(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
-  var vr = j(["#text"]);
-  var Cr = j(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
-  var Sn = j(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
-  var Pr = j(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
-  var Ae = j(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
-  var Bi = W(/{{[\w\W]*|^[\w\W]*}}/g);
-  var Wi = W(/<%[\w\W]*|^[\w\W]*%>/g);
-  var Ji = W(/\${[\w\W]*/g);
-  var Qi = W(/^data-[\-\w.\u00B7-\uFFFF]+$/);
-  var Gi = W(/^aria-[\-\w]+$/);
-  var Ir = W(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
-  var Yi = W(/^(?:\w+script|data):/i);
-  var Vi = W(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
-  var Xi = W(/^html$/i);
-  var Zi = W(/^[a-z][.\w]*(-[.\w]+)+$/i);
-  var En = W(/<[/\w!]/g);
-  var Mr = W(/<[/\w]/g);
-  var Ki = W(/<\/no(script|embed|frames)/i);
-  var Fr = W(/\/>/i);
+  var Dr = B(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
+  var yn = B(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
+  var bn = B(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
+  var ki = B(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
+  var Tn = B(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
+  var ji = B(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
+  var vr = B(["#text"]);
+  var Cr = B(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
+  var Sn = B(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
+  var Pr = B(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
+  var Ae = B(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
+  var Bi = J(/{{[\w\W]*|^[\w\W]*}}/g);
+  var Wi = J(/<%[\w\W]*|^[\w\W]*%>/g);
+  var Ji = J(/\${[\w\W]*/g);
+  var Qi = J(/^data-[\-\w.\u00B7-\uFFFF]+$/);
+  var Gi = J(/^aria-[\-\w]+$/);
+  var Ir = J(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
+  var Yi = J(/^(?:\w+script|data):/i);
+  var Vi = J(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
+  var Xi = J(/^html$/i);
+  var Zi = J(/^[a-z][.\w]*(-[.\w]+)+$/i);
+  var En = J(/<[/\w!]/g);
+  var Mr = J(/<[/\w]/g);
+  var Ki = J(/<\/no(script|embed|frames)/i);
+  var Fr = J(/\/>/i);
   var U = { element: 1, attribute: 2, text: 3, cdataSection: 4, entityReference: 5, entityNode: 6, processingInstruction: 7, comment: 8, document: 9, documentType: 10, documentFragment: 11, notation: 12 };
-  var qi = j(v({}, ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"]));
+  var qi = B(v({}, ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"]));
   var ts = function() {
     return typeof window > "u" ? null : window;
   };
@@ -821,14 +821,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return In || (ke2 = es(g, i), In = true), ke2;
     }, ae2 = n, je2 = ae2.implementation, Fn = ae2.createNodeIterator, ho = ae2.createDocumentFragment, yo = ae2.getElementsByTagName, bo = r.importNode, P2 = Hr();
     t.isSupported = typeof $r == "function" && typeof l == "function" && je2 && je2.createHTMLDocument !== void 0;
-    let To = Bi, So = Wi, Eo = Ji, Ao = Qi, _o = Gi, wo = Yi, Hn = Vi, xo = Zi, $n = Ir, I2 = null, Be = v({}, [...Dr, ...yn, ...bn, ...Tn, ...vr]), M2 = null, We2 = v({}, [...Cr, ...Sn, ...Pr, ...Ae]), it2 = Object.seal(kt(null, { tagNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, allowCustomizedBuiltInElements: { writable: true, configurable: false, enumerable: true, value: false } })), Jt = null, zn = null, gt = Object.seal(kt(null, { tagCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeCheck: { writable: true, configurable: false, enumerable: true, value: null } })), Un = true, Je = true, kn = false, Qe = true, lt = false, _t = true, wt = false, Ge2 = false, ce2 = null, le2 = null, Ye2 = false, Pt = false, ue2 = false, fe2 = false, jn = true, Bn = false, Wn = "user-content-", Ve2 = true, Xe = false, xt = null, It = {}, Ot = null, Jn = v({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "selectedcontent", "style", "svg", "template", "thead", "title", "video", "xmp"]), Qn = null, Gn = v({}, ["audio", "video", "img", "source", "image", "track"]), Yn = null, Vn = v({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), de2 = "http://www.w3.org/1998/Math/MathML", me2 = "http://www.w3.org/2000/svg", st = "http://www.w3.org/1999/xhtml", Mt = st, Ze2 = false, Ke = null, Oo = v({}, [de2, me2, st], hn), Xn = j(["mi", "mo", "mn", "ms", "mtext"]), qe2 = v({}, Xn), Zn = j(["annotation-xml"]), tn = v({}, Zn), Lo = v({}, ["title", "style", "font", "a", "script"]), Qt = null, No = ["application/xhtml+xml", "text/html"], Ro = "text/html", z2 = null, Ft = null, Do = n.createElement("form"), Kn = function(o) {
+    let To = Bi, So = Wi, Eo = Ji, Ao = Qi, _o = Gi, wo = Yi, Hn = Vi, xo = Zi, $n = Ir, I2 = null, Be = v({}, [...Dr, ...yn, ...bn, ...Tn, ...vr]), M2 = null, We2 = v({}, [...Cr, ...Sn, ...Pr, ...Ae]), it2 = Object.seal(kt(null, { tagNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeNameCheck: { writable: true, configurable: false, enumerable: true, value: null }, allowCustomizedBuiltInElements: { writable: true, configurable: false, enumerable: true, value: false } })), Jt = null, zn = null, gt = Object.seal(kt(null, { tagCheck: { writable: true, configurable: false, enumerable: true, value: null }, attributeCheck: { writable: true, configurable: false, enumerable: true, value: null } })), Un = true, Je = true, kn = false, Qe = true, lt = false, _t = true, wt = false, Ge2 = false, ce2 = null, le2 = null, Ye2 = false, Pt = false, ue2 = false, fe2 = false, jn = true, Bn = false, Wn = "user-content-", Ve2 = true, Xe = false, xt = null, It = {}, Ot = null, Jn = v({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "selectedcontent", "style", "svg", "template", "thead", "title", "video", "xmp"]), Qn = null, Gn = v({}, ["audio", "video", "img", "source", "image", "track"]), Yn = null, Vn = v({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), de2 = "http://www.w3.org/1998/Math/MathML", me2 = "http://www.w3.org/2000/svg", st = "http://www.w3.org/1999/xhtml", Mt = st, Ze2 = false, Ke = null, Oo = v({}, [de2, me2, st], hn), Xn = B(["mi", "mo", "mn", "ms", "mtext"]), qe2 = v({}, Xn), Zn = B(["annotation-xml"]), tn = v({}, Zn), Lo = v({}, ["title", "style", "font", "a", "script"]), Qt = null, No = ["application/xhtml+xml", "text/html"], Ro = "text/html", z2 = null, Ft = null, Do = n.createElement("form"), Kn = function(o) {
       return o instanceof RegExp || o instanceof Function;
     }, en = function() {
       let o = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
       if (Ft && Ft === o) return;
       (!o || typeof o != "object") && (o = {}), o = et(o), Qt = No.indexOf(o.PARSER_MEDIA_TYPE) === -1 ? Ro : o.PARSER_MEDIA_TYPE, z2 = Qt === "application/xhtml+xml" ? hn : Nt, I2 = bt(o, "ALLOWED_TAGS", Be, { transform: z2 }), M2 = bt(o, "ALLOWED_ATTR", We2, { transform: z2 }), Ke = bt(o, "ALLOWED_NAMESPACES", Oo, { transform: hn }), Yn = bt(o, "ADD_URI_SAFE_ATTR", Vn, { transform: z2, base: Vn }), Qn = bt(o, "ADD_DATA_URI_TAGS", Gn, { transform: z2, base: Gn }), Ot = bt(o, "FORBID_CONTENTS", Jn, { transform: z2 }), Jt = bt(o, "FORBID_TAGS", et({}), { transform: z2 }), zn = bt(o, "FORBID_ATTR", et({}), { transform: z2 }), It = tt(o, "USE_PROFILES") ? o.USE_PROFILES && typeof o.USE_PROFILES == "object" ? et(o.USE_PROFILES) : o.USE_PROFILES : false, Un = o.ALLOW_ARIA_ATTR !== false, Je = o.ALLOW_DATA_ATTR !== false, kn = o.ALLOW_UNKNOWN_PROTOCOLS || false, Qe = o.ALLOW_SELF_CLOSE_IN_ATTR !== false, lt = o.SAFE_FOR_TEMPLATES || false, _t = o.SAFE_FOR_XML !== false, wt = o.WHOLE_DOCUMENT || false, Pt = o.RETURN_DOM || false, ue2 = o.RETURN_DOM_FRAGMENT || false, fe2 = o.RETURN_TRUSTED_TYPE || false, Ye2 = o.FORCE_BODY || false, jn = o.SANITIZE_DOM !== false, Bn = o.SANITIZE_NAMED_PROPS || false, Ve2 = o.KEEP_CONTENT !== false, Xe = o.IN_PLACE || false, $n = Ui(o.ALLOWED_URI_REGEXP) ? o.ALLOWED_URI_REGEXP : Ir, Mt = typeof o.NAMESPACE == "string" ? o.NAMESPACE : st, qe2 = An(o, "MATHML_TEXT_INTEGRATION_POINTS", () => v({}, Xn)), tn = An(o, "HTML_INTEGRATION_POINTS", () => v({}, Zn));
       let s = An(o, "CUSTOM_ELEMENT_HANDLING", () => kt(null));
-      if (it2 = kt(null), tt(s, "tagNameCheck") && Kn(s.tagNameCheck) && (it2.tagNameCheck = s.tagNameCheck), tt(s, "attributeNameCheck") && Kn(s.attributeNameCheck) && (it2.attributeNameCheck = s.attributeNameCheck), tt(s, "allowCustomizedBuiltInElements") && typeof s.allowCustomizedBuiltInElements == "boolean" && (it2.allowCustomizedBuiltInElements = s.allowCustomizedBuiltInElements), W(it2), lt && (Je = false), ue2 && (Pt = true), It && (I2 = v({}, vr), M2 = kt(null), It.html === true && (v(I2, Dr), v(M2, Cr)), It.svg === true && (v(I2, yn), v(M2, Sn), v(M2, Ae)), It.svgFilters === true && (v(I2, bn), v(M2, Sn), v(M2, Ae)), It.mathMl === true && (v(I2, Tn), v(M2, Pr), v(M2, Ae))), gt.tagCheck = null, gt.attributeCheck = null, tt(o, "ADD_TAGS") && (typeof o.ADD_TAGS == "function" ? gt.tagCheck = o.ADD_TAGS : jt(o.ADD_TAGS) && (I2 === Be && (I2 = et(I2)), v(I2, o.ADD_TAGS, z2))), tt(o, "ADD_ATTR") && (typeof o.ADD_ATTR == "function" ? gt.attributeCheck = o.ADD_ATTR : jt(o.ADD_ATTR) && (M2 === We2 && (M2 = et(M2)), v(M2, o.ADD_ATTR, z2))), tt(o, "ADD_FORBID_CONTENTS") && jt(o.ADD_FORBID_CONTENTS) && (Ot === Jn && (Ot = et(Ot)), v(Ot, o.ADD_FORBID_CONTENTS, z2)), Ve2 && (I2["#text"] = true), wt && v(I2, ["html", "head", "body"]), I2.table && (v(I2, ["tbody"]), delete Jt.tbody), o.TRUSTED_TYPES_POLICY) {
+      if (it2 = kt(null), tt(s, "tagNameCheck") && Kn(s.tagNameCheck) && (it2.tagNameCheck = s.tagNameCheck), tt(s, "attributeNameCheck") && Kn(s.attributeNameCheck) && (it2.attributeNameCheck = s.attributeNameCheck), tt(s, "allowCustomizedBuiltInElements") && typeof s.allowCustomizedBuiltInElements == "boolean" && (it2.allowCustomizedBuiltInElements = s.allowCustomizedBuiltInElements), J(it2), lt && (Je = false), ue2 && (Pt = true), It && (I2 = v({}, vr), M2 = kt(null), It.html === true && (v(I2, Dr), v(M2, Cr)), It.svg === true && (v(I2, yn), v(M2, Sn), v(M2, Ae)), It.svgFilters === true && (v(I2, bn), v(M2, Sn), v(M2, Ae)), It.mathMl === true && (v(I2, Tn), v(M2, Pr), v(M2, Ae))), gt.tagCheck = null, gt.attributeCheck = null, tt(o, "ADD_TAGS") && (typeof o.ADD_TAGS == "function" ? gt.tagCheck = o.ADD_TAGS : jt(o.ADD_TAGS) && (I2 === Be && (I2 = et(I2)), v(I2, o.ADD_TAGS, z2))), tt(o, "ADD_ATTR") && (typeof o.ADD_ATTR == "function" ? gt.attributeCheck = o.ADD_ATTR : jt(o.ADD_ATTR) && (M2 === We2 && (M2 = et(M2)), v(M2, o.ADD_ATTR, z2))), tt(o, "ADD_FORBID_CONTENTS") && jt(o.ADD_FORBID_CONTENTS) && (Ot === Jn && (Ot = et(Ot)), v(Ot, o.ADD_FORBID_CONTENTS, z2)), Ve2 && (I2["#text"] = true), wt && v(I2, ["html", "head", "body"]), I2.table && (v(I2, ["tbody"]), delete Jt.tbody), o.TRUSTED_TYPES_POLICY) {
         if (typeof o.TRUSTED_TYPES_POLICY.createHTML != "function") throw dt('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
         if (typeof o.TRUSTED_TYPES_POLICY.createScriptURL != "function") throw dt('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
         let u = Z2;
@@ -839,7 +839,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           throw Z2 = u, f3;
         }
       } else o.TRUSTED_TYPES_POLICY === null ? (Z2 = void 0, At = "") : (Z2 === void 0 && (Z2 = go()), Z2 && typeof At == "string" && (At = Ct("")));
-      j && j(o), Ft = o;
+      B && B(o), Ft = o;
     }, qn = v({}, [...yn, ...bn, ...ki]), tr = v({}, [...Tn, ...ji]), vo = function(o, s, u) {
       return s.namespaceURI === st ? o === "svg" : s.namespaceURI === de2 ? o === "svg" && (u === "annotation-xml" || qe2[u]) : !!qn[o];
     }, Co = function(o, s, u) {
@@ -965,7 +965,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, Uo = function(o) {
       _t && rn(o, (s) => {
         let u = X2(s);
-        if (u === U.processingInstruction || u === U.comment && B(Mr, s.data)) {
+        if (u === U.processingInstruction || u === U.comment && W(Mr, s.data)) {
           try {
             A2(s);
           } catch {
@@ -1043,9 +1043,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       });
     }
     let ko = function(o, s) {
-      return !!(_t && o.hasChildNodes() && !Gt(o.firstElementChild) && B(En, o.textContent) && B(En, o.innerHTML) || _t && qi[s] && X2(o) === U.element && Ue2(o) === st && (Gt(o.firstElementChild) || typeof o.textContent == "string" && B(En, o.textContent)) || o.nodeType === U.processingInstruction || _t && o.nodeType === U.comment && B(Mr, o.data));
+      return !!(_t && o.hasChildNodes() && !Gt(o.firstElementChild) && W(En, o.textContent) && W(En, o.innerHTML) || _t && qi[s] && X2(o) === U.element && Ue2(o) === st && (Gt(o.firstElementChild) || typeof o.textContent == "string" && W(En, o.textContent)) || o.nodeType === U.processingInstruction || _t && o.nodeType === U.comment && W(Mr, o.data));
     }, he2 = function(o, s) {
-      if (o instanceof RegExp) return B(o, s);
+      if (o instanceof RegExp) return W(o, s);
       if (o instanceof Function) {
         for (var u = arguments.length, f3 = new Array(u > 2 ? u - 2 : 0), O3 = 2; O3 < u; O3++) f3[O3 - 2] = arguments[O3];
         return !!o(s, ...f3);
@@ -1078,7 +1078,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         let f3 = jo(o, u, s);
         return f3 === false && (rt(P2.afterSanitizeElements, o, null), $t(o, s)) ? true : f3;
       }
-      if (X2(o) === U.element && !Io(o) || (u === "noscript" || u === "noembed" || u === "noframes") && B(Ki, o.innerHTML)) return ht(o), true;
+      if (X2(o) === U.element && !Io(o) || (u === "noscript" || u === "noembed" || u === "noframes") && W(Ki, o.innerHTML)) return ht(o), true;
       if (lt && o.nodeType === U.text) {
         let f3 = pe2(o.textContent);
         o.textContent !== f3 && (Xt(t.removed, { element: o.cloneNode() }), o.textContent = f3);
@@ -1087,9 +1087,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, cr = function(o, s, u) {
       if (zn[s] || or(s, o) || jn && (s === "id" || s === "name") && (u in n || u in Do)) return false;
       let f3 = M2[s] || gt.attributeCheck instanceof Function && gt.attributeCheck(s, o);
-      return Je && B(Ao, s) || Un && B(_o, s) ? true : f3 ? Yn[s] || B($n, Kt(u, Hn, "")) || (s === "src" || s === "xlink:href" || s === "href") && o !== "script" && Lr(u, "data:") === 0 && Qn[o] || kn && !B(wo, Kt(u, Hn, "")) ? true : !u : lr(o) && he2(it2.tagNameCheck, o) && he2(it2.attributeNameCheck, s, o) || s === "is" && it2.allowCustomizedBuiltInElements && he2(it2.tagNameCheck, u);
+      return Je && W(Ao, s) || Un && W(_o, s) ? true : f3 ? Yn[s] || W($n, Kt(u, Hn, "")) || (s === "src" || s === "xlink:href" || s === "href") && o !== "script" && Lr(u, "data:") === 0 && Qn[o] || kn && !W(wo, Kt(u, Hn, "")) ? true : !u : lr(o) && he2(it2.tagNameCheck, o) && he2(it2.attributeNameCheck, s, o) || s === "is" && it2.allowCustomizedBuiltInElements && he2(it2.tagNameCheck, u);
     }, Bo = v({}, ["annotation-xml", "color-profile", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "missing-glyph"]), lr = function(o) {
-      return !Bo[Nt(o)] && B(xo, o);
+      return !Bo[Nt(o)] && W(xo, o);
     }, Wo = function(o, s, u, f3) {
       if (Z2 && typeof g == "object" && typeof g.getAttributeType == "function" && !u) switch (g.getAttributeType(o, s)) {
         case "TrustedHTML":
@@ -1105,7 +1105,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return Ht(s, o), false;
       }
     }, ur = function(o, s) {
-      return _t && B(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, s) ? true : Nt(o) === "attributename" && Or(s, "href") !== null;
+      return _t && W(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, s) ? true : Nt(o) === "attributename" && Or(s, "href") !== null;
     }, un = function(o, s) {
       if (rt(P2.beforeSanitizeAttributes, o, null), $t(o, s)) return;
       let u = o.attributes;
@@ -1123,7 +1123,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             Ht(k2, o, R2);
             continue;
           }
-          if (!Qe && B(Fr, q2)) {
+          if (!Qe && W(Fr, q2)) {
             Ht(k2, o, R2);
             continue;
           }
@@ -1207,7 +1207,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return (M2.shadowroot || M2.shadowrootmode) && (O3 = bo.call(r, O3, true)), O3;
       }
       let Y2 = wt ? s.outerHTML : s.innerHTML;
-      return wt && I2["!doctype"] && s.ownerDocument && s.ownerDocument.doctype && s.ownerDocument.doctype.name && B(Xi, s.ownerDocument.doctype.name) && (Y2 = "<!DOCTYPE " + s.ownerDocument.doctype.name + `>
+      return wt && I2["!doctype"] && s.ownerDocument && s.ownerDocument.doctype && s.ownerDocument.doctype.name && W(Xi, s.ownerDocument.doctype.name) && (Y2 = "<!DOCTYPE " + s.ownerDocument.doctype.name + `>
 ` + Y2), lt && (Y2 = pe2(Y2)), Z2 && fe2 ? Ct(Y2) : Y2;
     }, t.setConfig = function() {
       let d = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -1217,7 +1217,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, t.isValidAttribute = function(d, o, s) {
       Ft || en({});
       let u = z2(d), f3 = z2(o);
-      return typeof s == "string" && (ur(o, s) || !Qe && B(Fr, s)) ? false : cr(u, f3, s);
+      return typeof s == "string" && (ur(o, s) || !Qe && W(Fr, s)) ? false : cr(u, f3, s);
     }, t.addHook = function(d, o) {
       typeof o == "function" && tt(P2, d) && Xt(P2[d], o);
     }, t.removeHook = function(d, o) {
@@ -1263,7 +1263,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     let n = t || typeof e == "string" ? Tt.notInPlaceConfig : Tt.current, r = _e.sanitize(e, n);
     return _e.removed.length > 0 && os(_e.removed, e), r;
   }
-  function J(e) {
+  function j(e) {
     try {
       return Wr(e);
     } catch {
@@ -1287,7 +1287,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function is(e) {
     let t = document.createElement("div");
-    return t.insertAdjacentHTML(V.end, e), t.childNodes.length ? J(t) : void 0;
+    return t.insertAdjacentHTML(V.end, e), t.childNodes.length ? j(t) : void 0;
   }
   function ss(e, t, n) {
     switch (true) {
@@ -1544,7 +1544,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     if (e) for (let [n, r] of Object.entries(t)) {
       if (n = pt(n.trim()), n.startsWith("data")) return Ce(e, r);
       if (De(e, n)) return ve(e, t);
-      p(r, String) && (e.setAttribute(n, r.split(/[, ]/)?.join(" ")), J(e));
+      p(r, String) && (e.setAttribute(n, r.split(/[, ]/)?.join(" ")), j(e));
     }
   }
   function De(e, t) {
@@ -1568,12 +1568,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       default:
         e[n] = r;
     }
-    J(e);
+    j(e);
   }
   function Ce(e, t) {
     if (e && p(t, Object)) {
       for (let [n, r] of Object.entries(t)) n = n.replace(/[^a-zA-Z0-9-_]/g, ""), e.setAttribute(`data-${pt(n)}`, r);
-      J(e);
+      j(e);
     }
   }
   function Pe(e) {
@@ -1589,7 +1589,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function Dt(e, t, n = true, ...r) {
     if (e.is.empty) return C.log("[JQx instance].[before(Me) | after(Me) | andThen]: instance is empty."), e;
-    if (r = r.map((a) => a.isJQx ? a.node : p(a, String) ? t(a).node ?? a : J(a)), r.find((a) => !p(a, String, Element))) {
+    if (r = r.map((a) => a.isJQx ? a.node : p(a, String) ? t(a).node ?? a : j(a)), r.find((a) => !p(a, String, Element))) {
       let a = n ? "after" : "before";
       return C.log(`[JQx instance].[${a}(Me)]: invalid/-sufficient input.`), e;
     }
@@ -1726,7 +1726,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     };
   }
   function so(e, t, n, r) {
-    J(e), n && p(t, String) && (t = { [t]: n === "-" ? "" : n });
+    j(e), n && p(t, String) && (t = { [t]: n === "-" ? "" : n });
     let i;
     t.className && (i = t.className, delete t.className), i = [...e.classList].find((c) => c.startsWith("JQxClass-") || i && c === i) || i || `JQxClass-${Ie().slice(1)}`, r.editCssRule(`.${i}`, t), e.classList.add(i);
   }
@@ -1816,7 +1816,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           let a = i.trim(), x2 = !/^<(.+)[^>]+>$/m.test(a) ? e.text(i) : ct(i);
           H(t, (_2) => _2.append(r ? x2 : St(x2)));
         }
-        mt(i) && (J(i), H(t, (a) => a.append(r ? i : St(i)))), i.isJQx && !i.is.empty && H(t, (a) => i.collection.forEach((c) => a.append(r ? c : St(c))));
+        mt(i) && (j(i), H(t, (a) => a.append(r ? i : St(i)))), i.isJQx && !i.is.empty && H(t, (a) => i.collection.forEach((c) => a.append(r ? c : St(c))));
       }
       return t;
     }, appendTo(t, n) {
@@ -1870,7 +1870,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, hide(t) {
       return H(t, (n) => re(n, { display: "none !important" }));
     }, html(t, n, r) {
-      switch (true) {
+      switch (n = j(n), true) {
         case (t.is.empty && !$(n)):
           return "";
         case !$(n):
@@ -1883,7 +1883,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (t.is.empty || !$(n) || !$(r)) return t;
       let a = t.find$(n);
       if (a.length < 1) return t;
-      let c = ct(`<span>${r}</span>`);
+      let c = ct(`<span>${j(r)}</span>`);
       return a.each((x2) => {
         i || (x2.textContent = ""), x2.insertAdjacentHTML(e.at.end, c?.getHTML());
       }), t;
@@ -1935,7 +1935,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return n = p(n, HTMLElement) || n.isJQx ? n : document.body, r = p(r, String) && e.at[r] ? r : e.at.end, t.first$().toDOM(n, r), t;
     }, replace(t, n, r) {
       let i = t.node;
-      return !n || !p(r, HTMLElement) && !r?.isJQx ? (e.logger.error("JQx replace: invalid replacement value"), t) : ((r.isJQx || p(r, NodeList)) && (r = r[0]), i && n && (n = p(n, String) ? i.querySelectorAll(n) : n.isJQx ? n.collection : n, p(n, HTMLElement, NodeList, Array) && p(r, HTMLElement) && (J(r), (p(n, HTMLElement) ? [n] : [...n]).forEach((a) => a.replaceWith(r.cloneNode(true))))), t);
+      return !n || !p(r, HTMLElement) && !r?.isJQx ? (e.logger.error("JQx replace: invalid replacement value"), t) : ((r.isJQx || p(r, NodeList)) && (r = r[0]), i && n && (n = p(n, String) ? i.querySelectorAll(n) : n.isJQx ? n.collection : n, p(n, HTMLElement, NodeList, Array) && p(r, HTMLElement) && (j(r), (p(n, HTMLElement) ? [n] : [...n]).forEach((a) => a.replaceWith(r.cloneNode(true))))), t);
     }, replaceClass(t, n, ...r) {
       return H(t, (i) => {
         i.classList.remove(n);
@@ -1963,7 +1963,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }, style(t, n, r) {
       return H(t, (a) => {
-        r && p(n, String) && (n = { [n]: r || "none" }), J(a), re(a, n);
+        r && p(n, String) && (n = { [n]: r || "none" }), j(a), re(a, n);
       });
     }, text(t, n, r = false) {
       switch (true) {
@@ -2147,7 +2147,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, nodes(A2, y = document) {
       return [...y.querySelectorAll(A2, y)];
     }, clearAllTimers: Nn, get HTMLSanitizer() {
-      return J;
+      return j;
     }, get staticFn() {
       return function(A2, y, S2) {
         return T(A2, y, S2);
@@ -2229,7 +2229,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   function Is(e, t) {
     return function(...n) {
-      let r = t(J(ut.div(ut[e](...n)).firstChild), true), i = r.outerHtml;
+      let r = t(j(ut.div(ut[e](...n)).firstChild), true), i = r.outerHtml;
       return i && C.log(`JQx: created instance from ${te(i.replace(/\n/g, ""), { at: 55, wordBoundary: true })}`), r;
     };
   }
