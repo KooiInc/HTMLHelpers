@@ -2525,11 +2525,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   function ve2(e, r) {
     return pe(r) && (e = d(r.value || r, r.localeInfo || e.localeInfo)), e;
   }
-  function k(e, r) {
-    let n = te2(new Date(e, 11, r || 31));
-    return n === 1 ? k(e, (r || 31) - 1) : n;
+  function k(e) {
+    let r = ee2(new Date(e, 11, 31));
+    return r === 1 ? k(e, 30) : r;
   }
-  function ee2(e, r) {
+  function ee2(e) {
+    let r = (e.getDay() + 6) % 7;
+    e.setDate(e.getDate() - r + 3);
+    let n = e.valueOf();
+    return e.setMonth(0, 1), e.getDay() !== 4 && e.setMonth(0, 1 + (4 - e.getDay() + 7) % 7), 1 + Math.ceil((n - e) / 6048e5);
+  }
+  function te2(e, r) {
     let n = e.month;
     switch (true) {
       case n < 3:
@@ -2543,12 +2549,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       default:
         return "unknown";
     }
-  }
-  function te2(e) {
-    let r = new Date(e), n = (r.getDay() + 6) % 7;
-    r.setDate(r.getDate() - n + 3);
-    let t = r.valueOf();
-    return r.setMonth(0, 1), r.getDay() !== 4 && r.setMonth(0, 1 + (4 - r.getDay() + 7) % 7), 1 + Math.ceil((t - r) / 6048e5);
   }
   var oe2 = Ye;
   function Ye({ localeInfo: e, customMethods: r, dateValue: n } = {}) {
@@ -2680,9 +2680,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, get names() {
       return _(t);
     }, get quarter() {
-      return ee2(t);
+      return te2(t);
     }, get quarterNr() {
-      return ee2(t, true);
+      return te2(t, true);
     }, get removeTime() {
       return $e2(t);
     }, get seconds() {
@@ -2704,7 +2704,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }, get value() {
       return new Date(t);
     }, get weeknr() {
-      return te2(t);
+      return ee2(t);
     }, get weeksInYear() {
       return k(t.year, 31);
     }, get year() {
