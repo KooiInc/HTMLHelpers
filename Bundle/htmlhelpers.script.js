@@ -1365,7 +1365,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return (m.node ?? m).outerHTML ?? m;
     }
     function w(m) {
-      if (!e.IS(m, String, HTMLElement) && !m.isJQx) return;
+      if (!e.IS(m, String, HTMLElement) && !m?.isJQx) return;
       m = h3(m);
       let l = n.find$(".warn");
       switch (true) {
@@ -1995,7 +1995,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         case !p(n, String):
           return t.node.value;
         default:
-          return t.node.value = p(n, String) ? n : "", t;
+          return t.prop({ value: p(n, String) ? n : "" }), t;
       }
     } };
   }
